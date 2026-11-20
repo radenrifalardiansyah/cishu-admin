@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '@/assets/images/logo-tehrisma.jpeg';
+import logo from '@/assets/images/logo-cishu.jpg';
 
 export default function AdminSplashScreen() {
   const [visible, setVisible] = useState<boolean | null>(null);
