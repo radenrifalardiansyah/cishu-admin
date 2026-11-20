@@ -28,10 +28,10 @@ export interface StockCardPDFData {
 
 const C = {
   accent:   THEME_COLOR,
-  accentBg: '#E6F7FF',
-  dark:     '#0F172A',
-  muted:    '#5B6B84',
-  border:   '#D3E8F7',
+  accentBg: '#FFEFED',
+  dark:     '#3B2420',
+  muted:    '#76564D',
+  border:   '#F0D6D2',
   white:    '#FFFFFF',
   green:    '#15803D',
   greenBg:  '#DCFCE7',
@@ -75,7 +75,7 @@ const s = StyleSheet.create({
   tHeadCell: { color: C.white, fontSize: 8, fontFamily: 'Helvetica-Bold', paddingVertical: 6, paddingHorizontal: 5 },
   tRow: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: C.border },
   tRowAlt: { backgroundColor: C.accentBg },
-  tRowMuted: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: C.border, backgroundColor: '#F0F9FF' },
+  tRowMuted: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: C.border, backgroundColor: '#FFF5F3' },
   tCell: { fontSize: 8.5, paddingVertical: 5, paddingHorizontal: 5, color: C.dark },
   tCellMuted: { fontSize: 8.5, fontFamily: 'Helvetica-Oblique', paddingVertical: 5, paddingHorizontal: 5, color: C.muted },
 

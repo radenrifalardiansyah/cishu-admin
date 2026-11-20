@@ -8,14 +8,14 @@ const COPIES = 6;
 const ROWS   = 5;
 const BORDER = 0.8;
 const DEFAULT_SLOGAN = 'Gurih, Renyah, Bikin Nagih!'; // slogan di frontend, dipakai kalau Tagline di Pengaturan kosong
-const SENDER_NAME = 'Sindy Rismawati'; // nama pengirim bawaan yang tercetak di form
+const SENDER_NAME = ''; // dikosongkan: isi nama pengirim bila perlu
 const JML_W  = 52; // lebar kolom Jml; kotak Total memakai lebar yang sama + 2 garis tepi
 
 const C = {
   accent: THEME_COLOR,
-  dark:   '#0F172A',
-  muted:  '#5B6B84',
-  line:   '#0F172A',
+  dark:   '#3B2420',
+  muted:  '#76564D',
+  line:   '#3B2420',
   cut:    '#9FB0D0',
 };
 
@@ -26,8 +26,8 @@ const s = StyleSheet.create({
   logoRow:   { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' },
   logo:      { width: 40, height: 40, borderRadius: 20, objectFit: 'cover', marginRight: 8 },
   brandBox:  { justifyContent: 'center' },
-  brand1:    { fontSize: 13, fontFamily: 'Times-Bold', color: '#155FA8', lineHeight: 1.05 },
-  brand2:    { fontSize: 13, fontFamily: 'Times-Bold', color: '#1D6FC4', lineHeight: 1.05 },
+  brand1:    { fontSize: 13, fontFamily: 'Times-Bold', color: '#B83A4B', lineHeight: 1.05 },
+  brand2:    { fontSize: 13, fontFamily: 'Times-Bold', color: '#C93C55', lineHeight: 1.05 },
   title:   { fontSize: 10.5, fontFamily: 'Helvetica-Bold', textAlign: 'center', textDecoration: 'underline', marginTop: 4 },
 
   metaRow:   { flexDirection: 'row', marginTop: 7 },
@@ -46,7 +46,7 @@ const s = StyleSheet.create({
   table:    { marginTop: 12, borderWidth: 0.8, borderColor: C.line },
   tr:       { flexDirection: 'row', height: 22 },
   trBorder: { borderTopWidth: 0.8, borderTopColor: C.line },
-  thead:    { backgroundColor: '#E6F7FF' },
+  thead:    { backgroundColor: '#FFEFED' },
   cNo:      { width: '11%', borderRightWidth: 0.8, borderRightColor: C.line, justifyContent: 'center' },
   cMenu:    { flexGrow: 1, flexBasis: 0, borderRightWidth: 0.8, borderRightColor: C.line, justifyContent: 'center' },
   cJml:     { width: JML_W, justifyContent: 'center' },

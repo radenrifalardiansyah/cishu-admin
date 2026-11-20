@@ -402,19 +402,19 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
       t.value = 'DAFTAR BELANJA BAHAN BAKU — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
       ws.getRow(1).height = 28;
       ws.mergeCells(2, 1, 2, COLS.length);
       const sub = ws.getCell(2, 1);
       sub.value = `${dateBlocks.length} tanggal · Diexport ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}`;
       sub.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       sub.alignment = { horizontal: 'center', vertical: 'middle' };
-      sub.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+      sub.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
       const head = ws.getRow(3);
       COLS.forEach((c, i) => { head.getCell(i + 1).value = c.header; });
       head.height = 24;
       head.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -428,7 +428,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
         row.getCell('note').alignment = { vertical: 'top', wrapText: true };
         const sub = r.kind === 'subtotal';
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: sub ? 'FFD6F1FD' : zebra % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: sub ? 'FFFBD5D2' : zebra % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF' } };
           cell.border = { top: { style: 'thin', color: { argb: 'FFE5E7EB' } }, bottom: { style: 'thin', color: { argb: 'FFE5E7EB' } } };
           if (sub) cell.font = { bold: true };
         });
@@ -438,8 +438,8 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
       total.getCell('total').numFmt = '"Rp"#,##0';
       total.eachCell(cell => {
         cell.font = { bold: true };
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFD6F1FD' } };
-        cell.border = { top: { style: 'medium', color: { argb: 'FF155FA8' } } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFBD5D2' } };
+        cell.border = { top: { style: 'medium', color: { argb: 'FFB83A4B' } } };
       });
       const buffer = await wb.xlsx.writeBuffer();
       downloadBlob(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `daftar-belanja-cishu-${new Date().toLocaleDateString('en-CA')}.xlsx`);

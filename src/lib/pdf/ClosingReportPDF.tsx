@@ -9,10 +9,10 @@ import { dayLabel, type ClosingPdfData, type PdfSection } from './closing-pdf-da
 // Data sudah dipetakan oleh closing-pdf-data.ts; komponen ini hanya menata.
 
 const C = {
-  accent: THEME_COLOR, accentBg: '#E6F7FF', dark: '#0F172A', muted: '#5B6B84', border: '#D3E8F7', white: '#FFFFFF',
+  accent: THEME_COLOR, accentBg: '#FFEFED', dark: '#3B2420', muted: '#76564D', border: '#F0D6D2', white: '#FFFFFF',
   warn: '#B45309', warnBg: '#FEF3C7',
   // Warna tabel dibuat lembut (tidak pekat): header krem, baris selang-seling & total sangat tipis.
-  tHead: '#D6F1FD', tHeadText: '#6B4423', rowAlt: '#F7FCFF', totalBg: '#E6F7FF', tableBorder: '#E3F1FB', totalText: '#8A4B17',
+  tHead: '#FBD5D2', tHeadText: '#6B4423', rowAlt: '#FFF9F8', totalBg: '#FFEFED', tableBorder: '#F7E3E0', totalText: '#8A4B17',
 };
 
 const s = StyleSheet.create({
@@ -67,7 +67,7 @@ const s = StyleSheet.create({
   colNo: { width: '5%' }, colInv: { width: '30%' }, colTx: { width: '12.5%' }, colPay: { width: '12.5%' },
   colQty: { width: '8%', textAlign: 'right' }, colHpp: { width: '16%', textAlign: 'right' }, colOmz: { width: '16%', textAlign: 'right' },
 
-  watermark: { position: 'absolute', top: 300, left: 70, fontSize: 110, fontFamily: 'Helvetica-Bold', color: '#E3F1FB', transform: 'rotate(-35deg)' },
+  watermark: { position: 'absolute', top: 300, left: 70, fontSize: 110, fontFamily: 'Helvetica-Bold', color: '#F7E3E0', transform: 'rotate(-35deg)' },
   footer: { position: 'absolute', bottom: 18, left: 32, right: 70, fontSize: 7, color: C.muted },
   pageNo: { position: 'absolute', bottom: 18, right: 32, fontSize: 7, color: C.muted },
 });

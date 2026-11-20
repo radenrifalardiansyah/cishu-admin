@@ -1010,7 +1010,7 @@ _${storeName}_`.trim();
       titleCell.value = 'LAPORAN PESANAN — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -1020,7 +1020,7 @@ _${storeName}_`.trim();
       subCell.value = `${rows.length} pesanan · Total omzet ${formatRp(totalOmzet)} · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -1028,14 +1028,14 @@ _${storeName}_`.trim();
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FF155FA8' } },
-          bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
-          left: { style: 'thin', color: { argb: 'FF155FA8' } },
-          right: { style: 'thin', color: { argb: 'FF155FA8' } },
+          top: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          bottom: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          left: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          right: { style: 'thin', color: { argb: 'FFB83A4B' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -1057,7 +1057,7 @@ _${storeName}_`.trim();
           status: o.status || '-',
         });
 
-        const zebraFill = i % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -1191,7 +1191,7 @@ _${storeName}_`.trim();
     titleCell.value = 'TEMPLATE IMPORT DATA PESANAN — CISHU BITE \'N SIP';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
     ws.getRow(1).height = 26;
 
     ws.mergeCells(2, 1, 2, colCount);
@@ -1203,7 +1203,7 @@ _${storeName}_`.trim();
       + 'Kolom Produk cukup diisi ringkasan nama produk (bebas), bukan rincian per baris.';
     noteCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
     noteCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
     ws.getRow(2).height = 46;
 
     const HEADER_ROW_NUM = 3;
@@ -1211,14 +1211,14 @@ _${storeName}_`.trim();
     ORDER_TEMPLATE_COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
     headerRow.height = 24;
     headerRow.eachCell(cell => {
-      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
       cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
       cell.alignment = { vertical: 'middle', horizontal: 'center' };
       cell.border = {
-        top: { style: 'thin', color: { argb: 'FF155FA8' } },
-        bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
-        left: { style: 'thin', color: { argb: 'FF155FA8' } },
-        right: { style: 'thin', color: { argb: 'FF155FA8' } },
+        top: { style: 'thin', color: { argb: 'FFB83A4B' } },
+        bottom: { style: 'thin', color: { argb: 'FFB83A4B' } },
+        left: { style: 'thin', color: { argb: 'FFB83A4B' } },
+        right: { style: 'thin', color: { argb: 'FFB83A4B' } },
       };
     });
     ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -1552,7 +1552,7 @@ _${storeName}_`.trim();
             );
             return (
             <div key={o.id} ref={el => { rowRefs.current[o.id] = el; }}
-              style={{ transition: 'background-color 0.6s ease', backgroundColor: highlightedId === o.id ? 'var(--accent-bg)' : isSelected ? 'rgba(29,111,196,0.05)' : undefined }}>
+              style={{ transition: 'background-color 0.6s ease', backgroundColor: highlightedId === o.id ? 'var(--accent-bg)' : isSelected ? 'rgba(201,60,85,0.05)' : undefined }}>
               <div className="flex flex-col gap-2 px-4 py-3.5">
                 <div className="flex items-center gap-3">
                   <Checkbox checked={isSelected} onChange={() => toggleSelect(o.id)} />

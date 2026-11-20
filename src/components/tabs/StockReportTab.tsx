@@ -147,7 +147,7 @@ function TxList({
   const pName = (entry: TxEntry) => entry.productName || products.find(p => p.id === entry.productId)?.name || entry.productId;
   const pEmoji = (id: string) => products.find(p => p.id === id)?.emoji ?? '📦';
   const pImages = (id: string) => products.find(p => p.id === id)?.imageUrls;
-  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#F0F9FF';
+  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#FFF5F3';
 
   const typeBadge = (type: TxEntry['type']) => {
     if (type === 'in')       return { label: 'Masuk',    Icon: TrendingUp,     color: 'var(--success)', bg: 'var(--success-bg)' };
@@ -732,13 +732,13 @@ export default function StockReportTab({
         const t = ws.getCell(1, 1);
         t.value = title; t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
         t.alignment = { horizontal: 'center', vertical: 'middle' };
-        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
         ws.getRow(1).height = 28;
         ws.mergeCells(2, 1, 2, colCount);
         const s = ws.getCell(2, 1);
         s.value = subtitle; s.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
         s.alignment = { horizontal: 'center', vertical: 'middle' };
-        s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+        s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
         ws.getRow(2).height = 20;
       };
       const styleHeader = (ws: ExcelJS.Worksheet, rowNum: number, hdrs: string[]) => {
@@ -746,7 +746,7 @@ export default function StockReportTab({
         hdrs.forEach((h, i) => { row.getCell(i + 1).value = h; });
         row.height = 24;
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
           cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
           cell.alignment = { vertical: 'middle', horizontal: 'center' };
         });
@@ -754,7 +754,7 @@ export default function StockReportTab({
       };
       const zebra = (ws: ExcelJS.Worksheet, rowNum: number, idx: number) => {
         ws.getRow(rowNum).eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: idx % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: idx % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF' } };
           cell.border = { top: { style: 'thin', color: { argb: 'FFE5E7EB' } }, bottom: { style: 'thin', color: { argb: 'FFE5E7EB' } }, left: { style: 'thin', color: { argb: 'FFE5E7EB' } }, right: { style: 'thin', color: { argb: 'FFE5E7EB' } } };
         });
       };

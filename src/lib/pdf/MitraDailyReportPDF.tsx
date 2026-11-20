@@ -23,14 +23,14 @@ const pct = (n: number | null) => (n === null ? '-' : `${n.toLocaleString('id-ID
 // baris tanggal + subtotal, kotak total, dan tanda tangan.
 const C = {
   accent:   THEME_COLOR,
-  accentBg: '#E6F7FF',
-  dark:     '#0F172A',
-  muted:    '#5B6B84',
-  border:   '#D3E8F7',
+  accentBg: '#FFEFED',
+  dark:     '#3B2420',
+  muted:    '#76564D',
+  border:   '#F0D6D2',
   white:    '#FFFFFF',
   green:    '#15803D',
-  retur:    '#155FA8',
-  returBg:  '#D6F1FD',
+  retur:    '#B83A4B',
+  returBg:  '#FBD5D2',
   reject:   '#B91C1C',
   rejectBg: '#FEE2E2',
 };
@@ -80,7 +80,7 @@ const s = StyleSheet.create({
   subTitle: { fontSize: 9.5, fontFamily: 'Helvetica-Bold', color: C.accent, marginTop: 16, marginBottom: -8 },
   summaryBanner: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: C.dark, borderRadius: 6, paddingVertical: 7, paddingHorizontal: 10, marginTop: 22 },
   summaryBannerTitle: { fontSize: 10, fontFamily: 'Helvetica-Bold', color: C.white, letterSpacing: 0.8 },
-  summaryBannerSub: { fontSize: 8, color: '#D3E8F7' },
+  summaryBannerSub: { fontSize: 8, color: '#F0D6D2' },
   totalRow: { flexDirection: 'row', backgroundColor: C.accentBg, borderTopWidth: 1, borderTopColor: C.border },
 
   signRow: { flexDirection: 'row', justifyContent: 'flex-end', marginTop: 24 },

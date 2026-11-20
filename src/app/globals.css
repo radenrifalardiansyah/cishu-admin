@@ -12,37 +12,37 @@
 
 /* ── Design Tokens ─────────────────────────────────────────── */
 :root {
-  /* Sidebar — terang bersih; item aktif = tint biru + teks aksen */
+  /* Sidebar — terang bersih; item aktif = tint blush + teks aksen */
   --sidebar:        #FFFFFF;
-  --sidebar-hover:  #F0F9FF;
-  --sidebar-border: #DCEEFA;
-  --sidebar-text:   #334155;
-  --sidebar-muted:  #5B6B84;
+  --sidebar-hover:  #FFF5F3;
+  --sidebar-border: #F6D9D5;
+  --sidebar-text:   #4A2C25;
+  --sidebar-muted:  #76564D;
 
   /* Ground & surface */
-  --ground:    #F0F9FF;
+  --ground:    #FFF5F3;
   --surface:   #FFFFFF;
-  --surface-2: #F7FCFF;
-  --border:    #D3E8F7;
-  --border-2:  #E3F1FB;
+  --surface-2: #FFF9F8;
+  --border:    #F0D6D2;
+  --border-2:  #F7E3E0;
 
   /* Typography */
-  --text-primary:   #0F172A;
-  --text-secondary: #475569;
-  --text-muted:     #5B6B84;  /* kontras 5.3:1 di putih, 4.9:1 di --ground (WCAG AA) */
+  --text-primary:   #3B2420;
+  --text-secondary: #5A3A30;
+  --text-muted:     #76564D;  /* kontras 5.3:1 di putih, 4.9:1 di --ground (WCAG AA) */
 
-  /* Palet merek es jelly susu (pastel): hanya untuk PERMUKAAN/dekorasi, bukan teks putih di atasnya */
-  --brand-sky:  #58ACFA;
-  --brand-ice:  #A5ECFD;
-  --brand-lime: #DFFDC9;
-  --brand-mint: #CCF4CD;
-  --ink-navy:   #0F2A44;  /* teks di atas permukaan pastel: >= 6:1 */
+  /* Palet logo Cishu Bite n Sip (pastel hangat): hanya untuk PERMUKAAN/dekorasi, bukan teks putih di atasnya */
+  --brand-sky:  #FFB0A8;
+  --brand-ice:  #FFC9C4;
+  --brand-lime: #FFF2B8;
+  --brand-mint: #B5E8C3;
+  --ink-navy:   #4A2C25;  /* teks di atas permukaan pastel: >= 6:1 */
 
-  /* Aksen interaktif — versi dalam dari biru langit (putih di atas --accent 5,1:1; --accent-dark 6,5:1) */
-  --accent:       #1D6FC4;
-  --accent-dark:  #155FA8;
-  --accent-light: #A5ECFD;
-  --accent-bg:    #E6F7FF;
+  /* Aksen interaktif — rose-coral dalam dari logo (putih di atas --accent 4,9:1; --accent-dark 5,6:1) */
+  --accent:       #C93C55;
+  --accent-dark:  #B83A4B;
+  --accent-light: #FFC9C4;
+  --accent-bg:    #FFEFED;
 
   /* Semantic */
   --success:      #15803D;
@@ -55,14 +55,14 @@
   --info-bg:      #ECFEFF;
 
   /* Border tint semantik (dipakai .badge-*) */
-  --accent-border:  rgba(29,111,196,0.22);
+  --accent-border:  rgba(201,60,85,0.22);
   --success-border: #D1FAE5;
   --danger-border:  #FECACA;
   --info-border:    #A5F3FC;
 
   /* Gradient aksen untuk tombol/chip primer */
-  --accent-grad:       linear-gradient(135deg, #1D6FC4, #155FA8);
-  --accent-grad-hover: linear-gradient(135deg, #155FA8, #0F5496);
+  --accent-grad:       linear-gradient(135deg, #C93C55, #B83A4B);
+  --accent-grad-hover: linear-gradient(135deg, #B83A4B, #A0303F);
 }
 
 /* ── Typography ─────────────────────────────────────────────── */
@@ -176,9 +176,9 @@ body {
 }
 .login-screen::before { width: 220px; height: 220px; top: 8%; right: 6%; }
 .login-screen::after  { width: 120px; height: 120px; bottom: 10%; left: 5%; animation-delay: -4s; }
-.login-card-shadow { box-shadow: 0 28px 70px -26px rgba(29,111,196,0.45), 0 0 0 1px rgba(29,111,196,0.08); }
+.login-card-shadow { box-shadow: 0 28px 70px -26px rgba(201,60,85,0.45), 0 0 0 1px rgba(201,60,85,0.08); }
 .login-panel-brand {
-  /* permukaan pastel berlapis; teks di atasnya memakai --ink-navy (>= 6:1 pada #58ACFA) */
+  /* permukaan pastel berlapis; teks di atasnya memakai --ink-navy (>= 6:1 pada #FFB0A8) */
   color: var(--ink-navy);
   background:
     radial-gradient(420px 320px at 100% 100%, color-mix(in srgb, var(--brand-lime) 85%, transparent), transparent 65%),
@@ -203,7 +203,7 @@ body {
   background: rgba(255,255,255,0.55);
   -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   border: 1px solid rgba(255,255,255,0.8);
-  box-shadow: 0 10px 30px -14px rgba(21,95,168,0.35);
+  box-shadow: 0 10px 30px -14px rgba(184,58,75,0.35);
   border-radius: 18px;
 }
 .login-input-wrap { position: relative; }
@@ -241,7 +241,7 @@ body {
   background-image: repeating-linear-gradient(
     -45deg,
     transparent 0px, transparent 6px,
-    rgba(29,111,196,0.025) 6px, rgba(29,111,196,0.025) 7px
+    rgba(201,60,85,0.025) 6px, rgba(201,60,85,0.025) 7px
   );
   pointer-events: none;
   z-index: 0;
@@ -320,7 +320,7 @@ body {
   background: var(--surface);
   border-radius: 14px;
   border: 1px solid var(--border);
-  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 4px 14px -6px rgba(29,111,196,0.10);
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 4px 14px -6px rgba(201,60,85,0.10);
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 
@@ -328,7 +328,7 @@ body {
 .dash-bg {
   background:
     radial-gradient(900px 320px at 8% 0, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%),
-    radial-gradient(700px 300px at 100% 0, rgba(14,165,233,0.10), transparent 70%);
+    radial-gradient(700px 300px at 100% 0, rgba(255,176,168,0.10), transparent 70%);
 }
 .stat-tile {
   background: linear-gradient(145deg, color-mix(in srgb, var(--tile, var(--accent)) 11%, #fff) 0%, var(--surface) 64%);
@@ -398,12 +398,12 @@ body {
   font-weight: 600;
   color: white;
   background: var(--accent-grad);
-  box-shadow: 0 1px 2px rgba(21,95,168,0.2), 0 4px 12px -4px rgba(29,111,196,0.45);
+  box-shadow: 0 1px 2px rgba(184,58,75,0.2), 0 4px 12px -4px rgba(201,60,85,0.45);
   transition: box-shadow 0.18s, transform 0.18s, background 0.18s;
   cursor: pointer;
   border: none;
 }
-.btn-primary:hover  { background: var(--accent-grad-hover); box-shadow: 0 2px 4px rgba(21,95,168,0.25), 0 8px 18px -6px rgba(29,111,196,0.55); transform: translateY(-1px); }
+.btn-primary:hover  { background: var(--accent-grad-hover); box-shadow: 0 2px 4px rgba(184,58,75,0.25), 0 8px 18px -6px rgba(201,60,85,0.55); transform: translateY(-1px); }
 .btn-primary:active { transform: scale(0.97); }
 .btn-primary:focus-visible, .btn-ghost:focus-visible, .btn-danger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
@@ -441,7 +441,7 @@ body {
 }
 .input:focus {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(29,111,196,0.2);
+  box-shadow: 0 0 0 3px rgba(201,60,85,0.2);
   background: var(--surface);
 }
 .input::placeholder { color: var(--text-muted); }
@@ -503,7 +503,7 @@ button:focus-visible,
   color: white;
   background: var(--accent-grad);
   border-color: transparent;
-  box-shadow: 0 2px 6px rgba(21,95,168,0.3);
+  box-shadow: 0 2px 6px rgba(184,58,75,0.3);
 }
 
 /* ── Danger button ──────────────────────────────────────────── */

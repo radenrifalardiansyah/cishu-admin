@@ -4,8 +4,8 @@ import { cellText, cellNumber } from '@/lib/excel-cell';
 // Excel template/impor/export untuk Purchase Order & Penerimaan Barang (GR). Gaya sama dengan
 // Excel Pembelian di MaterialsTab (judul oranye, header oranye, baris contoh abu-abu).
 
-const ORANGE = 'FF1D6FC4';
-const ORANGE_DARK = 'FF155FA8';
+const ORANGE = 'FFC93C55';
+const ORANGE_DARK = 'FFB83A4B';
 
 function download(buffer: ExcelJS.Buffer, filename: string) {
   const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
@@ -101,7 +101,7 @@ export async function downloadPoTemplate(materialNames: string[], supplierName: 
     + `Bahan Baku harus persis sama dengan bahan yang sudah ada: ${materialNames.join(', ') || '(belum ada bahan baku)'}.`;
   note.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
   note.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-  note.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+  note.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
   ws.getRow(2).height = 56;
   const head = ws.getRow(3);
   PO_COLS.forEach((c, i) => { head.getCell(i + 1).value = c.header; });

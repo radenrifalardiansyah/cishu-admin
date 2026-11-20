@@ -17,20 +17,20 @@ export async function downloadMitraExcel(o: {
   title.value = o.title;
   title.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
   title.alignment = { horizontal: 'center', vertical: 'middle' };
-  title.fill = fill('FF155FA8');
+  title.fill = fill('FFB83A4B');
   ws.getRow(1).height = 28;
   ws.mergeCells(2, 1, 2, colCount);
   const sub = ws.getCell(2, 1);
   sub.value = o.subtitle;
   sub.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
   sub.alignment = { horizontal: 'center', vertical: 'middle' };
-  sub.fill = fill('FFE6F7FF');
+  sub.fill = fill('FFFFEFED');
   const HEADER = 3;
   const hr = ws.getRow(HEADER);
   o.headers.forEach((h, i) => { hr.getCell(i + 1).value = h; });
   hr.height = 24;
   hr.eachCell(c => {
-    c.fill = fill('FF1D6FC4');
+    c.fill = fill('FFC93C55');
     c.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
     c.alignment = { vertical: 'middle', horizontal: 'center' };
   });
@@ -47,7 +47,7 @@ export async function downloadMitraExcel(o: {
   const tr = ws.addRow(o.total);
   tr.font = { bold: true };
   styleMoney(tr);
-  tr.eachCell({ includeEmpty: true }, c => { c.fill = fill('FFE6F7FF'); });
+  tr.eachCell({ includeEmpty: true }, c => { c.fill = fill('FFFFEFED'); });
   ws.columns.forEach(column => {
     let max = 8;
     for (let r = HEADER; r <= ws.rowCount; r++) { const v = ws.getRow(r).getCell(column.number!).value; const len = v == null ? 0 : v.toString().length; if (len > max) max = len; }

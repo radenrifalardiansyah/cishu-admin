@@ -255,7 +255,7 @@ export default function DataList<T>(p: Props<T>) {
             const isSel = selected.has(id);
             const rowNum = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + idx + 1;
             return (
-              <div key={id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSel ? 'rgba(29,111,196,0.05)' : undefined, transition: 'background 0.1s' }}>
+              <div key={id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSel ? 'rgba(201,60,85,0.05)' : undefined, transition: 'background 0.1s' }}>
                 <div className="flex items-center gap-2 px-4 py-3.5">
                   <Checkbox checked={isSel} onChange={() => toggle(id)} />
                   <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center" style={{ color: 'var(--text-muted)' }}>{rowNum}</span>

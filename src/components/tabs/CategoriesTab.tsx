@@ -298,7 +298,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
       titleCell.value = 'LAPORAN KATEGORI — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -307,7 +307,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
       subCell.value = `${rows.length} kategori (${label}) · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -315,14 +315,14 @@ export default function CategoriesTab({ creds }: { creds: string }) {
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FF155FA8' } },
-          bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
-          left: { style: 'thin', color: { argb: 'FF155FA8' } },
-          right: { style: 'thin', color: { argb: 'FF155FA8' } },
+          top: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          bottom: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          left: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          right: { style: 'thin', color: { argb: 'FFB83A4B' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -338,7 +338,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
           banner: c.bannerUrl ? 'Ya' : 'Tidak',
         });
 
-        const zebraFill = i % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -447,7 +447,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
     titleCell.value = 'TEMPLATE IMPORT DATA KATEGORI — CISHU BITE \'N SIP';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
     ws.getRow(1).height = 26;
 
     ws.mergeCells(2, 1, 2, colCount);
@@ -457,7 +457,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
       + 'Kolom ID/Slug boleh dikosongkan — akan dibuat otomatis dari nama.';
     noteCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
     noteCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
     ws.getRow(2).height = 34;
 
     const HEADER_ROW_NUM = 3;
@@ -465,14 +465,14 @@ export default function CategoriesTab({ creds }: { creds: string }) {
     CATEGORY_TEMPLATE_COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
     headerRow.height = 24;
     headerRow.eachCell(cell => {
-      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
       cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
       cell.alignment = { vertical: 'middle', horizontal: 'center' };
       cell.border = {
-        top: { style: 'thin', color: { argb: 'FF155FA8' } },
-        bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
-        left: { style: 'thin', color: { argb: 'FF155FA8' } },
-        right: { style: 'thin', color: { argb: 'FF155FA8' } },
+        top: { style: 'thin', color: { argb: 'FFB83A4B' } },
+        bottom: { style: 'thin', color: { argb: 'FFB83A4B' } },
+        left: { style: 'thin', color: { argb: 'FFB83A4B' } },
+        right: { style: 'thin', color: { argb: 'FFB83A4B' } },
       };
     });
     ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -676,7 +676,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
                   <div key={c.id}
                     style={{
                       borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined,
-                      background: isSelected ? 'rgba(29,111,196,0.05)' : undefined,
+                      background: isSelected ? 'rgba(201,60,85,0.05)' : undefined,
                       transition: 'background 0.1s',
                     }}>
                     <div className="flex items-center gap-3 px-4 py-3.5">

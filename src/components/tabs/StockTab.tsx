@@ -350,7 +350,7 @@ function TxList({
   const pName = (entry: TxEntry) => entry.productName || products.find(p => p.id === entry.productId)?.name || entry.productId;
   const pEmoji = (id: string) => products.find(p => p.id === id)?.emoji ?? '📦';
   const pImages = (id: string) => products.find(p => p.id === id)?.imageUrls;
-  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#F0F9FF';
+  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#FFF5F3';
 
   const typeBadge = (type: TxEntry['type']) => {
     if (type === 'in')       return { label: 'Masuk',    Icon: TrendingUp,     color: 'var(--success)', bg: 'var(--success-bg)' };
@@ -1124,7 +1124,7 @@ export default function StockTab({
                         const prod    = products.find(p => p.id === s.productId);
                         const hasImg  = !!prod?.imageUrls?.length;
                         const emoji   = prod?.emoji   ?? '📦';
-                        const bgColor = prod?.bgColor ?? '#F0F9FF';
+                        const bgColor = prod?.bgColor ?? '#FFF5F3';
                         const qty     = s.stockQty;
                         const isPO    = poIds.has(s.productId);
                         const qtyStyle = qty === 0

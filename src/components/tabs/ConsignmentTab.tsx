@@ -637,7 +637,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       titleCell.value = 'LOKASI KONSINYASI — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -646,7 +646,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       subCell.value = `${rows.length} lokasi (${label}) · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -654,14 +654,14 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FF155FA8' } },
-          bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
-          left: { style: 'thin', color: { argb: 'FF155FA8' } },
-          right: { style: 'thin', color: { argb: 'FF155FA8' } },
+          top: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          bottom: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          left: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          right: { style: 'thin', color: { argb: 'FFB83A4B' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -679,7 +679,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
           note: l.note || '-',
         });
 
-        const zebraFill = i % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -801,7 +801,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
     titleCell.value = 'TEMPLATE IMPORT LOKASI KONSINYASI — CISHU BITE \'N SIP';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
     ws.getRow(1).height = 26;
 
     ws.mergeCells(2, 1, 2, colCount);
@@ -810,7 +810,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       'PETUNJUK: Kolom bertanda (*) wajib diisi. Jangan mengubah judul kolom di baris 3.';
     noteCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
     noteCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
     ws.getRow(2).height = 30;
 
     const HEADER_ROW_NUM = 3;
@@ -818,14 +818,14 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
     LOCATION_TEMPLATE_COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
     headerRow.height = 24;
     headerRow.eachCell(cell => {
-      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
       cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
       cell.alignment = { vertical: 'middle', horizontal: 'center' };
       cell.border = {
-        top: { style: 'thin', color: { argb: 'FF155FA8' } },
-        bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
-        left: { style: 'thin', color: { argb: 'FF155FA8' } },
-        right: { style: 'thin', color: { argb: 'FF155FA8' } },
+        top: { style: 'thin', color: { argb: 'FFB83A4B' } },
+        bottom: { style: 'thin', color: { argb: 'FFB83A4B' } },
+        left: { style: 'thin', color: { argb: 'FFB83A4B' } },
+        right: { style: 'thin', color: { argb: 'FFB83A4B' } },
       };
     });
     ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -1116,7 +1116,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       titleCell.value = 'RIWAYAT KIRIM STOK KONSINYASI — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -1125,7 +1125,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       subCell.value = `${rows.length} pengiriman (${label}) · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -1133,14 +1133,14 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FF155FA8' } },
-          bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
-          left: { style: 'thin', color: { argb: 'FF155FA8' } },
-          right: { style: 'thin', color: { argb: 'FF155FA8' } },
+          top: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          bottom: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          left: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          right: { style: 'thin', color: { argb: 'FFB83A4B' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -1154,7 +1154,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
           total: s.items.reduce((sum, it) => sum + it.subtotal, 0),
           note: s.note || '-',
         });
-        const zebraFill = i % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -1873,7 +1873,7 @@ _${storeHeader.name}_`.trim();
       titleCell.value = 'RIWAYAT REKAP HARIAN KONSINYASI — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -1882,7 +1882,7 @@ _${storeHeader.name}_`.trim();
       subCell.value = `${rows.length} rekap (${label}) · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -1890,14 +1890,14 @@ _${storeHeader.name}_`.trim();
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FF155FA8' } },
-          bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
-          left: { style: 'thin', color: { argb: 'FF155FA8' } },
-          right: { style: 'thin', color: { argb: 'FF155FA8' } },
+          top: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          bottom: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          left: { style: 'thin', color: { argb: 'FFB83A4B' } },
+          right: { style: 'thin', color: { argb: 'FFB83A4B' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -1916,7 +1916,7 @@ _${storeHeader.name}_`.trim();
           status: r.paymentStatus === 'belum_lunas' ? 'Belum Lunas' : 'Lunas',
           note: r.note || '-',
         });
-        const zebraFill = i % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -2402,7 +2402,7 @@ _${storeHeader.name}_`.trim();
         titleCell.value = title;
         titleCell.font = { bold: true, size: 14, color: { argb: 'FFFFFFFF' } };
         titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-        titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
+        titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
         ws.getRow(1).height = 26;
 
         ws.mergeCells(2, 1, 2, colCount);
@@ -2410,7 +2410,7 @@ _${storeHeader.name}_`.trim();
         subCell.value = subtitle;
         subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
         subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-        subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
+        subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFFEFED' } };
         ws.getRow(2).height = 20;
 
         const HEADER_ROW_NUM = 3;
@@ -2418,12 +2418,12 @@ _${storeHeader.name}_`.trim();
         cols.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
         headerRow.height = 22;
         headerRow.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
           cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 10.5 };
           cell.alignment = { vertical: 'middle', horizontal: 'center' };
           cell.border = {
-            top: { style: 'thin', color: { argb: 'FF155FA8' } }, bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
-            left: { style: 'thin', color: { argb: 'FF155FA8' } }, right: { style: 'thin', color: { argb: 'FF155FA8' } },
+            top: { style: 'thin', color: { argb: 'FFB83A4B' } }, bottom: { style: 'thin', color: { argb: 'FFB83A4B' } },
+            left: { style: 'thin', color: { argb: 'FFB83A4B' } }, right: { style: 'thin', color: { argb: 'FFB83A4B' } },
           };
         });
         ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -2453,7 +2453,7 @@ _${storeHeader.name}_`.trim();
               total: sh.items.reduce((sum, it) => sum + it.subtotal, 0),
               note: sh.note || '-',
             });
-            const zebraFill = i % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF';
+            const zebraFill = i % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF';
             row.eachCell(cell => {
               cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
               cell.border = {
@@ -2498,7 +2498,7 @@ _${storeHeader.name}_`.trim();
               status: r.paymentStatus === 'belum_lunas' ? 'Belum Lunas' : 'Lunas',
               note: r.note || '-',
             });
-            const zebraFill = i % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF';
+            const zebraFill = i % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF';
             row.eachCell(cell => {
               cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
               cell.border = {
@@ -2861,7 +2861,7 @@ _${storeHeader.name}_`.trim();
                       return (
                         <div key={l.id}>
                           <div className="flex flex-col gap-3 px-4 py-3" style={{
-                            background: isSelected ? 'rgba(29,111,196,0.05)' : l.isActive === false ? 'var(--surface-2)' : undefined,
+                            background: isSelected ? 'rgba(201,60,85,0.05)' : l.isActive === false ? 'var(--surface-2)' : undefined,
                             borderLeft: `3px solid ${l.isActive === false ? 'var(--border)' : 'var(--success)'}`,
                             opacity: l.isActive === false ? 0.7 : 1,
                           }}>
@@ -3166,7 +3166,7 @@ _${storeHeader.name}_`.trim();
                         return (
                           <div key={s.id} ref={el => { shipmentRowRefs.current[s.id] = el; }}>
                           <div className="flex items-start gap-3 px-4 py-3"
-                            style={{ transition: 'background-color 0.6s ease', background: highlightedShipmentId === s.id ? 'var(--accent-bg)' : isSelected ? 'rgba(29,111,196,0.05)' : undefined }}>
+                            style={{ transition: 'background-color 0.6s ease', background: highlightedShipmentId === s.id ? 'var(--accent-bg)' : isSelected ? 'rgba(201,60,85,0.05)' : undefined }}>
                             <span className="pt-0.5 w-6 text-xs font-bold text-right flex-shrink-0 tabular" style={{ color: 'var(--text-muted)' }}>{num}</span>
                             <div className="pt-0.5"><Checkbox checked={isSelected} onChange={() => toggleSelectShipment(s.id)} /></div>
                             <LocationLogo location={locations.find(l => l.id === s.locationId) ?? { name: s.locationName }} size={32} />
@@ -3379,7 +3379,7 @@ _${storeHeader.name}_`.trim();
                         return (
                           <div key={r.id} ref={el => { recapRowRefs.current[r.id] = el; }}>
                           <div className="flex items-start gap-3 px-4 py-3"
-                            style={{ transition: 'background-color 0.6s ease', background: highlightedRecapId === r.id ? 'var(--accent-bg)' : isSelected ? 'rgba(29,111,196,0.05)' : undefined }}>
+                            style={{ transition: 'background-color 0.6s ease', background: highlightedRecapId === r.id ? 'var(--accent-bg)' : isSelected ? 'rgba(201,60,85,0.05)' : undefined }}>
                             <span className="pt-0.5 w-6 text-xs font-bold text-right flex-shrink-0 tabular" style={{ color: 'var(--text-muted)' }}>{num}</span>
                             <div className="pt-0.5"><Checkbox checked={isSelected} onChange={() => toggleSelectRecap(r.id)} /></div>
                             <LocationLogo location={locations.find(l => l.id === r.locationId) ?? { name: r.locationName }} size={32} />

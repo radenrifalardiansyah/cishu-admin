@@ -78,7 +78,7 @@ export default function StockSection({ creds, data, can, goTo }: SectionProps) {
           { icon: <Store size={16} />, label: 'Total Lapak', val: data.stalls.length, color: 'var(--accent)' },
           { icon: <Package size={16} />, label: 'Total Stok', val: qtyText(tot.qty), color: 'var(--success)' },
           { icon: <Wallet size={16} />, label: 'Nilai untuk Penitip', val: rupiah(tot.owed), color: '#0E7490' },
-          { icon: <TrendingUp size={16} />, label: 'Potensi Bagian Kita', val: rupiah(tot.ours), color: '#155FA8' },
+          { icon: <TrendingUp size={16} />, label: 'Potensi Bagian Kita', val: rupiah(tot.ours), color: '#B83A4B' },
         ])}
         {data.stalls.length === 0 ? (
           <EmptyAddCard label="Terima Barang" onClick={canReceive ? () => goTo!('receipts') : undefined} hint="Belum ada lapak. Tambahkan lapak di tab Lapak." />

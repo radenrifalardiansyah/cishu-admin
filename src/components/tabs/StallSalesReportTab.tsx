@@ -80,8 +80,8 @@ export default function StallSalesReportTab({ creds }: { creds: string }) {
 
   const cards = [
     { icon: <Receipt size={16} />, color: 'var(--accent)', bg: 'var(--accent-bg)', label: 'Omzet lapak', val: rupiah(s.revenue), sub: `${s.count} transaksi` },
-    { icon: <Store size={16} />, color: '#1D6FC4', bg: '#E0E7FF', label: 'Bagian toko', val: rupiah(s.storeShare), sub: 'produk toko + bagian toko dari titipan − diskon' },
-    { icon: <HandCoins size={16} />, color: '#155FA8', bg: '#E6F7FF', label: 'Bagian penitip', val: rupiah(s.consignorShare), sub: s.lossCompensation > 0 ? `termasuk kompensasi kerugian ${rupiah(s.lossCompensation)}` : 'hutang ke penitip dari penjualan' },
+    { icon: <Store size={16} />, color: '#C93C55', bg: '#E0E7FF', label: 'Bagian toko', val: rupiah(s.storeShare), sub: 'produk toko + bagian toko dari titipan − diskon' },
+    { icon: <HandCoins size={16} />, color: '#B83A4B', bg: '#FFEFED', label: 'Bagian penitip', val: rupiah(s.consignorShare), sub: s.lossCompensation > 0 ? `termasuk kompensasi kerugian ${rupiah(s.lossCompensation)}` : 'hutang ke penitip dari penjualan' },
     { icon: <TrendingUp size={16} />, color: '#059669', bg: 'rgba(5,150,105,0.12)', label: 'Laba kotor lapak', val: rupiah(s.grossProfit), sub: 'bagian toko dikurangi HPP produk toko' },
   ];
 

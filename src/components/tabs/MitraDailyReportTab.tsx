@@ -86,7 +86,7 @@ function ProductTable({ rows, totalLabel = 'Total' }: { rows: DailyProductRow[];
               <td className="px-2.5 py-2 text-xs font-semibold" style={{ color: 'var(--text-primary)' }}>{r.productName}</td>
               <td className={td}>{r.stokAwal}</td><td className={td}>{dashRp(r.harga)}</td><td className={td}>{dash(r.kirim)}</td><td className={td}>{dashRp(r.nilaiKirim)}</td>
               <td className={td}>{dash(r.jual)}</td><td className={td}>{dashRp(r.nilaiJual)}</td>
-              <td className={td} style={r.retur ? { color: 'var(--info, #155FA8)', fontWeight: 700 } : undefined}>{dash(r.retur)}</td>
+              <td className={td} style={r.retur ? { color: 'var(--info, #B83A4B)', fontWeight: 700 } : undefined}>{dash(r.retur)}</td>
               <td className={td} style={r.reject ? { color: 'var(--danger)', fontWeight: 700 } : undefined}>{dash(r.reject)}</td>
               <td className={td} style={r.selisih < 0 ? { color: 'var(--danger)' } : undefined}>{r.selisih ? formatRp(r.selisih) : '-'}</td>
               <td className={`${td} font-bold`}>{r.stokAkhir}</td>
@@ -232,19 +232,19 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
         t.value = title;
         t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
         t.alignment = { horizontal: 'center', vertical: 'middle' };
-        t.fill = fill('FF155FA8');
+        t.fill = fill('FFB83A4B');
         ws.getRow(1).height = 28;
         ws.mergeCells(2, 1, 2, n);
         const s = ws.getCell(2, 1);
         s.value = `Periode ${periodText(from, to)} · ${rows.length} mitra (${label}) · Diexport ${nowText()}`;
         s.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
         s.alignment = { horizontal: 'center', vertical: 'middle' };
-        s.fill = fill('FFE6F7FF');
+        s.fill = fill('FFFFEFED');
         ws.getRow(2).height = 20;
         const head = ws.getRow(3);
         headersRow.forEach((h, i) => { head.getCell(i + 1).value = h; });
         head.height = 24;
-        head.eachCell(cell => { cell.fill = fill('FF1D6FC4'); cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 }; cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true }; });
+        head.eachCell(cell => { cell.fill = fill('FFC93C55'); cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 }; cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true }; });
         ws.views = [{ state: 'frozen', ySplit: 3 }];
         data.forEach((vals, idx) => {
           const row = ws.getRow(4 + idx);
@@ -254,7 +254,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
             if (numCols.includes(i)) c.alignment = { horizontal: 'right' };
             if (rpCols.includes(i)) c.numFmt = '"Rp"#,##0';
           });
-          row.eachCell(cell => { cell.fill = fill(idx % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF'); cell.border = border; });
+          row.eachCell(cell => { cell.fill = fill(idx % 2 === 0 ? 'FFFFF5F3' : 'FFFFFFFF'); cell.border = border; });
         });
       };
 
@@ -472,7 +472,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
                     <th className="px-2.5 py-2 text-[11px] font-bold uppercase text-left">Mitra</th>
                     {['Stok Awal', 'Kirim', 'Nilai Kirim', 'Terjual', 'Nilai Terjual', 'Retur', 'Reject', 'Selisih', 'Stok Akhir'].map(h => (
                       <th key={h} className="px-2.5 py-2 text-[11px] font-bold uppercase text-right whitespace-nowrap"
-                        style={h === 'Retur' ? { color: '#155FA8' } : h === 'Reject' ? { color: 'var(--danger)' } : undefined}>{h}</th>
+                        style={h === 'Retur' ? { color: '#B83A4B' } : h === 'Reject' ? { color: 'var(--danger)' } : undefined}>{h}</th>
                     ))}
                     <th className="px-2.5 py-2" />
                   </tr>
@@ -484,7 +484,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
                     const td = 'px-2.5 py-2.5 text-xs tabular text-right whitespace-nowrap';
                     const dash = (n: number) => (n ? n : '-');
                     return (
-                      <tr key={s.locationId} style={{ borderTop: '1px solid var(--border-2)', background: isSelected ? 'rgba(29,111,196,0.05)' : undefined, opacity: s.isActive ? 1 : 0.75 }}>
+                      <tr key={s.locationId} style={{ borderTop: '1px solid var(--border-2)', background: isSelected ? 'rgba(201,60,85,0.05)' : undefined, opacity: s.isActive ? 1 : 0.75 }}>
                         <td className="px-2.5 py-2.5 text-xs font-bold tabular" style={{ color: 'var(--text-muted)' }}>{num}</td>
                         <td className="px-1 py-2.5"><Checkbox checked={isSelected} onChange={() => toggleSelect(s.locationId)} /></td>
                         <td className="px-2.5 py-2.5">
@@ -501,7 +501,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
                         <td className={td}>{s.totals.nilaiKirim ? formatRp(s.totals.nilaiKirim) : '-'}</td>
                         <td className={td}>{dash(s.totals.jual)}</td>
                         <td className={td}>{s.totals.nilaiJual ? formatRp(s.totals.nilaiJual) : '-'}</td>
-                        <td className={td} style={s.totals.retur ? { color: '#155FA8', fontWeight: 700 } : undefined}>{dash(s.totals.retur)}</td>
+                        <td className={td} style={s.totals.retur ? { color: '#B83A4B', fontWeight: 700 } : undefined}>{dash(s.totals.retur)}</td>
                         <td className={td} style={s.totals.reject ? { color: 'var(--danger)', fontWeight: 700 } : undefined}>{dash(s.totals.reject)}</td>
                         <td className={td} style={s.totals.selisih < 0 ? { color: 'var(--danger)' } : undefined}>{s.totals.selisih ? formatRp(s.totals.selisih) : '-'}</td>
                         <td className={`${td} font-bold`}>{s.stokAkhirPeriode}</td>
@@ -740,7 +740,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
               {([
                 ['Total Kirim', `${previewSection.totals.kirim} pcs · ${formatRp(previewSection.totals.nilaiKirim)}`, undefined],
                 ['Total Terjual', `${previewSection.totals.jual} pcs · ${formatRp(previewSection.totals.nilaiJual)}`, 'var(--success)'],
-                ['Total Retur', `${previewSection.totals.retur} pcs · ${formatRp(previewSection.products.reduce((a, r) => a + r.retur * r.harga, 0))}`, '#155FA8'],
+                ['Total Retur', `${previewSection.totals.retur} pcs · ${formatRp(previewSection.products.reduce((a, r) => a + r.retur * r.harga, 0))}`, '#B83A4B'],
                 ['Total Reject', `${previewSection.totals.reject} pcs · ${formatRp(previewSection.products.reduce((a, r) => a + r.reject * r.harga, 0))}`, 'var(--danger)'],
                 ['% Terealisasi (terjual / kirim)', pctText(previewSection.realisasiPct), undefined],
                 ['Stok Awal Periode', `${previewSection.stokAwalPeriode} pcs`, undefined],

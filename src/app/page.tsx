@@ -175,8 +175,8 @@ const chartTooltipRow = (color: string, name: string, value: string) => (
 type TrendPoint = { date: string; kasir: number; online: number; konsinyasi: number; lain: number; count: number };
 
 const OMZET_SERIES = [
-  { key: 'kasir', name: 'Kasir', color: '#1D6FC4' },
-  { key: 'online', name: 'Online', color: '#BE123C' },
+  { key: 'kasir', name: 'Kasir', color: '#C93C55' },
+  { key: 'online', name: 'Online', color: '#1D6FC4' },
   { key: 'konsinyasi', name: 'Konsinyasi', color: '#B45309' },
   { key: 'lain', name: 'Pendapatan Lain', color: '#115E59' },
 ] as const;
@@ -538,7 +538,7 @@ export default function AdminPage() {
       .sort((a, b) => b[1] - a[1]).slice(0, 5)
       .map(([name, count]) => {
         const p = posProducts.find(fp => fp.name === name);
-        return { name, emoji: p?.emoji ?? '📦', bgColor: p?.bgColor ?? '#F0F9FF', stock: p?.stock ?? 'Ada', count };
+        return { name, emoji: p?.emoji ?? '📦', bgColor: p?.bgColor ?? '#FFF5F3', stock: p?.stock ?? 'Ada', count };
       });
     return { revenueTrend, kasir, online, konsinyasi, lain, total, orderCount: sumOrders.length, recentOrders, topProducts };
   }, [sumRange, sumOrders, sumOmzet, posProducts]);
@@ -1004,10 +1004,6 @@ export default function AdminPage() {
               ))}
             </ul>
           </div>
-
-          <p className="text-xs relative z-10 text-center mt-8" style={{ color: 'var(--ink-navy)' }}>
-            © 2026 Cishu Bite &apos;n Sip
-          </p>
         </div>
 
         {/* Right panel — form */}
@@ -1113,6 +1109,9 @@ export default function AdminPage() {
             )}
 
             <p className="text-center text-xs mt-8 login-field" style={{ color: 'var(--text-muted)', animationDelay: '0.28s' }}>
+              © 2026 Cishu Bite &apos;n Sip
+            </p>
+            <p className="text-center text-xs mt-1 login-field" style={{ color: 'var(--text-muted)', animationDelay: '0.28s' }}>
               Dikembangkan oleh PT. Eleven Digital Indonesia
             </p>
           </div>
@@ -1223,7 +1222,7 @@ export default function AdminPage() {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
             {([
               { icon: <TrendingUp size={16}/>, label: 'Omzet Kasir',  val: formatRp(summary.kasir), color: 'var(--accent)', iconBg: 'var(--accent-bg)', bar: 'var(--accent),var(--accent-dark)', spark: summary.revenueTrend.map(d => d.kasir) },
-              { icon: <Globe      size={16}/>, label: 'Omzet Online', val: formatRp(summary.online), color: '#BE123C', iconBg: '#FFF1F2', bar: '#BE123C,#9F1239', spark: summary.revenueTrend.map(d => d.online) },
+              { icon: <Globe      size={16}/>, label: 'Omzet Online', val: formatRp(summary.online), color: '#1D6FC4', iconBg: '#E6F7FF', bar: '#1D6FC4,#155FA8', spark: summary.revenueTrend.map(d => d.online) },
               { icon: <Store      size={16}/>, label: 'Omzet Konsinyasi', val: formatRp(summary.konsinyasi), color: '#B45309', iconBg: '#FFFBEB', bar: '#B45309,#92400E', spark: summary.revenueTrend.map(d => d.konsinyasi) },
               { icon: <Wallet     size={16}/>, label: 'Pendapatan Lain', val: formatRp(summary.lain), color: '#115E59', iconBg: '#F0FDFA', bar: '#115E59,#134E4A', spark: summary.revenueTrend.map(d => d.lain) },
               { icon: <Package    size={16}/>, label: 'Produk Aktif',    val: dashData.productCount.toString(), color: '#0E7490',        iconBg: '#ECFEFF',           bar: '#0E7490,#155E75', spark: undefined as number[] | undefined },
@@ -1450,7 +1449,7 @@ export default function AdminPage() {
                 },
                 {
                   title: 'Produk Terpopuler (Klik)', type: 'bar', unit: 'num', labels: ws.topProducts.slice(0, 6).map(p => p.name),
-                  series: [{ name: 'Klik', color: '#1D6FC4', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
+                  series: [{ name: 'Klik', color: '#C93C55', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
                 },
               ],
               sections: [
@@ -1629,7 +1628,7 @@ export default function AdminPage() {
                       </div>
                     </div>
                     <TopListChart
-                      color="#1D6FC4"
+                      color="#C93C55"
                       items={ws.topMenu.slice(0, 6).map(m => ({ label: pageLabel(m.path), value: m.count }))}
                     />
                   </div>

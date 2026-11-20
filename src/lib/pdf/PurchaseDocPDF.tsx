@@ -53,7 +53,7 @@ const rp = (n: number) =>
 const qty = (n: number) => new Intl.NumberFormat('id-ID', { maximumFractionDigits: 2 }).format(n);
 
 const C = {
-  accent: THEME_COLOR, accentBg: '#E6F7FF', dark: '#0F172A', muted: '#5B6B84', border: '#C9D6EE', line: '#E3F1FB', white: '#FFFFFF',
+  accent: THEME_COLOR, accentBg: '#FFEFED', dark: '#3B2420', muted: '#76564D', border: '#C9D6EE', line: '#F7E3E0', white: '#FFFFFF',
   green: '#15803D', greenBg: '#DCFCE7', amber: '#B45309', amberBg: '#FEF3C7', gray: '#6B7280', grayBg: '#F3F4F6', red: '#B91C1C',
 };
 
@@ -94,7 +94,7 @@ const s = StyleSheet.create({
   th: { flexDirection: 'row', backgroundColor: C.accent },
   thCell: { color: C.white, fontSize: 8, fontFamily: 'Helvetica-Bold', paddingVertical: 6, paddingHorizontal: 6 },
   tr: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: C.line, minHeight: 20 },
-  trAlt: { backgroundColor: '#F7FCFF' },
+  trAlt: { backgroundColor: '#FFF9F8' },
   td: { fontSize: 9, paddingVertical: 5, paddingHorizontal: 6 },
   tdBorder: { borderLeftWidth: 1, borderLeftColor: C.line },
   right: { textAlign: 'right' },
