@@ -2822,9 +2822,11 @@ _${storeHeader.name}_`.trim();
                   </button>
                 </Tooltip>
                 {locations.length > 0 && <ViewToggle mode={locationView} onChange={setLocationView} height={HEADER_BTN_H} />}
-                <button onClick={openCreateL} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-                  <Plus size={13} /> <span className="hidden sm:inline">Tambah Lokasi</span>
-                </button>
+                {locations.length > 0 && (
+                  <button onClick={openCreateL} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+                    <Plus size={13} /> <span className="hidden sm:inline">Tambah Lokasi</span>
+                  </button>
+                )}
               </div>
               </div>
             </div>
@@ -3129,9 +3131,11 @@ _${storeHeader.name}_`.trim();
                   </Tooltip>
                 )}
                 {shipments.length > 0 && <ViewToggle mode={shipmentView} onChange={setShipmentView} height={HEADER_BTN_H} />}
-                <button onClick={openCreateSend} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-                  <Plus size={13} /> <span className="hidden sm:inline">Tambah Kirim</span>
-                </button>
+                {shipments.length > 0 && (
+                  <button onClick={openCreateSend} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+                    <Plus size={13} /> <span className="hidden sm:inline">Tambah Kirim</span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -3341,9 +3345,11 @@ _${storeHeader.name}_`.trim();
                   </Tooltip>
                 )}
                 {recaps.length > 0 && <ViewToggle mode={recapView} onChange={setRecapView} height={HEADER_BTN_H} />}
-                <button onClick={openCreateRecap} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-                  <Plus size={13} /> <span className="hidden sm:inline">Tambah Rekap</span>
-                </button>
+                {recaps.length > 0 && (
+                  <button onClick={openCreateRecap} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+                    <Plus size={13} /> <span className="hidden sm:inline">Tambah Rekap</span>
+                  </button>
+                )}
               </div>
               </div>
             </div>

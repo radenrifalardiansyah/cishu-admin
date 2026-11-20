@@ -394,6 +394,8 @@ export default function UsersTab({ creds, currentUsername, can }: UsersTabProps)
   return (
     <div className="p-4 lg:p-6 space-y-5">
 
+      {users.length > 0 && (
+      <>
       {/* Header: search + actions in one row */}
       <div className="flex flex-row items-center gap-2 sm:gap-3">
         {users.length > 0 && (
@@ -433,6 +435,8 @@ export default function UsersTab({ creds, currentUsername, can }: UsersTabProps)
           )}
         </div>
       </div>
+      </>
+      )}
 
       {users.length === 0 ? (
         <EmptyAddCard label="Tambah Pengguna" onClick={can('create') ? openNew : undefined} />

@@ -566,6 +566,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
   return (
     <>
       <div className="p-4 lg:p-6 animate-fade-up space-y-4">
+        {allGroups.length > 0 && (
         <div className="flex flex-col sm:flex-row sm:items-center gap-3">
         <p className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 flex-shrink-0" style={{ color: 'var(--text-muted)' }}>
           <ShoppingCart size={11} /> Daftar Belanja ({allGroups.length})
@@ -598,6 +599,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
           </button>
         </div>
         </div>
+        )}
 
         {allGroups.length === 0 ? (
           <EmptyAddCard label="Buat Daftar Belanja" onClick={openCreate}

@@ -11,6 +11,7 @@ import { HEADER_BTN_H } from '@/lib/ui-constants';
 import SupplierPaymentsHistory from '@/components/tabs/SupplierPaymentsHistory';
 import PurchasePaymentDialog, { type PayTarget } from '@/components/tabs/PurchasePaymentDialog';
 import { formatRp } from '@/lib/format';
+import EmptyAddCard from '@/components/EmptyAddCard';
 import { formatDueDate } from '@/lib/receivable';
 import {
   groupPayablesBySupplier, isAlertStatus, PAYMENT_STATE_LABEL, summarizePayables,
@@ -165,6 +166,7 @@ export default function SupplierPayablesPanel({ creds, canEdit, reloadKey, onCha
         <SupplierPaymentsHistory creds={creds} reloadKey={reloadKey} onOpenPurchases={onOpenPurchases} />
       ) : (
       <>
+      {rows.length > 0 && (
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div className="card px-4 py-3">
           <p className="text-[11px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-muted)' }}>Total Hutang</p>
@@ -181,7 +183,9 @@ export default function SupplierPayablesPanel({ creds, canEdit, reloadKey, onCha
           <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>{summary.overdueCount} pembelian</p>
         </div>
       </div>
+      )}
 
+      {rows.length > 0 && (
       <div className="flex flex-wrap items-center gap-2 sm:gap-3">
         <div className="relative flex-1 min-w-[160px]">
           <Search size={14} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
@@ -198,16 +202,24 @@ export default function SupplierPayablesPanel({ creds, canEdit, reloadKey, onCha
             {loading ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />}
           </button>
         </Tooltip>
-        {rows.length > 0 && <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />}
+        <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />
       </div>
+      )}
 
       {loading && rows.length === 0 ? (
         <PageLoader compact />
       ) : error ? (
-        <div className="card py-10 text-center"><p className="text-sm font-semibold" style={{ color: 'var(--danger)' }}>{error}</p></div>
+        <div className="card py-10 text-center">
+          <p className="text-sm font-semibold" style={{ color: 'var(--danger)' }}>{error}</p>
+          <button onClick={reload} disabled={loading} className="btn-ghost text-xs mt-3 inline-flex items-center gap-1.5">
+            {loading ? <Loader2 size={13} className="animate-spin" /> : <RefreshCw size={13} />} Coba lagi
+          </button>
+        </div>
+      ) : rows.length === 0 ? (
+        <EmptyAddCard label="Tidak ada hutang supplier" hint="Semua pembelian sudah lunas." />
       ) : suppliers.length === 0 ? (
         <div className="card py-10 text-center">
-          <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{rows.length === 0 ? 'Tidak ada hutang supplier. Semua pembelian sudah lunas.' : 'Tidak ada hutang yang cocok dengan filter.'}</p>
+          <p className="text-sm" style={{ color: 'var(--text-muted)' }}>Tidak ada hutang yang cocok dengan filter.</p>
         </div>
       ) : (
         <>

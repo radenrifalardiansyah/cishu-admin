@@ -3,6 +3,7 @@
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ChevronRight, Loader2, RefreshCw, Search } from 'lucide-react';
 import Pagination from '@/components/Pagination';
+import EmptyAddCard from '@/components/EmptyAddCard';
 import PageLoader from '@/components/PageLoader';
 import Tooltip from '@/components/Tooltip';
 import ViewToggle from '@/components/ViewToggle';
@@ -123,9 +124,12 @@ export default function MitraPaymentsHistory({ creds, reloadKey }: { creds: stri
   );
 
   const controlH = { height: HEADER_BTN_H } as const;
+  // Tidak ada pembayaran pada rentang terpilih: ringkasan, pencarian, dan filter mitra disembunyikan.
+  // Pemilih rentang tanggal tetap tampil (halaman berbasis periode) supaya bisa pindah ke periode lain.
+  const noRows = rows.length === 0 && !error;
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {!noRows && <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div className="card px-4 py-3">
           <p className="text-[11px] font-bold uppercase tracking-wider" style={muted}>Total Diterima</p>
           <p className="text-lg font-extrabold tabular mt-0.5" style={{ color: 'var(--success, var(--text-primary))' }}>{formatRp(summary.totalPaid)}</p>
@@ -139,21 +143,21 @@ export default function MitraPaymentsHistory({ creds, reloadKey }: { creds: stri
           <p className="text-[11px] font-bold uppercase tracking-wider" style={muted}>Jumlah Mitra</p>
           <p className="text-lg font-extrabold tabular mt-0.5" style={{ color: 'var(--text-primary)' }}>{summary.mitraCount}</p>
         </div>
-      </div>
+      </div>}
 
       <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-        <div className="relative flex-1 min-w-[160px]">
+        {!noRows && <div className="relative flex-1 min-w-[160px]">
           <Search size={14} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
           <input value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} className="input text-sm w-full" style={{ paddingLeft: 38, ...controlH }}
             placeholder="Cari mitra / catatan / dompet…" aria-label="Cari pembayaran mitra" />
-        </div>
+        </div>}
         <DateInput value={from} onChange={v => { setFrom(v); setLoading(true); setPage(1); }} max={to || undefined} height={HEADER_BTN_H} style={{ width: 150 }} />
         <span className="text-xs" style={muted}>s/d</span>
         <DateInput value={to} onChange={v => { setTo(v); setLoading(true); setPage(1); }} min={from || undefined} height={HEADER_BTN_H} style={{ width: 150 }} />
-        <select value={locationId} onChange={e => { setLocationId(e.target.value); setPage(1); }} aria-label="Filter mitra" className="input text-sm" style={{ width: 180, ...controlH, paddingTop: 0, paddingBottom: 0 }}>
+        {!noRows && <select value={locationId} onChange={e => { setLocationId(e.target.value); setPage(1); }} aria-label="Filter mitra" className="input text-sm" style={{ width: 180, ...controlH, paddingTop: 0, paddingBottom: 0 }}>
           <option value="">Semua mitra</option>
           {mitraOptions.map(o => <option key={o.id} value={o.id}>{o.name}</option>)}
-        </select>
+        </select>}
         <Tooltip label="Muat ulang">
           <button onClick={() => { setLoading(true); void load(); }} disabled={loading} aria-label="Muat ulang" className="btn-ghost p-0 flex items-center justify-center" style={{ ...controlH, width: HEADER_BTN_H }}>
             {loading ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />}
@@ -178,9 +182,9 @@ export default function MitraPaymentsHistory({ creds, reloadKey }: { creds: stri
       ) : error ? (
         <div className="card py-10 text-center"><p className="text-sm font-semibold" style={{ color: 'var(--danger)' }}>{error}</p></div>
       ) : filtered.length === 0 ? (
-        <div className="card py-10 text-center">
-          <p className="text-sm" style={muted}>{rows.length === 0 ? 'Belum ada pembayaran dari mitra pada rentang ini.' : 'Tidak ada pembayaran yang cocok dengan filter.'}</p>
-        </div>
+        rows.length === 0
+          ? <EmptyAddCard label="Belum ada pembayaran dari mitra pada rentang ini" />
+          : <div className="card py-10 text-center"><p className="text-sm" style={muted}>Tidak ada pembayaran yang cocok dengan filter.</p></div>
       ) : (
         <>
           {view === 'table' ? (

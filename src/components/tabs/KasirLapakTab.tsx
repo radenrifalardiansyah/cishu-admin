@@ -23,6 +23,7 @@ import RekapModal from './kasir-lapak/RekapModal';
 import StockUpdateModal from './kasir-lapak/StockUpdateModal';
 import { downloadSettlementPdf, type Settlement } from './titip-jual/settlementPdf';
 import { toDataUri } from '@/lib/pdf/logo';
+import EmptyAddCard from '@/components/EmptyAddCard';
 import Receipt from './kasir-lapak/Receipt';
 import StallProductCard, { itemEmoji } from './kasir-lapak/ProductCard';
 import { PAY_LABEL, itemKey, type PosStall, type CatalogItem, type Sale, type PaymentMethod } from './kasir-lapak/types';
@@ -229,16 +230,15 @@ export default function KasirLapakTab({ creds, can }: { creds: string; can: (a: 
   if (stalls.length === 0) {
     return (
       <div className="p-4 lg:p-6">
-        <div className="card py-12 px-6 text-center space-y-1">
-          <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Belum ada lapak untuk akun ini</p>
-          <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Minta admin menugaskan Anda ke sebuah lapak (menu Titip Jual → Lapak → Petugas).</p>
-        </div>
+        <EmptyAddCard label="Belum ada lapak untuk akun ini" hint="Minta admin menugaskan Anda ke sebuah lapak (menu Titip Jual → Lapak → Petugas)." />
       </div>
     );
   }
 
   const q = search.trim().toLowerCase();
   const categories = [...new Set((items ?? []).map(i => i.category).filter((c): c is string => !!c))].sort((a, b) => a.localeCompare(b, 'id'));
+  // Lapak belum punya barang sama sekali: cari, scan, jenis, dan kategori disembunyikan; hanya kotak +.
+  const catalogEmpty = items !== null && items.length === 0;
   const shown = (items ?? []).filter(i => (kind === 'all' || i.kind === kind) && (!cat || i.category === cat) && (!q || `${i.name} ${i.code} ${i.consignorName ?? ''}`.toLowerCase().includes(q)));
 
   const checkout = (
@@ -422,6 +422,7 @@ export default function KasirLapakTab({ creds, can }: { creds: string; can: (a: 
       <div className="flex-1 min-h-0 overflow-hidden lg:grid" style={{ gridTemplateColumns: '1fr 400px' }}>
         {/* Katalog */}
         <div className="h-full overflow-y-auto thin-scrollbar p-4 lg:p-6 pb-28 lg:pb-6 space-y-4" style={{ borderRight: '1px solid var(--border)' }}>
+          {!catalogEmpty && (
           <div className="flex flex-col sm:flex-row sm:items-center gap-2">
             <div className="relative flex-1 min-w-0 flex items-center gap-2">
               <div className="relative flex-1 min-w-0">
@@ -439,6 +440,7 @@ export default function KasirLapakTab({ creds, can }: { creds: string; can: (a: 
               ))}
             </div>
           </div>
+          )}
 
           {categories.length > 0 && (
             <ScrollChips gap="gap-2">
@@ -454,15 +456,13 @@ export default function KasirLapakTab({ creds, can }: { creds: string; can: (a: 
             </p>
           )}
 
-          {items === null ? <PageLoader /> : shown.length === 0 ? (
+          {items === null ? <PageLoader /> : catalogEmpty ? (
+            <EmptyAddCard label="Terima Barang" onClick={can('create') ? () => setReceiveOpen(true) : undefined}
+              hint={`Belum ada barang di lapak ini. Catat penerimaan barang titipan di Titip Jual → Terima & Retur.${catalog && !catalog.hasWarehouse ? ' Produk toko baru tampil jika lapak punya gudang terkait.' : ''}`} />
+          ) : shown.length === 0 ? (
             <div className="card py-12 text-center space-y-1">
               <Package size={22} className="mx-auto" style={{ color: 'var(--text-muted)' }} />
-              <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
-                {items.length === 0 ? 'Belum ada barang di lapak ini. Catat penerimaan barang titipan di Titip Jual → Terima & Retur.' : 'Tidak ada barang yang cocok.'}
-              </p>
-              {items.length === 0 && catalog && !catalog.hasWarehouse && (
-                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Produk toko baru tampil jika lapak punya gudang terkait.</p>
-              )}
+              <p className="text-sm" style={{ color: 'var(--text-muted)' }}>Tidak ada barang yang cocok.</p>
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-3">

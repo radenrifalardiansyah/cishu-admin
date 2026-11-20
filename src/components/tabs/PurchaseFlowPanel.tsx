@@ -741,7 +741,24 @@ ${pdfUrl}`.trim();
     <div className="p-4 lg:p-6 animate-fade-up space-y-4">
       {isEmpty ? (
         view === 'po'
-          ? <EmptyAddCard label="Buat Purchase Order" onClick={openCreatePo} />
+          ? (
+            <>
+              {/* Template & Import tetap tersedia saat PO masih kosong */}
+              <div className="flex items-center gap-2 justify-end">
+                <Tooltip label="Unduh Template">
+                  <button onClick={templateDownload} aria-label="Unduh Template" className="btn-ghost p-0 flex items-center justify-center" style={toolBtn}><ExcelIcon size={14} /></button>
+                </Tooltip>
+                <Tooltip label={importing ? 'Mengimpor…' : 'Upload Excel'}>
+                  <button onClick={() => importRef.current?.click()} disabled={importing} aria-label="Upload Excel" className="btn-ghost p-0 flex items-center justify-center" style={toolBtn}>
+                    {importing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
+                  </button>
+                </Tooltip>
+                <input ref={importRef} type="file" accept=".xlsx,.xls" className="hidden"
+                  onChange={e => { const f = e.target.files?.[0]; if (f) importPos(f); e.target.value = ''; }} />
+              </div>
+              <EmptyAddCard label="Buat Purchase Order" onClick={openCreatePo} />
+            </>
+          )
           : <EmptyAddCard label="Buat GR dari Purchase Order" hint="GR dibuat dari tombol “Buat GR” di PO" onClick={() => onGoto('po')} />
       ) : (
       <>

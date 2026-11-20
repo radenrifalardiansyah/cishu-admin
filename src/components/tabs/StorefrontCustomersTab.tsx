@@ -141,12 +141,15 @@ export default function StorefrontCustomersTab({ creds }: { creds: string }) {
 
       <div className="flex-1 overflow-y-auto thin-scrollbar">
         <div className="p-4 lg:p-6 animate-fade-up space-y-4">
+          {customers.length > 0 && (
           <div>
             <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
               Akun yang customer buat sendiri di website untuk checkout — {customers.length} akun terdaftar.
             </p>
           </div>
+          )}
 
+          {customers.length > 0 && (
           <div className="flex flex-row items-center gap-2 sm:gap-3">
             <div className="relative flex-1 min-w-0">
               <Search size={14} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
@@ -160,6 +163,7 @@ export default function StorefrontCustomersTab({ creds }: { creds: string }) {
             </div>
             <ViewToggle mode={view} onChange={setView} height={34} />
           </div>
+          )}
 
           {loading ? (
             <PageLoader label="Memuat akun" />

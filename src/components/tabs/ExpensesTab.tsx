@@ -412,8 +412,8 @@ export default function ExpensesTab({ creds }: { creds: string }) {
   return (
     <div className="p-4 lg:p-6 space-y-5">
 
-      {/* Ringkasan */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {/* Ringkasan (disembunyikan saat periode kosong) */}
+      {expenses.length > 0 && <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {[
           { icon: <TrendingDown size={16} />, label: `Pengeluaran ${periodLabel}`, val: formatRp(totalPeriode), color: 'var(--danger)', bg: 'var(--danger-bg)' },
           { icon: <CalendarDays size={16} />, label: 'Rata-rata / Hari', val: formatRp(avgPerDay), color: 'var(--accent)', bg: 'var(--accent-bg)' },
@@ -429,7 +429,7 @@ export default function ExpensesTab({ creds }: { creds: string }) {
             </div>
           </div>
         ))}
-      </div>
+      </div>}
 
       {/* Pemilih periode */}
       <div className="flex flex-wrap items-center gap-2">
@@ -493,9 +493,11 @@ export default function ExpensesTab({ creds }: { creds: string }) {
               </Tooltip>
             )}
             {expenses.length > 0 && <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />}
-            <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-              <Plus size={13} /> <span className="hidden sm:inline">Catat Pengeluaran</span>
-            </button>
+            {expenses.length > 0 && (
+              <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+                <Plus size={13} /> <span className="hidden sm:inline">Catat Pengeluaran</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

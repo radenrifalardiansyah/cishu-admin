@@ -539,9 +539,11 @@ export default function SuppliersTab({ creds }: { creds: string }) {
             </Tooltip>
           )}
           {suppliers.length > 0 && <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />}
-          <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-            <Plus size={13} /> <span className="hidden sm:inline">Tambah Supplier</span>
-          </button>
+          {suppliers.length > 0 && (
+            <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+              <Plus size={13} /> <span className="hidden sm:inline">Tambah Supplier</span>
+            </button>
+          )}
         </div>
       </div>
 

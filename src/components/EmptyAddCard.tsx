@@ -18,17 +18,16 @@ export default function EmptyAddCard({ label, onClick, hint, minHeight = 200 }: 
     el.style.borderColor = on ? 'var(--accent)' : 'var(--border)';
     el.style.color = on ? 'var(--accent)' : 'var(--text-muted)';
   };
+  // Hanya kotak garis putus-putus + tanda plus; label/hint tidak ditampilkan tetapi tetap dibaca
+  // pembaca layar lewat aria-label (dan muncul sebagai tooltip bawaan browser).
+  const accessible = hint ? `${label}. ${hint}` : label;
   const content = (
-    <>
-      <div className="w-16 h-16 rounded-3xl flex items-center justify-center" style={{ background: 'var(--surface-2)' }}>
-        <Plus size={26} />
-      </div>
-      <span className="text-base font-semibold">{label}</span>
-      {hint && <span className="text-xs font-medium" style={{ color: 'var(--text-muted)' }}>{hint}</span>}
-    </>
+    <div className="w-16 h-16 rounded-3xl flex items-center justify-center" style={{ background: 'var(--surface-2)' }}>
+      <Plus size={26} aria-hidden="true" />
+    </div>
   );
-  const cls = 'w-full rounded-3xl flex flex-col items-center justify-center gap-3 p-8 transition-colors';
+  const cls = 'w-full rounded-3xl flex flex-col items-center justify-center p-8 transition-colors';
   return clickable
-    ? <button type="button" onClick={onClick} className={cls} style={style} onMouseEnter={hover(true)} onMouseLeave={hover(false)}>{content}</button>
-    : <div className={cls} style={style}>{content}</div>;
+    ? <button type="button" onClick={onClick} className={cls} style={style} aria-label={accessible} title={label} onMouseEnter={hover(true)} onMouseLeave={hover(false)}>{content}</button>
+    : <div className={cls} style={style} role="img" aria-label={accessible} title={label}>{content}</div>;
 }

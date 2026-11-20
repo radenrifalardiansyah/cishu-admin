@@ -13,6 +13,7 @@ import { suggestGroup } from '@/lib/wa-forward';
 import type { Action } from '@/types/rbac';
 import { formatDate } from '@/lib/format';
 import Field from '@/components/Field';
+import EmptyAddCard from '@/components/EmptyAddCard';
 
 interface Overview {
   settings: { enabled: boolean; targetJid: string | null; keywords: string[]; excludeKeywords: string[]; maxPerHour: number; resyncRequested: boolean };
@@ -270,7 +271,7 @@ export default function WaForwardTab({ creds, can }: { creds: string; can: (a: A
           {/* 3. Grup WA per mitra */}
           <Section title="Grup WA per Mitra" desc={`${linkedCount} dari ${data.locations.length} mitra sudah dipasangkan. Mitra tanpa grup WA biarkan “Tidak ada grup”; satu grup hanya untuk satu mitra.`}>
             {data.locations.length === 0 ? (
-              <p className="p-8 text-center text-sm" style={{ color: 'var(--text-muted)' }}>Belum ada mitra.</p>
+              <div className="p-5"><EmptyAddCard label="Belum ada mitra" minHeight={120} /></div>
             ) : (
               <div className="divide-y divide-[var(--border-2)]">
                 {data.locations.map(l => {
@@ -306,7 +307,7 @@ export default function WaForwardTab({ creds, can }: { creds: string; can: (a: A
           {/* 4. Log worker */}
           <Section title="Log Worker" desc="Kejadian terbaru dari worker: koneksi, pesan grup yang masuk (diteruskan atau dilewati + alasannya), dan error. Diperbarui otomatis tiap 10 detik.">
             {events.length === 0 ? (
-              <p className="p-8 text-center text-sm" style={{ color: 'var(--text-muted)' }}>Belum ada log dari worker.</p>
+              <div className="p-5"><EmptyAddCard label="Belum ada log dari worker" minHeight={120} /></div>
             ) : (
               <div className="max-h-[360px] overflow-y-auto thin-scrollbar divide-y divide-[var(--border-2)]">
                 {events.map(e => (
@@ -321,14 +322,14 @@ export default function WaForwardTab({ creds, can }: { creds: string; can: (a: A
 
           {/* 5. Riwayat */}
           <Section title="Riwayat Diteruskan" desc="Pesan terbaru yang lolos filter dan dikirim ke grup tujuan."
-            action={
+            action={(logs.length > 0 || logFilter) && (
               <div className="w-[220px]">
                 <SearchSelect value={logFilter} onChange={setLogFilter} placeholder="Semua mitra" searchPlaceholder="Cari mitra…"
                   options={[{ value: '', label: 'Semua mitra' }, ...data.locations.map(l => ({ value: l.id, label: l.name, sublabel: l.code || undefined }))]} />
               </div>
-            }>
+            )}>
             {logs.length === 0 ? (
-              <p className="p-8 text-center text-sm" style={{ color: 'var(--text-muted)' }}>Belum ada pesan yang diteruskan.</p>
+              <div className="p-5"><EmptyAddCard label="Belum ada pesan yang diteruskan" minHeight={120} /></div>
             ) : (
               <div className="divide-y divide-[var(--border-2)]">
                 {logs.map(r => (

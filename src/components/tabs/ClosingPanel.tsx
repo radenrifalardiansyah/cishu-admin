@@ -12,6 +12,7 @@ import { formatRp } from '@/lib/format';
 import { normalizePhone } from '@/lib/phone';
 import Field from '@/components/Field';
 import Modal from '@/components/Modal';
+import EmptyAddCard from '@/components/EmptyAddCard';
 import ClosingSettlementDialog from '@/components/tabs/ClosingSettlementDialog';
 import { SETTLEMENT_STATUS_LABEL, type SettlementStatus } from '@/lib/closing-settlement-core';
 import { useConfirm } from '@/components/Confirm';
@@ -264,6 +265,8 @@ export default function ClosingPanel({ creds, can, canWallet, isSuperAdmin, onCh
     return (!df.from || d >= df.from) && (!df.to || d <= df.to);
   });
   const filterActive = !!(df.q || df.from || df.to);
+  // Dataset dasar kosong (sebelum filter): sembunyikan pencarian/filter/paginasi, tampilkan kotak kosong.
+  const detailEmpty = !!detail && detail.lines.length === 0 && !detail.truncated;
   // Total mengikuti filter (semua halaman), bukan hanya baris yang tampil.
   const lineTotals = filteredLines.reduce((a, l) => ({ qty: a.qty + l.qty, cogs: a.cogs + l.cogs }), { qty: 0, cogs: 0 });
   const dPg = paginate(filteredLines, detailPage, detailPageSize);
@@ -457,6 +460,7 @@ export default function ClosingPanel({ creds, can, canWallet, isSuperAdmin, onCh
                   </button>
                 ))}
               </div>
+              {detailEmpty ? null : <>
               <div className="flex flex-wrap items-center gap-2 [--ctl-h:40px] sm:[--ctl-h:30px]">
                 <input value={df.q} onChange={e => setDf({ q: e.target.value })} className="input flex-1 basis-full sm:basis-0 min-w-[160px] !py-0 !h-10 sm:!h-[30px] sm:!text-xs" placeholder="Cari invoice / pihak…" aria-label="Cari invoice atau pihak" />
                 <div className="w-[150px] shrink-0"><DateInput height="var(--ctl-h)" value={df.from} onChange={v => setDf({ from: v })} max={df.to || undefined} /></div>
@@ -467,8 +471,11 @@ export default function ClosingPanel({ creds, can, canWallet, isSuperAdmin, onCh
                 )}
               </div>
               <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>Tanggal disaring menurut {detailTab === 'paid' ? 'tanggal bayar' : 'tanggal transaksi'}.</p>
-              {filteredLines.length === 0 ? (
-                <p className="text-xs py-4 text-center" style={{ color: 'var(--text-muted)' }}>{filterActive ? 'Tidak ada data yang cocok dengan filter.' : 'Tidak ada data.'}</p>
+              </>}
+              {detailEmpty ? (
+                <EmptyAddCard label="Belum ada data closing" minHeight={120} />
+              ) : filteredLines.length === 0 ? (
+                <p className="text-xs py-4 text-center" style={{ color: 'var(--text-muted)' }}>Tidak ada data yang cocok dengan filter.</p>
               ) : (
                 <>
                 <ul className="md:hidden rounded-xl overflow-hidden" style={{ border: '1px solid var(--border-2)' }}>
@@ -530,8 +537,8 @@ export default function ClosingPanel({ creds, can, canWallet, isSuperAdmin, onCh
                 </div>
                 </>
               )}
-              <Pagination total={filteredLines.length} safePage={dPg.safePage} totalPages={dPg.totalPages} pageSize={detailPageSize}
-                onPageSize={n => { setDetailPageSize(n); setDetailPage(1); }} onGoPage={setDetailPage} unit="baris" />
+              {!detailEmpty && <Pagination total={filteredLines.length} safePage={dPg.safePage} totalPages={dPg.totalPages} pageSize={detailPageSize}
+                onPageSize={n => { setDetailPageSize(n); setDetailPage(1); }} onGoPage={setDetailPage} unit="baris" />}
               {(detail.lines.length > DETAIL_LIMIT || detail.truncated) && (
                 <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>
                   Menampilkan {Math.min(detail.lines.length, DETAIL_LIMIT)} baris pertama dari {detail.totals.count}; total di atas mencakup semuanya.
@@ -545,6 +552,7 @@ export default function ClosingPanel({ creds, can, canWallet, isSuperAdmin, onCh
       {!collapsed && showHistory && (
         <div className="space-y-2">
           <p className="field-label">Riwayat closing</p>
+          {closings.length > 0 && <>
           <div className="flex flex-wrap items-center gap-2 [--ctl-h:40px] sm:[--ctl-h:30px]">
             <input value={histFilter.q} onChange={e => setHf({ q: e.target.value })} className="input flex-1 basis-full sm:basis-0 min-w-[160px] !py-0 !h-10 sm:!h-[30px] sm:!text-xs" placeholder="Cari penutup / catatan…" aria-label="Cari penutup atau catatan" />
             <select value={histFilter.status} onChange={e => setHf({ status: e.target.value })} aria-label="Filter status" className="input !py-0 !h-10 sm:!h-[30px] sm:!text-xs" style={{ width: 150 }}>
@@ -563,8 +571,11 @@ export default function ClosingPanel({ creds, can, canWallet, isSuperAdmin, onCh
             )}
           </div>
           <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>Tanggal disaring menurut akhir periode closing.</p>
-          {filteredClosings.length === 0 ? (
-            <p className="text-xs py-4 text-center" style={{ color: 'var(--text-muted)' }}>{closings.length === 0 ? 'Belum ada closing.' : 'Tidak ada closing yang cocok dengan filter.'}</p>
+          </>}
+          {closings.length === 0 ? (
+            <EmptyAddCard label="Belum ada closing" minHeight={120} />
+          ) : filteredClosings.length === 0 ? (
+            <p className="text-xs py-4 text-center" style={{ color: 'var(--text-muted)' }}>Tidak ada closing yang cocok dengan filter.</p>
           ) : (
             <>
             <ul className="md:hidden rounded-xl overflow-hidden" style={{ border: '1px solid var(--border-2)' }}>
@@ -646,8 +657,8 @@ export default function ClosingPanel({ creds, can, canWallet, isSuperAdmin, onCh
             </div>
             </>
           )}
-          <Pagination total={filteredClosings.length} safePage={hPg.safePage} totalPages={hPg.totalPages} pageSize={histPageSize}
-            onPageSize={n => { setHistPageSize(n); setHistPage(1); }} onGoPage={setHistPage} unit="closing" />
+          {closings.length > 0 && <Pagination total={filteredClosings.length} safePage={hPg.safePage} totalPages={hPg.totalPages} pageSize={histPageSize}
+            onPageSize={n => { setHistPageSize(n); setHistPage(1); }} onGoPage={setHistPage} unit="closing" />}
         </div>
       )}
 

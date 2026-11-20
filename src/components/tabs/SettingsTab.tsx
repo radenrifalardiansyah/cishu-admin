@@ -469,12 +469,15 @@ export default function SettingsTab({ creds }: { creds: string }) {
               <VouchersPanel creds={creds} />
             ) : activeGrp === 'sync' ? (
               <div className="space-y-3">
+                {(banks === null || banks.length > 0) && (
                 <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
                   Daftar bank &amp; e-wallet yang muncul di dropdown pilihan bank (mis. form Dompet, Reseller, Biaya Admin).
                   Tombol &quot;Sinkronkan&quot; menambahkan/memperbarui daftar bank bawaan tanpa menghapus bank custom yang sudah ditambahkan.
                 </p>
+                )}
 
                 <div className="flex items-center justify-between gap-2 flex-wrap">
+                  {(banks === null || banks.length > 0) && (
                   <div className="relative flex-1" style={{ minWidth: 200 }}>
                     <Search size={13} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                     <input
@@ -485,15 +488,18 @@ export default function SettingsTab({ creds }: { creds: string }) {
                       style={{ paddingLeft: 30, fontSize: 12.5, height: 34 }}
                     />
                   </div>
+                  )}
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    <ViewToggle mode={bankView} onChange={setBankView} height={34} />
+                    {(banks === null || banks.length > 0) && <ViewToggle mode={bankView} onChange={setBankView} height={34} />}
                     <button onClick={syncBanks} disabled={syncingBanks} className="btn-ghost text-xs" style={{ height: 34 }}>
                       {syncingBanks ? <Loader2 size={13} className="animate-spin" /> : <RefreshCw size={13} />}
                       {syncingBanks ? 'Menyinkronkan…' : 'Sinkronkan'}
                     </button>
+                    {(banks === null || banks.length > 0) && (
                     <button onClick={openNewBank} className="btn-primary text-xs" style={{ height: 34 }}>
                       <Plus size={13} /> Tambah Bank
                     </button>
+                    )}
                   </div>
                 </div>
 

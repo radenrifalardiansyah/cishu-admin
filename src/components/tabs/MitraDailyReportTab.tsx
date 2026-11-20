@@ -22,6 +22,7 @@ import { DateInput } from '@/components/DateTimeInput';
 import { HEADER_BTN_H } from '@/lib/ui-constants';
 import { formatRp } from '@/lib/format';
 import Modal from '@/components/Modal';
+import EmptyAddCard from '@/components/EmptyAddCard';
 
 interface ReportSection extends MitraDailyReportSection {
   code: string; contactName: string; contactPhone: string; isActive: boolean;
@@ -345,6 +346,9 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
 
   if (loading && sections.length === 0 && !error) return <PageLoader />;
 
+  // Belum ada mitra sama sekali: hanya pemilih periode + kotak +; ringkasan, info periode, dan filter disembunyikan.
+  const noMitra = sections.length === 0 && !error;
+
   return (
     <div className="p-4 lg:p-6 space-y-5">
       <TopbarPortal>
@@ -356,6 +360,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
       </TopbarPortal>
 
       {/* Ringkasan */}
+      {!noMitra && (
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         {[
           { icon: <Send size={16} />, label: `Total Kirim · ${sum('kirim')} pcs`, val: formatRp(sum('nilaiKirim')), color: 'var(--accent)', bg: 'var(--accent-bg)' },
@@ -372,6 +377,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
           </div>
         ))}
       </div>
+      )}
 
       {/* Pemilih periode */}
       <div className="flex flex-wrap items-center gap-2">
@@ -390,14 +396,17 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
           </div>
         )}
       </div>
+      {!noMitra && (
       <div className="card px-4 py-3 flex flex-wrap items-center gap-x-5 gap-y-1" style={{ borderColor: 'var(--border-2)', background: 'var(--surface-2)' }}>
         <span className="flex items-center gap-1.5 text-[11px] font-bold uppercase" style={{ color: 'var(--text-muted)' }}><CalendarDays size={13} /> Periode laporan</span>
         <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Dari <b style={{ color: 'var(--text-primary)' }}>{describePeriod(from, to).fromLong}</b></span>
         <span className="text-xs" style={{ color: 'var(--text-secondary)' }}>Sampai <b style={{ color: 'var(--text-primary)' }}>{describePeriod(from, to).toLong}</b></span>
         <span className="badge badge-gray text-[11px]">{describePeriod(from, to).days} hari</span>
       </div>
+      )}
 
       {/* Header: filter + search + aksi */}
+      {!noMitra && (
       <div className="flex flex-col sm:flex-row sm:items-center gap-3">
         <div className="w-full sm:w-[170px] flex-shrink-0">
           <FilterSelect searchable={false} value={statusFilter} onChange={v => { setStatusFilter(v); resetPage(); }} height={HEADER_BTN_H} options={statusOptions} />
@@ -436,6 +445,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
           </div>
         </div>
       </div>
+      )}
 
       {error ? (
         <div className="card py-12 text-center">
@@ -443,10 +453,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
           <button onClick={load} className="btn-ghost text-xs mt-3">Coba lagi</button>
         </div>
       ) : sections.length === 0 ? (
-        <div className="card py-12 text-center">
-          <Store size={28} style={{ color: 'var(--text-muted)', margin: '0 auto 8px' }} />
-          <p className="text-sm" style={{ color: 'var(--text-muted)' }}>Belum ada mitra.</p>
-        </div>
+        <EmptyAddCard label="Belum ada mitra" />
       ) : (
         <>
           {paginated.length > 0 && (

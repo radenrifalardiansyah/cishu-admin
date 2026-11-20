@@ -987,9 +987,12 @@ export default function PosTab({
   };
 
   // ─── Catalog (search + kategori + grid produk) ────────────────────────────
+  // Produk Toko kosong (data dasar): cari/scan/chip kategori disembunyikan, hanya kotak + yang tampil.
+  const catalogEmpty = posProducts.length === 0 && catalogMode === 'toko';
   const catalogContent = (
     <div className="flex flex-col h-full relative">
       <div className="flex-shrink-0 px-4 pt-4 pb-3 space-y-2.5">
+        {!catalogEmpty && (
         <div className="flex items-center gap-2">
           <div className="relative flex-1 min-w-0">
             <Search size={15} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
@@ -1003,6 +1006,7 @@ export default function PosTab({
             </button>
           </Tooltip>
         </div>
+        )}
         {storeStall && (
           <div className="inline-flex rounded-xl overflow-hidden border text-xs font-bold" style={{ borderColor: 'var(--border)' }}>
             {([['toko', 'Produk Toko'], ['titipan', `Titipan${consignCount > 0 ? ` (${consignCount})` : ''}`]] as const).map(([k, label]) => (
@@ -1013,7 +1017,7 @@ export default function PosTab({
             ))}
           </div>
         )}
-        {catalogMode === 'toko' && (
+        {catalogMode === 'toko' && !catalogEmpty && (
         <ScrollChips gap="gap-2">
           {[POS_CAT_ALL, ...posCategories].map(c => (
             <button key={c.id} onClick={() => setActiveCat(c.id)}

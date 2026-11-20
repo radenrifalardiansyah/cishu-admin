@@ -786,9 +786,11 @@ export default function ResellersTab({ creds }: { creds: string }) {
               </Tooltip>
             )}
             {resellers.length > 0 && <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />}
-            <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-              <Plus size={13} /> <span className="hidden sm:inline">Tambah Reseller</span>
-            </button>
+            {resellers.length > 0 && (
+              <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+                <Plus size={13} /> <span className="hidden sm:inline">Tambah Reseller</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AlertTriangle, ChevronRight, HandCoins, Loader2, RefreshCw, Search } from 'lucide-react';
 import Pagination from '@/components/Pagination';
+import EmptyAddCard from '@/components/EmptyAddCard';
 import PageLoader from '@/components/PageLoader';
 import Tooltip from '@/components/Tooltip';
 import ViewToggle from '@/components/ViewToggle';
@@ -157,6 +158,8 @@ export default function MitraReceivablesPanel({ creds, canEdit, onChanged }: {
     </div>
   );
 
+  // Tidak ada piutang sama sekali (sebelum filter): ringkasan, umur piutang, peringatan, pencarian, dan filter disembunyikan.
+  const noRows = rows.length === 0 && !error;
   const soonAmount = Math.max(0, summary.alertAmount - summary.overdueAmount);
   const soonCount = summary.alertCount - summary.overdueCount;
   const aging: { label: string; b: { count: number; amount: number } }[] = [
@@ -183,6 +186,7 @@ export default function MitraReceivablesPanel({ creds, canEdit, onChanged }: {
         <MitraPaymentsHistory creds={creds} reloadKey={0} />
       ) : (
       <>
+      {!noRows && <>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div className="card px-4 py-3">
           <p className="text-[11px] font-bold uppercase tracking-wider" style={muted}>Total Piutang</p>
@@ -221,17 +225,19 @@ export default function MitraReceivablesPanel({ creds, canEdit, onChanged }: {
         </div>
       )}
 
+      </>}
+
       <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-        <div className="relative flex-1 min-w-[160px]">
+        {!noRows && <div className="relative flex-1 min-w-[160px]">
           <Search size={14} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
           <input value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} className="input text-sm w-full" style={{ paddingLeft: 38, height: HEADER_BTN_H }}
             placeholder="Cari mitra…" aria-label="Cari piutang mitra" />
-        </div>
-        <select value={dueFilter} onChange={e => { setDueFilter(e.target.value as ReceivableDueFilter); setPage(1); }} aria-label="Filter jatuh tempo" className="input text-sm" style={{ width: 190, height: HEADER_BTN_H, paddingTop: 0, paddingBottom: 0 }}>
+        </div>}
+        {!noRows && <select value={dueFilter} onChange={e => { setDueFilter(e.target.value as ReceivableDueFilter); setPage(1); }} aria-label="Filter jatuh tempo" className="input text-sm" style={{ width: 190, height: HEADER_BTN_H, paddingTop: 0, paddingBottom: 0 }}>
           <option value="all">Semua piutang</option>
           <option value="overdue">Lewat jatuh tempo</option>
           <option value="soon">Segera (≤ 3 hari)</option>
-        </select>
+        </select>}
         <Tooltip label="Muat ulang">
           <button onClick={() => void reload()} disabled={loading} aria-label="Muat ulang" className="btn-ghost p-0 flex items-center justify-center" style={{ height: HEADER_BTN_H, width: HEADER_BTN_H }}>
             {loading ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />}
@@ -252,9 +258,9 @@ export default function MitraReceivablesPanel({ creds, canEdit, onChanged }: {
       ) : error ? (
         <div className="card py-10 text-center"><p className="text-sm font-semibold" style={{ color: 'var(--danger)' }}>{error}</p></div>
       ) : mitras.length === 0 ? (
-        <div className="card py-10 text-center">
-          <p className="text-sm" style={muted}>{rows.length === 0 ? 'Tidak ada piutang mitra. Semua rekap sudah lunas.' : 'Tidak ada piutang yang cocok dengan filter.'}</p>
-        </div>
+        rows.length === 0
+          ? <EmptyAddCard label="Tidak ada piutang mitra. Semua rekap sudah lunas" />
+          : <div className="card py-10 text-center"><p className="text-sm" style={muted}>Tidak ada piutang yang cocok dengan filter.</p></div>
       ) : (
         <>
           {view === 'table' ? (

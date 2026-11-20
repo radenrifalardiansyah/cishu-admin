@@ -474,6 +474,8 @@ export default function IncomeTab({ creds }: { creds: string }) {
   return (
     <div className="p-4 lg:p-6 space-y-5">
 
+      {income.length > 0 && (
+      <>
       {/* Ringkasan */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {[
@@ -492,6 +494,8 @@ export default function IncomeTab({ creds }: { creds: string }) {
           </div>
         ))}
       </div>
+      </>
+      )}
 
       {/* Pemilih periode */}
       <div className="flex flex-wrap items-center gap-2">
@@ -511,6 +515,8 @@ export default function IncomeTab({ creds }: { creds: string }) {
         )}
       </div>
 
+      {income.length > 0 && (
+      <>
       {/* Header: search + actions in one row */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-3">
         {income.length > 0 && (
@@ -561,6 +567,8 @@ export default function IncomeTab({ creds }: { creds: string }) {
           </div>
         </div>
       </div>
+      </>
+      )}
 
       {income.length === 0 ? (
         <EmptyAddCard label="Tambah Pemasukan" onClick={openNew} />

@@ -876,6 +876,7 @@ export default function StockTab({
             </TopbarPortal>
 
             {/* Stats */}
+            {warehouses.length > 0 && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               {[
                 { icon: <Warehouse   size={16} />, label: 'Total Gudang',        val: warehouses.length, color: 'var(--accent)' },
@@ -895,6 +896,7 @@ export default function StockTab({
                 </div>
               ))}
             </div>
+            )}
 
             {warehouses.length === 0 ? (
               <EmptyAddCard label="Tambah Gudang" onClick={openCreate} />
@@ -1067,6 +1069,7 @@ export default function StockTab({
               </Tooltip>
             </TopbarPortal>
 
+            {(stockLoading || mergedStocks.length > 0) && (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
               {[
                 { icon: <Package      size={16} />, label: 'Jenis Produk', val: mergedStocks.length,                        color: 'var(--accent)'  },
@@ -1084,6 +1087,7 @@ export default function StockTab({
                 </div>
               ))}
             </div>
+            )}
 
             {stockLoading ? (
               <PageLoader compact />
@@ -1198,6 +1202,7 @@ export default function StockTab({
 
         {subTab === 'masuk' && (
           <div className="p-4 lg:p-6 animate-fade-up space-y-4">
+            {inTx.length > 0 && (
             <div className="flex flex-row items-center gap-2 sm:gap-3">
               {inTx.length > 0 && (
                 <div className="relative flex-1 min-w-0">
@@ -1223,6 +1228,7 @@ export default function StockTab({
                 </button>
               </div>
             </div>
+            )}
 
             {txLoading && inTx.length === 0 ? (
               <PageLoader compact />
@@ -1248,6 +1254,7 @@ export default function StockTab({
         {/* ════ KELUAR ══════════════════════════════════════════ */}
         {subTab === 'keluar' && (
           <div className="p-4 lg:p-6 animate-fade-up space-y-4">
+            {outTx.length > 0 && (
             <div className="flex flex-row items-center gap-2 sm:gap-3">
               {outTx.length > 0 && (
                 <div className="relative flex-1 min-w-0">
@@ -1273,6 +1280,7 @@ export default function StockTab({
                 </button>
               </div>
             </div>
+            )}
 
             {txLoading && outTx.length === 0 ? (
               <PageLoader compact />
@@ -1298,6 +1306,7 @@ export default function StockTab({
         {/* ════ TRANSFER ════════════════════════════════════════ */}
         {subTab === 'transfer' && (
           <div className="p-4 lg:p-6 animate-fade-up space-y-4">
+            {transferTx.length > 0 && (
             <div className="flex flex-row items-center gap-2 sm:gap-3">
               {transferTx.length > 0 && (
                 <div className="relative flex-1 min-w-0">
@@ -1323,6 +1332,7 @@ export default function StockTab({
                 </button>
               </div>
             </div>
+            )}
 
             {txLoading && transferTx.length === 0 ? (
               <PageLoader compact />

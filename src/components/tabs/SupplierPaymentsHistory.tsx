@@ -14,6 +14,7 @@ import { useViewMode } from '@/lib/useViewMode';
 import { HEADER_BTN_H } from '@/lib/ui-constants';
 import { formatRp } from '@/lib/format';
 import { formatDueDate } from '@/lib/receivable';
+import EmptyAddCard from '@/components/EmptyAddCard';
 import {
   buildPaymentExcelRows, filterSupplierPayments, paymentDocLabel, paymentSupplierOptions,
   PAYMENT_EXCEL_HEADERS, summarizeSupplierPayments, type SupplierPaymentRow,
@@ -180,6 +181,7 @@ export default function SupplierPaymentsHistory({ creds, reloadKey, onOpenPurcha
   const controlH = { height: HEADER_BTN_H } as const;
   return (
     <div className="space-y-4">
+      {rows.length > 0 && (
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <div className="card px-4 py-3">
           <p className="text-[11px] font-bold uppercase tracking-wider" style={muted}>Total Dibayar</p>
@@ -195,25 +197,33 @@ export default function SupplierPaymentsHistory({ creds, reloadKey, onOpenPurcha
           <p className="text-lg font-extrabold tabular mt-0.5" style={{ color: 'var(--text-primary)' }}>{summary.supplierCount}</p>
         </div>
       </div>
+      )}
 
       <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+        {/* Saat riwayat kosong hanya rentang tanggal yang tampil (tanpa itu user tak bisa pindah ke rentang yang ada datanya). */}
+        {rows.length > 0 && (
         <div className="relative flex-1 min-w-[160px]">
           <Search size={14} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
           <input value={search} onChange={e => { setSearch(e.target.value); setPage(1); }} className="input text-sm w-full" style={{ paddingLeft: 38, ...controlH }}
             placeholder="Cari supplier / PO / GR / catatan…" aria-label="Cari pembayaran hutang" />
         </div>
+        )}
         <DateInput value={from} onChange={v => { setFrom(v); setLoading(true); setPage(1); }} max={to || undefined} height={HEADER_BTN_H} style={{ width: 150 }} />
         <span className="text-xs" style={muted}>s/d</span>
         <DateInput value={to} onChange={v => { setTo(v); setLoading(true); setPage(1); }} min={from || undefined} height={HEADER_BTN_H} style={{ width: 150 }} />
+        {rows.length > 0 && (
         <select value={supplierKey} onChange={e => { setSupplierKey(e.target.value); setPage(1); }} aria-label="Filter supplier" className="input text-sm" style={{ width: 180, ...controlH, paddingTop: 0, paddingBottom: 0 }}>
           <option value="">Semua supplier</option>
           {supplierOptions.map(o => <option key={o.key} value={o.key}>{o.name}</option>)}
         </select>
+        )}
+        {rows.length > 0 && (
         <Tooltip label="Muat ulang">
           <button onClick={() => { setLoading(true); void load(); }} disabled={loading} aria-label="Muat ulang" className="btn-ghost p-0 flex items-center justify-center" style={{ ...controlH, width: HEADER_BTN_H }}>
             {loading ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />}
           </button>
         </Tooltip>
+        )}
         {filtered.length > 0 && (
           <Tooltip label="Export Excel">
             <button onClick={() => void exportExcel()} disabled={exporting} aria-label="Export Excel" className="btn-ghost p-0 flex items-center justify-center" style={{ ...controlH, width: HEADER_BTN_H }}>
@@ -231,10 +241,17 @@ export default function SupplierPaymentsHistory({ creds, reloadKey, onOpenPurcha
       {loading && rows.length === 0 && !error ? (
         <PageLoader compact />
       ) : error ? (
-        <div className="card py-10 text-center"><p className="text-sm font-semibold" style={{ color: 'var(--danger)' }}>{error}</p></div>
+        <div className="card py-10 text-center">
+          <p className="text-sm font-semibold" style={{ color: 'var(--danger)' }}>{error}</p>
+          <button onClick={() => { setLoading(true); void load(); }} disabled={loading} className="btn-ghost text-xs mt-3 inline-flex items-center gap-1.5">
+            {loading ? <Loader2 size={13} className="animate-spin" /> : <RefreshCw size={13} />} Coba lagi
+          </button>
+        </div>
+      ) : rows.length === 0 ? (
+        <EmptyAddCard label="Belum ada pembayaran hutang supplier pada rentang ini" />
       ) : filtered.length === 0 ? (
         <div className="card py-10 text-center">
-          <p className="text-sm" style={muted}>{rows.length === 0 ? 'Belum ada pembayaran hutang supplier pada rentang ini.' : 'Tidak ada pembayaran yang cocok dengan filter.'}</p>
+          <p className="text-sm" style={muted}>Tidak ada pembayaran yang cocok dengan filter.</p>
         </div>
       ) : (
         <>

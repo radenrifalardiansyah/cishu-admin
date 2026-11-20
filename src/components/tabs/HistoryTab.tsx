@@ -132,7 +132,9 @@ export default function HistoryTab({ creds }: { creds: string }) {
         )}
       </div>
 
-      {/* Filter modul + aksi */}
+      {/* Filter modul + aksi. Filter modul berjalan di server, jadi saat sedang dipakai harus tetap tampil
+          (hasil kosong karena filter ≠ data kosong); disembunyikan hanya bila benar-benar tanpa data. */}
+      {(entries.length > 0 || entityFilter !== 'semua') && (
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="w-full sm:w-[200px] flex-shrink-0">
           <FilterSelect value={entityFilter} onChange={v => { setEntityFilter(v); resetPage(); }} height={HEADER_BTN_H} options={entityOptions} searchPlaceholder="Cari modul…" />
@@ -141,6 +143,7 @@ export default function HistoryTab({ creds }: { creds: string }) {
           <FilterSelect searchable={false} value={actionFilter} onChange={v => { setActionFilter(v); resetPage(); }} height={HEADER_BTN_H} options={actionOptions} searchPlaceholder="Cari aksi…" />
         </div>
       </div>
+      )}
 
       {/* Pencarian + toggle tampilan */}
       <div className="flex flex-row items-center gap-2 sm:gap-3">

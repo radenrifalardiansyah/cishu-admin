@@ -1370,9 +1370,11 @@ ${pdfUrl}`.trim();
                   </Tooltip>
                 )}
                 {materials.length > 0 && <ViewToggle mode={materialView} onChange={setMaterialView} height={HEADER_BTN_H} />}
-                <button onClick={openCreateM} className="btn-primary text-xs" style={{ height: HEADER_BTN_H }}>
-                  <Plus size={13} /> <span className="hidden sm:inline">Tambah Bahan Baku</span>
-                </button>
+                {materials.length > 0 && (
+                  <button onClick={openCreateM} className="btn-primary text-xs" style={{ height: HEADER_BTN_H }}>
+                    <Plus size={13} /> <span className="hidden sm:inline">Tambah Bahan Baku</span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -1586,9 +1588,11 @@ ${pdfUrl}`.trim();
             <PayablesAlertBanner creds={creds} canView reloadKey={payablesKey} onOpen={() => setSubTab('hutang')} />
             <div className="space-y-3">
               <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                <p className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 flex-shrink-0" style={{ color: 'var(--text-muted)' }}>
-                  <Clock size={11} /> Riwayat Pembelian ({purchases.length})
-                </p>
+                {purchases.length > 0 && (
+                  <p className="text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 flex-shrink-0" style={{ color: 'var(--text-muted)' }}>
+                    <Clock size={11} /> Riwayat Pembelian ({purchases.length})
+                  </p>
+                )}
                 <div className="flex flex-row items-center gap-2 sm:gap-3 sm:flex-1">
                   {purchases.length > 0 && (
                     <div className="relative flex-1 min-w-0">
@@ -1632,9 +1636,11 @@ ${pdfUrl}`.trim();
                       </Tooltip>
                     )}
                     {purchases.length > 0 && <ViewToggle mode={purchaseView} onChange={setPurchaseView} height={HEADER_BTN_H} />}
-                    <button onClick={openCreatePurchase} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-                      <Plus size={13} /> <span className="hidden sm:inline">Catat Pembelian</span>
-                    </button>
+                    {purchases.length > 0 && (
+                      <button onClick={openCreatePurchase} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+                        <Plus size={13} /> <span className="hidden sm:inline">Catat Pembelian</span>
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

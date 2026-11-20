@@ -96,12 +96,14 @@ export default function VouchersPanel({ creds }: { creds: string }) {
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-between gap-2 flex-wrap">
-        <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-          Voucher dipakai kasir dengan memasukkan kodenya di keranjang (menggantikan diskon manual).
-        </p>
-        <button onClick={() => setForm(emptyForm())} className="btn-primary text-xs flex items-center gap-1.5"><Plus size={13} /> Voucher Baru</button>
-      </div>
+      {vouchers.length > 0 && (
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+            Voucher dipakai kasir dengan memasukkan kodenya di keranjang (menggantikan diskon manual).
+          </p>
+          <button onClick={() => setForm(emptyForm())} className="btn-primary text-xs flex items-center gap-1.5"><Plus size={13} /> Voucher Baru</button>
+        </div>
+      )}
 
       {vouchers.length === 0 ? (
         <EmptyAddCard label="Tambah Voucher" onClick={() => setForm(emptyForm())} />

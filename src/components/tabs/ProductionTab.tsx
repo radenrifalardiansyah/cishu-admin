@@ -651,9 +651,11 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
             </Tooltip>
           )}
           {batches.length > 0 && <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />}
-          <button onClick={openCreate} className="btn-primary text-xs" style={{ height: HEADER_BTN_H }}>
-            <Plus size={13} /> <span className="hidden sm:inline">Catat Produksi</span>
-          </button>
+          {batches.length > 0 && (
+            <button onClick={openCreate} className="btn-primary text-xs" style={{ height: HEADER_BTN_H }}>
+              <Plus size={13} /> <span className="hidden sm:inline">Catat Produksi</span>
+            </button>
+          )}
         </div>
       </div>
 

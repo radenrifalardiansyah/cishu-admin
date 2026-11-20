@@ -10,6 +10,7 @@ import AdminFeeInvoicePDF, { type AdminFeeInvoiceData, type AdminFeePaymentInfo 
 import PageLoader from '@/components/PageLoader';
 import { formatRp, formatDate } from '@/lib/format';
 import Modal from '@/components/Modal';
+import EmptyAddCard from '@/components/EmptyAddCard';
 
 type Channel = 'online' | 'kasir' | 'consignment' | 'lapak';
 type FeeType = 'percent' | 'fixed' | 'monthly';
@@ -142,6 +143,26 @@ export default function AdminFeeBillingTab({ creds }: { creds: string }) {
 
   // Muatan awal: loader saja, tombol refresh di bilah atas baru muncul setelah data ada.
   if (loading && invoices.length === 0) return <PageLoader />;
+
+  // Belum ada tagihan sama sekali: hanya judul + kotak kosong (tanpa teks pendukung, ringkasan, dan seksi kosong).
+  if (!loading && invoices.length === 0) {
+    return (
+      <div className="p-4 lg:p-6 space-y-5">
+        <TopbarPortal>
+          <button aria-label="Muat ulang" onClick={loadInvoices} className="btn-ghost h-9 w-9 p-0 flex items-center justify-center">
+            <RefreshCw size={14} />
+          </button>
+        </TopbarPortal>
+        <div className="flex items-center gap-2.5">
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'var(--accent-bg)', color: 'var(--accent)' }}>
+            <Landmark size={18} />
+          </div>
+          <p className="text-sm font-extrabold" style={{ color: 'var(--text-primary)' }}>Tagihan Biaya Admin</p>
+        </div>
+        <EmptyAddCard label="Belum ada tagihan biaya admin" />
+      </div>
+    );
+  }
 
   return (
     <div className="p-4 lg:p-6 space-y-5">

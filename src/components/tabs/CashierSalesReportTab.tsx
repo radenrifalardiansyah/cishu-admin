@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Loader2, Receipt, ShoppingBag, Calculator } from 'lucide-react';
 import FilterSelect from '@/components/FilterSelect';
 import PageLoader from '@/components/PageLoader';
+import EmptyAddCard from '@/components/EmptyAddCard';
 import Tooltip from '@/components/Tooltip';
 import { ExcelIcon, PdfIcon } from '@/components/FileTypeIcons';
 import { useToast } from '@/components/Toast';
@@ -98,17 +99,24 @@ export default function CashierSalesReportTab({ creds }: { creds: string }) {
   );
   const head = { background: 'var(--surface-2)', borderBottom: '1px solid var(--border-2)' } as const;
   const s = report.summary;
+  // Kosong total (tanpa filter lapak): hanya pemilih periode + kotak +; filter lapak, ringkasan, dan kartu disembunyikan.
+  const pageEmpty = !stallId && s.count === 0 && report.cashiers.length === 0 && report.shifts.length === 0;
 
   return (
     <div className="p-4 lg:p-6 space-y-4 animate-fade-up">
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
         <div className="flex-1 min-w-0"><PeriodBar period={period} onPeriod={setPeriod} from={customFrom} to={customTo} onFrom={setCustomFrom} onTo={setCustomTo} /></div>
+        {!pageEmpty && (
         <div className="w-full sm:w-52">
           <FilterSelect value={stallId} onChange={setStallId} searchPlaceholder="Cari lapak…"
             options={[{ value: '', label: 'Semua lapak' }, ...report.stalls.map(x => ({ value: x.id, label: x.name }))]} />
         </div>
+        )}
       </div>
 
+      {pageEmpty ? (
+        <EmptyAddCard label="Belum ada penjualan lapak pada periode ini" />
+      ) : (<>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <StatCard icon={<Receipt size={16} />} label="Omzet lapak" value={rupiah(s.revenue)} color="var(--accent)" bg="var(--accent-bg)" />
         <StatCard icon={<ShoppingBag size={16} />} label="Transaksi" value={String(s.count)} color="#BD354C" bg="#E0E7FF" />
@@ -166,6 +174,7 @@ export default function CashierSalesReportTab({ creds }: { creds: string }) {
             </div>
           ))}
       </div>
+      </>)}
     </div>
   );
 }

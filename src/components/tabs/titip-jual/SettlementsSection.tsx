@@ -130,18 +130,20 @@ export default function SettlementsSection({ creds, data, reload, can, openJourn
     { header: 'Dibayar', width: '13%', value: s => dt(s.paidAt) || '-' },
   ];
 
+  // Belum ada rekap maupun hutang yang belum direkap: hanya kotak kosong (DataList), tanpa dompet & ringkasan.
+  const empty = result.settlements.length === 0 && result.payables.length === 0;
+
   return (
     <div className="space-y-4">
+      {!empty && <>
       {/* Saldo dompet tiap lapak — uang penjualan terkumpul di sini dan berkurang saat rekap dibayar. */}
-      <div className="card p-3">
+      {data.stalls.length > 0 && <div className="card p-3">
         <div className="flex items-center gap-2 mb-2">
           <Wallet size={14} style={{ color: 'var(--accent)' }} />
           <p className="text-xs font-bold" style={{ color: 'var(--text-secondary)' }}>Dompet Lapak</p>
           <p className="text-[11px]" style={{ color: 'var(--text-muted)' }}>— bertambah dari penjualan, berkurang saat rekap dibayar</p>
         </div>
-        {data.stalls.length === 0 ? (
-          <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Belum ada lapak.</p>
-        ) : (
+        {(
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
             {data.stalls.map(st => (
               <div key={st.id} className="flex items-center gap-2 px-3 py-2 rounded-lg" style={{ background: 'var(--surface-2)' }}>
@@ -154,13 +156,14 @@ export default function SettlementsSection({ creds, data, reload, can, openJourn
             ))}
           </div>
         )}
-      </div>
+      </div>}
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <StatCard icon={<HandCoins size={16} />} label="Belum direkap" value={rupiah(owedUnsettled)} color="var(--accent)" bg="var(--accent-bg)" valueColor={owedUnsettled > 0 ? 'var(--accent)' : undefined} />
         <StatCard icon={<Undo2 size={16} />} label="Rekap belum dibayar" value={rupiah(sum(s => s.status === 'unpaid'))} color="var(--danger)" bg="var(--danger-bg)" />
         <StatCard icon={<Banknote size={16} />} label="Sudah dibayar" value={rupiah(sum(s => s.status === 'paid'))} color="#059669" bg="rgba(5,150,105,0.12)" />
       </div>
+      </>}
 
       {result.payables.length > 0 && (
         <div className="card overflow-hidden" style={{ borderColor: 'var(--border-2)' }}>

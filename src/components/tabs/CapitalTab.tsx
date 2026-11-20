@@ -359,6 +359,8 @@ export default function CapitalTab({ creds }: { creds: string }) {
   return (
     <div className="p-4 lg:p-6 space-y-5">
 
+      {entries.length > 0 && (
+      <>
       {/* Ringkasan */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {[
@@ -440,6 +442,8 @@ export default function CapitalTab({ creds }: { creds: string }) {
           </div>
         </div>
       </div>
+      </>
+      )}
 
       {entries.length === 0 ? (
         <EmptyAddCard label="Tambah Modal/Prive" onClick={openNew} />

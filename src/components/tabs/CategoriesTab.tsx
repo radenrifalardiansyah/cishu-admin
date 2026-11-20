@@ -637,9 +637,11 @@ export default function CategoriesTab({ creds }: { creds: string }) {
             </Tooltip>
           )}
           {categories.length > 0 && <ViewToggle mode={catView} onChange={setCatView} height={HEADER_BTN_H} />}
-          <button onClick={openNewCat} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-            <Plus size={13} /> <span className="hidden sm:inline">Tambah Kategori</span>
-          </button>
+          {categories.length > 0 && (
+            <button onClick={openNewCat} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+              <Plus size={13} /> <span className="hidden sm:inline">Tambah Kategori</span>
+            </button>
+          )}
         </div>
       </div>
 

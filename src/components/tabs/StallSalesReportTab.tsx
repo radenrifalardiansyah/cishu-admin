@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Loader2, Receipt, Store, HandCoins, TrendingUp } from 'lucide-react';
 import FilterSelect from '@/components/FilterSelect';
 import PageLoader from '@/components/PageLoader';
+import EmptyAddCard from '@/components/EmptyAddCard';
 import Tooltip from '@/components/Tooltip';
 import { ExcelIcon, PdfIcon } from '@/components/FileTypeIcons';
 import { useToast } from '@/components/Toast';
@@ -100,21 +101,30 @@ export default function StallSalesReportTab({ creds }: { creds: string }) {
     </div>
   );
 
+  // Kosong total (tanpa filter lapak): hanya pemilih periode + kotak +; filter lapak dan kartu ringkasan disembunyikan.
+  const pageEmpty = !stallId && s.count === 0;
+
   return (
     <div className="p-4 lg:p-6 space-y-4 animate-fade-up">
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
         <div className="flex-1 min-w-0"><PeriodBar period={period} onPeriod={setPeriod} from={customFrom} to={customTo} onFrom={setCustomFrom} onTo={setCustomTo} /></div>
+        {!pageEmpty && (
         <div className="w-full sm:w-52">
           <FilterSelect value={stallId} onChange={setStallId} searchPlaceholder="Cari lapak…"
             options={[{ value: '', label: 'Semua lapak' }, ...report.stallOptions.map(x => ({ value: x.id, label: x.name }))]} />
         </div>
+        )}
       </div>
 
+      {!pageEmpty && (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {cards.map(c => <StatCard key={c.label} icon={c.icon} label={c.label} value={c.val} sub={c.sub} color={c.color} bg={c.bg} />)}
       </div>
+      )}
 
-      {s.count === 0 ? (
+      {pageEmpty ? (
+        <EmptyAddCard label="Belum ada penjualan lapak pada periode ini" />
+      ) : s.count === 0 ? (
         <div className="card py-12 text-center"><p className="text-sm" style={{ color: 'var(--text-muted)' }}>Belum ada penjualan lapak pada periode ini.</p></div>
       ) : (
         <>

@@ -690,7 +690,8 @@ export default function WalletsTab({ creds }: { creds: string }) {
     </TopbarPortal>
     <div className="p-4 lg:p-6 space-y-5">
 
-      {/* Ringkasan */}
+      {/* Ringkasan (disembunyikan saat data kosong) */}
+      {wallets.length > 0 && (
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div className="card p-4 flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'var(--success-bg)', color: 'var(--success)' }}>
@@ -711,8 +712,10 @@ export default function WalletsTab({ creds }: { creds: string }) {
           </div>
         </div>
       </div>
+      )}
 
-      {/* Header: search + actions */}
+      {/* Header: search + actions (disembunyikan saat data kosong) */}
+      {wallets.length > 0 && (
       <div className="flex flex-row items-center gap-2 sm:gap-3">
         {wallets.length > 0 && (
           <div className="relative flex-1 min-w-0">
@@ -752,6 +755,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
           </button>
         </div>
       </div>
+      )}
 
       {wallets.length === 0 ? (
         <EmptyAddCard label="Tambah Dompet" onClick={openNew} />
@@ -939,6 +943,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
       )}
 
       {/* Riwayat transfer antar dompet */}
+      {(wallets.length > 0 || transfers.length > 0) && (
       <div>
         <p className="text-[11px] font-bold uppercase tracking-wide mb-2" style={{ color: 'var(--text-muted)' }}>Riwayat Transfer Antar Dompet</p>
 
@@ -1116,6 +1121,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
           </>
         )}
       </div>
+      )}
 
       {/* Bulk action bar — transfer */}
       {transferSelected.size > 0 && (

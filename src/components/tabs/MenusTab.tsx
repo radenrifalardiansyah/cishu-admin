@@ -237,9 +237,11 @@ export default function MenusTab({ creds, can, onChanged }: MenusTabProps) {
 
   return (
     <div className="p-4 lg:p-6 space-y-5">
-      <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
-        Struktur menu sidebar — label, ikon, urutan, dan pengelompokan sepenuhnya dapat diatur. Setiap menu mengarah ke satu screen aplikasi yang sudah ada.
-      </p>
+      {(menus.length > 0 || modules.length === 0) && (
+        <p className="text-sm" style={{ color: 'var(--text-muted)' }}>
+          Struktur menu sidebar — label, ikon, urutan, dan pengelompokan sepenuhnya dapat diatur. Setiap menu mengarah ke satu screen aplikasi yang sudah ada.
+        </p>
+      )}
 
       {modules.map(mod => {
         const tops = topOf(mod.id);
@@ -247,7 +249,7 @@ export default function MenusTab({ creds, can, onChanged }: MenusTabProps) {
           <div key={mod.id} className="card overflow-hidden" style={{ borderColor: 'var(--border-2)', opacity: mod.isActive ? 1 : 0.6 }}>
             <div className="px-4 py-3 flex items-center justify-between gap-2" style={{ borderBottom: '1px solid var(--border-2)', background: 'var(--surface-2)' }}>
               <p className="text-xs font-bold uppercase tracking-wide" style={{ color: 'var(--text-secondary)' }}>{mod.name}</p>
-              {can('create') && (
+              {can('create') && tops.length > 0 && (
                 <button onClick={() => openNew(mod.id, null)} className="btn-ghost text-xs" style={{ height: 28 }}>
                   <Plus size={12} /> Tambah Menu
                 </button>

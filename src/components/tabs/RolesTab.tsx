@@ -340,7 +340,8 @@ export default function RolesTab({ creds, can }: RolesTabProps) {
   return (
     <div className="p-4 lg:p-6 space-y-5">
 
-      {/* Header: search + actions in one row */}
+      {/* Header: search + actions in one row (disembunyikan saat data kosong) */}
+      {roles.length > 0 && (
       <div className="flex flex-row items-center gap-2 sm:gap-3">
         {roles.length > 0 && (
           <div className="relative flex-1 min-w-0">
@@ -372,13 +373,14 @@ export default function RolesTab({ creds, can }: RolesTabProps) {
             </Tooltip>
           )}
           {roles.length > 0 && <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />}
-          {can('create') && (
+          {can('create') && roles.length > 0 && (
             <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
               <Plus size={13} /> <span className="hidden sm:inline">Tambah Role</span>
             </button>
           )}
         </div>
       </div>
+      )}
 
       {roles.length === 0 ? (
         <EmptyAddCard label="Tambah Role" onClick={can('create') ? openNew : undefined} />

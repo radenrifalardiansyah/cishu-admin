@@ -78,9 +78,11 @@ export default function NotificationsTab({ creds, username, onOpenNotification }
         <div className="p-4 lg:p-6 animate-fade-up space-y-4">
           <div>
             <h2 className="text-base font-bold" style={{ color: 'var(--text-primary)' }}>Notifikasi</h2>
-            <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-              {unread.length > 0 ? `${unread.length} belum dibaca` : 'Semua sudah dibaca'}
-            </p>
+            {notifications.length > 0 && (
+              <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
+                {unread.length > 0 ? `${unread.length} belum dibaca` : 'Semua sudah dibaca'}
+              </p>
+            )}
           </div>
 
           {/* Header: search + view toggle */}

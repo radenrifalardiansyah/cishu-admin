@@ -6,6 +6,7 @@ import FilterSelect from '@/components/FilterSelect';
 import SearchSelect from '@/components/SearchSelect';
 import NumberInput from '@/components/NumberInput';
 import PageLoader from '@/components/PageLoader';
+import EmptyAddCard from '@/components/EmptyAddCard';
 import { useToast } from '@/components/Toast';
 import { periodRange, type PeriodKey } from '@/lib/period';
 import { WALLET_CATEGORIES, WALLET_CATEGORY_LABEL, WALLET_KIND_LABEL } from '@/lib/stall-wallet';
@@ -66,6 +67,24 @@ export default function JournalSection({ creds, data, reload, can, journalStallI
     { header: 'Saldo', width: '10%', align: 'right', value: e => rupiah(e.balanceAfter) },
     { header: 'Oleh', width: '4%', value: e => e.createdBy || '-' },
   ];
+
+  // Tidak ada pergerakan kas pada periode terpilih (tanpa filter lapak): ringkasan, pencarian, dan filter
+  // disembunyikan. PeriodBar tetap tampil (halaman berbasis periode) agar bisa pindah ke periode lain.
+  const empty = journal.entries.length === 0 && !stallFilter;
+  if (empty) {
+    return (
+      <div className="space-y-4">
+        <PeriodBar period={period} onPeriod={setPeriod} from={customFrom} to={customTo} onFrom={setCustomFrom} onTo={setCustomTo} />
+        <EmptyAddCard label={can('edit') ? 'Catat Kas' : 'Belum ada pergerakan kas pada periode ini'}
+          onClick={can('edit') ? () => setAdding(true) : undefined}
+          hint={can('edit') ? 'Belum ada pergerakan kas pada periode ini.' : undefined} />
+        {adding && (
+          <EntryModal creds={creds} data={data} initialStallId={stallFilter} onClose={() => setAdding(false)}
+            onDone={async () => { setAdding(false); await Promise.all([reload(), load()]); }} />
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4">

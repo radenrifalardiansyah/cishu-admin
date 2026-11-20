@@ -893,9 +893,11 @@ export default function ProductsTab({ creds }: { creds: string }) {
               </Tooltip>
             )}
             {products.length > 0 && <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />}
-            <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-              <Plus size={13} /> <span className="hidden sm:inline">Tambah Produk</span>
-            </button>
+            {products.length > 0 && (
+              <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+                <Plus size={13} /> <span className="hidden sm:inline">Tambah Produk</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

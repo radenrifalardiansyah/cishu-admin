@@ -634,9 +634,11 @@ export default function CustomersTab({ creds }: { creds: string }) {
               </Tooltip>
             )}
             {customers.length > 0 && <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />}
-            <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
-              <Plus size={13} /> <span className="hidden sm:inline">Tambah Pelanggan</span>
-            </button>
+            {customers.length > 0 && (
+              <button onClick={openNew} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}>
+                <Plus size={13} /> <span className="hidden sm:inline">Tambah Pelanggan</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

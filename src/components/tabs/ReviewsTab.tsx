@@ -171,12 +171,15 @@ export default function ReviewsTab({ creds }: { creds: string }) {
 
       <div className="flex-1 overflow-y-auto thin-scrollbar">
         <div className="p-4 lg:p-6 animate-fade-up space-y-4">
+          {reviews.length > 0 && (
           <div>
             <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
               {pendingCount > 0 ? `${pendingCount} ulasan menunggu persetujuan` : 'Semua ulasan sudah ditinjau'}
             </p>
           </div>
+          )}
 
+          {reviews.length > 0 && (
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
             <div className="relative flex-1 min-w-0">
               <Search size={14} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
@@ -202,6 +205,7 @@ export default function ReviewsTab({ creds }: { creds: string }) {
             </div>
             <ViewToggle mode={view} onChange={setView} height={34} />
           </div>
+          )}
 
           {loading ? (
             <PageLoader label="Memuat ulasan" />

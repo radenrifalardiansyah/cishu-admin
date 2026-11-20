@@ -356,7 +356,8 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
   return (
     <div className="p-4 lg:p-6 space-y-5">
 
-      {/* Header: search + actions in one row */}
+      {/* Header: search + actions in one row (disembunyikan saat data kosong) */}
+      {modules.length > 0 && (
       <div className="flex flex-row items-center gap-2 sm:gap-3">
         {modules.length > 0 && (
           <div className="relative flex-1 min-w-0">
@@ -395,11 +396,14 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
           )}
         </div>
       </div>
+      )}
 
+      {modules.length > 0 && (
       <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
         Urutan menentukan posisi grup di sidebar.
         {reorderLocked && ' Kosongkan pencarian & tampilkan "Semua" pada ukuran halaman untuk mengubah urutan.'}
       </p>
+      )}
 
       {modules.length === 0 ? (
         <EmptyAddCard label="Tambah Modul" onClick={can('create') ? openNew : undefined} />

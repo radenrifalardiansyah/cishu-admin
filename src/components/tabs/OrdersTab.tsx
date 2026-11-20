@@ -1327,6 +1327,7 @@ _${storeName}_`.trim();
     <div className="p-4 lg:p-6 space-y-5">
 
       {/* Summary cards */}
+      {orders.length > 0 && (
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {[
           { icon: <ShoppingBag size={16}/>, label: 'Total Transaksi', val: orders.length.toString(), color: 'var(--accent)', bg: 'var(--accent-bg)' },
@@ -1344,6 +1345,7 @@ _${storeName}_`.trim();
           </div>
         ))}
       </div>
+      )}
 
       {/* Header */}
       <div className="flex flex-row items-center gap-2 sm:gap-3">
@@ -1372,7 +1374,7 @@ _${storeName}_`.trim();
             <AlertTriangle size={14} /> <span className="hidden sm:inline">Belum Lunas</span>
           </button>
         )}
-        {(proofPendingCount > 0 || onlyProof) && (
+        {orders.length > 0 && (proofPendingCount > 0 || onlyProof) && (
           <button
             onClick={() => { setOnlyProof(v => !v); resetPage(); }}
             aria-pressed={onlyProof}
@@ -1413,7 +1415,7 @@ _${storeName}_`.trim();
               </button>
             </Tooltip>
           )}
-          <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />
+          {orders.length > 0 && <ViewToggle mode={view} onChange={setView} height={HEADER_BTN_H} />}
         </div>
       </div>
 

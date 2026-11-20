@@ -74,7 +74,7 @@ export default function StockSection({ creds, data, can, goTo }: SectionProps) {
     const tot = sum(all);
     return (
       <div className="animate-fade-up">
-        {statCards([
+        {data.stalls.length > 0 && statCards([
           { icon: <Store size={16} />, label: 'Total Lapak', val: data.stalls.length, color: 'var(--accent)' },
           { icon: <Package size={16} />, label: 'Total Stok', val: qtyText(tot.qty), color: 'var(--success)' },
           { icon: <Wallet size={16} />, label: 'Nilai untuk Penitip', val: rupiah(tot.owed), color: '#0E7490' },
@@ -170,20 +170,24 @@ export default function StockSection({ creds, data, can, goTo }: SectionProps) {
             </div>
           )}
         </div>
-        <Tooltip label="Export Excel">
-          <button onClick={() => doExport('xlsx')} disabled={!!exporting} className="btn-ghost p-2 flex-shrink-0">
-            {exporting === 'xlsx' ? <Loader2 size={15} className="animate-spin" /> : <ExcelIcon size={16} />}
-          </button>
-        </Tooltip>
-        <Tooltip label="Export PDF">
-          <button onClick={() => doExport('pdf')} disabled={!!exporting} className="btn-ghost p-2 flex-shrink-0">
-            {exporting === 'pdf' ? <Loader2 size={15} className="animate-spin" /> : <PdfIcon size={16} />}
-          </button>
-        </Tooltip>
-        {canReceive && <button onClick={() => goTo!('receipts')} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}><Plus size={13} /> <span className="hidden sm:inline">Terima Barang</span></button>}
+        {stallLines.length > 0 && (
+          <Tooltip label="Export Excel">
+            <button onClick={() => doExport('xlsx')} disabled={!!exporting} className="btn-ghost p-2 flex-shrink-0">
+              {exporting === 'xlsx' ? <Loader2 size={15} className="animate-spin" /> : <ExcelIcon size={16} />}
+            </button>
+          </Tooltip>
+        )}
+        {stallLines.length > 0 && (
+          <Tooltip label="Export PDF">
+            <button onClick={() => doExport('pdf')} disabled={!!exporting} className="btn-ghost p-2 flex-shrink-0">
+              {exporting === 'pdf' ? <Loader2 size={15} className="animate-spin" /> : <PdfIcon size={16} />}
+            </button>
+          </Tooltip>
+        )}
+        {canReceive && stallLines.length > 0 && <button onClick={() => goTo!('receipts')} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H }}><Plus size={13} /> <span className="hidden sm:inline">Terima Barang</span></button>}
       </div>
 
-      {statCards([
+      {stallLines.length > 0 && statCards([
         { icon: <Package size={16} />, label: 'Jenis Produk', val: stallLines.length, color: 'var(--accent)' },
         { icon: <TrendingUp size={16} />, label: 'Total Unit', val: qtyText(t.qty), color: 'var(--success)' },
         { icon: <TrendingDown size={16} />, label: 'Stok Rendah/Habis', val: lowCount, color: 'var(--danger)' },
