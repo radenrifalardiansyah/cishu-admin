@@ -489,7 +489,7 @@ function PayModal({ creds, settlement, consignor, phone, balance, storeName, onC
             <div className="flex rounded-xl overflow-hidden border text-xs font-bold" style={{ borderColor: 'var(--border)' }}>
               {(['transfer', 'tunai'] as const).map(m => (
                 <button key={m} type="button" onClick={() => setMethod(m)} className="flex-1 px-3 py-2.5"
-                  style={method === m ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                  style={method === m ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                   {m === 'transfer' ? 'Transfer' : 'Tunai'}
                 </button>
               ))}
@@ -613,7 +613,7 @@ function BulkPayModal({ creds, list, skipped, stalls, consignors, onClose, onDon
             <div className="flex rounded-xl overflow-hidden border text-xs font-bold" style={{ borderColor: 'var(--border)' }}>
               {(['transfer', 'tunai'] as const).map(m => (
                 <button key={m} type="button" onClick={() => setMethod(m)} className="flex-1 px-3 py-2.5"
-                  style={method === m ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                  style={method === m ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                   {m === 'transfer' ? 'Transfer' : 'Tunai'}
                 </button>
               ))}

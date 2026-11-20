@@ -225,7 +225,7 @@ function AdjustmentModal({ creds, data, initialKind, onClose, onDone }: {
         <div className="inline-flex max-w-full rounded-xl overflow-x-auto no-scrollbar border self-start" style={{ borderColor: 'var(--border)' }}>
           {(Object.keys(KIND_LABEL) as Kind[]).map(k => (
             <button key={k} type="button" onClick={() => setKind(k)} className="px-3.5 py-2 text-xs font-bold whitespace-nowrap flex-shrink-0"
-              style={kind === k ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>{KIND_LABEL[k]}</button>
+              style={kind === k ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>{KIND_LABEL[k]}</button>
           ))}
         </div>
         <p className="text-[11px] px-3 py-2 rounded-lg" style={{ background: 'var(--accent-bg)', color: 'var(--accent)' }}>

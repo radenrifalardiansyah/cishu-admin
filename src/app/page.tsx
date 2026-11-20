@@ -174,9 +174,9 @@ const chartTooltipRow = (color: string, name: string, value: string) => (
 type TrendPoint = { date: string; kasir: number; online: number; konsinyasi: number; lain: number; count: number };
 
 const OMZET_SERIES = [
-  { key: 'kasir', name: 'Kasir', color: '#D4691E' },
+  { key: 'kasir', name: 'Kasir', color: '#1D4FE0' },
   { key: 'online', name: 'Online', color: '#7C3AED' },
-  { key: 'konsinyasi', name: 'Konsinyasi', color: '#0284C7' },
+  { key: 'konsinyasi', name: 'Konsinyasi', color: '#0E7490' },
   { key: 'lain', name: 'Pendapatan Lain', color: '#059669' },
 ] as const;
 
@@ -271,8 +271,8 @@ function PageviewChart({ data }: { data: { date: string; views: number; visitors
             <YAxis tickFormatter={compactNumber} tick={{ fontSize: 11, fill: 'var(--text-muted)' }}
               axisLine={false} tickLine={false} width={40} allowDecimals={false} tickCount={5} />
             <RechartsTooltip content={<PageviewTooltip />} cursor={{ fill: 'var(--border-2)', fillOpacity: 0.5 }} />
-            {avgViews > 0 && <ReferenceLine y={avgViews} stroke="#0284C7" strokeOpacity={0.5} strokeDasharray="5 4" />}
-            <Bar dataKey="views" name="Pageview" fill="#0284C7" fillOpacity={0.85} radius={[4, 4, 0, 0]} maxBarSize={28} />
+            {avgViews > 0 && <ReferenceLine y={avgViews} stroke="#0E7490" strokeOpacity={0.5} strokeDasharray="5 4" />}
+            <Bar dataKey="views" name="Pageview" fill="#0E7490" fillOpacity={0.85} radius={[4, 4, 0, 0]} maxBarSize={28} />
             <Line type="monotone" dataKey="visitors" name="Pengunjung unik" stroke="#7C3AED" strokeWidth={3}
               dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#7C3AED' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff', fill: '#7C3AED' }} />
           </ComposedChart>
@@ -281,13 +281,13 @@ function PageviewChart({ data }: { data: { date: string; views: number; visitors
 
       <div className="flex items-center gap-4 mt-2">
         <span className="flex items-center gap-1.5 text-[10px] font-semibold" style={{ color: 'var(--text-muted)' }}>
-          <span className="w-2.5 h-2.5 rounded-[3px] inline-block" style={{ background: '#0284C7' }} /> Pageview
+          <span className="w-2.5 h-2.5 rounded-[3px] inline-block" style={{ background: '#0E7490' }} /> Pageview
         </span>
         <span className="flex items-center gap-1.5 text-[10px] font-semibold" style={{ color: 'var(--text-muted)' }}>
           <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: '#7C3AED' }} /> Pengunjung unik
         </span>
         <span className="flex items-center gap-1.5 text-[10px] font-semibold" style={{ color: 'var(--text-muted)' }}>
-          <span className="w-2.5 h-[2px] inline-block" style={{ background: '#0284C7', opacity: 0.45 }} /> Rata-rata
+          <span className="w-2.5 h-[2px] inline-block" style={{ background: '#0E7490', opacity: 0.45 }} /> Rata-rata
         </span>
       </div>
     </div>
@@ -537,7 +537,7 @@ export default function AdminPage() {
       .sort((a, b) => b[1] - a[1]).slice(0, 5)
       .map(([name, count]) => {
         const p = posProducts.find(fp => fp.name === name);
-        return { name, emoji: p?.emoji ?? '📦', bgColor: p?.bgColor ?? '#F5F0E9', stock: p?.stock ?? 'Ada', count };
+        return { name, emoji: p?.emoji ?? '📦', bgColor: p?.bgColor ?? '#F1F5FC', stock: p?.stock ?? 'Ada', count };
       });
     return { revenueTrend, kasir, online, konsinyasi, lain, total, orderCount: sumOrders.length, recentOrders, topProducts };
   }, [sumRange, sumOrders, sumOmzet, posProducts]);
@@ -905,7 +905,7 @@ export default function AdminPage() {
   if (pendingChange) return (
     <div className="min-h-screen flex items-center justify-center p-4 lg:p-8 relative overflow-hidden" style={{ background: 'var(--ground)' }}>
       <div className="relative w-full rounded-[28px] overflow-hidden p-8 lg:p-10"
-        style={{ maxWidth: 420, background: 'var(--surface)', boxShadow: '0 24px 70px -20px rgba(30,16,8,0.35), 0 4px 18px rgba(30,16,8,0.08)' }}>
+        style={{ maxWidth: 420, background: 'var(--surface)', boxShadow: '0 24px 70px -20px rgba(11,22,48,0.35), 0 4px 18px rgba(11,22,48,0.08)' }}>
         <div className="flex flex-col items-center text-center mb-6">
           <div className="flex items-center justify-center rounded-2xl mb-4" style={{ width: 52, height: 52, background: 'var(--accent-bg)', color: 'var(--accent)' }}>
             <KeyRound size={22} />
@@ -961,27 +961,20 @@ export default function AdminPage() {
   );
 
   if (!authed) return (
-    <div className="min-h-screen flex items-center justify-center p-4 lg:p-8 relative overflow-hidden" style={{ background: 'var(--ground)' }}>
-
-      {/* Ambient background blobs */}
-      <div className="login-blob absolute rounded-full pointer-events-none"
-        style={{ width: 480, height: 480, top: -160, left: -160, background: 'radial-gradient(circle, var(--accent-light), transparent 70%)', filter: 'blur(10px)', opacity: 0.7 }} />
-      <div className="login-blob absolute rounded-full pointer-events-none"
-        style={{ width: 420, height: 420, bottom: -140, right: -140, background: 'radial-gradient(circle, var(--accent-bg), transparent 70%)', filter: 'blur(10px)', opacity: 0.8, animationDelay: '-6s' }} />
+    <div className="login-screen min-h-screen flex items-center justify-center p-4 lg:p-8 relative overflow-hidden">
 
       {/* Card */}
-      <div className="login-card relative w-full grid lg:grid-cols-2 rounded-[28px] overflow-hidden"
-        style={{ maxWidth: 920, background: 'var(--surface)', boxShadow: '0 24px 70px -20px rgba(30,16,8,0.35), 0 4px 18px rgba(30,16,8,0.08)' }}>
+      <div className="login-card login-card-shadow relative w-full grid lg:grid-cols-2 rounded-[28px] overflow-hidden"
+        style={{ maxWidth: 920, background: 'var(--surface)' }}>
 
         {/* Left panel — brand & motion */}
-        <div className="hidden lg:flex flex-col justify-between p-12 relative overflow-hidden"
-          style={{ background: 'linear-gradient(150deg, var(--sidebar) 0%, #2A1509 55%, var(--accent-dark) 130%)' }}>
+        <div className="login-panel-brand hidden lg:flex flex-col justify-between p-12 relative overflow-hidden">
 
           {/* decorative glow orbs */}
           <div className="login-blob login-glow absolute rounded-full pointer-events-none"
-            style={{ width: 260, height: 260, top: -70, right: -70, background: 'radial-gradient(circle, rgba(212,105,30,0.55), transparent 70%)', filter: 'blur(4px)' }} />
+            style={{ width: 260, height: 260, top: -70, right: -70, background: 'radial-gradient(circle, rgba(29,79,224,0.55), transparent 70%)', filter: 'blur(4px)' }} />
           <div className="login-blob absolute rounded-full pointer-events-none"
-            style={{ width: 220, height: 220, bottom: -60, left: -60, background: 'radial-gradient(circle, rgba(212,105,30,0.35), transparent 70%)', filter: 'blur(4px)', animationDelay: '-4s' }} />
+            style={{ width: 220, height: 220, bottom: -60, left: -60, background: 'radial-gradient(circle, rgba(29,79,224,0.35), transparent 70%)', filter: 'blur(4px)', animationDelay: '-4s' }} />
 
           {/* floating snack icons */}
           <span className="login-snack absolute text-3xl" style={{ top: '18%', right: '18%', ['--r' as string]: '-8deg', animationDelay: '0s', opacity: 0.9 }}>🍪</span>
@@ -991,7 +984,7 @@ export default function AdminPage() {
 
           <div className="flex items-center gap-3 relative z-10">
             <Image src="/icon-192.png" alt="logo" width={40} height={40} className="rounded-xl" />
-            <span className="text-white font-bold text-[15px]">Cemilan Teh Risma</span>
+            <span className="text-white font-bold text-[15px]">Cishu</span>
           </div>
 
           <div className="relative z-10">
@@ -1004,7 +997,7 @@ export default function AdminPage() {
           </div>
 
           <p className="text-xs relative z-10" style={{ color: 'var(--sidebar-muted)' }}>
-            © 2025 Cemilan Teh Risma
+            © 2025 Cishu
           </p>
         </div>
 
@@ -1012,10 +1005,10 @@ export default function AdminPage() {
         <div className="flex flex-col items-center justify-center px-6 py-10 lg:p-12">
           <div className="w-full max-w-sm">
             <div className="flex flex-col items-center mb-8 lg:hidden login-field" style={{ animationDelay: '0.02s' }}>
-              <Image src="/icon-192.png" alt="logo" width={56} height={56} className="rounded-2xl shadow mb-3" />
+              <Image src="/icon-192.png" alt="logo" width={56} height={56} className="rounded-2xl shadow-lg mb-3" />
             </div>
             <h1 className="text-2xl font-extrabold mb-1 login-field" style={{ color: 'var(--text-primary)', animationDelay: '0.04s' }}>Masuk</h1>
-            <p className="text-sm mb-8 login-field" style={{ color: 'var(--text-muted)', animationDelay: '0.08s' }}>Dashboard Admin Cemilan Teh Risma</p>
+            <p className="text-sm mb-8 login-field" style={{ color: 'var(--text-muted)', animationDelay: '0.08s' }}>Dashboard Admin Cishu</p>
 
             {twoFactor ? (
             <form onSubmit={submitTwoFactor} className="space-y-4" noValidate>
@@ -1029,8 +1022,7 @@ export default function AdminPage() {
                 </p>
               </div>
               {loginErr && (
-                <div className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium animate-scale-in"
-                  style={{ background: 'var(--danger-bg)', color: 'var(--danger)' }}>
+                <div role="alert" className="login-alert animate-scale-in">
                   {loginErr}
                 </div>
               )}
@@ -1062,7 +1054,7 @@ export default function AdminPage() {
                     style={{ paddingRight: 40 }}
                     placeholder="Masukkan password" autoComplete="current-password" />
                   <button type="button" onClick={() => setShowPassword(s => !s)} tabIndex={-1}
-                    style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', display: 'flex' }}>
+                    aria-label={showPassword ? 'Sembunyikan password' : 'Tampilkan password'} className="login-eye">
                     {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                   </button>
                 </div>
@@ -1071,8 +1063,7 @@ export default function AdminPage() {
                 )}
               </div>
               {loginErr && (
-                <div className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium animate-scale-in"
-                  style={{ background: 'var(--danger-bg)', color: 'var(--danger)' }}>
+                <div role="alert" className="login-alert animate-scale-in">
                   {loginErr}
                 </div>
               )}
@@ -1171,7 +1162,7 @@ export default function AdminPage() {
               <button key={p.id} onClick={() => setSumPeriod(p.id)} disabled={sumLoading}
                 className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
                 style={sumPeriod === p.id
-                  ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' }
+                  ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' }
                   : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
                 {p.label}
               </button>
@@ -1195,18 +1186,18 @@ export default function AdminPage() {
           {/* Stat cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {[
-              { icon: <Receipt    size={16}/>, label: 'Jumlah Pesanan', val: summary.orderCount.toString(), color: 'var(--accent)',  iconBg: 'var(--accent-bg)',  bar: 'var(--accent),#A84F10' },
+              { icon: <Receipt    size={16}/>, label: 'Jumlah Pesanan', val: summary.orderCount.toString(), color: 'var(--accent)',  iconBg: 'var(--accent-bg)',  bar: 'var(--accent),#1B45C4' },
               { icon: <TrendingUp size={16}/>, label: 'Omzet Kasir',  val: formatRp(summary.kasir), color: 'var(--success)', iconBg: 'var(--success-bg)', bar: '#15803D,#166534' },
               { icon: <Globe      size={16}/>, label: 'Omzet Online', val: formatRp(summary.online), color: '#7C3AED', iconBg: '#F5F3FF', bar: '#7C3AED,#6D28D9' },
-              { icon: <Store      size={16}/>, label: 'Omzet Konsinyasi', val: formatRp(summary.konsinyasi), color: '#0284C7', iconBg: '#EFF6FF', bar: '#0284C7,#0369A1' },
+              { icon: <Store      size={16}/>, label: 'Omzet Konsinyasi', val: formatRp(summary.konsinyasi), color: '#0E7490', iconBg: '#ECFEFF', bar: '#0E7490,#155E75' },
               { icon: <Wallet     size={16}/>, label: 'Pendapatan Lain', val: formatRp(summary.lain), color: '#059669', iconBg: '#ECFDF5', bar: '#059669,#047857' },
               { icon: <Wallet     size={16}/>, label: 'Total Omzet', val: formatRp(summary.total), color: '#B45309', iconBg: '#FFFBEA', bar: '#B45309,#92400E' },
-              { icon: <Package    size={16}/>, label: 'Produk Aktif',    val: dashData.productCount.toString(), color: '#0284C7',        iconBg: '#EFF6FF',           bar: '#0284C7,#0369A1' },
+              { icon: <Package    size={16}/>, label: 'Produk Aktif',    val: dashData.productCount.toString(), color: '#0E7490',        iconBg: '#ECFEFF',           bar: '#0E7490,#155E75' },
               { icon: <Users      size={16}/>, label: 'Total Reseller',  val: dashData.resellerCount.toString(),color: '#7C3AED',        iconBg: '#F5F3FF',           bar: '#7C3AED,#6D28D9' },
             ].map((c, i) => (
               <div key={i} className="card relative p-4 overflow-hidden"
                 style={{ transition: 'transform 0.18s, box-shadow 0.18s', cursor: 'default' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(30,16,8,0.10)'; }}
+                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(11,22,48,0.10)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; (e.currentTarget as HTMLDivElement).style.boxShadow = ''; }}
               >
                 <div style={{ width: 34, height: 34, borderRadius: 10, background: c.iconBg, color: c.color, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
@@ -1365,7 +1356,7 @@ export default function AdminPage() {
       <div className="flex items-center justify-between gap-2.5 pt-2 flex-wrap">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ background: '#EFF6FF', color: '#0284C7' }}>
+            style={{ background: '#ECFEFF', color: '#0E7490' }}>
             <Globe size={16} />
           </div>
           <div>
@@ -1382,7 +1373,7 @@ export default function AdminPage() {
               style={{
                 background: webRange === r ? 'var(--surface)' : 'transparent',
                 color: webRange === r ? 'var(--accent)' : 'var(--text-muted)',
-                boxShadow: webRange === r ? '0 1px 4px rgba(30,16,8,0.10)' : 'none',
+                boxShadow: webRange === r ? '0 1px 4px rgba(11,22,48,0.10)' : 'none',
               }}>
               {r} hari
             </button>
@@ -1411,17 +1402,17 @@ export default function AdminPage() {
                 {
                   title: 'Tren Pageview & Pengunjung Unik', type: 'line', unit: 'num', labels: ws.daily.map(d => shortDate(d.date)),
                   series: [
-                    { name: 'Pageview', color: '#0284C7', values: ws.daily.map(d => d.views) },
+                    { name: 'Pageview', color: '#0E7490', values: ws.daily.map(d => d.views) },
                     { name: 'Pengunjung unik', color: '#7C3AED', values: ws.daily.map(d => d.visitors) },
                   ],
                 },
                 {
                   title: 'Halaman Terpopuler', type: 'bar', unit: 'num', labels: ws.topPages.slice(0, 6).map(p => pageLabel(p.path)),
-                  series: [{ name: 'Pengunjung', color: '#0284C7', values: ws.topPages.slice(0, 6).map(p => p.visitors) }],
+                  series: [{ name: 'Pengunjung', color: '#0E7490', values: ws.topPages.slice(0, 6).map(p => p.visitors) }],
                 },
                 {
                   title: 'Produk Terpopuler (Klik)', type: 'bar', unit: 'num', labels: ws.topProducts.slice(0, 6).map(p => p.name),
-                  series: [{ name: 'Klik', color: '#D4691E', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
+                  series: [{ name: 'Klik', color: '#1D4FE0', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
                 },
               ],
               sections: [
@@ -1490,7 +1481,7 @@ export default function AdminPage() {
             {/* Stat cards — Perangkat gabung jadi 1 kartu (mobile/desktop split) */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {[
-                { icon: <Users      size={15}/>, label: 'Pengunjung Unik', val: ws.visitors.toLocaleString('id-ID'),  color: '#0284C7', bg: '#EFF6FF' },
+                { icon: <Users      size={15}/>, label: 'Pengunjung Unik', val: ws.visitors.toLocaleString('id-ID'),  color: '#0E7490', bg: '#ECFEFF' },
                 { icon: <Eye        size={15}/>, label: 'Total Pageview',  val: ws.pageViews.toLocaleString('id-ID'), color: '#7C3AED', bg: '#F5F3FF' },
                 { icon: <BarChart2  size={15}/>, label: 'Hlm / Pengunjung',val: avgPages,                          color: '#059669', bg: '#ECFDF5' },
               ].map((c, i) => (
@@ -1510,7 +1501,7 @@ export default function AdminPage() {
               <div className="card relative p-4 overflow-hidden">
                 <div className="flex items-center justify-between mb-2.5">
                   <div className="flex items-center gap-1.5">
-                    <Smartphone size={13} style={{ color: '#0284C7' }} />
+                    <Smartphone size={13} style={{ color: '#0E7490' }} />
                     <Monitor size={13} style={{ color: '#7C3AED' }} />
                   </div>
                   <span className="text-[10px] font-semibold tabular" style={{ color: 'var(--text-muted)' }}>
@@ -1521,7 +1512,7 @@ export default function AdminPage() {
                   {mPct}% <span className="text-xs font-semibold" style={{ color: 'var(--text-muted)' }}>mobile</span>
                 </p>
                 <div className="h-2 rounded-full overflow-hidden flex" style={{ background: 'var(--border-2)' }}>
-                  <div style={{ width: `${mPct}%`, background: '#0284C7' }} />
+                  <div style={{ width: `${mPct}%`, background: '#0E7490' }} />
                   <div style={{ width: `${dPct}%`, background: '#7C3AED' }} />
                 </div>
                 <p className="text-[11px] font-semibold mt-1.5" style={{ color: 'var(--text-muted)' }}>Perangkat</p>
@@ -1537,7 +1528,7 @@ export default function AdminPage() {
                     <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Kunjungan halaman per hari</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="badge" style={{ background: '#EFF6FF', color: '#0284C7' }}>
+                    <span className="badge" style={{ background: '#ECFEFF', color: '#0E7490' }}>
                       Hari ini: {todayViews}
                     </span>
                     <span className="badge" style={{ background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
@@ -1571,7 +1562,7 @@ export default function AdminPage() {
                             {pageLabel(p.path)}
                           </p>
                           <div className="h-1.5 rounded-full mt-1.5 overflow-hidden" style={{ background: 'var(--border-2)' }}>
-                            <div className="h-full rounded-full" style={{ width: `${pct}%`, background: '#0284C7' }} />
+                            <div className="h-full rounded-full" style={{ width: `${pct}%`, background: '#0E7490' }} />
                           </div>
                         </div>
                         <span className="text-sm font-bold tabular flex-shrink-0" style={{ color: 'var(--text-secondary)' }}>
@@ -1591,7 +1582,7 @@ export default function AdminPage() {
                   <div className="card p-5">
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{ background: '#EFF6FF', color: '#0EA5E9' }}>
+                        style={{ background: '#ECFEFF', color: '#0E7490' }}>
                         <MousePointerClick size={15} />
                       </div>
                       <div>

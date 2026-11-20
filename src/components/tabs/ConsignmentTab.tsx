@@ -394,7 +394,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
   useEffect(() => { toDataUri(storeInfo.ownerSignature).then(setSignatureDataUri); }, [storeInfo.ownerSignature]);
   useEffect(() => { toDataUri(storeInfo.ownerStamp).then(setStampDataUri); }, [storeInfo.ownerStamp]);
   const storeHeader = {
-    name:           storeInfo.storeName?.trim() || 'Cemilan Teh Risma',
+    name:           storeInfo.storeName?.trim() || 'Cishu',
     tagline:        storeInfo.storeTagline?.trim() || undefined,
     ownerName:      storeInfo.ownerName?.trim() || undefined,
     ownerSignature: signatureDataUri,
@@ -615,7 +615,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
     setExportingLocations(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Lokasi Konsinyasi');
 
@@ -634,7 +634,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LOKASI KONSINYASI — CEMILAN TEH RISMA';
+      titleCell.value = 'LOKASI KONSINYASI — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -706,7 +706,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `lokasi-konsinyasi-cemilantehrisma-${today}.xlsx`;
+      a.download = `lokasi-konsinyasi-cishu-${today}.xlsx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -727,7 +727,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'form-daftar-pengiriman-produk-cemilantehrisma.pdf';
+      a.download = 'form-daftar-pengiriman-produk-cishu.pdf';
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -774,7 +774,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `lokasi-konsinyasi-cemilantehrisma-${today}.pdf`;
+      a.download = `lokasi-konsinyasi-cishu-${today}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -790,7 +790,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
 
   const downloadLocationTemplate = async () => {
     const wb = new ExcelJS.Workbook();
-    wb.creator = 'Cemilan Teh Risma Admin';
+    wb.creator = 'Cishu Admin';
     wb.created = new Date();
     const ws = wb.addWorksheet('Template Lokasi');
     const colCount = LOCATION_TEMPLATE_COLS.length;
@@ -798,7 +798,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT LOKASI KONSINYASI — CEMILAN TEH RISMA';
+    titleCell.value = 'TEMPLATE IMPORT LOKASI KONSINYASI — CISHU';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -1096,7 +1096,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
     setExportingShipments(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Riwayat Kirim');
 
@@ -1113,7 +1113,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'RIWAYAT KIRIM STOK KONSINYASI — CEMILAN TEH RISMA';
+      titleCell.value = 'RIWAYAT KIRIM STOK KONSINYASI — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -1230,7 +1230,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
   };
 
   const downloadShipmentTemplate = () => downloadImportTemplate({
-    title: 'TEMPLATE IMPORT KIRIM STOK KONSINYASI — CEMILAN TEH RISMA',
+    title: 'TEMPLATE IMPORT KIRIM STOK KONSINYASI — CISHU',
     sheetName: 'Template Kirim',
     note: 'PETUNJUK: Kolom bertanda (*) wajib diisi. Satu baris = satu produk; baris dengan Lokasi, Gudang, Tanggal, dan Catatan yang sama digabung jadi satu pengiriman. '
       + 'Nama Lokasi, Gudang, dan Produk harus sama persis dengan yang ada di sistem. Tanggal format YYYY-MM-DD (kosong = hari ini). Stok gudang akan berkurang. Jangan mengubah judul kolom di baris 3.',
@@ -1848,7 +1848,7 @@ _${storeHeader.name}_`.trim();
     setExportingRecaps(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Riwayat Rekap');
 
@@ -1870,7 +1870,7 @@ _${storeHeader.name}_`.trim();
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'RIWAYAT REKAP HARIAN KONSINYASI — CEMILAN TEH RISMA';
+      titleCell.value = 'RIWAYAT REKAP HARIAN KONSINYASI — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -2007,7 +2007,7 @@ _${storeHeader.name}_`.trim();
   };
 
   const downloadRecapTemplate = () => downloadImportTemplate({
-    title: 'TEMPLATE IMPORT REKAP KONSINYASI — CEMILAN TEH RISMA',
+    title: 'TEMPLATE IMPORT REKAP KONSINYASI — CISHU',
     sheetName: 'Template Rekap',
     note: 'PETUNJUK: Kolom bertanda (*) wajib diisi. Satu baris = satu produk; baris dengan Lokasi, Tanggal, Status Bayar, Dompet, Gudang, dan Catatan yang sama digabung jadi satu rekap. '
       + 'Status Bayar: Lunas / Belum Lunas (kosong = Lunas). Dompet wajib jika Lunas. Gudang wajib jika ada Retur/Reject. '
@@ -2384,7 +2384,7 @@ _${storeHeader.name}_`.trim();
     setExportingHistoryExcel(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const todayLabel = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
@@ -2690,7 +2690,7 @@ _${storeHeader.name}_`.trim();
           {SUB_TABS.map(t => (
             <button key={t.id} onClick={() => setSubTab(t.id)}
               className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition-all whitespace-nowrap flex-shrink-0"
-              style={subTab === t.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+              style={subTab === t.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
               <t.Icon size={13} /> {t.label}
             </button>
           ))}
@@ -2707,7 +2707,7 @@ _${storeHeader.name}_`.trim();
                 {LOCATION_PERIOD_OPTIONS.map(p => (
                   <button key={p.id} onClick={() => setLocationPeriod(p.id)}
                     className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-                    style={locationPeriod === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+                    style={locationPeriod === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
                     {p.label}
                   </button>
                 ))}
@@ -2769,7 +2769,7 @@ _${storeHeader.name}_`.trim();
                   className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
                   style={{
                     height: HEADER_BTN_H,
-                    background: locationOnlyInStock ? 'linear-gradient(135deg,#E8821A,#C96018)' : 'var(--surface-2)',
+                    background: locationOnlyInStock ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)',
                     color: locationOnlyInStock ? 'white' : 'var(--text-muted)',
                   }}
                 >
@@ -2861,7 +2861,7 @@ _${storeHeader.name}_`.trim();
                       return (
                         <div key={l.id}>
                           <div className="flex flex-col gap-3 px-4 py-3" style={{
-                            background: isSelected ? 'rgba(212,105,30,0.05)' : l.isActive === false ? 'var(--surface-2)' : undefined,
+                            background: isSelected ? 'rgba(29,79,224,0.05)' : l.isActive === false ? 'var(--surface-2)' : undefined,
                             borderLeft: `3px solid ${l.isActive === false ? 'var(--border)' : 'var(--success)'}`,
                             opacity: l.isActive === false ? 0.7 : 1,
                           }}>
@@ -3061,7 +3061,7 @@ _${storeHeader.name}_`.trim();
               {PERIOD_OPTIONS.map(p => (
                 <button key={p.id} onClick={() => { setShipmentPeriod(p.id); resetShipmentPage(); }}
                   className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-                  style={shipmentPeriod === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+                  style={shipmentPeriod === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
                   {p.label}
                 </button>
               ))}
@@ -3166,7 +3166,7 @@ _${storeHeader.name}_`.trim();
                         return (
                           <div key={s.id} ref={el => { shipmentRowRefs.current[s.id] = el; }}>
                           <div className="flex items-start gap-3 px-4 py-3"
-                            style={{ transition: 'background-color 0.6s ease', background: highlightedShipmentId === s.id ? 'var(--accent-bg)' : isSelected ? 'rgba(212,105,30,0.05)' : undefined }}>
+                            style={{ transition: 'background-color 0.6s ease', background: highlightedShipmentId === s.id ? 'var(--accent-bg)' : isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
                             <span className="pt-0.5 w-6 text-xs font-bold text-right flex-shrink-0 tabular" style={{ color: 'var(--text-muted)' }}>{num}</span>
                             <div className="pt-0.5"><Checkbox checked={isSelected} onChange={() => toggleSelectShipment(s.id)} /></div>
                             <LocationLogo location={locations.find(l => l.id === s.locationId) ?? { name: s.locationName }} size={32} />
@@ -3271,7 +3271,7 @@ _${storeHeader.name}_`.trim();
               {PERIOD_OPTIONS.map(p => (
                 <button key={p.id} onClick={() => { setRecapPeriod(p.id); resetRecapPage(); }}
                   className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-                  style={recapPeriod === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+                  style={recapPeriod === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
                   {p.label}
                 </button>
               ))}
@@ -3304,7 +3304,7 @@ _${storeHeader.name}_`.trim();
                   className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
                   style={{
                     height: HEADER_BTN_H,
-                    background: recapOnlyBelumLunas ? 'linear-gradient(135deg,#E8821A,#C96018)' : 'var(--surface-2)',
+                    background: recapOnlyBelumLunas ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)',
                     color: recapOnlyBelumLunas ? 'white' : 'var(--text-muted)',
                   }}
                 >
@@ -3379,7 +3379,7 @@ _${storeHeader.name}_`.trim();
                         return (
                           <div key={r.id} ref={el => { recapRowRefs.current[r.id] = el; }}>
                           <div className="flex items-start gap-3 px-4 py-3"
-                            style={{ transition: 'background-color 0.6s ease', background: highlightedRecapId === r.id ? 'var(--accent-bg)' : isSelected ? 'rgba(212,105,30,0.05)' : undefined }}>
+                            style={{ transition: 'background-color 0.6s ease', background: highlightedRecapId === r.id ? 'var(--accent-bg)' : isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
                             <span className="pt-0.5 w-6 text-xs font-bold text-right flex-shrink-0 tabular" style={{ color: 'var(--text-muted)' }}>{num}</span>
                             <div className="pt-0.5"><Checkbox checked={isSelected} onChange={() => toggleSelectRecap(r.id)} /></div>
                             <LocationLogo location={locations.find(l => l.id === r.locationId) ?? { name: r.locationName }} size={32} />
@@ -4007,7 +4007,7 @@ _${storeHeader.name}_`.trim();
                   {(['lunas', 'belum_lunas'] as const).map(s => (
                     <button key={s} type="button" onClick={() => setRecapPaymentStatus(s)} disabled={!!editingRecap?.hasPayments}
                       className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                      style={recapPaymentStatus === s ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={recapPaymentStatus === s ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {s === 'lunas' ? 'Lunas' : 'Belum Lunas'}
                     </button>
                   ))}

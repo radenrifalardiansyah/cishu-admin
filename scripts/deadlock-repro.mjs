@@ -13,7 +13,7 @@ import path from 'node:path';
 import postgres from 'postgres';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const PROD_REF = 'ylepyjyzxcchcvucvsyq';
+const PROD_REF = 'jqypicpriuipwzmcryse';
 const STAGING_REF = 'cisazsayvrxgnhzrnihm';
 const ITER = Number(process.env.ITER || 30);
 const GAP = 0.05; // detik antar-kunci

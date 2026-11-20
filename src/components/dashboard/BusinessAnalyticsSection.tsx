@@ -54,11 +54,11 @@ function shortDate(dateStr: string): string {
 // Sama seperti EXPENSE_CATEGORY_COLORS di FinanceReportTab — warna mengikuti identitas kategori
 // (bukan urutan/rank), supaya kategori yang sama terlihat konsisten di Dashboard & Laporan Keuangan.
 const EXPENSE_CATEGORY_COLORS: Record<string, string> = {
-  'Bahan Baku': '#B45309', 'Produksi': '#A84F10', 'Sewa': '#7C3AED', 'Gaji': '#0284C7',
-  'Listrik & Air': '#0891B2', 'Transportasi': '#DB2777', 'Perlengkapan': '#65A30D',
+  'Bahan Baku': '#B45309', 'Produksi': '#C2410C', 'Sewa': '#7C3AED', 'Gaji': '#0E7490',
+  'Listrik & Air': '#475569', 'Transportasi': '#DB2777', 'Perlengkapan': '#65A30D',
 };
 const INCOME_CATEGORY_COLORS: Record<string, string> = {
-  'Penjualan Lain': '#059669', 'Komisi': '#0284C7', 'Refund/Retur Diterima': '#0891B2',
+  'Penjualan Lain': '#059669', 'Komisi': '#0E7490', 'Refund/Retur Diterima': '#475569',
   'Bunga Bank': '#65A30D', 'Klaim Asuransi': '#7C3AED',
 };
 
@@ -160,8 +160,8 @@ export default function BusinessAnalyticsSection({
         {
           title: 'Tren Penjualan per Channel', type: 'line', labels: data.dailyTrend.map(d => shortDate(d.date)),
           series: [
-            { name: 'Online', color: '#0284C7', values: data.dailyTrend.map(d => d.online) },
-            { name: 'Kasir', color: '#D4691E', values: data.dailyTrend.map(d => d.pos) },
+            { name: 'Online', color: '#0E7490', values: data.dailyTrend.map(d => d.online) },
+            { name: 'Kasir', color: '#1D4FE0', values: data.dailyTrend.map(d => d.pos) },
             { name: 'Konsinyasi', color: '#7C3AED', values: data.dailyTrend.map(d => d.consignment) },
           ],
         },
@@ -231,7 +231,7 @@ export default function BusinessAnalyticsSection({
       {data && (
         <div className="card p-5 flex items-center justify-between gap-4 flex-wrap" style={{ background: 'linear-gradient(135deg, var(--accent-bg), var(--surface-2))' }}>
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(212,105,30,0.15)', color: 'var(--accent)' }}>
+            <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(29,79,224,0.15)', color: 'var(--accent)' }}>
               <Wallet size={20} />
             </div>
             <div>
@@ -265,7 +265,7 @@ export default function BusinessAnalyticsSection({
             <button key={p.id} onClick={() => onPeriodChange(p.id)} disabled={loading}
               className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
               style={period === p.id
-                ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' }
+                ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' }
                 : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
               {p.label}
             </button>
@@ -299,7 +299,7 @@ export default function BusinessAnalyticsSection({
           {/* Channel stat cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {[
-              { icon: <Globe size={16} />, label: 'Penjualan Online', val: data.channels.online, color: '#0284C7', bg: '#EFF6FF' },
+              { icon: <Globe size={16} />, label: 'Penjualan Online', val: data.channels.online, color: '#0E7490', bg: '#ECFEFF' },
               { icon: <ShoppingCart size={16} />, label: 'Penjualan Kasir (POS)', val: data.channels.pos, color: 'var(--accent)', bg: 'var(--accent-bg)' },
               { icon: <Store size={16} />, label: 'Konsinyasi', val: data.channels.consignment, color: '#7C3AED', bg: '#F5F3FF' },
               { icon: <Wallet size={16} />, label: 'Total Pendapatan', val: data.channels.total, color: 'var(--success)', bg: 'var(--success-bg)' },
@@ -325,7 +325,7 @@ export default function BusinessAnalyticsSection({
                 <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Perbandingan Online vs Kasir vs Konsinyasi</p>
               </div>
               <div className="flex items-center gap-3 text-[11px]" style={{ color: 'var(--text-muted)' }}>
-                <LegendDot color="#0284C7" label="Online" />
+                <LegendDot color="#0E7490" label="Online" />
                 <LegendDot color="var(--accent)" label="Kasir" />
                 <LegendDot color="#7C3AED" label="Konsinyasi" />
               </div>
@@ -338,13 +338,13 @@ export default function BusinessAnalyticsSection({
               <div style={{ width: '100%', height: 220 }}>
                 <ResponsiveContainer>
                   <AreaChart data={data.dailyTrend} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                    <defs><linearGradient id="bizOnlineFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#0284C7" stopOpacity={0.26} /><stop offset="100%" stopColor="#0284C7" stopOpacity={0} /></linearGradient><linearGradient id="bizPosFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#D4691E" stopOpacity={0.26} /><stop offset="100%" stopColor="#D4691E" stopOpacity={0} /></linearGradient><linearGradient id="bizConsFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#7C3AED" stopOpacity={0.26} /><stop offset="100%" stopColor="#7C3AED" stopOpacity={0} /></linearGradient></defs>
+                    <defs><linearGradient id="bizOnlineFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#0E7490" stopOpacity={0.26} /><stop offset="100%" stopColor="#0E7490" stopOpacity={0} /></linearGradient><linearGradient id="bizPosFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#1D4FE0" stopOpacity={0.26} /><stop offset="100%" stopColor="#1D4FE0" stopOpacity={0} /></linearGradient><linearGradient id="bizConsFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#7C3AED" stopOpacity={0.26} /><stop offset="100%" stopColor="#7C3AED" stopOpacity={0} /></linearGradient></defs>
                     <CartesianGrid vertical={false} stroke="var(--border)" strokeDasharray="3 4" />
                     <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} minTickGap={24} tickMargin={8} />
                     <YAxis tickFormatter={compactRp} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} width={48} tickCount={5} />
                     <Tooltip content={<ChartTooltip />} cursor={{ stroke: 'var(--border)', strokeWidth: 1.5, strokeDasharray: '4 4' }} />
-                    <Area type="monotone" dataKey="online" name="Online" stackId="ch" stroke="#0284C7" fill="url(#bizOnlineFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#0284C7' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
-                    <Area type="monotone" dataKey="pos" name="Kasir" stackId="ch" stroke="#D4691E" fill="url(#bizPosFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#D4691E' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+                    <Area type="monotone" dataKey="online" name="Online" stackId="ch" stroke="#0E7490" fill="url(#bizOnlineFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#0E7490' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+                    <Area type="monotone" dataKey="pos" name="Kasir" stackId="ch" stroke="#1D4FE0" fill="url(#bizPosFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#1D4FE0' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
                     <Area type="monotone" dataKey="consignment" name="Konsinyasi" stackId="ch" stroke="#7C3AED" fill="url(#bizConsFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#7C3AED' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
                   </AreaChart>
                 </ResponsiveContainer>

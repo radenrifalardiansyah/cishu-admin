@@ -376,7 +376,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
   // ── Excel template + import (Bahan Baku) ────────────────────────────
   const downloadMaterialTemplate = async () => {
     const wb = new ExcelJS.Workbook();
-    wb.creator = 'Cemilan Teh Risma Admin';
+    wb.creator = 'Cishu Admin';
     wb.created = new Date();
     const ws = wb.addWorksheet('Template Bahan Baku');
     const colCount = MATERIAL_TEMPLATE_COLS.length;
@@ -384,7 +384,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT BAHAN BAKU — CEMILAN TEH RISMA';
+    titleCell.value = 'TEMPLATE IMPORT BAHAN BAKU — CISHU';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -503,7 +503,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
     setExportingMaterials(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Bahan Baku');
 
@@ -520,7 +520,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN STOK BAHAN BAKU — CEMILAN TEH RISMA';
+      titleCell.value = 'LAPORAN STOK BAHAN BAKU — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -597,7 +597,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `bahan-baku-cemilantehrisma-${today}.xlsx`;
+      a.download = `bahan-baku-cishu-${today}.xlsx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -640,7 +640,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `bahan-baku-cemilantehrisma-${today}.pdf`;
+      a.download = `bahan-baku-cishu-${today}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -942,7 +942,7 @@ ${pdfUrl}`.trim();
   // ── Excel template + import (Pembelian) ──────────────────────────────
   const downloadPurchaseTemplate = async () => {
     const wb = new ExcelJS.Workbook();
-    wb.creator = 'Cemilan Teh Risma Admin';
+    wb.creator = 'Cishu Admin';
     wb.created = new Date();
     const ws = wb.addWorksheet('Template Pembelian');
     const colCount = PURCHASE_TEMPLATE_COLS.length;
@@ -950,7 +950,7 @@ ${pdfUrl}`.trim();
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT PEMBELIAN BAHAN BAKU — CEMILAN TEH RISMA';
+    titleCell.value = 'TEMPLATE IMPORT PEMBELIAN BAHAN BAKU — CISHU';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -1085,7 +1085,7 @@ ${pdfUrl}`.trim();
     setExportingPurchases(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Pembelian');
 
@@ -1104,7 +1104,7 @@ ${pdfUrl}`.trim();
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN PEMBELIAN BAHAN BAKU — CEMILAN TEH RISMA';
+      titleCell.value = 'LAPORAN PEMBELIAN BAHAN BAKU — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -1186,7 +1186,7 @@ ${pdfUrl}`.trim();
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `pembelian-bahan-baku-cemilantehrisma-${today}.xlsx`;
+      a.download = `pembelian-bahan-baku-cishu-${today}.xlsx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -1238,7 +1238,7 @@ ${pdfUrl}`.trim();
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `pembelian-bahan-baku-cemilantehrisma-${today}.pdf`;
+      a.download = `pembelian-bahan-baku-cishu-${today}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -1301,7 +1301,7 @@ ${pdfUrl}`.trim();
           {SUB_TABS.map(t => (
             <button key={t.id} onClick={() => setSubTab(t.id)}
               className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition-all whitespace-nowrap flex-shrink-0"
-              style={subTab === t.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+              style={subTab === t.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
               <t.Icon size={13} /> {t.label}
             </button>
           ))}
@@ -1333,7 +1333,7 @@ ${pdfUrl}`.trim();
                   className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
                   style={{
                     height: HEADER_BTN_H,
-                    background: materialOnlyInStock ? 'linear-gradient(135deg,#E8821A,#C96018)' : 'var(--surface-2)',
+                    background: materialOnlyInStock ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)',
                     color: materialOnlyInStock ? 'white' : 'var(--text-muted)',
                   }}
                 >
@@ -1406,7 +1406,7 @@ ${pdfUrl}`.trim();
                       const rowNum = (materialSafePage - 1) * (Number.isFinite(materialPageSize) ? materialPageSize : 0) + idx + 1;
                       return (
                         <div key={m.id} ref={el => { materialRowRefs.current[m.id] = el; }} className="px-4 py-3 flex items-center gap-3"
-                          style={{ transition: 'background-color 0.6s ease', background: highlightedMaterialId === m.id ? 'var(--accent-bg)' : isSelected ? 'rgba(212,105,30,0.05)' : undefined }}>
+                          style={{ transition: 'background-color 0.6s ease', background: highlightedMaterialId === m.id ? 'var(--accent-bg)' : isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
                           <Checkbox checked={isSelected} onChange={() => toggleSelectMaterial(m.id)} />
                           <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center" style={{ color: 'var(--text-muted)' }}>
                             {rowNum}
@@ -1669,7 +1669,7 @@ ${pdfUrl}`.trim();
                         const rowNum = (purchaseSafePage - 1) * (Number.isFinite(purchasePageSize) ? purchasePageSize : 0) + idx + 1;
                         return (
                           <div key={p.id}>
-                            <div className="px-4 py-3" style={{ background: isSelected ? 'rgba(212,105,30,0.05)' : undefined, opacity: p.voided ? 0.55 : 1 }}>
+                            <div className="px-4 py-3" style={{ background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, opacity: p.voided ? 0.55 : 1 }}>
                               <div className="flex items-start gap-3">
                                 <div className="pt-0.5"><Checkbox checked={isSelected} onChange={() => toggleSelectPurchase(p.id)} /></div>
                                 <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center pt-0.5" style={{ color: 'var(--text-muted)' }}>
@@ -2140,7 +2140,7 @@ ${pdfUrl}`.trim();
                   {(['lunas', 'belum_lunas'] as const).map(s => (
                     <button key={s} type="button" onClick={() => setPurchasePaymentStatus(s)} disabled={hasPaymentsLock}
                       className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                      style={purchasePaymentStatus === s ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={purchasePaymentStatus === s ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {s === 'lunas' ? 'Lunas' : 'Belum Lunas'}
                     </button>
                   ))}

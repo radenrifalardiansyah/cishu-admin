@@ -47,7 +47,7 @@ export default function StallOwnTab({ creds, can }: { creds: string; can: (a: Ac
           {SUB_TABS.map(t => (
             <button key={t.id} onClick={() => setSub(t.id)} aria-label={t.label}
               className="flex items-center gap-1.5 px-3.5 sm:px-4 py-2 text-xs font-bold transition-all whitespace-nowrap flex-shrink-0"
-              style={sub === t.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+              style={sub === t.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
               <t.Icon size={13} /> <span className={sub === t.id ? '' : 'hidden sm:inline'}>{t.label}</span>
             </button>
           ))}

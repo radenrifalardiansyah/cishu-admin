@@ -267,7 +267,7 @@ export default function OrdersTab({ creds, highlightInvoice, highlightOrderId, o
       if (r.ok) setStoreInfo((await r.json() as { settings: StoreInfo }).settings ?? {});
     }).catch(() => {});
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  const storeName    = storeInfo.storeName?.trim() || 'Cemilan Teh Risma';
+  const storeName    = storeInfo.storeName?.trim() || 'Cishu';
   const storeAddress = [storeInfo.address, storeInfo.city].filter(Boolean).join(', ');
   const storePhone   = (storeInfo.whatsapp?.trim() || WHATSAPP_NUMBER)
     .replace(/^62/, '0').replace(/(\d{4})(\d{4})(\d+)/, '$1-$2-$3');
@@ -984,7 +984,7 @@ _${storeName}_`.trim();
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Pesanan');
 
@@ -1007,7 +1007,7 @@ _${storeName}_`.trim();
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN PESANAN — CEMILAN TEH RISMA';
+      titleCell.value = 'LAPORAN PESANAN — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -1100,7 +1100,7 @@ _${storeName}_`.trim();
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `pesanan-cemilantehrisma-${today}.xlsx`;
+      a.download = `pesanan-cishu-${today}.xlsx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -1165,7 +1165,7 @@ _${storeName}_`.trim();
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `pesanan-cemilantehrisma-${today}.pdf`;
+      a.download = `pesanan-cishu-${today}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -1180,7 +1180,7 @@ _${storeName}_`.trim();
 
   const downloadOrderTemplate = async () => {
     const wb = new ExcelJS.Workbook();
-    wb.creator = 'Cemilan Teh Risma Admin';
+    wb.creator = 'Cishu Admin';
     wb.created = new Date();
     const ws = wb.addWorksheet('Template Pesanan');
     const colCount = ORDER_TEMPLATE_COLS.length;
@@ -1188,7 +1188,7 @@ _${storeName}_`.trim();
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT DATA PESANAN — CEMILAN TEH RISMA';
+    titleCell.value = 'TEMPLATE IMPORT DATA PESANAN — CISHU';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -1365,7 +1365,7 @@ _${storeName}_`.trim();
             className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
             style={{
               height: HEADER_BTN_H,
-              background: onlyBelumLunas ? 'linear-gradient(135deg,#E8821A,#C96018)' : 'var(--surface-2)',
+              background: onlyBelumLunas ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)',
               color: onlyBelumLunas ? 'white' : 'var(--text-muted)',
             }}
           >
@@ -1379,7 +1379,7 @@ _${storeName}_`.trim();
             className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
             style={{
               height: HEADER_BTN_H,
-              background: onlyProof ? 'linear-gradient(135deg,#E8821A,#C96018)' : 'var(--surface-2)',
+              background: onlyProof ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)',
               color: onlyProof ? 'white' : 'var(--text-muted)',
             }}
           >
@@ -1552,7 +1552,7 @@ _${storeName}_`.trim();
             );
             return (
             <div key={o.id} ref={el => { rowRefs.current[o.id] = el; }}
-              style={{ transition: 'background-color 0.6s ease', backgroundColor: highlightedId === o.id ? 'var(--accent-bg)' : isSelected ? 'rgba(212,105,30,0.05)' : undefined }}>
+              style={{ transition: 'background-color 0.6s ease', backgroundColor: highlightedId === o.id ? 'var(--accent-bg)' : isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
               <div className="flex flex-col gap-2 px-4 py-3.5">
                 <div className="flex items-center gap-3">
                   <Checkbox checked={isSelected} onChange={() => toggleSelect(o.id)} />
@@ -2160,7 +2160,7 @@ _${storeName}_`.trim();
                     {(['nominal', 'percent'] as const).map(t => (
                       <button key={t} type="button" onClick={() => setEditDiscountType(t)}
                         className="px-3 py-2.5 text-xs font-bold transition-all"
-                        style={editDiscountType === t ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                        style={editDiscountType === t ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                         {t === 'nominal' ? 'Rp' : '%'}
                       </button>
                     ))}
@@ -2181,7 +2181,7 @@ _${storeName}_`.trim();
                   {(['cash', 'transfer', 'qris', 'kredit'] as const).map(m => (
                     <button key={m} type="button" onClick={() => setEditPaymentMethod(m)}
                       className="flex-1 px-2 py-2.5 text-xs font-bold transition-all"
-                      style={editPaymentMethod === m ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={editPaymentMethod === m ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {m === 'cash' ? 'Tunai' : m === 'transfer' ? 'Transfer' : m === 'qris' ? 'QRIS' : 'Kredit'}
                     </button>
                   ))}
@@ -2220,7 +2220,7 @@ _${storeName}_`.trim();
                     {(['lunas', 'belum_lunas'] as const).map(s => (
                       <button key={s} type="button" onClick={() => setEditPaymentStatus(s)}
                         className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                        style={editPaymentStatus === s ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                        style={editPaymentStatus === s ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                         {s === 'lunas' ? 'Lunas' : 'Belum Lunas'}
                       </button>
                     ))}

@@ -147,13 +147,13 @@ function TxList({
   const pName = (entry: TxEntry) => entry.productName || products.find(p => p.id === entry.productId)?.name || entry.productId;
   const pEmoji = (id: string) => products.find(p => p.id === id)?.emoji ?? '📦';
   const pImages = (id: string) => products.find(p => p.id === id)?.imageUrls;
-  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#F5F0E9';
+  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#F1F5FC';
 
   const typeBadge = (type: TxEntry['type']) => {
     if (type === 'in')       return { label: 'Masuk',    Icon: TrendingUp,     color: 'var(--success)', bg: 'var(--success-bg)' };
     if (type === 'out')      return { label: 'Keluar',   Icon: TrendingDown,   color: 'var(--danger)',  bg: 'var(--danger-bg)'  };
     if (type === 'reject')   return { label: 'Reject',   Icon: Ban,            color: 'var(--danger)',  bg: 'var(--danger-bg)'  };
-    return                          { label: 'Transfer', Icon: ArrowLeftRight, color: '#0284C7',        bg: '#EFF6FF'            };
+    return                          { label: 'Transfer', Icon: ArrowLeftRight, color: '#0E7490',        bg: '#ECFEFF'            };
   };
 
   if (loading) return (
@@ -305,16 +305,16 @@ interface ReportRow {
 
 const REPORT_STATUS_STYLE = {
   habis:   { label: 'Habis',   color: '#DC2626', bg: '#FEF2F2' },
-  rendah:  { label: 'Rendah',  color: '#A84F10', bg: '#FDF0E6' },
+  rendah:  { label: 'Rendah',  color: '#1B45C4', bg: '#EAF1FF' },
   normal:  { label: 'Normal',  color: '#15803D', bg: '#F0FDF4' },
-  open_po: { label: 'Open PO', color: '#A84F10', bg: '#FDF0E6' },
+  open_po: { label: 'Open PO', color: '#1B45C4', bg: '#EAF1FF' },
 } as const;
 
 const TX_TYPE_BADGE: Record<string, { label: string; Icon: React.ElementType; color: string; bg: string }> = {
   in:       { label: 'Masuk',    Icon: TrendingUp,     color: 'var(--success)', bg: 'var(--success-bg)' },
   out:      { label: 'Keluar',   Icon: TrendingDown,   color: 'var(--danger)',  bg: 'var(--danger-bg)'  },
   reject:   { label: 'Reject',   Icon: Ban,            color: 'var(--danger)',  bg: 'var(--danger-bg)'  },
-  transfer: { label: 'Transfer', Icon: ArrowLeftRight, color: '#0284C7',        bg: '#EFF6FF'            },
+  transfer: { label: 'Transfer', Icon: ArrowLeftRight, color: '#0E7490',        bg: '#ECFEFF'            },
 };
 const TX_TYPE_BADGE_FALLBACK = { label: 'Lainnya', Icon: ArrowLeftRight, color: 'var(--text-muted)', bg: 'var(--surface-2)' };
 function getTxBadge(type: string) {
@@ -578,7 +578,7 @@ export default function StockReportTab({
   useEffect(() => { toDataUri(storeInfo.logo).then(setLogoDataUri); }, [storeInfo.logo]);
 
   const storeHeader = {
-    name:    storeInfo.storeName?.trim() || 'Cemilan Teh Risma',
+    name:    storeInfo.storeName?.trim() || 'Cishu',
     tagline: storeInfo.storeTagline?.trim() || undefined,
     address: [storeInfo.address, storeInfo.city].filter(Boolean).join(', ') || undefined,
     phone:   storeInfo.whatsapp?.trim() || undefined,
@@ -724,7 +724,7 @@ export default function StockReportTab({
     setExportingReport(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
 
       const styleTitle = (ws: ExcelJS.Worksheet, title: string, subtitle: string, colCount: number) => {
@@ -762,7 +762,7 @@ export default function StockReportTab({
       // ── Sheet 1: Ringkasan ──
       const wsR = wb.addWorksheet('Ringkasan');
       wsR.columns = [{ key: 'a', width: 32 }, { key: 'b', width: 20 }];
-      styleTitle(wsR, 'RINGKASAN LAPORAN STOK — CEMILAN TEH RISMA', `${reportWhLabel} · Periode: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 2);
+      styleTitle(wsR, 'RINGKASAN LAPORAN STOK — CISHU', `${reportWhLabel} · Periode: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 2);
       styleHeader(wsR, 3, ['Keterangan', 'Jumlah']);
       const rRows: [string, number | string][] = [
         ['Total Nilai Stok (HPP)', reportTotalNilai], ['Total Unit Stok', reportTotalUnit],
@@ -785,7 +785,7 @@ export default function StockReportTab({
         { key: 'qty', width: 12 }, { key: 'hpp', width: 16 }, { key: 'nilai', width: 18 },
         { key: 'masuk', width: 12 }, { key: 'keluar', width: 12 }, { key: 'net', width: 12 }, { key: 'status', width: 14 },
       ];
-      styleTitle(wsD, 'DETAIL STOK PER PRODUK — CEMILAN TEH RISMA', `${reportWhLabel} · Periode mutasi: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 10);
+      styleTitle(wsD, 'DETAIL STOK PER PRODUK — CISHU', `${reportWhLabel} · Periode mutasi: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 10);
       styleHeader(wsD, 3, ['Produk', 'Kategori', 'Stok Awal', 'Stok Akhir', 'HPP', 'Nilai Stok', 'Masuk', 'Keluar', 'Net', 'Status']);
       const catLabelFor = (id?: string) => categories.find(c => c.id === id)?.label ?? (id ?? '');
       const statusLabel = { habis: 'Habis', rendah: 'Rendah', normal: 'Normal', open_po: 'Open PO' };
@@ -813,7 +813,7 @@ export default function StockReportTab({
         { key: 'tgl', width: 16 }, { key: 'tipe', width: 12 }, { key: 'produk', width: 28 },
         { key: 'lokasi', width: 30 }, { key: 'qty', width: 10 }, { key: 'ket', width: 30 },
       ];
-      styleTitle(wsM, 'RIWAYAT MUTASI STOK — CEMILAN TEH RISMA', `${reportWhLabel} · Periode: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 6);
+      styleTitle(wsM, 'RIWAYAT MUTASI STOK — CISHU', `${reportWhLabel} · Periode: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 6);
       styleHeader(wsM, 3, ['Tanggal', 'Tipe', 'Produk', 'Lokasi', 'Qty', 'Keterangan']);
       const tipeLabel = { in: 'Masuk', out: 'Keluar', reject: 'Reject', transfer: 'Transfer' };
       reportLedgerSorted.forEach((e, i) => {
@@ -949,7 +949,7 @@ export default function StockReportTab({
         {REPORT_PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => setReportPeriod(p.id)}
             className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={reportPeriod === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={reportPeriod === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}
@@ -982,9 +982,9 @@ export default function StockReportTab({
         <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
           {[
             { icon: <Wallet size={16} />, label: 'Nilai Stok (HPP)', val: formatRp(reportTotalNilai), color: 'var(--accent)' },
-            { icon: <Boxes size={16} />, label: 'Total Unit', val: reportTotalUnit, color: '#0284C7' },
+            { icon: <Boxes size={16} />, label: 'Total Unit', val: reportTotalUnit, color: '#0E7490' },
             { icon: <Package size={16} />, label: 'Jenis Produk', val: reportJenisProduk, color: 'var(--success)' },
-            { icon: <AlertTriangle size={16} />, label: 'Stok Rendah', val: reportRendahCount, color: '#A84F10' },
+            { icon: <AlertTriangle size={16} />, label: 'Stok Rendah', val: reportRendahCount, color: '#1B45C4' },
             { icon: <Ban size={16} />, label: 'Stok Habis', val: reportHabisCount, color: 'var(--danger)' },
           ].map((c, i) => (
             <div key={i} className="card p-4">
@@ -1007,7 +1007,7 @@ export default function StockReportTab({
           {[
             { icon: <TrendingUp size={16} />, label: 'Stok Masuk', val: `+${reportMasukQty}`, color: 'var(--success)' },
             { icon: <TrendingDown size={16} />, label: 'Stok Keluar', val: `–${reportKeluarQty}`, color: 'var(--danger)' },
-            { icon: <ArrowLeftRight size={16} />, label: 'Transfer', val: reportTransferCt, color: '#0284C7' },
+            { icon: <ArrowLeftRight size={16} />, label: 'Transfer', val: reportTransferCt, color: '#0E7490' },
             { icon: reportNetQty >= 0 ? <TrendingUp size={16} /> : <TrendingDown size={16} />, label: 'Net Perubahan',
               val: `${reportNetQty >= 0 ? '+' : ''}${reportNetQty}`, color: reportNetQty >= 0 ? 'var(--success)' : 'var(--danger)' },
           ].map((c, i) => (

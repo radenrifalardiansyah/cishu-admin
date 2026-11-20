@@ -24,7 +24,7 @@ const today = () => new Date().toLocaleDateString('en-CA');
 // Excel dengan gaya yang sama seperti export Supplier/Mitra: judul oranye, header, zebra, filter.
 export async function exportExcel<T>(cols: ExportCol<T>[], rows: T[], title: string, label: string, file: string) {
   const wb = new ExcelJS.Workbook();
-  wb.creator = 'Cemilan Teh Risma Admin';
+  wb.creator = 'Cishu Admin';
   wb.created = new Date();
   const ws = wb.addWorksheet(title.slice(0, 30));
   const colCount = cols.length + 1;
@@ -32,7 +32,7 @@ export async function exportExcel<T>(cols: ExportCol<T>[], rows: T[], title: str
 
   ws.mergeCells(1, 1, 1, colCount);
   const t = ws.getCell(1, 1);
-  t.value = `${title} — CEMILAN TEH RISMA`;
+  t.value = `${title} — CISHU`;
   t.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
   t.alignment = { horizontal: 'center', vertical: 'middle' };
   t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -83,7 +83,7 @@ export async function exportExcel<T>(cols: ExportCol<T>[], rows: T[], title: str
   });
 
   const buffer = await wb.xlsx.writeBuffer();
-  download(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `${file}-cemilantehrisma-${today()}.xlsx`);
+  download(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `${file}-cishu-${today()}.xlsx`);
 }
 
 export async function exportPdf<T>(cols: ExportCol<T>[], rows: T[], title: string, label: string, file: string, store: StoreHeader) {
@@ -105,5 +105,5 @@ export async function exportPdf<T>(cols: ExportCol<T>[], rows: T[], title: strin
       }}
     />,
   ).toBlob();
-  download(blob, `${file}-cemilantehrisma-${today()}.pdf`);
+  download(blob, `${file}-cishu-${today()}.pdf`);
 }

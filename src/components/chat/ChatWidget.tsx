@@ -126,7 +126,7 @@ export default function ChatWidget({ username, creds, avatar, canKick, onForceLo
           background: panelOpen ? 'var(--accent-dark)' : 'var(--accent)',
           color: '#fff', border: 'none', cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          boxShadow: panelOpen ? '0 2px 10px rgba(0,0,0,0.28)' : '0 2px 10px rgba(212,105,30,0.30)',
+          boxShadow: panelOpen ? '0 2px 10px rgba(0,0,0,0.28)' : '0 2px 10px rgba(29,79,224,0.30)',
           transition: 'background 0.2s ease, box-shadow 0.2s ease',
         }}
       >

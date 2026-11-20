@@ -70,7 +70,7 @@ function ClosingBadges({ links }: { links?: ClosingLink[] }) {
 }
 
 type WalletForm = { name: string; type: WalletDoc['type']; icon: string; color: string; initialBalance: string; bankName: string };
-const emptyForm = (): WalletForm => ({ name: '', type: 'cash', icon: 'Wallet', color: '#D4691E', initialBalance: '', bankName: '' });
+const emptyForm = (): WalletForm => ({ name: '', type: 'cash', icon: 'Wallet', color: '#1D4FE0', initialBalance: '', bankName: '' });
 
 interface MasterBankOption { name: string; bankCode?: string; logoUrl?: string }
 
@@ -317,7 +317,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Dompet');
       ws.columns = [
@@ -327,7 +327,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
 
       ws.mergeCells(1, 1, 1, 6);
       const t = ws.getCell(1, 1);
-      t.value = 'DAFTAR DOMPET — CEMILAN TEH RISMA';
+      t.value = 'DAFTAR DOMPET — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -570,7 +570,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
     setTransferExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Transfer Dompet');
       ws.columns = [
@@ -580,7 +580,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
 
       ws.mergeCells(1, 1, 1, 6);
       const t = ws.getCell(1, 1);
-      t.value = 'RIWAYAT TRANSFER ANTAR DOMPET — CEMILAN TEH RISMA';
+      t.value = 'RIWAYAT TRANSFER ANTAR DOMPET — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -785,7 +785,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
                 const isSelected = selected.has(w.id);
                 const rowNum = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + idx + 1;
                 return (
-                  <div key={w.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(212,105,30,0.05)' : undefined, opacity: w.isActive ? 1 : 0.6 }}>
+                  <div key={w.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, opacity: w.isActive ? 1 : 0.6 }}>
                     <div className="flex items-center gap-2 px-4 py-3.5">
                       <Checkbox checked={isSelected} onChange={() => toggleSelect(w.id)} />
                       <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center" style={{ color: 'var(--text-muted)' }}>
@@ -1000,7 +1000,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
                   const isSelected = transferSelected.has(t.id);
                   const rowNum = (transferSafePage - 1) * (Number.isFinite(transferPageSize) ? transferPageSize : 0) + idx + 1;
                   return (
-                    <div key={t.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(212,105,30,0.05)' : undefined }}>
+                    <div key={t.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
                       <div className="flex items-center gap-2 px-4 py-3.5">
                         <Checkbox checked={isSelected} onChange={() => toggleTransferSelect(t.id)} />
                         <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center" style={{ color: 'var(--text-muted)' }}>
@@ -1253,7 +1253,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
                   {WALLET_TYPES.map(t => (
                     <button key={t} type="button" onClick={() => setEditing({ ...editing, type: t })}
                       className="flex-1 px-2 py-2.5 text-xs font-bold transition-all"
-                      style={editing.type === t ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={editing.type === t ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {WALLET_TYPE_LABEL[t]}
                     </button>
                   ))}

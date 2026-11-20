@@ -227,7 +227,7 @@ export default function UsersTab({ creds, currentUsername, can }: UsersTabProps)
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Pengguna');
 
@@ -243,7 +243,7 @@ export default function UsersTab({ creds, currentUsername, can }: UsersTabProps)
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN PENGGUNA — CEMILAN TEH RISMA';
+      titleCell.value = 'LAPORAN PENGGUNA — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -312,7 +312,7 @@ export default function UsersTab({ creds, currentUsername, can }: UsersTabProps)
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `pengguna-cemilantehrisma-${today}.xlsx`;
+      a.download = `pengguna-cishu-${today}.xlsx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -352,7 +352,7 @@ export default function UsersTab({ creds, currentUsername, can }: UsersTabProps)
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `pengguna-cemilantehrisma-${today}.pdf`;
+      a.download = `pengguna-cishu-${today}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -465,7 +465,7 @@ export default function UsersTab({ creds, currentUsername, can }: UsersTabProps)
                 const isSelected = selected.has(u.username);
                 const rowNum     = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + idx + 1;
                 return (
-                  <div key={u.username} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(212,105,30,0.05)' : undefined, transition: 'background 0.1s' }}>
+                  <div key={u.username} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-3 px-4 py-3.5">
                       {can('delete') && (
                         <Tooltip label={self ? 'Tidak dapat memilih akun sendiri' : (isSelected ? 'Batalkan pilihan' : 'Pilih')}>

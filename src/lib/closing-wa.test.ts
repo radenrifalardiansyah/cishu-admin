@@ -33,7 +33,7 @@ const rec = (over: Partial<ClosingRecord> = {}): ClosingRecord => ({
 });
 
 const OLD = process.env.JWT_SECRET;
-beforeEach(() => { resetRateLimits(); process.env.JWT_SECRET = 'test-secret'; h.closing = rec(); h.settings = { storeName: 'Cemilan Teh Risma', whatsapp: '081234567890' }; h.lines = []; h.perm = true; });
+beforeEach(() => { resetRateLimits(); process.env.JWT_SECRET = 'test-secret'; h.closing = rec(); h.settings = { storeName: 'Cishu', whatsapp: '081234567890' }; h.lines = []; h.perm = true; });
 afterEach(() => { if (OLD === undefined) delete process.env.JWT_SECRET; else process.env.JWT_SECRET = OLD; });
 
 describe('tautan ringkas /c/[code]', () => {
@@ -106,9 +106,9 @@ describe('periodLabel', () => {
 
 describe('buildClosingWaMessage', () => {
   it('versi lengkap tanpa baris sudah ditransfer / sisa', () => {
-    const msg = buildClosingWaMessage(rec(), { storeName: 'Cemilan Teh Risma', pdfUrl: 'https://x/p?t=abc' });
+    const msg = buildClosingWaMessage(rec(), { storeName: 'Cishu', pdfUrl: 'https://x/p?t=abc' });
     expect(msg).toBe([
-      '*CLOSING HPP - Cemilan Teh Risma*',
+      '*CLOSING HPP - Cishu*',
       'Ditutup: 13 Nov 2026, 09.14 oleh superadmin',
       '',
       'Periode: 12 - 13 Nov 2026',
@@ -142,7 +142,7 @@ describe('buildClosingWaMessage', () => {
   });
   it('periode satu tanggal, fallback nama toko & pembuat', () => {
     const msg = buildClosingWaMessage(rec({ period_from: '2026-11-13', closed_by: null }), { storeName: '  ', pdfUrl: 'u' });
-    expect(msg).toContain('*CLOSING HPP - Cemilan Teh Risma*');
+    expect(msg).toContain('*CLOSING HPP - Cishu*');
     expect(msg).toContain('Periode: 13 Nov 2026');
     expect(msg).toContain('Ditutup: 13 Nov 2026, 09.14 oleh -');
   });
@@ -208,7 +208,7 @@ describe('POST /api/closings/[id]/wa', () => {
     expect(d.url).toBe(`http://admin.test/c/${signClosingShortCode(ID)}`);
     expect(d.url.length).toBeLessThan(90);
     expect(d.message).toContain(d.url);
-    expect(d.message).toContain('*CLOSING HPP - Cemilan Teh Risma*');
+    expect(d.message).toContain('*CLOSING HPP - Cishu*');
   });
   it('nomor toko kosong → 400 pesan jelas; tidak valid → 400', async () => {
     h.settings = { storeName: 'T', whatsapp: ' ' };

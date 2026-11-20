@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
   const str = (v: unknown) => (typeof v === 'string' ? v.trim() : '');
   return Response.json({
     store: {
-      name: str(s.storeName) || 'Cemilan Teh Risma',
+      name: str(s.storeName) || 'Cishu',
       address: [str(s.address), str(s.city)].filter(Boolean).join(', '),
       logo: str(s.logo),
       whatsapp: str(s.whatsapp),

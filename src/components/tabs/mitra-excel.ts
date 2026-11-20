@@ -7,7 +7,7 @@ export async function downloadMitraExcel(o: {
   body: (string | number)[][]; total: (string | number)[]; moneyCols: number[]; filePrefix: string;
 }) {
   const wb = new ExcelJS.Workbook();
-  wb.creator = 'Cemilan Teh Risma Admin';
+  wb.creator = 'Cishu Admin';
   wb.created = new Date();
   const ws = wb.addWorksheet(o.sheet);
   const colCount = o.headers.length;
@@ -57,7 +57,7 @@ export async function downloadMitraExcel(o: {
   const url = URL.createObjectURL(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
   const a = document.createElement('a');
   a.href = url;
-  a.download = `${o.filePrefix}-cemilantehrisma-${new Date().toLocaleDateString('en-CA')}.xlsx`;
+  a.download = `${o.filePrefix}-cishu-${new Date().toLocaleDateString('en-CA')}.xlsx`;
   document.body.appendChild(a); a.click(); a.remove();
   URL.revokeObjectURL(url);
 }

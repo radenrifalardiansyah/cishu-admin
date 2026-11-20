@@ -48,7 +48,7 @@ type OpnameData = { rows: OpnameReportRow[]; summary: ReturnType<typeof summariz
 interface Card { label: string; value: string; tone: 'accent' | 'success' | 'danger' | 'info' | 'neutral'; Icon: React.ElementType }
 const TONES = {
   accent: { bg: 'var(--accent-bg)', fg: 'var(--accent)' }, success: { bg: 'var(--success-bg)', fg: 'var(--success)' },
-  danger: { bg: 'var(--danger-bg)', fg: 'var(--danger)' }, info: { bg: 'var(--surface-2)', fg: '#0284C7' }, neutral: { bg: 'var(--surface-2)', fg: 'var(--text-secondary)' },
+  danger: { bg: 'var(--danger-bg)', fg: 'var(--danger)' }, info: { bg: 'var(--surface-2)', fg: '#0E7490' }, neutral: { bg: 'var(--surface-2)', fg: 'var(--text-secondary)' },
 };
 
 const META: Record<ReportKind, { title: string; Icon: React.ElementType; api: string; file: string; searchPlaceholder: string; emptyLabel: string }> = {
@@ -181,7 +181,7 @@ export default function ProcurementReportTab({ creds, kind }: { creds: string; k
     setExportingXlsx(true);
     try {
       await exportSheet({
-        sheet: meta.title.slice(0, 28), title: `${meta.title} — CEMILAN TEH RISMA (${from} s/d ${to})`,
+        sheet: meta.title.slice(0, 28), title: `${meta.title} — CISHU (${from} s/d ${to})`,
         filename: `${meta.file}-${from}-sd-${to}.xlsx`,
         columns: columns.map(c => ({ header: c.header, width: Math.max(10, Math.round(parseFloat(c.width) * 1.6)) })),
         rows: plainRows,
@@ -227,7 +227,7 @@ export default function ProcurementReportTab({ creds, kind }: { creds: string; k
       <div className="flex flex-wrap items-center gap-2">
         {PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => { setPeriod(p.id); setPage(1); }} className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={period === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={period === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}

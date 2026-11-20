@@ -33,9 +33,9 @@ describe('totp', () => {
     expect(verifyTotp(SECRET, '081 804', null, now)).not.toBeNull();
   });
   it('otpauth URL memuat rahasia dan issuer', () => {
-    const url = otpauthUrl('ABC234', 'rifal', 'Admin Teh Risma');
+    const url = otpauthUrl('ABC234', 'rifal', 'Admin Cishu');
     expect(url).toContain('secret=ABC234');
-    expect(url).toContain('issuer=Admin%20Teh%20Risma');
+    expect(url).toContain('issuer=Admin%20Cishu');
   });
 });
 

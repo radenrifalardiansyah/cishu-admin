@@ -159,7 +159,7 @@ export default function AdminFeeTab({ creds }: { creds: string }) {
   const [generating, setGenerating] = useState(false);
   const [invoices, setInvoices] = useState<InvoiceRecord[]>([]);
   const [loadingInvoices, setLoadingInvoices] = useState(true);
-  const [clientName, setClientName] = useState('Cemilan Teh Risma');
+  const [clientName, setClientName] = useState('Cishu');
   const [txnModalChannel, setTxnModalChannel] = useState<Channel | null>(null);
   const [note, setNote] = useState('');
   // Jatuh tempo default 7 hari setelah akhir periode — bisa diubah manual per invoice.
@@ -397,7 +397,7 @@ export default function AdminFeeTab({ creds }: { creds: string }) {
             style={{
               background: subTab === id ? 'var(--surface)' : 'transparent',
               color: subTab === id ? 'var(--accent)' : 'var(--text-muted)',
-              boxShadow: subTab === id ? '0 1px 4px rgba(30,16,8,0.10)' : 'none',
+              boxShadow: subTab === id ? '0 1px 4px rgba(11,22,48,0.10)' : 'none',
             }}>
             {label}
           </button>

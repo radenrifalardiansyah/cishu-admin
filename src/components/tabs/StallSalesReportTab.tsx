@@ -81,7 +81,7 @@ export default function StallSalesReportTab({ creds }: { creds: string }) {
   const cards = [
     { icon: <Receipt size={16} />, color: 'var(--accent)', bg: 'var(--accent-bg)', label: 'Omzet lapak', val: rupiah(s.revenue), sub: `${s.count} transaksi` },
     { icon: <Store size={16} />, color: '#2563EB', bg: '#E0E7FF', label: 'Bagian toko', val: rupiah(s.storeShare), sub: 'produk toko + bagian toko dari titipan − diskon' },
-    { icon: <HandCoins size={16} />, color: '#A84F10', bg: '#FDE9D2', label: 'Bagian penitip', val: rupiah(s.consignorShare), sub: s.lossCompensation > 0 ? `termasuk kompensasi kerugian ${rupiah(s.lossCompensation)}` : 'hutang ke penitip dari penjualan' },
+    { icon: <HandCoins size={16} />, color: '#1B45C4', bg: '#FDE9D2', label: 'Bagian penitip', val: rupiah(s.consignorShare), sub: s.lossCompensation > 0 ? `termasuk kompensasi kerugian ${rupiah(s.lossCompensation)}` : 'hutang ke penitip dari penjualan' },
     { icon: <TrendingUp size={16} />, color: '#059669', bg: 'rgba(5,150,105,0.12)', label: 'Laba kotor lapak', val: rupiah(s.grossProfit), sub: 'bagian toko dikurangi HPP produk toko' },
   ];
 
@@ -125,7 +125,7 @@ export default function StallSalesReportTab({ creds }: { creds: string }) {
                 <div key={d.date} className="flex items-center gap-2 text-xs">
                   <span className="w-20 flex-shrink-0" style={{ color: 'var(--text-muted)' }}>{d.date.slice(5)}</span>
                   <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ background: 'var(--surface-2)' }}>
-                    <div className="h-full rounded-full" style={{ width: `${(d.revenue / maxDaily) * 100}%`, background: 'linear-gradient(135deg,#E8821A,#C96018)' }} />
+                    <div className="h-full rounded-full" style={{ width: `${(d.revenue / maxDaily) * 100}%`, background: 'linear-gradient(135deg,#2A62F0,#1B45C4)' }} />
                   </div>
                   <span className="w-24 text-right font-semibold flex-shrink-0">{rupiah(d.revenue)}</span>
                 </div>

@@ -256,7 +256,7 @@ export default function CapitalTab({ creds }: { creds: string }) {
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Modal & Prive');
       ws.columns = [
@@ -265,7 +265,7 @@ export default function CapitalTab({ creds }: { creds: string }) {
 
       ws.mergeCells(1, 1, 1, 4);
       const t = ws.getCell(1, 1);
-      t.value = 'DAFTAR MODAL & PRIVE — CEMILAN TEH RISMA';
+      t.value = 'DAFTAR MODAL & PRIVE — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -469,7 +469,7 @@ export default function CapitalTab({ creds }: { creds: string }) {
                 const isSelected = selected.has(e.id);
                 const isModal = e.type === 'modal';
                 return (
-                  <div key={e.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(212,105,30,0.05)' : undefined, transition: 'background 0.1s' }}>
+                  <div key={e.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-2 px-4 py-3.5">
                       <Checkbox checked={isSelected} onChange={() => toggleSelect(e.id)} />
                       <div className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center" style={{ background: isModal ? 'var(--success-bg)' : 'var(--danger-bg)', color: isModal ? 'var(--success)' : 'var(--danger)' }}>
@@ -641,7 +641,7 @@ export default function CapitalTab({ creds }: { creds: string }) {
                   {(['modal', 'prive'] as const).map(t => (
                     <button key={t} type="button" onClick={() => setEditing({ ...editing, type: t })}
                       className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                      style={editing.type === t ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={editing.type === t ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {t === 'modal' ? 'Modal Masuk' : 'Prive Pemilik'}
                     </button>
                   ))}

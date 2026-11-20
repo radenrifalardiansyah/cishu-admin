@@ -119,7 +119,7 @@ export default function HistoryTab({ creds }: { creds: string }) {
         {PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => { setPeriod(p.id); resetPage(); }}
             className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={period === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={period === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}

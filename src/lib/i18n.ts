@@ -7,7 +7,7 @@ export const translations = {
       checkout: 'Checkout', cart: 'Keranjang', kontak: 'Kontak', guide: 'Panduan', credit: 'Credit', all: 'Semua',
     },
     hero: {
-      brand: 'Cemilan Teh Risma · Kota Bogor',
+      brand: 'Cishu · Kota Bogor',
       orderNow: 'Pesan Sekarang', seeAll: 'Lihat Semua Produk',
       ratingText: '4.9/5 · 9 penilaian · 23+ terjual di Shopee',
       priceFrom: 'Harga mulai', sold: '23+ Terjual',
@@ -79,7 +79,7 @@ export const translations = {
       desc: 'Keripik Kimpul / Talas Balitung super renyah dari Bogor. Gurih, bikin nagih! Tanpa pengawet, bahan pilihan, harga bersahabat.',
       navigation: 'Navigasi', flavors: 'Varian Rasa', contact: 'Kontak',
       hours: 'Setiap Hari, 08.00 – 21.00', mapsLink: 'Lihat di Google Maps →',
-      copyright: '© 2026 Cemilan Teh Risma. Semua hak dilindungi.',
+      copyright: '© 2026 Cishu. Semua hak dilindungi.',
       madeWith: 'Dibuat dengan', madeFrom: 'dari Bogor 🍟',
       links: { home: 'Beranda', products: 'Produk', checkout: 'Checkout', guide: 'Panduan' },
       categories: { keripik: 'Keripik Kimpul', mie: 'Mie Kremes', snack: 'Snack Lainnya', paket: 'Paket Hemat' },
@@ -94,7 +94,7 @@ export const translations = {
     },
     pwa: {
       title: 'Pasang di iPhone kamu!',
-      desc: 'Akses Cemilan Teh Risma seperti aplikasi, lebih cepat & mudah.',
+      desc: 'Akses Cishu seperti aplikasi, lebih cepat & mudah.',
       safariStepsTitle: 'Cara pasang (3 langkah):',
       toolbarLabel: '↑ Tap tombol ini di Safari kamu',
       step1: 'Tap tombol', step1Share: 'Bagikan', step1Suf: 'di tengah bawah layar Safari',
@@ -106,7 +106,7 @@ export const translations = {
     },
     pwaAndroid: {
       title: 'Pasang di Android kamu!',
-      desc: 'Akses Cemilan Teh Risma seperti aplikasi — lebih cepat & mudah.',
+      desc: 'Akses Cishu seperti aplikasi — lebih cepat & mudah.',
       install: 'Pasang Sekarang',
       later: 'Nanti Dulu',
     },
@@ -181,7 +181,7 @@ export const translations = {
       checkout: 'Checkout', cart: 'Cart', kontak: 'Contact', guide: 'Guide', credit: 'Credit', all: 'More',
     },
     hero: {
-      brand: 'Cemilan Teh Risma · Bogor City',
+      brand: 'Cishu · Bogor City',
       orderNow: 'Order Now', seeAll: 'See All Products',
       ratingText: '4.9/5 · 9 reviews · 23+ sold on Shopee',
       priceFrom: 'Price from', sold: '23+ Sold',
@@ -252,7 +252,7 @@ export const translations = {
       desc: 'Super crunchy Kimpul / Taro chips from Bogor. Savory, addictively delicious! No preservatives, selected ingredients, affordable price.',
       navigation: 'Navigation', flavors: 'Flavors', contact: 'Contact',
       hours: 'Every Day, 08.00 – 21.00', mapsLink: 'View on Google Maps →',
-      copyright: '© 2026 Cemilan Teh Risma. All rights reserved.',
+      copyright: '© 2026 Cishu. All rights reserved.',
       madeWith: 'Made with', madeFrom: 'from Bogor 🍟',
       links: { home: 'Home', products: 'Products', checkout: 'Checkout', guide: 'Guide' },
       categories: { keripik: 'Keripik Kimpul', mie: 'Mie Kremes', snack: 'Other Snacks', paket: 'Bundle Pack' },
@@ -267,7 +267,7 @@ export const translations = {
     },
     pwa: {
       title: 'Install on your iPhone!',
-      desc: 'Access Cemilan Teh Risma like an app, faster & easier.',
+      desc: 'Access Cishu like an app, faster & easier.',
       safariStepsTitle: 'How to install (3 steps):',
       toolbarLabel: '↑ Tap this button in your Safari',
       step1: 'Tap the', step1Share: 'Share', step1Suf: 'button at the bottom center of Safari',
@@ -279,7 +279,7 @@ export const translations = {
     },
     pwaAndroid: {
       title: 'Install on your Android!',
-      desc: 'Access Cemilan Teh Risma like an app — faster & easier.',
+      desc: 'Access Cishu like an app — faster & easier.',
       install: 'Install Now',
       later: 'Maybe Later',
     },

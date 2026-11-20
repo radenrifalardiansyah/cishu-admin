@@ -29,7 +29,7 @@ function build(from: string, to: string) {
   }).map(s => ({ ...s, code: 'MTR001' }));
 }
 
-const store = { name: 'Cemilan Teh Risma', tagline: 'Camilan khas rumahan', address: 'Jl. Contoh No. 12, Bandung', phone: '081234567890' } as never;
+const store = { name: 'Cishu', tagline: 'Camilan khas rumahan', address: 'Jl. Contoh No. 12, Bandung', phone: '081234567890' } as never;
 
 describe('MitraDailyReportPDF', () => {
   it('merender banyak mitra (ringkasan + detail multi-hari + mitra kosong) menjadi PDF valid', async () => {

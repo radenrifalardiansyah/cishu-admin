@@ -57,7 +57,7 @@ async function getGoogleAccessToken(): Promise<string> {
 // only ever logs in by username (see src/app/page.tsx's login form), so this derives a stable,
 // deterministic address per username — never needs a Firestore lookup to resolve.
 export function deriveLoginEmail(username: string): string {
-  const projectId = getServiceAccount().project_id || 'cemilantehrisma';
+  const projectId = getServiceAccount().project_id || 'cishu-admin';
   return `${username}@${projectId}.local`;
 }
 

@@ -27,7 +27,7 @@ export async function downloadTemplate(opts: {
   textKeys?: string[];
 }) {
   const wb = new ExcelJS.Workbook();
-  wb.creator = 'Cemilan Teh Risma Admin';
+  wb.creator = 'Cishu Admin';
   wb.created = new Date();
   const ws = wb.addWorksheet(opts.sheet);
   const n = opts.cols.length;

@@ -217,7 +217,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
     try {
       const ExcelJS = (await import('exceljs')).default;
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const fill = (argb: string) => ({ type: 'pattern' as const, pattern: 'solid' as const, fgColor: { argb } });
       const border = { top: { style: 'thin' as const, color: { argb: 'FFE5E7EB' } }, bottom: { style: 'thin' as const, color: { argb: 'FFE5E7EB' } }, left: { style: 'thin' as const, color: { argb: 'FFE5E7EB' } }, right: { style: 'thin' as const, color: { argb: 'FFE5E7EB' } } };
@@ -378,7 +378,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
         {PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => { setPeriod(p.id); resetPage(); }}
             className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={period === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={period === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}
@@ -411,7 +411,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
           <div className="flex items-center gap-2 sm:justify-end flex-shrink-0">
             <button onClick={() => { setOnlyActivity(v => !v); resetPage(); }}
               className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
-              style={{ height: HEADER_BTN_H, background: onlyActivity ? 'linear-gradient(135deg,#E8821A,#C96018)' : 'var(--surface-2)', color: onlyActivity ? 'white' : 'var(--text-muted)' }}>
+              style={{ height: HEADER_BTN_H, background: onlyActivity ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)', color: onlyActivity ? 'white' : 'var(--text-muted)' }}>
               <CalendarCheck size={14} /> <span className="hidden sm:inline">Ada Aktivitas</span>
             </button>
             <Tooltip label="Export Excel">
@@ -484,7 +484,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
                     const td = 'px-2.5 py-2.5 text-xs tabular text-right whitespace-nowrap';
                     const dash = (n: number) => (n ? n : '-');
                     return (
-                      <tr key={s.locationId} style={{ borderTop: '1px solid var(--border-2)', background: isSelected ? 'rgba(212,105,30,0.05)' : undefined, opacity: s.isActive ? 1 : 0.75 }}>
+                      <tr key={s.locationId} style={{ borderTop: '1px solid var(--border-2)', background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, opacity: s.isActive ? 1 : 0.75 }}>
                         <td className="px-2.5 py-2.5 text-xs font-bold tabular" style={{ color: 'var(--text-muted)' }}>{num}</td>
                         <td className="px-1 py-2.5"><Checkbox checked={isSelected} onChange={() => toggleSelect(s.locationId)} /></td>
                         <td className="px-2.5 py-2.5">

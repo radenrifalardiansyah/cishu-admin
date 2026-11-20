@@ -8,7 +8,7 @@ import { invalidQtyMessage } from '@/lib/validate-items';
 // /api/invoice/<no>?t=<token>). Dulu Kasir memanggil endpoint publik tanpa autentikasi di
 // storefront; sekarang ditulis dari sini (butuh izin Kasir) dengan nomor yang dijamin unik dan
 // token acak di link. Basis data `invoices` dipakai bersama kedua aplikasi.
-const STOREFRONT = (process.env.NEXT_PUBLIC_API_URL ?? 'https://cemilantehrisma.vercel.app').replace(/\/$/, '');
+const STOREFRONT = (process.env.NEXT_PUBLIC_API_URL ?? 'https://cishu.vercel.app').replace(/\/$/, '');
 
 interface InvoiceBody {
   invoiceNo?: string; date?: string; customerName?: string; customerPhone?: string;

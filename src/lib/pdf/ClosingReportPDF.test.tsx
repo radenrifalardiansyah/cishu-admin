@@ -6,7 +6,7 @@ import ClosingReportPDF from './ClosingReportPDF';
 import { closingToPdfData, draftToPdfData, type ClosingRecord } from './closing-pdf-data';
 import type { ClosingLine } from '@/lib/closing';
 
-const store = { name: 'Cemilan Teh Risma', tagline: 'Camilan khas rumahan', address: 'Jl. Contoh No. 12, Bandung', phone: '081234567890' };
+const store = { name: 'Cishu', tagline: 'Camilan khas rumahan', address: 'Jl. Contoh No. 12, Bandung', phone: '081234567890' };
 
 const mk = (i: number, paid: boolean): ClosingLine => ({
   key: `order:${i}`, kind: i % 5 === 0 ? 'recap' : 'order', invoiceNo: i % 5 === 0 ? 'Rekap Mitra' : `INV-2026-${String(i).padStart(4, '0')}`,

@@ -54,9 +54,9 @@ export default function LoginApprovalScreen({ requestId, deviceLabel, onApproved
   }, [requestId]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 lg:p-8" style={{ background: 'var(--ground)' }}>
-      <div className="relative w-full rounded-[28px] overflow-hidden p-8 lg:p-10 text-center"
-        style={{ maxWidth: 420, background: 'var(--surface)', boxShadow: '0 24px 70px -20px rgba(30,16,8,0.35), 0 4px 18px rgba(30,16,8,0.08)' }}>
+    <div className="login-screen min-h-screen flex items-center justify-center p-4 lg:p-8">
+      <div className="login-card login-card-shadow relative w-full rounded-[28px] overflow-hidden p-8 lg:p-10 text-center"
+        style={{ maxWidth: 420, background: 'var(--surface)' }} role="status" aria-live="polite">
         <div className="flex flex-col items-center gap-4">
           <div className="flex items-center justify-center rounded-2xl relative" style={{ width: 56, height: 56, background: 'var(--accent-bg)', color: 'var(--accent)' }}>
             <ShieldCheck size={24} />

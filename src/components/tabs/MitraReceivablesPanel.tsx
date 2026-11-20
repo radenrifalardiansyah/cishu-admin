@@ -106,7 +106,7 @@ export default function MitraReceivablesPanel({ creds, canEdit, onChanged }: {
     try {
       const { body, total } = buildReceivableExcelRows(filteredItems, formatDueDate);
       await downloadMitraExcel({
-        sheet: 'Piutang Mitra', title: 'PIUTANG MITRA — CEMILAN TEH RISMA',
+        sheet: 'Piutang Mitra', title: 'PIUTANG MITRA — CISHU',
         subtitle: `${filteredItems.length} rekap dari ${mitras.length} mitra (sesuai filter) · Diexport ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}`,
         headers: RECEIVABLE_EXCEL_HEADERS, body, total, moneyCols: [4, 5, 9], filePrefix: 'piutang-mitra',
       });
@@ -173,7 +173,7 @@ export default function MitraReceivablesPanel({ creds, canEdit, onChanged }: {
         {SECTIONS.map(t => (
           <button key={t.id} onClick={() => setSection(t.id)} aria-pressed={section === t.id}
             className="px-4 py-2 text-xs font-bold transition-all whitespace-nowrap flex-shrink-0"
-            style={section === t.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+            style={section === t.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
             {t.label}
           </button>
         ))}

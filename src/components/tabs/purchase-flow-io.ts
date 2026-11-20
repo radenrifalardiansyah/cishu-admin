@@ -34,7 +34,7 @@ export async function exportSheet(opts: {
   columns: { header: string; width: number }[]; rows: (string | number)[][];
 }) {
   const wb = new ExcelJS.Workbook();
-  wb.creator = 'Cemilan Teh Risma Admin';
+  wb.creator = 'Cishu Admin';
   wb.created = new Date();
   const ws = wb.addWorksheet(opts.sheet);
   const n = opts.columns.length;
@@ -82,14 +82,14 @@ function detectPoColumn(header: string): PoKey | null {
 
 export async function downloadPoTemplate(materialNames: string[], supplierName: string | undefined, today: string) {
   const wb = new ExcelJS.Workbook();
-  wb.creator = 'Cemilan Teh Risma Admin';
+  wb.creator = 'Cishu Admin';
   wb.created = new Date();
   const ws = wb.addWorksheet('Template PO');
   const n = PO_COLS.length;
   ws.columns = PO_COLS.map(c => ({ key: c.key, width: c.width }));
   ws.mergeCells(1, 1, 1, n);
   const t = ws.getCell(1, 1);
-  t.value = 'TEMPLATE IMPOR PURCHASE ORDER BAHAN BAKU — CEMILAN TEH RISMA';
+  t.value = 'TEMPLATE IMPOR PURCHASE ORDER BAHAN BAKU — CISHU';
   t.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
   t.alignment = { horizontal: 'center', vertical: 'middle' };
   t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: ORANGE_DARK } };

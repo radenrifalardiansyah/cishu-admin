@@ -34,7 +34,7 @@ import { formatRp } from '@/lib/format';
 // Palet kategorikal 4-slot, urutan tetap (bukan berdasar urutan seleksi) — supaya produk yang
 // tetap tampil tidak berganti warna saat produk lain di-toggle. Sudah divalidasi lolos cek CVD
 // adjacent DAN all-pairs (light & dark) via dataviz skill's validate_palette.js.
-const TREND_COLORS = ['#0284C7', '#D4691E', '#7C3AED', '#DB2777'];
+const TREND_COLORS = ['#0E7490', '#1D4FE0', '#7C3AED', '#DB2777'];
 
 const formatQty = (n: number) => new Intl.NumberFormat('id-ID').format(n);
 // HPP per pcs = total HPP ÷ qty berbayar (qty gratis tidak dihitung, HPP-nya juga tidak masuk Total HPP).
@@ -133,7 +133,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
   useEffect(() => { toDataUri(storeInfo.logo).then(setLogoDataUri); }, [storeInfo.logo]);
 
   const storeHeader = {
-    name:    storeInfo.storeName?.trim() || 'Cemilan Teh Risma',
+    name:    storeInfo.storeName?.trim() || 'Cishu',
     tagline: storeInfo.storeTagline?.trim() || undefined,
     address: [storeInfo.address, storeInfo.city].filter(Boolean).join(', ') || undefined,
     phone:   storeInfo.whatsapp?.trim() || undefined,
@@ -196,7 +196,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
 
       const styleTitle = (ws: ExcelJS.Worksheet, title: string, subtitle: string, colCount: number) => {
@@ -238,7 +238,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
         { key: 'hppPcs', width: 14 }, { key: 'hpp', width: 18 }, { key: 'laba', width: 18 },
         { key: 'gratis', width: 12 }, { key: 'hppGratis', width: 18 },
       ];
-      styleTitle(ws, 'LAPORAN PRODUK TERJUAL — CEMILAN TEH RISMA', `Periode: ${periodLabel} (${from} s/d ${to})`, 12);
+      styleTitle(ws, 'LAPORAN PRODUK TERJUAL — CISHU', `Periode: ${periodLabel} (${from} s/d ${to})`, 12);
       styleHeader(ws, 3, ['Produk', 'Kategori', 'Kasir', 'Online', 'Konsinyasi', 'Total Qty', 'Omzet', 'HPP/pcs', 'Total HPP', 'Laba Kotor', 'Qty Gratis', 'HPP Gratis']);
       displayRows.forEach((p, i) => {
         const rowNum = 4 + i;
@@ -319,7 +319,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
     setExportingTrend(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Tren Harian');
       const colCount = trendProducts.length + 2;
@@ -327,7 +327,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
 
       ws.mergeCells(1, 1, 1, colCount);
       const t = ws.getCell(1, 1);
-      t.value = 'TREN HARIAN PRODUK TERLARIS — CEMILAN TEH RISMA';
+      t.value = 'TREN HARIAN PRODUK TERLARIS — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -475,7 +475,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
         {PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => { setPeriod(p.id); setPage(1); }}
             className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={period === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={period === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}
@@ -507,7 +507,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
               </div>
             </div>
             <div className="card p-4 flex items-center gap-3" style={{ background: 'var(--accent-bg)' }}>
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(212,105,30,0.15)', color: 'var(--accent)' }}>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(29,79,224,0.15)', color: 'var(--accent)' }}>
                 <TrendingUp size={16} />
               </div>
               <div className="min-w-0">
@@ -516,11 +516,11 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
               </div>
             </div>
             <div className="card p-4 flex items-center gap-3" style={{ background: 'var(--surface-2)' }}>
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(2,132,199,0.15)', color: '#0284C7' }}>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(2,132,199,0.15)', color: '#0E7490' }}>
                 <Package size={16} />
               </div>
               <div className="min-w-0">
-                <p className="text-lg font-extrabold tabular leading-none truncate" style={{ color: '#0284C7' }}>{products.length}</p>
+                <p className="text-lg font-extrabold tabular leading-none truncate" style={{ color: '#0E7490' }}>{products.length}</p>
                 <p className="text-[11px] font-medium mt-1" style={{ color: 'var(--text-muted)' }}>Jenis Produk Terjual</p>
               </div>
             </div>
@@ -679,7 +679,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
                         <tr key={p.productId || p.name} style={{ borderBottom: '1px solid var(--border-2)', background: i % 2 === 0 ? 'var(--surface)' : 'transparent' }}>
                           <td className="px-3 py-2.5" style={{ color: 'var(--text-primary)' }}>
                             <div className="flex items-center gap-2.5 max-w-[260px]">
-                              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm relative overflow-hidden" style={{ background: `${meta?.bgColor ?? '#F5F0E9'}22` }}>
+                              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm relative overflow-hidden" style={{ background: `${meta?.bgColor ?? '#F1F5FC'}22` }}>
                                 {meta?.imageUrls?.[0]
                                   ? <Image src={meta.imageUrls[0]} alt={p.name} fill className="object-contain" sizes="32px" unoptimized />
                                   : (meta?.emoji ?? '📦')}
@@ -728,7 +728,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
                 const meta = productMeta.get(p.productId);
                 return (
                   <div key={p.productId || p.name} className="card overflow-hidden flex flex-col">
-                    <div className="relative w-full aspect-square flex items-center justify-center text-4xl" style={{ background: `${meta?.bgColor ?? '#F5F0E9'}22` }}>
+                    <div className="relative w-full aspect-square flex items-center justify-center text-4xl" style={{ background: `${meta?.bgColor ?? '#F1F5FC'}22` }}>
                       {meta?.imageUrls?.[0]
                         ? <Image src={meta.imageUrls[0]} alt={p.name} fill className="object-contain" sizes="(max-width: 640px) 50vw, 200px" unoptimized />
                         : (meta?.emoji ?? '📦')}

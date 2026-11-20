@@ -92,9 +92,9 @@ export default function Tooltip({ label, children, side = 'bottom' }: TooltipPro
             transform: `translateY(${visible ? 0 : placement === 'top' ? 4 : -4}px) scale(${visible ? 1 : 0.92})`,
             transition: 'opacity 0.16s cubic-bezier(0.4,0,0.2,1), transform 0.16s cubic-bezier(0.4,0,0.2,1)',
             transformOrigin: placement === 'top' ? 'bottom center' : 'top center',
-            background: '#1E1008',
+            background: '#0B1630',
             color: '#F5E6D3',
-            boxShadow: '0 6px 18px rgba(30,16,8,0.30)',
+            boxShadow: '0 6px 18px rgba(11,22,48,0.30)',
           }}
         >
           {label}
@@ -108,7 +108,7 @@ export default function Tooltip({ label, children, side = 'bottom' }: TooltipPro
               height: 0,
               borderLeft: '5px solid transparent',
               borderRight: '5px solid transparent',
-              [placement === 'top' ? 'borderTop' : 'borderBottom']: '5px solid #1E1008',
+              [placement === 'top' ? 'borderTop' : 'borderBottom']: '5px solid #0B1630',
             }}
           />
         </span>,

@@ -30,7 +30,7 @@ export default function AdminSplashScreen() {
   }, []);
 
   if (visible === null) {
-    return <div className="fixed inset-0 z-[999]" style={{ background: '#1C1917' }} />;
+    return <div className="fixed inset-0 z-[999]" style={{ background: '#0A1330' }} />;
   }
 
   return (
@@ -41,12 +41,12 @@ export default function AdminSplashScreen() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
           className="fixed inset-0 z-[999] flex flex-col items-center justify-center"
-          style={{ background: '#1C1917' }}
+          style={{ background: '#0A1330' }}
         >
           {/* Logo — sudah tampil di splash native Android, jadi di sini diam saja (tidak animasi ulang) supaya menyatu, tidak terasa "muncul dua kali" */}
           <div
             className="relative w-24 h-24 rounded-2xl overflow-hidden shadow-2xl mb-6"
-            style={{ border: '2px solid rgba(146,64,14,0.6)' }}
+            style={{ border: '2px solid rgba(96,145,255,0.55)' }}
           >
             <Image src={logo} alt="Admin Panel" fill className="object-cover" priority />
           </div>
@@ -57,7 +57,7 @@ export default function AdminSplashScreen() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.4 }}
             className="mb-1 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
-            style={{ background: 'rgba(146,64,14,0.3)', color: '#FCD34D' }}
+            style={{ background: 'rgba(42,98,240,0.28)', color: '#9DBBFF' }}
           >
             Admin Panel
           </motion.div>
@@ -69,10 +69,10 @@ export default function AdminSplashScreen() {
             transition={{ delay: 0.35, duration: 0.45 }}
             className="text-center mt-2"
           >
-            <p className="font-display text-2xl font-bold" style={{ color: '#FEF3C7' }}>
-              Cemilan Teh Risma
+            <p className="font-display text-2xl font-bold" style={{ color: '#EAF1FF' }}>
+              Cishu
             </p>
-            <p className="text-sm mt-1" style={{ color: 'rgba(253,230,138,0.5)' }}>
+            <p className="text-sm mt-1" style={{ color: 'rgba(201,214,242,0.6)' }}>
               Dashboard Analytics
             </p>
           </motion.div>

@@ -273,7 +273,7 @@ function TransferModal({
       <span className="modal-handle" />
       <div className="modal-header">
         <div className="modal-header-left">
-          <div className="modal-icon" style={{ background: '#EFF6FF', color: '#0284C7' }}>
+          <div className="modal-icon" style={{ background: '#ECFEFF', color: '#0E7490' }}>
             <ArrowLeftRight size={17} />
           </div>
           <div>
@@ -324,7 +324,7 @@ function TransferModal({
           Batal
         </button>
         <button onClick={onSubmit} disabled={submitting || !canSubmit}
-          className="btn-primary" style={{ flex: 2, justifyContent: 'center', padding: '10px 0', background: 'linear-gradient(135deg,#0284C7,#0369A1)' }}>
+          className="btn-primary" style={{ flex: 2, justifyContent: 'center', padding: '10px 0', background: 'linear-gradient(135deg,#0E7490,#0369A1)' }}>
           {submitting ? <Loader2 size={14} className="animate-spin" /> : <ArrowLeftRight size={14} />}
           {submitting ? 'Memproses…' : 'Proses Transfer'}
         </button>
@@ -350,13 +350,13 @@ function TxList({
   const pName = (entry: TxEntry) => entry.productName || products.find(p => p.id === entry.productId)?.name || entry.productId;
   const pEmoji = (id: string) => products.find(p => p.id === id)?.emoji ?? '📦';
   const pImages = (id: string) => products.find(p => p.id === id)?.imageUrls;
-  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#F5F0E9';
+  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#F1F5FC';
 
   const typeBadge = (type: TxEntry['type']) => {
     if (type === 'in')       return { label: 'Masuk',    Icon: TrendingUp,     color: 'var(--success)', bg: 'var(--success-bg)' };
     if (type === 'out')      return { label: 'Keluar',   Icon: TrendingDown,   color: 'var(--danger)',  bg: 'var(--danger-bg)'  };
     if (type === 'reject')   return { label: 'Reject',   Icon: Ban,            color: 'var(--danger)',  bg: 'var(--danger-bg)'  };
-    return                          { label: 'Transfer', Icon: ArrowLeftRight, color: '#0284C7',        bg: '#EFF6FF'            };
+    return                          { label: 'Transfer', Icon: ArrowLeftRight, color: '#0E7490',        bg: '#ECFEFF'            };
   };
 
   if (loading) return (
@@ -880,8 +880,8 @@ export default function StockTab({
               {[
                 { icon: <Warehouse   size={16} />, label: 'Total Gudang',        val: warehouses.length, color: 'var(--accent)' },
                 { icon: <Package     size={16} />, label: 'Aktif',               val: activeWarehouseCount, color: 'var(--success)' },
-                { icon: <TrendingUp  size={16} />, label: 'Total Qty Gudang',    val: totalQtyAll,        color: '#0284C7' },
-                { icon: <Clock       size={16} />, label: 'Item Open PO',        val: poProducts.length,  color: '#A84F10' },
+                { icon: <TrendingUp  size={16} />, label: 'Total Qty Gudang',    val: totalQtyAll,        color: '#0E7490' },
+                { icon: <Clock       size={16} />, label: 'Item Open PO',        val: poProducts.length,  color: '#1B45C4' },
               ].map((c, i) => (
                 <div key={i} className="card p-4 flex items-center gap-3">
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -981,7 +981,7 @@ export default function StockTab({
               <div className="mt-8">
                 <div className="flex items-center gap-2.5 mb-3">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: '#FDF0E6', color: '#A84F10' }}>
+                    style={{ background: '#EAF1FF', color: '#1B45C4' }}>
                     <Clock size={15} />
                   </div>
                   <div>
@@ -1072,7 +1072,7 @@ export default function StockTab({
                 { icon: <Package      size={16} />, label: 'Jenis Produk', val: mergedStocks.length,                        color: 'var(--accent)'  },
                 { icon: <TrendingUp   size={16} />, label: 'Total Unit',   val: stocks.reduce((s, x) => s + x.stockQty, 0), color: 'var(--success)' },
                 { icon: <TrendingDown size={16} />, label: 'Stok Rendah',  val: stocks.filter(x => x.stockQty < 10).length, color: 'var(--danger)'  },
-                { icon: <Clock        size={16} />, label: 'Item Open PO', val: poProducts.length,                          color: '#A84F10'        },
+                { icon: <Clock        size={16} />, label: 'Item Open PO', val: poProducts.length,                          color: '#1B45C4'        },
               ].map((c, i) => (
                 <div key={i} className="card p-4">
                   <div className="w-8 h-8 rounded-xl flex items-center justify-center mb-3"
@@ -1124,13 +1124,13 @@ export default function StockTab({
                         const prod    = products.find(p => p.id === s.productId);
                         const hasImg  = !!prod?.imageUrls?.length;
                         const emoji   = prod?.emoji   ?? '📦';
-                        const bgColor = prod?.bgColor ?? '#F5F0E9';
+                        const bgColor = prod?.bgColor ?? '#F1F5FC';
                         const qty     = s.stockQty;
                         const isPO    = poIds.has(s.productId);
                         const qtyStyle = qty === 0
                           ? { bg: '#FEF2F2', color: '#DC2626', border: '#FECACA' }
                           : qty < 10
-                            ? { bg: '#FDF0E6', color: '#A84F10', border: 'rgba(212,105,30,0.25)' }
+                            ? { bg: '#EAF1FF', color: '#1B45C4', border: 'rgba(29,79,224,0.25)' }
                             : { bg: '#F0FDF4', color: '#15803D', border: '#D1FAE5' };
                         return (
                           <div key={s.productId} className="card overflow-hidden flex flex-col select-none">
@@ -1318,7 +1318,7 @@ export default function StockTab({
                   </button>
                 </Tooltip>
                 {transferTx.length > 0 && <ViewToggle mode={historyView} onChange={setHistoryView} height={HEADER_BTN_H} />}
-                <button onClick={openTransferModal} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H, background: 'linear-gradient(135deg,#0284C7,#0369A1)' }}>
+                <button onClick={openTransferModal} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H, background: 'linear-gradient(135deg,#0E7490,#0369A1)' }}>
                   <Plus size={13} /> <span className="hidden sm:inline">Tambah Transfer</span>
                 </button>
               </div>

@@ -11,7 +11,7 @@ import path from 'node:path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
-const PROD_REF = 'ylepyjyzxcchcvucvsyq';
+const PROD_REF = 'jqypicpriuipwzmcryse';
 const STAGING_REF = 'cisazsayvrxgnhzrnihm';
 const PG_BIN = '/usr/local/opt/postgresql@17/bin';
 const DUMP_FILE = process.env.SCHEMA_FILE || path.join(ROOT, '.staging-schema.sql');

@@ -1,6 +1,6 @@
 import { unstable_cache } from 'next/cache';
 import { getSettings } from '@/lib/settings-pg';
-import { ADMIN_APP_NAME, BRAND_NAME, THEME_COLOR, THEME_BACKGROUND_COLOR } from '@/lib/branding';
+import { ADMIN_APP_NAME, BRAND_NAME, ADMIN_THEME_COLOR, ADMIN_THEME_BACKGROUND_COLOR } from '@/lib/branding';
 
 interface SettingsDoc {
   storeName?: string;
@@ -23,8 +23,8 @@ export interface AdminBranding {
 const DEFAULT_ADMIN_BRANDING: AdminBranding = {
   appName: ADMIN_APP_NAME,
   storeName: BRAND_NAME,
-  themeColor: THEME_COLOR,
-  themeBackgroundColor: THEME_BACKGROUND_COLOR,
+  themeColor: ADMIN_THEME_COLOR,
+  themeBackgroundColor: ADMIN_THEME_BACKGROUND_COLOR,
 };
 
 export const getCachedAdminBranding = unstable_cache(
@@ -34,8 +34,8 @@ export const getCachedAdminBranding = unstable_cache(
       return {
         appName: s.adminAppName || ADMIN_APP_NAME,
         storeName: s.storeName || BRAND_NAME,
-        themeColor: s.adminThemeColor || THEME_COLOR,
-        themeBackgroundColor: s.adminThemeBackgroundColor || THEME_BACKGROUND_COLOR,
+        themeColor: s.adminThemeColor || ADMIN_THEME_COLOR,
+        themeBackgroundColor: s.adminThemeBackgroundColor || ADMIN_THEME_BACKGROUND_COLOR,
       };
     } catch (err) {
       // Fail open with static defaults — a Firestore outage/quota issue must never

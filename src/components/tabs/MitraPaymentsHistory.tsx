@@ -89,7 +89,7 @@ export default function MitraPaymentsHistory({ creds, reloadKey }: { creds: stri
       const { body, total } = buildMitraPaymentExcelRows(filtered, formatDueDate);
       const period = from || to ? `${from ? formatDueDate(from) : 'awal'} s/d ${to ? formatDueDate(to) : 'sekarang'}` : 'semua tanggal';
       await downloadMitraExcel({
-        sheet: 'Pembayaran Mitra', title: 'RIWAYAT PEMBAYARAN MITRA — CEMILAN TEH RISMA',
+        sheet: 'Pembayaran Mitra', title: 'RIWAYAT PEMBAYARAN MITRA — CISHU',
         subtitle: `${filtered.length} baris (sesuai filter, ${period}) · Diexport ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}`,
         headers: MITRA_PAYMENT_EXCEL_HEADERS, body, total, moneyCols: [MITRA_PAYMENT_EXCEL_HEADERS.length], filePrefix: 'pembayaran-mitra',
       });

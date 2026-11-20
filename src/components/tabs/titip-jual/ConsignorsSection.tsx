@@ -83,7 +83,7 @@ export default function ConsignorsSection({ creds, data, reload, can }: SectionP
 
   const importer = can('create') ? {
     onTemplate: () => downloadTemplate({
-      sheet: 'Template Penitip', title: 'TEMPLATE IMPORT DATA PENITIP — CEMILAN TEH RISMA', file: 'template-penitip.xlsx',
+      sheet: 'Template Penitip', title: 'TEMPLATE IMPORT DATA PENITIP — CISHU', file: 'template-penitip.xlsx',
       note: 'PETUNJUK: Kolom bertanda (*) wajib diisi. Jangan mengubah judul kolom di baris 3; isi data mulai baris 4, satu penitip per baris. '
         + 'Skema: isi "Nominal" (harga setor tetap per unit, nilai = rupiah) atau "Komisi" (persen untuk kita, nilai = persen). Kosong = belum ditentukan (skema wajib diisi di setiap produk penitip ini). '
         + 'Penitip dengan nama yang sudah ada dilewati.',

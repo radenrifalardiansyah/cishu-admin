@@ -5,7 +5,7 @@ import { dayLabel, type ClosingRecord } from '@/lib/pdf/closing-pdf-data';
 
 // Kirim WA Closing HPP: pembentuk pesan + token tautan PDF publik. Murni (tanpa DB/HTTP) supaya bisa diuji.
 
-export const DEFAULT_STORE_NAME = 'Cemilan Teh Risma';
+export const DEFAULT_STORE_NAME = 'Cishu';
 
 // ── Token tautan PDF publik ─────────────────────────────────────────────────
 // HMAC-SHA256(JWT_SECRET, `closing-pdf:${id}`) base64url. Rahasia = JWT_SECRET yang sudah ada (tidak ada env baru);

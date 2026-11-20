@@ -224,7 +224,7 @@ export default function ProductsTab({ creds }: { creds: string }) {
   // ── Excel template + import ────────────────────────────────────────
   const downloadProductTemplate = async () => {
     const wb = new ExcelJS.Workbook();
-    wb.creator = 'Cemilan Teh Risma Admin';
+    wb.creator = 'Cishu Admin';
     wb.created = new Date();
     const ws = wb.addWorksheet('Template Produk');
     const colCount = PRODUCT_TEMPLATE_COLS.length;
@@ -232,7 +232,7 @@ export default function ProductsTab({ creds }: { creds: string }) {
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT DATA PRODUK — CEMILAN TEH RISMA';
+    titleCell.value = 'TEMPLATE IMPORT DATA PRODUK — CISHU';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -545,7 +545,7 @@ export default function ProductsTab({ creds }: { creds: string }) {
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
 
       const ws = wb.addWorksheet('Produk');
@@ -571,7 +571,7 @@ export default function ProductsTab({ creds }: { creds: string }) {
       // ── Judul laporan ──
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN PRODUK — CEMILAN TEH RISMA';
+      titleCell.value = 'LAPORAN PRODUK — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -687,7 +687,7 @@ export default function ProductsTab({ creds }: { creds: string }) {
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `produk-cemilantehrisma-${today}.xlsx`;
+      a.download = `produk-cishu-${today}.xlsx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -748,7 +748,7 @@ export default function ProductsTab({ creds }: { creds: string }) {
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `produk-cemilantehrisma-${today}.pdf`;
+      a.download = `produk-cishu-${today}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -957,7 +957,7 @@ export default function ProductsTab({ creds }: { creds: string }) {
                       <div key={p.id}
                         style={{
                           borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined,
-                          background: isSelected ? 'rgba(212,105,30,0.05)' : undefined,
+                          background: isSelected ? 'rgba(29,79,224,0.05)' : undefined,
                           transition: 'background 0.1s',
                         }}>
                         <div className="flex items-center gap-2 px-4 py-3.5">

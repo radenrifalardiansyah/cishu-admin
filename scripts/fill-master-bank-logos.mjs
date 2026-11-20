@@ -18,7 +18,7 @@ import postgres from 'postgres';
 import sharp from 'sharp';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const UA = 'CemilanTehRismaAdminBot/1.0 (internal business tool; logo lookup for payment bank picker)';
+const UA = 'CishuAdminBot/1.0 (internal business tool; logo lookup for payment bank picker)';
 
 function loadEnvLocal() {
   const envPath = path.join(__dirname, '..', '.env.local');

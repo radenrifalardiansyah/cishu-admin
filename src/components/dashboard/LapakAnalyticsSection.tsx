@@ -212,13 +212,13 @@ export default function LapakAnalyticsSection({ creds }: { creds: string }) {
         {
           title: 'Tren Omzet Harian', type: 'line', labels: data.daily.map(d => shortDate(d.date)),
           series: [
-            { name: 'Periode ini', color: '#D4691E', values: data.daily.map(d => d.revenue) },
-            { name: 'Periode sebelumnya', color: '#A08468', values: data.daily.map(d => d.prev) },
+            { name: 'Periode ini', color: '#1D4FE0', values: data.daily.map(d => d.revenue) },
+            { name: 'Periode sebelumnya', color: '#7A8BAD', values: data.daily.map(d => d.prev) },
           ],
         },
         {
           title: 'Omzet per Lapak', type: 'bar', labels: data.stalls.slice(0, 8).map(x => x.name),
-          series: [{ name: 'Omzet', color: '#D4691E', values: data.stalls.slice(0, 8).map(x => x.revenue) }],
+          series: [{ name: 'Omzet', color: '#1D4FE0', values: data.stalls.slice(0, 8).map(x => x.revenue) }],
         },
         {
           title: 'Produk Terlaris', type: 'bar', labels: data.topProducts.slice(0, 8).map(p => p.name),
@@ -226,7 +226,7 @@ export default function LapakAnalyticsSection({ creds }: { creds: string }) {
         },
         {
           title: 'Transaksi per Jam', type: 'line', unit: 'num', labels: data.hours.map(h => String(h.hour).padStart(2, '0')),
-          series: [{ name: 'Transaksi', color: '#0284C7', values: data.hours.map(h => h.count) }],
+          series: [{ name: 'Transaksi', color: '#0E7490', values: data.hours.map(h => h.count) }],
         },
       ],
       sections: [
@@ -305,18 +305,18 @@ export default function LapakAnalyticsSection({ creds }: { creds: string }) {
             <>
               <div className="flex items-center gap-4 text-[11px] mb-2" style={{ color: 'var(--text-muted)' }}>
                 <span className="flex items-center gap-1.5"><span style={{ width: 14, height: 3, borderRadius: 2, background: ACCENT, display: 'inline-block' }} /> Periode ini</span>
-                <span className="flex items-center gap-1.5"><span style={{ width: 14, height: 0, borderTop: '2px dashed #A08468', display: 'inline-block' }} /> Periode sebelumnya</span>
+                <span className="flex items-center gap-1.5"><span style={{ width: 14, height: 0, borderTop: '2px dashed #7A8BAD', display: 'inline-block' }} /> Periode sebelumnya</span>
               </div>
               <div style={{ width: '100%', height: 240 }}>
                 <ResponsiveContainer>
                   <ComposedChart data={data.daily} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                    <defs><linearGradient id="lapakFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#D4691E" stopOpacity={0.22} /><stop offset="100%" stopColor="#D4691E" stopOpacity={0} /></linearGradient></defs>
+                    <defs><linearGradient id="lapakFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#1D4FE0" stopOpacity={0.22} /><stop offset="100%" stopColor="#1D4FE0" stopOpacity={0} /></linearGradient></defs>
                     <CartesianGrid vertical={false} stroke="var(--border-2)" />
                     <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} minTickGap={28} tickMargin={8} />
                     <YAxis tickFormatter={compactRp} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} width={48} tickCount={5} />
                     <Tooltip content={<TrendTip />} cursor={{ stroke: 'var(--border)', strokeWidth: 1 }} />
-                    <Area type="monotone" dataKey="revenue" name="Periode ini" stroke="#D4691E" fill="url(#lapakFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#D4691E' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
-                    <Line type="monotone" dataKey="prev" name="Periode sebelumnya" stroke="#A08468" strokeWidth={1.5} strokeDasharray="5 4" dot={false} activeDot={false} />
+                    <Area type="monotone" dataKey="revenue" name="Periode ini" stroke="#1D4FE0" fill="url(#lapakFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#1D4FE0' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+                    <Line type="monotone" dataKey="prev" name="Periode sebelumnya" stroke="#7A8BAD" strokeWidth={1.5} strokeDasharray="5 4" dot={false} activeDot={false} />
                   </ComposedChart>
                 </ResponsiveContainer>
               </div>

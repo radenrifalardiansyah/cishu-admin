@@ -419,7 +419,7 @@ export default function PosTab({
       if (r.ok) setStoreInfo((await r.json() as { settings: StoreInfo }).settings ?? {});
     }).catch(() => {});
   }, [creds]);
-  const storeName    = storeInfo.storeName?.trim() || 'Cemilan Teh Risma';
+  const storeName    = storeInfo.storeName?.trim() || 'Cishu';
   const storeAddress = [storeInfo.address, storeInfo.city].filter(Boolean).join(', ');
   const storePhone   = (storeInfo.whatsapp?.trim() || WHATSAPP_NUMBER)
     .replace(/^62/, '0').replace(/(\d{4})(\d{4})(\d+)/, '$1-$2-$3');
@@ -1007,7 +1007,7 @@ export default function PosTab({
           <div className="inline-flex rounded-xl overflow-hidden border text-xs font-bold" style={{ borderColor: 'var(--border)' }}>
             {([['toko', 'Produk Toko'], ['titipan', `Titipan${consignCount > 0 ? ` (${consignCount})` : ''}`]] as const).map(([k, label]) => (
               <button key={k} onClick={() => setCatalogMode(k)} className="px-4 py-2 transition-all"
-                style={catalogMode === k ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                style={catalogMode === k ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                 {label}
               </button>
             ))}
@@ -1051,7 +1051,7 @@ export default function PosTab({
           }}>
           <button onClick={() => setPosView('cart')}
             className="w-full flex items-center gap-3 px-5 py-4 rounded-2xl text-white font-bold shadow-2xl"
-            style={{ background: 'linear-gradient(135deg,#E8821A,#C96018)' }}>
+            style={{ background: 'linear-gradient(135deg,#2A62F0,#1B45C4)' }}>
             <div className="relative">
               <ShoppingCart size={19} />
               <span className="absolute -top-2 -right-2.5 w-5 h-5 rounded-full bg-white text-[10px] font-black flex items-center justify-center shadow" style={{ color: 'var(--accent)' }}>
@@ -1307,7 +1307,7 @@ export default function PosTab({
                   {(['percent', 'nominal'] as const).map(t => (
                     <button key={t} onClick={() => { setDiscountType(t); setDiscountRaw(''); }}
                       className="px-3.5 py-2.5 transition-all"
-                      style={discountType === t ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={discountType === t ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {t === 'percent' ? '%' : 'Rp'}
                     </button>
                   ))}
@@ -1362,7 +1362,7 @@ export default function PosTab({
                 {availablePaymentMethods.map(m => (
                   <button key={m.id} onClick={() => { setPaymentMethod(m.id); setWalletId(getLastWallet(m.id)); setAmountPaidRaw(''); setTransferBank(''); setTransferAmountRaw(''); }}
                     className="flex-1 px-3.5 py-2.5 transition-all"
-                    style={paymentMethod === m.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                    style={paymentMethod === m.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                     {m.label}
                   </button>
                 ))}
@@ -1629,7 +1629,7 @@ export default function PosTab({
 
   const reportBar = (
     <Tooltip label="Laporan">
-      <button onClick={() => setReportOpen(true)} title="Laporan" className="btn-ghost gap-2 text-xs h-9 w-9 p-0 flex items-center justify-center sm:w-auto sm:px-3.5 sm:justify-start" style={{ color: '#0284C7' }}>
+      <button onClick={() => setReportOpen(true)} title="Laporan" className="btn-ghost gap-2 text-xs h-9 w-9 p-0 flex items-center justify-center sm:w-auto sm:px-3.5 sm:justify-start" style={{ color: '#0E7490' }}>
         <BarChart2 size={14} /> <span className="hidden sm:inline">Laporan</span>
       </button>
     </Tooltip>

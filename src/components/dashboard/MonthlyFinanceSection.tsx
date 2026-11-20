@@ -17,8 +17,8 @@ interface MonthRow {
 }
 
 const METRICS = [
-  { key: 'pendapatan', label: 'Penjualan (Pendapatan)', color: '#0284C7' },
-  { key: 'labaKotor', label: 'Laba Kotor', color: '#D4691E' },
+  { key: 'pendapatan', label: 'Penjualan (Pendapatan)', color: '#0E7490' },
+  { key: 'labaKotor', label: 'Laba Kotor', color: '#1D4FE0' },
   { key: 'labaBersih', label: 'Laba Bersih', color: '#059669' },
 ] as const;
 type MetricKey = typeof METRICS[number]['key'];
@@ -145,7 +145,7 @@ export default function MonthlyFinanceSection({ creds }: { creds: string }) {
   };
 
   const chip = (selected: boolean) => selected
-    ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' }
+    ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' }
     : { background: 'var(--surface-2)', color: 'var(--text-muted)' };
 
   return (
@@ -202,7 +202,7 @@ export default function MonthlyFinanceSection({ creds }: { creds: string }) {
           <>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
               {[
-                { icon: <Trophy size={15} />, label: 'Penjualan Tertinggi', main: bestSales ? fullMonth(bestSales.month) : '-', sub: bestSales ? formatRp(bestSales.pendapatan) : '', color: '#0284C7' },
+                { icon: <Trophy size={15} />, label: 'Penjualan Tertinggi', main: bestSales ? fullMonth(bestSales.month) : '-', sub: bestSales ? formatRp(bestSales.pendapatan) : '', color: '#0E7490' },
                 { icon: <TrendingUp size={15} />, label: 'Laba Bersih Tertinggi', main: bestProfit ? fullMonth(bestProfit.month) : '-', sub: bestProfit ? formatRp(bestProfit.labaBersih) : '', color: '#059669' },
                 { icon: <TrendingDown size={15} />, label: 'Penjualan Terendah', main: worstSales ? fullMonth(worstSales.month) : '-', sub: worstSales ? formatRp(worstSales.pendapatan) : '', color: '#DC2626' },
                 { icon: <Wallet size={15} />, label: 'Rata-rata Penjualan / Bulan', main: formatRp(avgSales), sub: `Total ${formatRp(total('pendapatan'))}`, color: 'var(--accent)' },

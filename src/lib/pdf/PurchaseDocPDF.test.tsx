@@ -5,7 +5,7 @@ import { writeFileSync, existsSync, readFileSync } from 'node:fs';
 import PurchaseDocPDF, { PurchaseDocBundle } from './PurchaseDocPDF';
 import { poToDocData, grToDocData } from './purchase-doc-data';
 
-const store = { name: 'Cemilan Teh Risma', tagline: 'Camilan khas rumahan', address: 'Jl. Contoh No. 12, Bandung', phone: '081234567890', ownerName: 'Risma' };
+const store = { name: 'Cishu', tagline: 'Camilan khas rumahan', address: 'Jl. Contoh No. 12, Bandung', phone: '081234567890', ownerName: 'Risma' };
 const items = [
   { materialId: 'a', materialName: 'Mie Superior Spider', unit: 'ikat', qty: 5, price: 45000, subtotal: 225000, orderedQty: 10 },
   { materialId: 'b', materialName: 'Tepung Terigu Segitiga Biru', unit: 'kg', qty: 25, price: 12000, subtotal: 300000, orderedQty: 25 },

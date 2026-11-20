@@ -27,7 +27,7 @@ export function useStoreHeader(creds: string): StoreHeader {
   useEffect(() => { toDataUri(settings.logo).then(setLogoDataUri); }, [settings.logo]);
 
   return {
-    name: settings.storeName?.trim() || 'Cemilan Teh Risma',
+    name: settings.storeName?.trim() || 'Cishu',
     tagline: settings.storeTagline?.trim() || undefined,
     ownerName: settings.ownerName?.trim() || undefined,
     address: [settings.address, settings.city].filter(Boolean).join(', ') || undefined,

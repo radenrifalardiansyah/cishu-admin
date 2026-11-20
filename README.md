@@ -1,7 +1,7 @@
-# Admin Cemilan Teh Risma
+# Admin Cishu
 
 Panel admin (Next.js) untuk toko: Kasir, Pesanan, Stok multi-gudang, Konsinyasi, Produksi, Keuangan, dan pengaturan.
-Berbagi satu database Postgres (Supabase) dengan aplikasi website pelanggan (repo `cemilantehrisma`).
+Berbagi satu database Postgres (Supabase) dengan aplikasi website pelanggan (repo `cishu`).
 
 > Next.js di proyek ini versi baru dengan perubahan API — baca [AGENTS.md](AGENTS.md) dan dokumen di
 > `node_modules/next/dist/docs/` sebelum menulis kode.

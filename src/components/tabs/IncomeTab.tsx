@@ -370,7 +370,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Pemasukan');
       ws.columns = [
@@ -380,7 +380,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
 
       ws.mergeCells(1, 1, 1, 5);
       const t = ws.getCell(1, 1);
-      t.value = 'DAFTAR PEMASUKAN LAIN-LAIN — CEMILAN TEH RISMA';
+      t.value = 'DAFTAR PEMASUKAN LAIN-LAIN — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -498,7 +498,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
         {PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => { setPeriod(p.id); resetPage(); }}
             className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={period === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={period === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}
@@ -592,7 +592,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
                 const isDeleting = deletingId === i.id;
                 const isSelected = selected.has(i.id);
                 return (
-                  <div key={i.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(212,105,30,0.05)' : undefined, transition: 'background 0.1s' }}>
+                  <div key={i.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-2 px-4 py-3.5">
                       {i.auto
                         ? <Lock size={13} style={{ color: 'var(--text-muted)', flexShrink: 0, width: 18 }} />

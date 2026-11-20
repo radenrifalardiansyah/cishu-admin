@@ -46,7 +46,7 @@ function download(buffer: ExcelJS.Buffer, filename: string) {
 export async function downloadImportTemplate(opts: { title: string; sheetName: string; note: string; cols: ImportCol[]; filename: string }) {
   const { title, sheetName, note, cols, filename } = opts;
   const wb = new ExcelJS.Workbook();
-  wb.creator = 'Cemilan Teh Risma Admin';
+  wb.creator = 'Cishu Admin';
   wb.created = new Date();
   const ws = wb.addWorksheet(sheetName);
   ws.columns = cols.map(c => ({ key: c.key, width: c.width }));

@@ -52,7 +52,7 @@ export async function GET(
       storeBankName?: string; storeBankAccountNumber?: string; storeBankAccountHolder?: string;
     };
     const store: StoreHeader = {
-      name: settings.storeName?.trim() || 'Cemilan Teh Risma',
+      name: settings.storeName?.trim() || 'Cishu',
       tagline: settings.storeTagline?.trim() || undefined,
       address: [settings.address, settings.city].filter(Boolean).join(', ') || undefined,
       phone: settings.whatsapp?.trim() || undefined,

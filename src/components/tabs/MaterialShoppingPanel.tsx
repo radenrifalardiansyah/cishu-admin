@@ -399,7 +399,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
       ws.columns = COLS.map(c => ({ key: c.key, width: c.width }));
       ws.mergeCells(1, 1, 1, COLS.length);
       const t = ws.getCell(1, 1);
-      t.value = 'DAFTAR BELANJA BAHAN BAKU — CEMILAN TEH RISMA';
+      t.value = 'DAFTAR BELANJA BAHAN BAKU — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -442,7 +442,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
         cell.border = { top: { style: 'medium', color: { argb: 'FFC96018' } } };
       });
       const buffer = await wb.xlsx.writeBuffer();
-      downloadBlob(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `daftar-belanja-cemilantehrisma-${new Date().toLocaleDateString('en-CA')}.xlsx`);
+      downloadBlob(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `daftar-belanja-cishu-${new Date().toLocaleDateString('en-CA')}.xlsx`);
       toast.success('Berhasil export daftar belanja ke Excel.');
     } catch { toast.error('Gagal membuat file Excel.'); }
     finally { setExportingXlsx(false); }
@@ -512,7 +512,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
           }}
         />
       ).toBlob();
-      downloadBlob(blob, `daftar-belanja-cemilantehrisma-${new Date().toLocaleDateString('en-CA')}.pdf`);
+      downloadBlob(blob, `daftar-belanja-cishu-${new Date().toLocaleDateString('en-CA')}.pdf`);
       toast.success('Berhasil export daftar belanja ke PDF.');
     } catch { toast.error('Gagal membuat file PDF.'); }
     finally { setExportingPdf(false); }
@@ -982,7 +982,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
                     <div className="flex rounded-xl overflow-hidden border" style={{ borderColor: 'var(--border)' }}>
                       {(['lunas', 'belum_lunas'] as const).map(st => (
                         <button key={st} type="button" onClick={() => setPaymentStatus(st)} className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                          style={paymentStatus === st ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                          style={paymentStatus === st ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                           {st === 'lunas' ? 'Lunas' : 'Belum Lunas'}
                         </button>
                       ))}

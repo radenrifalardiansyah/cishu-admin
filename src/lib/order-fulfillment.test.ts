@@ -69,7 +69,7 @@ describe('nextFulfillmentActions & hasFulfillmentKeys', () => {
 });
 
 describe('pesan WhatsApp', () => {
-  const base = { storeName: 'Cemilan Teh Risma', customerName: 'Budi', invoiceNo: 'INV-1' };
+  const base = { storeName: 'Cishu', customerName: 'Budi', invoiceNo: 'INV-1' };
   it('semua templat ASCII murni tanpa blok monospace', () => {
     const msgs = [
       buildFulfillmentMessage({ ...base, state: 'diproses' }),

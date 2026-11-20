@@ -301,7 +301,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Produksi');
       ws.columns = [
@@ -312,7 +312,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
 
       ws.mergeCells(1, 1, 1, 10);
       const t = ws.getCell(1, 1);
-      t.value = 'RIWAYAT PRODUKSI — CEMILAN TEH RISMA';
+      t.value = 'RIWAYAT PRODUKSI — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -362,7 +362,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `produksi-cemilantehrisma-${todayISO()}.xlsx`;
+      a.download = `produksi-cishu-${todayISO()}.xlsx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -412,7 +412,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `produksi-cemilantehrisma-${todayISO()}.pdf`;
+      a.download = `produksi-cishu-${todayISO()}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -434,7 +434,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
 
   const downloadProductionTemplate = async () => {
     const wb = new ExcelJS.Workbook();
-    wb.creator = 'Cemilan Teh Risma Admin';
+    wb.creator = 'Cishu Admin';
     wb.created = new Date();
     const ws = wb.addWorksheet('Template Produksi');
     ws.columns = PRODUCTION_TEMPLATE_COLS.map(c => ({ key: c.key, width: c.width }));
@@ -692,7 +692,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
                 const rowNumber  = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + i + 1;
                 return (
                   <div key={b.id}>
-                    <div className="px-4 py-3 flex items-center gap-3" style={{ background: isSelected ? 'rgba(212,105,30,0.05)' : undefined }}>
+                    <div className="px-4 py-3 flex items-center gap-3" style={{ background: isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
                       {b.closed
                         ? <span className="flex-shrink-0 w-[18px] h-[18px]" />
                         : <Checkbox checked={isSelected} onChange={() => toggleSelect(b.id)} />}

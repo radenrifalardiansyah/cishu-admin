@@ -21,8 +21,8 @@ describe('buildShoppingWaMessage', () => {
     expect(m).toContain('Mohon dicek. Terima kasih.');
   });
   it('nama toko fallback', () => {
-    expect(buildShoppingWaMessage(grp())).toContain('*DAFTAR BELANJA - Cemilan Teh Risma*');
-    expect(buildShoppingWaMessage(grp(), { storeName: '  ' })).toContain('Cemilan Teh Risma');
+    expect(buildShoppingWaMessage(grp())).toContain('*DAFTAR BELANJA - Cishu*');
+    expect(buildShoppingWaMessage(grp(), { storeName: '  ' })).toContain('Cishu');
   });
   it('supplier tak terdaftar memakai label Toko', () => {
     const m = buildShoppingWaMessage(grp({ registeredSupplier: false, supplierName: 'Warung Bu Ani' }));

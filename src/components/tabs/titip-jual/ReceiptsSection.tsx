@@ -253,7 +253,7 @@ export default function ReceiptsSection({ creds, data, reload, can }: SectionPro
                   <button key={k} type="button" onClick={() => setEditing({ ...editing, kind: k })}
                     className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-bold transition-all"
                     style={editing.kind === k
-                      ? { background: k === 'in' ? 'var(--success)' : 'linear-gradient(135deg,#E8821A,#C96018)', color: '#fff' }
+                      ? { background: k === 'in' ? 'var(--success)' : 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: '#fff' }
                       : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
                     <Icon size={14} /> <span className="truncate">{label}</span>
                   </button>

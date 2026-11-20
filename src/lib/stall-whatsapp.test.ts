@@ -26,7 +26,7 @@ describe('pesan', () => {
   const s = { docNumber: 'TJB-202610-0001', consignorName: 'Bu Sari', stallName: 'Lapak 1', periodFrom: '2026-10-01', periodTo: '2026-10-10', totalAmount: 30000, status: 'unpaid' as const,
     items: [{ productName: 'Nastar', qty: 3, amount: 30000 }] };
   it('rekap ke penitip menyebut total bagian penitip', () => {
-    const m = settlementMessage(s, 'Cemilan Teh Risma', 'penitip');
+    const m = settlementMessage(s, 'Cishu', 'penitip');
     expect(m).toContain('TJB-202610-0001'); expect(m).toContain('Nastar ×3 — Rp30.000'); expect(m).toContain('BAGIAN ANDA: Rp30.000'); expect(m).toContain('Belum dibayar');
   });
   it('rekap ke owner memakai kalimat laporan', () => {

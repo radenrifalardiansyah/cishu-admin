@@ -502,10 +502,10 @@ ${pdfUrl}`.trim();
     try {
       const day = new Date().toLocaleDateString('en-CA');
       await exportSheet(view === 'po'
-        ? { sheet: 'Purchase Order', title: 'PURCHASE ORDER BAHAN BAKU — CEMILAN TEH RISMA', filename: `purchase-order-cemilantehrisma-${day}.xlsx`,
+        ? { sheet: 'Purchase Order', title: 'PURCHASE ORDER BAHAN BAKU — CISHU', filename: `purchase-order-cishu-${day}.xlsx`,
             columns: [{ header: 'No', width: 6 }, { header: 'No. PO', width: 18 }, { header: 'Tanggal', width: 14 }, { header: 'Supplier', width: 24 }, { header: 'Bahan Baku', width: 44 }, { header: 'Total', width: 16 }, { header: 'Status', width: 18 }, { header: 'Estimasi Tiba', width: 14 }, { header: 'Catatan', width: 28 }],
             rows: rowsForExport() }
-        : { sheet: 'Penerimaan Barang', title: 'PENERIMAAN BARANG (GR) BAHAN BAKU — CEMILAN TEH RISMA', filename: `penerimaan-barang-cemilantehrisma-${day}.xlsx`,
+        : { sheet: 'Penerimaan Barang', title: 'PENERIMAAN BARANG (GR) BAHAN BAKU — CISHU', filename: `penerimaan-barang-cishu-${day}.xlsx`,
             columns: [{ header: 'No', width: 6 }, { header: 'No. GR', width: 18 }, { header: 'No. DO', width: 24 }, { header: 'No. PO', width: 18 }, { header: 'Supplier', width: 24 }, { header: 'Tgl Terima', width: 14 }, { header: 'Bahan Baku', width: 44 }, { header: 'Total', width: 16 }, { header: 'Status', width: 22 }],
             rows: rowsForExport() });
       toast.success(`Berhasil export ${rowsForExport().length} data ke Excel${selected.size > 0 ? ' (terpilih)' : ''}.`);
@@ -528,7 +528,7 @@ ${pdfUrl}`.trim();
       const blob = await pdf(<GenericTablePDF store={storeHeader} data={data} /> as any).toBlob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url; a.download = `${view === 'po' ? 'purchase-order' : 'penerimaan-barang'}-cemilantehrisma-${new Date().toLocaleDateString('en-CA')}.pdf`;
+      a.href = url; a.download = `${view === 'po' ? 'purchase-order' : 'penerimaan-barang'}-cishu-${new Date().toLocaleDateString('en-CA')}.pdf`;
       document.body.appendChild(a); a.click(); a.remove();
       URL.revokeObjectURL(url);
       toast.success(`Berhasil export ${rowsForExport().length} data ke PDF${selected.size > 0 ? ' (terpilih)' : ''}.`);
@@ -1205,7 +1205,7 @@ ${pdfUrl}`.trim();
                 <div className="flex rounded-xl overflow-hidden border" style={{ borderColor: 'var(--border)' }}>
                   {(['lunas', 'belum_lunas'] as const).map(s => (
                     <button key={s} type="button" onClick={() => setGPayment(s)} className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                      style={gPayment === s ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={gPayment === s ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {s === 'lunas' ? 'Lunas' : 'Belum Lunas'}
                     </button>
                   ))}

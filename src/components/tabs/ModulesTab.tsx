@@ -166,7 +166,7 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Modul');
 
@@ -183,7 +183,7 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN MODUL — CEMILAN TEH RISMA';
+      titleCell.value = 'LAPORAN MODUL — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -255,7 +255,7 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `modul-cemilantehrisma-${today}.xlsx`;
+      a.download = `modul-cishu-${today}.xlsx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -296,7 +296,7 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `modul-cemilantehrisma-${today}.pdf`;
+      a.download = `modul-cishu-${today}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -430,7 +430,7 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
                 const isDeleting = deletingId === m.id;
                 const isSelected = selected.has(m.id);
                 return (
-                  <div key={m.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(212,105,30,0.05)' : undefined, opacity: m.isActive ? 1 : 0.55, transition: 'background 0.1s' }}>
+                  <div key={m.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, opacity: m.isActive ? 1 : 0.55, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-3 px-4 py-3.5">
                       {can('delete') && <Checkbox checked={isSelected} onChange={() => toggleSelect(m.id)} />}
                       <span className="flex-shrink-0 text-center text-[10px] font-bold tabular-nums" style={{ minWidth: 18, color: 'var(--text-muted)' }}>

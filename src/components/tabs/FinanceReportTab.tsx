@@ -118,7 +118,7 @@ interface CapitalRecord { type: 'modal' | 'prive'; amount: number; date: string;
 interface JournalEntry { seconds: number; description: string; debit: number; kredit: number; invoiceNo?: string }
 
 const EXPENSE_CATEGORY_COLORS: Record<string, string> = {
-  'Bahan Baku': '#B45309', 'Produksi': '#A84F10', 'Sewa': '#7C3AED', 'Gaji': '#0284C7',
+  'Bahan Baku': '#B45309', 'Produksi': '#1B45C4', 'Sewa': '#7C3AED', 'Gaji': '#0E7490',
   'Listrik & Air': '#0891B2', 'Transportasi': '#DB2777', 'Perlengkapan': '#65A30D',
 };
 
@@ -327,7 +327,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { toDataUri(storeInfo.logo).then(setLogoDataUri); }, [storeInfo.logo]);
   const storeHeader = {
-    name:    storeInfo.storeName?.trim() || 'Cemilan Teh Risma',
+    name:    storeInfo.storeName?.trim() || 'Cishu',
     tagline: storeInfo.storeTagline?.trim() || undefined,
     address: [storeInfo.address, storeInfo.city].filter(Boolean).join(', ') || undefined,
     phone:   storeInfo.whatsapp?.trim() || undefined,
@@ -699,7 +699,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
 
       const styleTitle = (ws: ExcelJS.Worksheet, title: string, subtitle: string, colCount: number) => {
@@ -737,7 +737,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
       // ── Sheet 1: Laba Rugi ──
       const wsLR = wb.addWorksheet('Laba Rugi');
       wsLR.columns = [{ key: 'a', width: 32 }, { key: 'b', width: 20 }];
-      styleTitle(wsLR, 'RINGKASAN LABA RUGI — CEMILAN TEH RISMA', `Periode: ${periodLabel} (${from} s/d ${to})`, 2);
+      styleTitle(wsLR, 'RINGKASAN LABA RUGI — CISHU', `Periode: ${periodLabel} (${from} s/d ${to})`, 2);
       styleHeader(wsLR, 3, ['Keterangan', 'Jumlah']);
       const lrRows: [string, number][] = [
         ['Penjualan Kasir', kasirRevenue], ['Penjualan Online', onlineRevenue], ['Pendapatan Konsinyasi', consignmentRevenue],
@@ -763,7 +763,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
       // ── Sheet 2: Jurnal Kas ──
       const wsJK = wb.addWorksheet('Jurnal Kas');
       wsJK.columns = [{ key: 'tgl', width: 14 }, { key: 'jam', width: 10 }, { key: 'ket', width: 42 }, { key: 'debit', width: 18 }, { key: 'kredit', width: 18 }, { key: 'saldo', width: 18 }];
-      styleTitle(wsJK, 'JURNAL KAS — CEMILAN TEH RISMA', `Periode: ${periodLabel} (${from} s/d ${to}) · Saldo Awal: ${formatRp(saldoAwalPeriode)}`, 6);
+      styleTitle(wsJK, 'JURNAL KAS — CISHU', `Periode: ${periodLabel} (${from} s/d ${to}) · Saldo Awal: ${formatRp(saldoAwalPeriode)}`, 6);
       styleHeader(wsJK, 3, ['Tanggal', 'Jam', 'Keterangan', 'Debit', 'Kredit', 'Saldo']);
       journalWithSaldo.forEach((j, i) => {
         const rowNum = 4 + i;
@@ -878,7 +878,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
           terpengaruh filter periode di bawah, supaya selalu menjawab "saldo sekarang berapa". */}
       <div className="card p-5 flex items-center justify-between gap-4 flex-wrap" style={{ background: 'linear-gradient(135deg, var(--accent-bg), var(--surface-2))' }}>
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(212,105,30,0.15)', color: 'var(--accent)' }}>
+          <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(29,79,224,0.15)', color: 'var(--accent)' }}>
             <Wallet size={20} />
           </div>
           <div>
@@ -940,7 +940,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
         {PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => setPeriod(p.id)}
             className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={period === p.id ? { background: 'linear-gradient(135deg,#E8821A,#C96018)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={period === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}
@@ -1044,7 +1044,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
             </button>
             <div className="card p-4 flex flex-col gap-3" style={{ background: 'var(--accent-bg)' }}>
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(212,105,30,0.15)', color: 'var(--accent)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(29,79,224,0.15)', color: 'var(--accent)' }}>
                   <PieChart size={16} />
                 </div>
               </div>
@@ -1072,7 +1072,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
             </button>
             <div className="card p-4 flex flex-col gap-3" style={{ background: labaBersih >= 0 ? 'var(--accent-bg)' : 'var(--danger-bg)' }}>
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersih >= 0 ? 'rgba(212,105,30,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersih >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersih >= 0 ? 'rgba(29,79,224,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersih >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
                   <Wallet size={16} />
                 </div>
               </div>
@@ -1351,7 +1351,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
                 </div>
               </div>
               <div className="card p-4 flex items-center gap-3" style={{ background: 'var(--surface-2)' }}>
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersihKasLama >= 0 ? 'rgba(212,105,30,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersihKasLama >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersihKasLama >= 0 ? 'rgba(29,79,224,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersihKasLama >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
                   <Wallet size={16} />
                 </div>
                 <div className="min-w-0">

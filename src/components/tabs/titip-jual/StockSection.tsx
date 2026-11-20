@@ -77,8 +77,8 @@ export default function StockSection({ creds, data, can, goTo }: SectionProps) {
         {statCards([
           { icon: <Store size={16} />, label: 'Total Lapak', val: data.stalls.length, color: 'var(--accent)' },
           { icon: <Package size={16} />, label: 'Total Stok', val: qtyText(tot.qty), color: 'var(--success)' },
-          { icon: <Wallet size={16} />, label: 'Nilai untuk Penitip', val: rupiah(tot.owed), color: '#0284C7' },
-          { icon: <TrendingUp size={16} />, label: 'Potensi Bagian Kita', val: rupiah(tot.ours), color: '#A84F10' },
+          { icon: <Wallet size={16} />, label: 'Nilai untuk Penitip', val: rupiah(tot.owed), color: '#0E7490' },
+          { icon: <TrendingUp size={16} />, label: 'Potensi Bagian Kita', val: rupiah(tot.ours), color: '#1B45C4' },
         ])}
         {data.stalls.length === 0 ? (
           <EmptyAddCard label="Terima Barang" onClick={canReceive ? () => goTo!('receipts') : undefined} hint="Belum ada lapak. Tambahkan lapak di tab Lapak." />
@@ -187,7 +187,7 @@ export default function StockSection({ creds, data, can, goTo }: SectionProps) {
         { icon: <Package size={16} />, label: 'Jenis Produk', val: stallLines.length, color: 'var(--accent)' },
         { icon: <TrendingUp size={16} />, label: 'Total Unit', val: qtyText(t.qty), color: 'var(--success)' },
         { icon: <TrendingDown size={16} />, label: 'Stok Rendah/Habis', val: lowCount, color: 'var(--danger)' },
-        { icon: <Wallet size={16} />, label: 'Nilai untuk Penitip', val: rupiah(t.owed), color: '#0284C7' },
+        { icon: <Wallet size={16} />, label: 'Nilai untuk Penitip', val: rupiah(t.owed), color: '#0E7490' },
       ])}
 
       {stallLines.length === 0 ? (
@@ -203,7 +203,7 @@ export default function StockSection({ creds, data, can, goTo }: SectionProps) {
               className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
               style={{
                 height: HEADER_BTN_H,
-                background: onlyInStock ? 'linear-gradient(135deg,#E8821A,#C96018)' : 'var(--surface-2)',
+                background: onlyInStock ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)',
                 color: onlyInStock ? 'white' : 'var(--text-muted)',
               }}>
               <PackageCheck size={14} /> <span className="hidden sm:inline">Ada Stok</span>
@@ -231,7 +231,7 @@ export default function StockSection({ creds, data, can, goTo }: SectionProps) {
                 const qtyStyle = qty <= 0
                   ? { bg: '#FEF2F2', color: '#DC2626', border: '#FECACA' }
                   : l.p.minStock > 0 && qty <= l.p.minStock
-                    ? { bg: '#FDF0E6', color: '#A84F10', border: 'rgba(212,105,30,0.25)' }
+                    ? { bg: '#EAF1FF', color: '#1B45C4', border: 'rgba(29,79,224,0.25)' }
                     : { bg: '#F0FDF4', color: '#15803D', border: '#D1FAE5' };
                 return (
                   <div key={l.item.id} className="card overflow-hidden flex flex-col select-none">

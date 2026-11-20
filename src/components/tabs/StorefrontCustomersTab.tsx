@@ -188,7 +188,7 @@ export default function StorefrontCustomersTab({ creds }: { creds: string }) {
                   const isSelected = selected.has(c.id);
                   const rowNum = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + idx + 1;
                   return (
-                    <div key={c.id} className="flex items-center gap-3 px-4 py-3" style={{ background: isSelected ? 'rgba(212,105,30,0.05)' : undefined }}>
+                    <div key={c.id} className="flex items-center gap-3 px-4 py-3" style={{ background: isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
                       <Checkbox checked={isSelected} onChange={() => toggleSelect(c.id)} />
                       <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center" style={{ color: 'var(--text-muted)' }}>
                         {rowNum}

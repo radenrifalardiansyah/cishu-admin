@@ -169,7 +169,7 @@ export default function RolesTab({ creds, can }: RolesTabProps) {
     setExporting(true);
     try {
       const wb = new ExcelJS.Workbook();
-      wb.creator = 'Cemilan Teh Risma Admin';
+      wb.creator = 'Cishu Admin';
       wb.created = new Date();
       const ws = wb.addWorksheet('Role');
 
@@ -186,7 +186,7 @@ export default function RolesTab({ creds, can }: RolesTabProps) {
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN ROLE — CEMILAN TEH RISMA';
+      titleCell.value = 'LAPORAN ROLE — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
@@ -258,7 +258,7 @@ export default function RolesTab({ creds, can }: RolesTabProps) {
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `role-cemilantehrisma-${today}.xlsx`;
+      a.download = `role-cishu-${today}.xlsx`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -299,7 +299,7 @@ export default function RolesTab({ creds, can }: RolesTabProps) {
       const today = new Date().toLocaleDateString('en-CA');
       const a = document.createElement('a');
       a.href = url;
-      a.download = `role-cemilantehrisma-${today}.pdf`;
+      a.download = `role-cishu-${today}.pdf`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -411,7 +411,7 @@ export default function RolesTab({ creds, can }: RolesTabProps) {
                 const isSelected = selected.has(r.id);
                 const rowNum     = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + idx + 1;
                 return (
-                  <div key={r.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(212,105,30,0.05)' : undefined, transition: 'background 0.1s' }}>
+                  <div key={r.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-3 px-4 py-3.5">
                       {can('delete') && (
                         <Tooltip label={isSystem ? 'Role sistem tidak dapat dihapus' : (isSelected ? 'Batalkan pilihan' : 'Pilih')}>

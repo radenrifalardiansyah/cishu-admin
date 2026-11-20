@@ -79,7 +79,7 @@ function renderShipmentPdf(id: string) {
       const total = items.reduce((sum, it) => sum + it.subtotal, 0);
 
       const store: StoreHeader = {
-        name: settings.storeName?.trim() || 'Cemilan Teh Risma',
+        name: settings.storeName?.trim() || 'Cishu',
         tagline: settings.storeTagline?.trim() || undefined,
         ownerName: settings.ownerName?.trim() || undefined,
         ownerSignature: await resolveLogoDataUri(db, settings.ownerSignature),

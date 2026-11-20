@@ -89,8 +89,8 @@ const FIELD_GROUPS = [
   {
     id: 'store', icon: <Store size={15}/>, label: 'Info Toko',
     fields: [
-      { key: 'storeName',        label: 'Nama Toko',       type: 'text',     placeholder: 'Cemilan Teh Risma' },
-      { key: 'legalName',        label: 'Nama Usaha (Legal)', type: 'text',  placeholder: 'Warung Teh Risma' },
+      { key: 'storeName',        label: 'Nama Toko',       type: 'text',     placeholder: 'Cishu' },
+      { key: 'legalName',        label: 'Nama Usaha (Legal)', type: 'text',  placeholder: 'Nama usaha sesuai legalitas' },
       { key: 'storeTagline',     label: 'Tagline',         type: 'text',     placeholder: 'Camilan khas rumahan...' },
       { key: 'storeDescription', label: 'Deskripsi Toko',  type: 'textarea', placeholder: 'Tentang toko Anda...' },
       { key: 'ownerName',        label: 'Nama Pemilik',    type: 'text',     placeholder: 'Nama pemilik untuk tanda tangan PDF' },
@@ -143,7 +143,7 @@ const FIELD_GROUPS = [
     fields: [
       { key: 'storefrontThemeColor',           label: 'Warna Tema Toko (Storefront)', type: 'color', placeholder: '' },
       { key: 'storefrontThemeBackgroundColor', label: 'Warna Latar Toko (Storefront)', type: 'color', placeholder: '' },
-      { key: 'adminAppName',                   label: 'Nama Aplikasi Admin',           type: 'text',  placeholder: 'Admin Teh Risma' },
+      { key: 'adminAppName',                   label: 'Nama Aplikasi Admin',           type: 'text',  placeholder: 'Admin Cishu' },
       { key: 'adminThemeColor',                label: 'Warna Tema Admin',              type: 'color', placeholder: '' },
       { key: 'adminThemeBackgroundColor',       label: 'Warna Latar Admin',             type: 'color', placeholder: '' },
     ],
