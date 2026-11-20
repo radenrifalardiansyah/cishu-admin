@@ -64,6 +64,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         '--accent-dark': shades.dark,
         '--accent-light': shades.light,
         '--accent-bg': shades.bg,
+        '--accent-grad': shades.grad,
+        '--accent-grad-hover': shades.gradHover,
+        '--accent-border': shades.border,
       } as React.CSSProperties}
     >
       <body>

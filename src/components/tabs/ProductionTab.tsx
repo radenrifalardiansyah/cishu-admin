@@ -315,7 +315,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
       t.value = 'RIWAYAT PRODUKSI — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, 10);
@@ -323,7 +323,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
       s.value = `${rows.length} batch produksi (${label})`;
       s.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       s.alignment = { horizontal: 'center', vertical: 'middle' };
-      s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+      s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
       ws.getRow(2).height = 20;
 
       const headerRow = ws.getRow(3);
@@ -331,7 +331,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
         .forEach((h, i) => { headerRow.getCell(i + 1).value = h; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -351,7 +351,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
         row.getCell(9).value = b.warehouseName ?? '';
         row.getCell(10).value = b.note ?? '';
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: i % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: i % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF' } };
           cell.alignment = { wrapText: true, vertical: 'middle' };
           cell.border = { top: { style: 'thin', color: { argb: 'FFE5E7EB' } }, bottom: { style: 'thin', color: { argb: 'FFE5E7EB' } }, left: { style: 'thin', color: { argb: 'FFE5E7EB' } }, right: { style: 'thin', color: { argb: 'FFE5E7EB' } } };
         });
@@ -450,7 +450,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
     PRODUCTION_TEMPLATE_COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
     headerRow.height = 28;
     headerRow.eachCell(cell => {
-      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
       cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 10 };
       cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
     });
@@ -692,7 +692,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
                 const rowNumber  = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + i + 1;
                 return (
                   <div key={b.id}>
-                    <div className="px-4 py-3 flex items-center gap-3" style={{ background: isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
+                    <div className="px-4 py-3 flex items-center gap-3" style={{ background: isSelected ? 'rgba(37,99,235,0.05)' : undefined }}>
                       {b.closed
                         ? <span className="flex-shrink-0 w-[18px] h-[18px]" />
                         : <Checkbox checked={isSelected} onChange={() => toggleSelect(b.id)} />}

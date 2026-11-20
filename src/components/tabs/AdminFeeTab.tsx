@@ -397,7 +397,7 @@ export default function AdminFeeTab({ creds }: { creds: string }) {
             style={{
               background: subTab === id ? 'var(--surface)' : 'transparent',
               color: subTab === id ? 'var(--accent)' : 'var(--text-muted)',
-              boxShadow: subTab === id ? '0 1px 4px rgba(11,22,48,0.10)' : 'none',
+              boxShadow: subTab === id ? '0 1px 4px rgba(15,23,42,0.10)' : 'none',
             }}>
             {label}
           </button>

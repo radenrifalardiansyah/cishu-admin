@@ -118,8 +118,8 @@ interface CapitalRecord { type: 'modal' | 'prive'; amount: number; date: string;
 interface JournalEntry { seconds: number; description: string; debit: number; kredit: number; invoiceNo?: string }
 
 const EXPENSE_CATEGORY_COLORS: Record<string, string> = {
-  'Bahan Baku': '#B45309', 'Produksi': '#1B45C4', 'Sewa': '#7C3AED', 'Gaji': '#0E7490',
-  'Listrik & Air': '#0891B2', 'Transportasi': '#DB2777', 'Perlengkapan': '#65A30D',
+  'Bahan Baku': '#B45309', 'Produksi': '#E11D48', 'Sewa': '#A21CAF', 'Gaji': '#0E7490',
+  'Listrik & Air': '#475569', 'Transportasi': '#2563EB', 'Perlengkapan': '#0F172A',
 };
 
 // ─── Panduan istilah ───────────────────────────────────────────────────────────
@@ -707,13 +707,13 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
         const t = ws.getCell(1, 1);
         t.value = title; t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
         t.alignment = { horizontal: 'center', vertical: 'middle' };
-        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
         ws.getRow(1).height = 28;
         ws.mergeCells(2, 1, 2, colCount);
         const s = ws.getCell(2, 1);
         s.value = subtitle; s.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
         s.alignment = { horizontal: 'center', vertical: 'middle' };
-        s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+        s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
         ws.getRow(2).height = 20;
       };
       const styleHeader = (ws: ExcelJS.Worksheet, rowNum: number, headers: string[]) => {
@@ -721,7 +721,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
         headers.forEach((h, i) => { row.getCell(i + 1).value = h; });
         row.height = 24;
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
           cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
           cell.alignment = { vertical: 'middle', horizontal: 'center' };
         });
@@ -729,7 +729,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
       };
       const zebra = (ws: ExcelJS.Worksheet, rowNum: number, idx: number) => {
         ws.getRow(rowNum).eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: idx % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: idx % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF' } };
           cell.border = { top: { style: 'thin', color: { argb: 'FFE5E7EB' } }, bottom: { style: 'thin', color: { argb: 'FFE5E7EB' } }, left: { style: 'thin', color: { argb: 'FFE5E7EB' } }, right: { style: 'thin', color: { argb: 'FFE5E7EB' } } };
         });
       };
@@ -878,7 +878,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
           terpengaruh filter periode di bawah, supaya selalu menjawab "saldo sekarang berapa". */}
       <div className="card p-5 flex items-center justify-between gap-4 flex-wrap" style={{ background: 'linear-gradient(135deg, var(--accent-bg), var(--surface-2))' }}>
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(29,79,224,0.15)', color: 'var(--accent)' }}>
+          <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(37,99,235,0.15)', color: 'var(--accent)' }}>
             <Wallet size={20} />
           </div>
           <div>
@@ -940,7 +940,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
         {PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => setPeriod(p.id)}
             className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={period === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={period === p.id ? { background: 'var(--accent-grad)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}
@@ -1044,7 +1044,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
             </button>
             <div className="card p-4 flex flex-col gap-3" style={{ background: 'var(--accent-bg)' }}>
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(29,79,224,0.15)', color: 'var(--accent)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(37,99,235,0.15)', color: 'var(--accent)' }}>
                   <PieChart size={16} />
                 </div>
               </div>
@@ -1072,7 +1072,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
             </button>
             <div className="card p-4 flex flex-col gap-3" style={{ background: labaBersih >= 0 ? 'var(--accent-bg)' : 'var(--danger-bg)' }}>
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersih >= 0 ? 'rgba(29,79,224,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersih >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersih >= 0 ? 'rgba(37,99,235,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersih >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
                   <Wallet size={16} />
                 </div>
               </div>
@@ -1351,7 +1351,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
                 </div>
               </div>
               <div className="card p-4 flex items-center gap-3" style={{ background: 'var(--surface-2)' }}>
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersihKasLama >= 0 ? 'rgba(29,79,224,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersihKasLama >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersihKasLama >= 0 ? 'rgba(37,99,235,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersihKasLama >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
                   <Wallet size={16} />
                 </div>
                 <div className="min-w-0">

@@ -135,7 +135,7 @@ export default function SuppliersTab({ creds }: { creds: string }) {
     titleCell.value = 'TEMPLATE IMPORT DATA SUPPLIER — CISHU';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
     ws.getRow(1).height = 26;
 
     ws.mergeCells(2, 1, 2, colCount);
@@ -145,7 +145,7 @@ export default function SuppliersTab({ creds }: { creds: string }) {
       + 'Mulai isi data supplier dari baris 4 ke bawah, satu supplier per baris. Kolom Telepon diformat teks — simpan sebagai angka biasa, contoh: 081234567890.';
     noteCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
     noteCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
     ws.getRow(2).height = 34;
 
     const HEADER_ROW_NUM = 3;
@@ -153,14 +153,14 @@ export default function SuppliersTab({ creds }: { creds: string }) {
     TEMPLATE_COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
     headerRow.height = 24;
     headerRow.eachCell(cell => {
-      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
       cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
       cell.alignment = { vertical: 'middle', horizontal: 'center' };
       cell.border = {
-        top: { style: 'thin', color: { argb: 'FFC96018' } },
-        bottom: { style: 'thin', color: { argb: 'FFC96018' } },
-        left: { style: 'thin', color: { argb: 'FFC96018' } },
-        right: { style: 'thin', color: { argb: 'FFC96018' } },
+        top: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        bottom: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        left: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        right: { style: 'thin', color: { argb: 'FF1D4ED8' } },
       };
     });
     ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -275,7 +275,7 @@ export default function SuppliersTab({ creds }: { creds: string }) {
       titleCell.value = 'LAPORAN SUPPLIER — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -284,7 +284,7 @@ export default function SuppliersTab({ creds }: { creds: string }) {
       subCell.value = `${rows.length} supplier (${label}) · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -292,14 +292,14 @@ export default function SuppliersTab({ creds }: { creds: string }) {
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FFC96018' } },
-          bottom: { style: 'thin', color: { argb: 'FFC96018' } },
-          left: { style: 'thin', color: { argb: 'FFC96018' } },
-          right: { style: 'thin', color: { argb: 'FFC96018' } },
+          top: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          bottom: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          left: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          right: { style: 'thin', color: { argb: 'FF1D4ED8' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -309,7 +309,7 @@ export default function SuppliersTab({ creds }: { creds: string }) {
           no: i + 1, code: s.code || '-', name: s.name, pic: s.pic || '-', phone: s.phone || '-', address: s.address || '-',
           note: s.note || '-', joined: formatDate(s),
         });
-        const zebraFill = i % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -574,7 +574,7 @@ export default function SuppliersTab({ creds }: { creds: string }) {
                 const isSelected = selected.has(s.id);
                 const rowNum     = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + idx + 1;
                 return (
-                  <div key={s.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, transition: 'background 0.1s' }}>
+                  <div key={s.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(37,99,235,0.05)' : undefined, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-2 px-4 py-3.5">
                       <Checkbox checked={isSelected} onChange={() => toggleSelect(s.id)} />
                       <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center" style={{ color: 'var(--text-muted)' }}>

@@ -174,10 +174,10 @@ const chartTooltipRow = (color: string, name: string, value: string) => (
 type TrendPoint = { date: string; kasir: number; online: number; konsinyasi: number; lain: number; count: number };
 
 const OMZET_SERIES = [
-  { key: 'kasir', name: 'Kasir', color: '#1D4FE0' },
-  { key: 'online', name: 'Online', color: '#7C3AED' },
-  { key: 'konsinyasi', name: 'Konsinyasi', color: '#0E7490' },
-  { key: 'lain', name: 'Pendapatan Lain', color: '#059669' },
+  { key: 'kasir', name: 'Kasir', color: '#2563EB' },
+  { key: 'online', name: 'Online', color: '#A21CAF' },
+  { key: 'konsinyasi', name: 'Konsinyasi', color: '#B45309' },
+  { key: 'lain', name: 'Pendapatan Lain', color: '#115E59' },
 ] as const;
 
 function RevenueTooltip({ active, payload, label }: { active?: boolean; payload?: { payload?: TrendPoint }[]; label?: string }) {
@@ -537,7 +537,7 @@ export default function AdminPage() {
       .sort((a, b) => b[1] - a[1]).slice(0, 5)
       .map(([name, count]) => {
         const p = posProducts.find(fp => fp.name === name);
-        return { name, emoji: p?.emoji ?? '📦', bgColor: p?.bgColor ?? '#F1F5FC', stock: p?.stock ?? 'Ada', count };
+        return { name, emoji: p?.emoji ?? '📦', bgColor: p?.bgColor ?? '#F5F9FF', stock: p?.stock ?? 'Ada', count };
       });
     return { revenueTrend, kasir, online, konsinyasi, lain, total, orderCount: sumOrders.length, recentOrders, topProducts };
   }, [sumRange, sumOrders, sumOmzet, posProducts]);
@@ -903,9 +903,9 @@ export default function AdminPage() {
   );
 
   if (pendingChange) return (
-    <div className="min-h-screen flex items-center justify-center p-4 lg:p-8 relative overflow-hidden" style={{ background: 'var(--ground)' }}>
-      <div className="relative w-full rounded-[28px] overflow-hidden p-8 lg:p-10"
-        style={{ maxWidth: 420, background: 'var(--surface)', boxShadow: '0 24px 70px -20px rgba(11,22,48,0.35), 0 4px 18px rgba(11,22,48,0.08)' }}>
+    <div className="login-screen min-h-screen flex items-center justify-center p-4 lg:p-8 relative overflow-hidden">
+      <div className="login-card login-card-shadow relative w-full rounded-[28px] overflow-hidden p-8 lg:p-10"
+        style={{ maxWidth: 420, background: 'var(--surface)' }}>
         <div className="flex flex-col items-center text-center mb-6">
           <div className="flex items-center justify-center rounded-2xl mb-4" style={{ width: 52, height: 52, background: 'var(--accent-bg)', color: 'var(--accent)' }}>
             <KeyRound size={22} />
@@ -925,7 +925,7 @@ export default function AdminPage() {
                 className="input" style={{ paddingRight: 40 }}
                 placeholder="Minimal 6 karakter" autoComplete="new-password" autoFocus />
               <button type="button" onClick={() => setShowPassword(s => !s)} tabIndex={-1}
-                style={{ position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', display: 'flex' }}>
+                aria-label={showPassword ? 'Sembunyikan password' : 'Tampilkan password'} className="login-eye">
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
@@ -937,8 +937,7 @@ export default function AdminPage() {
               className="input" placeholder="Ulangi password baru" autoComplete="new-password" />
           </div>
           {changeErr && (
-            <div className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium animate-scale-in"
-              style={{ background: 'var(--danger-bg)', color: 'var(--danger)' }}>
+            <div role="alert" className="login-alert animate-scale-in">
               {changeErr}
             </div>
           )}
@@ -972,9 +971,9 @@ export default function AdminPage() {
 
           {/* decorative glow orbs */}
           <div className="login-blob login-glow absolute rounded-full pointer-events-none"
-            style={{ width: 260, height: 260, top: -70, right: -70, background: 'radial-gradient(circle, rgba(29,79,224,0.55), transparent 70%)', filter: 'blur(4px)' }} />
+            style={{ width: 260, height: 260, top: -70, right: -70, background: 'radial-gradient(circle, rgba(255,255,255,0.30), transparent 70%)', filter: 'blur(4px)' }} />
           <div className="login-blob absolute rounded-full pointer-events-none"
-            style={{ width: 220, height: 220, bottom: -60, left: -60, background: 'radial-gradient(circle, rgba(29,79,224,0.35), transparent 70%)', filter: 'blur(4px)', animationDelay: '-4s' }} />
+            style={{ width: 220, height: 220, bottom: -60, left: -60, background: 'radial-gradient(circle, rgba(29,78,216,0.55), transparent 70%)', filter: 'blur(4px)', animationDelay: '-4s' }} />
 
           {/* floating snack icons */}
           <span className="login-snack absolute text-3xl" style={{ top: '18%', right: '18%', ['--r' as string]: '-8deg', animationDelay: '0s', opacity: 0.9 }}>🍪</span>
@@ -991,12 +990,12 @@ export default function AdminPage() {
             <p className="text-4xl font-extrabold text-white leading-tight mb-3">
               Kendalikan<br />bisnis snack<br />Anda.
             </p>
-            <p className="text-sm" style={{ color: 'var(--sidebar-text)' }}>
+            <p className="text-sm" style={{ color: '#FFFFFF' }}>
               Dashboard admin untuk mengelola produk,<br />pesanan, stok, dan analitik toko.
             </p>
           </div>
 
-          <p className="text-xs relative z-10" style={{ color: 'var(--sidebar-muted)' }}>
+          <p className="text-xs relative z-10" style={{ color: '#FFFFFF' }}>
             © 2025 Cishu
           </p>
         </div>
@@ -1162,7 +1161,7 @@ export default function AdminPage() {
               <button key={p.id} onClick={() => setSumPeriod(p.id)} disabled={sumLoading}
                 className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
                 style={sumPeriod === p.id
-                  ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' }
+                  ? { background: 'var(--accent-grad)', color: 'white' }
                   : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
                 {p.label}
               </button>
@@ -1186,18 +1185,18 @@ export default function AdminPage() {
           {/* Stat cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {[
-              { icon: <Receipt    size={16}/>, label: 'Jumlah Pesanan', val: summary.orderCount.toString(), color: 'var(--accent)',  iconBg: 'var(--accent-bg)',  bar: 'var(--accent),#1B45C4' },
-              { icon: <TrendingUp size={16}/>, label: 'Omzet Kasir',  val: formatRp(summary.kasir), color: 'var(--success)', iconBg: 'var(--success-bg)', bar: '#15803D,#166534' },
-              { icon: <Globe      size={16}/>, label: 'Omzet Online', val: formatRp(summary.online), color: '#7C3AED', iconBg: '#F5F3FF', bar: '#7C3AED,#6D28D9' },
-              { icon: <Store      size={16}/>, label: 'Omzet Konsinyasi', val: formatRp(summary.konsinyasi), color: '#0E7490', iconBg: '#ECFEFF', bar: '#0E7490,#155E75' },
-              { icon: <Wallet     size={16}/>, label: 'Pendapatan Lain', val: formatRp(summary.lain), color: '#059669', iconBg: '#ECFDF5', bar: '#059669,#047857' },
-              { icon: <Wallet     size={16}/>, label: 'Total Omzet', val: formatRp(summary.total), color: '#B45309', iconBg: '#FFFBEA', bar: '#B45309,#92400E' },
+              { icon: <Receipt    size={16}/>, label: 'Jumlah Pesanan', val: summary.orderCount.toString(), color: '#475569', iconBg: '#F1F5F9', bar: '#475569,#334155' },
+              { icon: <TrendingUp size={16}/>, label: 'Omzet Kasir',  val: formatRp(summary.kasir), color: 'var(--accent)', iconBg: 'var(--accent-bg)', bar: 'var(--accent),var(--accent-dark)' },
+              { icon: <Globe      size={16}/>, label: 'Omzet Online', val: formatRp(summary.online), color: '#A21CAF', iconBg: '#FDF4FF', bar: '#A21CAF,#86198F' },
+              { icon: <Store      size={16}/>, label: 'Omzet Konsinyasi', val: formatRp(summary.konsinyasi), color: '#B45309', iconBg: '#FFFBEB', bar: '#B45309,#92400E' },
+              { icon: <Wallet     size={16}/>, label: 'Pendapatan Lain', val: formatRp(summary.lain), color: '#115E59', iconBg: '#F0FDFA', bar: '#115E59,#134E4A' },
+              { icon: <Wallet     size={16}/>, label: 'Total Omzet', val: formatRp(summary.total), color: '#0369A1', iconBg: '#EFF6FF', bar: '#0369A1,#075985' },
               { icon: <Package    size={16}/>, label: 'Produk Aktif',    val: dashData.productCount.toString(), color: '#0E7490',        iconBg: '#ECFEFF',           bar: '#0E7490,#155E75' },
               { icon: <Users      size={16}/>, label: 'Total Reseller',  val: dashData.resellerCount.toString(),color: '#7C3AED',        iconBg: '#F5F3FF',           bar: '#7C3AED,#6D28D9' },
             ].map((c, i) => (
               <div key={i} className="card relative p-4 overflow-hidden"
                 style={{ transition: 'transform 0.18s, box-shadow 0.18s', cursor: 'default' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(11,22,48,0.10)'; }}
+                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(15,23,42,0.10)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; (e.currentTarget as HTMLDivElement).style.boxShadow = ''; }}
               >
                 <div style={{ width: 34, height: 34, borderRadius: 10, background: c.iconBg, color: c.color, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
@@ -1373,7 +1372,7 @@ export default function AdminPage() {
               style={{
                 background: webRange === r ? 'var(--surface)' : 'transparent',
                 color: webRange === r ? 'var(--accent)' : 'var(--text-muted)',
-                boxShadow: webRange === r ? '0 1px 4px rgba(11,22,48,0.10)' : 'none',
+                boxShadow: webRange === r ? '0 1px 4px rgba(15,23,42,0.10)' : 'none',
               }}>
               {r} hari
             </button>
@@ -1412,7 +1411,7 @@ export default function AdminPage() {
                 },
                 {
                   title: 'Produk Terpopuler (Klik)', type: 'bar', unit: 'num', labels: ws.topProducts.slice(0, 6).map(p => p.name),
-                  series: [{ name: 'Klik', color: '#1D4FE0', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
+                  series: [{ name: 'Klik', color: '#2563EB', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
                 },
               ],
               sections: [

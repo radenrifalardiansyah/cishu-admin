@@ -35,7 +35,7 @@ export async function exportExcel<T>(cols: ExportCol<T>[], rows: T[], title: str
   t.value = `${title} — CISHU`;
   t.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
   t.alignment = { horizontal: 'center', vertical: 'middle' };
-  t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+  t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
   ws.getRow(1).height = 26;
 
   ws.mergeCells(2, 1, 2, colCount);
@@ -43,7 +43,7 @@ export async function exportExcel<T>(cols: ExportCol<T>[], rows: T[], title: str
   sub.value = `${rows.length} data (${label}) · Diexport ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}`;
   sub.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
   sub.alignment = { horizontal: 'center', vertical: 'middle' };
-  sub.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+  sub.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
   ws.getRow(2).height = 20;
 
   const HEADER = 3;
@@ -53,16 +53,16 @@ export async function exportExcel<T>(cols: ExportCol<T>[], rows: T[], title: str
   hr.height = 24;
   const edge = (argb: string) => ({ style: 'thin' as const, color: { argb } });
   hr.eachCell(cell => {
-    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
     cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
     cell.alignment = { vertical: 'middle', horizontal: 'center' };
-    cell.border = { top: edge('FFC96018'), bottom: edge('FFC96018'), left: edge('FFC96018'), right: edge('FFC96018') };
+    cell.border = { top: edge('FF1D4ED8'), bottom: edge('FF1D4ED8'), left: edge('FF1D4ED8'), right: edge('FF1D4ED8') };
   });
   ws.views = [{ state: 'frozen', ySplit: HEADER }];
 
   rows.forEach((r, i) => {
     const row = ws.addRow([i + 1, ...cols.map(c => c.value(r))]);
-    const zebra = i % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF';
+    const zebra = i % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF';
     row.eachCell((cell, n) => {
       cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebra } };
       cell.border = { top: edge('FFE5E7EB'), bottom: edge('FFE5E7EB'), left: edge('FFE5E7EB'), right: edge('FFE5E7EB') };

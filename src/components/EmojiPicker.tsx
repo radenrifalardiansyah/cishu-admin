@@ -75,7 +75,7 @@ export default function EmojiPicker({ value, onChange, size = 44 }: EmojiPickerP
           background: 'var(--surface-2)', display: 'flex', alignItems: 'center',
           justifyContent: 'center', fontSize: size * 0.5, lineHeight: 1,
           cursor: 'pointer', transition: 'border-color 0.15s, box-shadow 0.15s',
-          boxShadow: open ? '0 0 0 3px rgba(212,105,30,0.12)' : undefined,
+          boxShadow: open ? '0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent)' : undefined,
           borderColor: open ? 'var(--accent)' : undefined,
           color: 'var(--text-muted)',
         }}

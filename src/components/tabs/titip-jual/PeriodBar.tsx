@@ -13,7 +13,7 @@ export default function PeriodBar({ period, onPeriod, from, to, onFrom, onTo }: 
     <div className="flex flex-wrap items-center gap-2">
       {PERIOD_OPTIONS.map(p => (
         <button key={p.id} onClick={() => onPeriod(p.id)} className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-          style={period === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+          style={period === p.id ? { background: 'var(--accent-grad)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
           {p.label}
         </button>
       ))}

@@ -2,8 +2,8 @@ import { Svg, G, Rect, Line, Polyline, Path, Circle, Text as SvgText, View, Text
 
 // Grafik sederhana untuk PDF (react-pdf Svg) — tanpa Recharts karena PDF dirender di luar DOM.
 
-const MUTED = '#A08468';
-const GRID = '#E6DDD0';
+const MUTED = '#5B6B84';
+const GRID = '#DBE6F7';
 
 export const compactRp = (n: number) => {
   const abs = Math.abs(n);
@@ -97,8 +97,8 @@ export function PdfHBarChart({ items, width = 250, labelW = 78, valueW = 70, row
         const cy = i * rowH + rowH / 2;
         return (
           <G key={it.label}>
-            <SvgText x={0} y={cy + 2.5} style={{ fontSize: 7.5 }} fill="#1E1008">{it.label}</SvgText>
-            <Rect x={labelW} y={cy - 4.5} width={barW} height={9} rx={2} fill="#F3EEE6" />
+            <SvgText x={0} y={cy + 2.5} style={{ fontSize: 7.5 }} fill="#0F172A">{it.label}</SvgText>
+            <Rect x={labelW} y={cy - 4.5} width={barW} height={9} rx={2} fill="#EDF2FB" />
             <Rect x={labelW} y={cy - 4.5} width={len} height={9} rx={2} fill={it.color} />
             <SvgText x={width} y={cy + 2.5} textAnchor="end" style={{ fontSize: 7.5, fontFamily: 'Helvetica-Bold' }} fill={it.color}>{it.valueText}</SvgText>
           </G>

@@ -65,7 +65,7 @@ export default function IconPicker({ value, onChange, size = 44 }: IconPickerPro
           borderRadius: 12, border: '1.5px solid var(--border)',
           background: 'var(--surface-2)', display: 'flex', alignItems: 'center',
           justifyContent: 'center', cursor: 'pointer', transition: 'border-color 0.15s, box-shadow 0.15s',
-          boxShadow: open ? '0 0 0 3px rgba(212,105,30,0.12)' : undefined,
+          boxShadow: open ? '0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent)' : undefined,
           borderColor: open ? 'var(--accent)' : undefined,
           color: 'var(--text-secondary)',
         }}

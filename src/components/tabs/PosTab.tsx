@@ -1007,7 +1007,7 @@ export default function PosTab({
           <div className="inline-flex rounded-xl overflow-hidden border text-xs font-bold" style={{ borderColor: 'var(--border)' }}>
             {([['toko', 'Produk Toko'], ['titipan', `Titipan${consignCount > 0 ? ` (${consignCount})` : ''}`]] as const).map(([k, label]) => (
               <button key={k} onClick={() => setCatalogMode(k)} className="px-4 py-2 transition-all"
-                style={catalogMode === k ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                style={catalogMode === k ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                 {label}
               </button>
             ))}
@@ -1051,7 +1051,7 @@ export default function PosTab({
           }}>
           <button onClick={() => setPosView('cart')}
             className="w-full flex items-center gap-3 px-5 py-4 rounded-2xl text-white font-bold shadow-2xl"
-            style={{ background: 'linear-gradient(135deg,#2A62F0,#1B45C4)' }}>
+            style={{ background: 'var(--accent-grad)' }}>
             <div className="relative">
               <ShoppingCart size={19} />
               <span className="absolute -top-2 -right-2.5 w-5 h-5 rounded-full bg-white text-[10px] font-black flex items-center justify-center shadow" style={{ color: 'var(--accent)' }}>
@@ -1307,7 +1307,7 @@ export default function PosTab({
                   {(['percent', 'nominal'] as const).map(t => (
                     <button key={t} onClick={() => { setDiscountType(t); setDiscountRaw(''); }}
                       className="px-3.5 py-2.5 transition-all"
-                      style={discountType === t ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={discountType === t ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {t === 'percent' ? '%' : 'Rp'}
                     </button>
                   ))}
@@ -1362,7 +1362,7 @@ export default function PosTab({
                 {availablePaymentMethods.map(m => (
                   <button key={m.id} onClick={() => { setPaymentMethod(m.id); setWalletId(getLastWallet(m.id)); setAmountPaidRaw(''); setTransferBank(''); setTransferAmountRaw(''); }}
                     className="flex-1 px-3.5 py-2.5 transition-all"
-                    style={paymentMethod === m.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                    style={paymentMethod === m.id ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                     {m.label}
                   </button>
                 ))}

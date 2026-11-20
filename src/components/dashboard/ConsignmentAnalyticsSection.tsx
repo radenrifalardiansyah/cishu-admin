@@ -54,7 +54,7 @@ function shortDate(dateStr: string): string {
 }
 
 const PAYMENT_STATUS_COLORS: Record<string, string> = { lunas: '#059669', belum_lunas: '#DC2626' };
-const PRODUCT_COLORS = ['var(--accent)', '#0E7490', '#7C3AED', '#059669', '#DB2777', '#B45309', '#475569', '#65A30D'];
+const PRODUCT_COLORS = ['var(--accent)', '#B45309', '#A21CAF', '#059669', '#E11D48', '#0E7490', '#475569', '#115E59'];
 
 function sellThroughColor(pct: number): string {
   if (pct >= 70) return '#059669';
@@ -236,13 +236,13 @@ export default function ConsignmentAnalyticsSection({
         {
           title: 'Tren Dikirim vs Pendapatan', type: 'line', labels: data.dailyTrend.map(d => shortDate(d.date)),
           series: [
-            { name: 'Dikirim', color: '#0E7490', values: data.dailyTrend.map(d => d.kirim) },
+            { name: 'Dikirim', color: '#B45309', values: data.dailyTrend.map(d => d.kirim) },
             { name: 'Pendapatan', color: '#059669', values: data.dailyTrend.map(d => d.pendapatan) },
           ],
         },
         {
           title: 'Mitra Teratas (Pendapatan)', type: 'bar', labels: data.topLocations.slice(0, 8).map(l => l.name),
-          series: [{ name: 'Pendapatan', color: '#1D4FE0', values: data.topLocations.slice(0, 8).map(l => l.pendapatan) }],
+          series: [{ name: 'Pendapatan', color: '#2563EB', values: data.topLocations.slice(0, 8).map(l => l.pendapatan) }],
         },
         {
           title: '% Terealisasi per Mitra', type: 'bar', unit: 'pct', labels: [...active].sort((a, b) => b.sellThroughPct - a.sellThroughPct).slice(0, 8).map(l => l.name),
@@ -322,7 +322,7 @@ export default function ConsignmentAnalyticsSection({
             <button key={p.id} onClick={() => onPeriodChange(p.id)} disabled={loading}
               className="px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
               style={period === p.id
-                ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' }
+                ? { background: 'var(--accent-grad)', color: 'white' }
                 : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
               {p.label}
             </button>
@@ -357,7 +357,7 @@ export default function ConsignmentAnalyticsSection({
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {[
               { icon: <Store size={16} />, label: 'Total Mitra', val: data.summary.totalPartners.toString(), color: '#7C3AED', bg: '#F5F3FF', isRp: false },
-              { icon: <ArrowUpCircle size={16} />, label: 'Nilai Dikirim', val: formatRp(data.summary.totalKirim), color: '#0E7490', bg: '#ECFEFF', isRp: true },
+              { icon: <ArrowUpCircle size={16} />, label: 'Nilai Dikirim', val: formatRp(data.summary.totalKirim), color: '#B45309', bg: '#FFFBEB', isRp: true },
               { icon: <Wallet size={16} />, label: 'Pendapatan', val: formatRp(data.summary.totalPendapatan), color: 'var(--success)', bg: 'var(--success-bg)', isRp: true },
               { icon: <TrendingUp size={16} />, label: 'Tingkat Terjual', val: `${data.summary.sellThroughPct}%`, color: 'var(--accent)', bg: 'var(--accent-bg)', isRp: false },
             ].map((c, i) => (
@@ -382,7 +382,7 @@ export default function ConsignmentAnalyticsSection({
                 <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Nilai stok titip dikirim dibanding yang benar-benar terjual</p>
               </div>
               <div className="flex items-center gap-3 text-[11px]" style={{ color: 'var(--text-muted)' }}>
-                <LegendDot color="#0E7490" label="Dikirim" />
+                <LegendDot color="#B45309" label="Dikirim" />
                 <LegendDot color="#059669" label="Pendapatan" />
               </div>
             </div>
@@ -394,12 +394,12 @@ export default function ConsignmentAnalyticsSection({
               <div style={{ width: '100%', height: 220 }}>
                 <ResponsiveContainer>
                   <AreaChart data={data.dailyTrend} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                    <defs><linearGradient id="consSendFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#0E7490" stopOpacity={0.26} /><stop offset="100%" stopColor="#0E7490" stopOpacity={0} /></linearGradient><linearGradient id="consRevFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#059669" stopOpacity={0.26} /><stop offset="100%" stopColor="#059669" stopOpacity={0} /></linearGradient></defs>
+                    <defs><linearGradient id="consSendFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#B45309" stopOpacity={0.26} /><stop offset="100%" stopColor="#B45309" stopOpacity={0} /></linearGradient><linearGradient id="consRevFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#059669" stopOpacity={0.26} /><stop offset="100%" stopColor="#059669" stopOpacity={0} /></linearGradient></defs>
                     <CartesianGrid vertical={false} stroke="var(--border)" strokeDasharray="3 4" />
                     <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} minTickGap={24} tickMargin={8} />
                     <YAxis tickFormatter={compactRp} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} width={48} tickCount={5} />
                     <Tooltip content={<ChartTooltip />} cursor={{ stroke: 'var(--border)', strokeWidth: 1.5, strokeDasharray: '4 4' }} />
-                    <Area type="monotone" dataKey="kirim" name="Dikirim" stroke="#0E7490" fill="url(#consSendFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#0E7490' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+                    <Area type="monotone" dataKey="kirim" name="Dikirim" stroke="#B45309" fill="url(#consSendFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#B45309' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
                     <Area type="monotone" dataKey="pendapatan" name="Pendapatan" stroke="#059669" fill="url(#consRevFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#059669' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -472,7 +472,7 @@ export default function ConsignmentAnalyticsSection({
                 return <p className="text-xs text-center py-8" style={{ color: 'var(--text-muted)' }}>Belum ada aktivitas mitra di periode ini.</p>;
               }
               const pcsSummary = [
-                { name: 'Terkirim', value: kirimQty, color: '#0E7490' },
+                { name: 'Terkirim', value: kirimQty, color: '#B45309' },
                 { name: 'Retur', value: retur, color: '#D97706' },
                 { name: 'Reject', value: reject, color: '#DC2626' },
                 { name: 'Total', value: totalAll, color: '#7C3AED' },
@@ -507,7 +507,7 @@ export default function ConsignmentAnalyticsSection({
                 <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>Pcs Terkirim vs Retur vs Reject per Mitra</p>
               </div>
               <div className="flex items-center gap-3 text-[11px]" style={{ color: 'var(--text-muted)' }}>
-                <LegendDot color="#0E7490" label="Terkirim" />
+                <LegendDot color="#B45309" label="Terkirim" />
                 <LegendDot color="#D97706" label="Retur" />
                 <LegendDot color="#DC2626" label="Reject" />
               </div>
@@ -529,7 +529,7 @@ export default function ConsignmentAnalyticsSection({
                       <XAxis type="number" hide />
                       <YAxis type="category" dataKey="name" width={110} tick={{ fontSize: 11, fill: 'var(--text-secondary)' }} axisLine={false} tickLine={false} />
                       <Tooltip content={<PcsLocationTooltip />} cursor={{ fill: 'var(--surface-2)' }} />
-                      <Bar dataKey="kirimQty" name="Terkirim" fill="#0E7490" radius={[0, 4, 4, 0]} barSize={12} />
+                      <Bar dataKey="kirimQty" name="Terkirim" fill="#B45309" radius={[0, 4, 4, 0]} barSize={12} />
                       <Bar dataKey="retur" name="Retur" fill="#D97706" radius={[0, 4, 4, 0]} barSize={12} />
                       <Bar dataKey="reject" name="Reject" fill="#DC2626" radius={[0, 4, 4, 0]} barSize={12} />
                     </BarChart>

@@ -1205,7 +1205,7 @@ ${pdfUrl}`.trim();
                 <div className="flex rounded-xl overflow-hidden border" style={{ borderColor: 'var(--border)' }}>
                   {(['lunas', 'belum_lunas'] as const).map(s => (
                     <button key={s} type="button" onClick={() => setGPayment(s)} className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                      style={gPayment === s ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={gPayment === s ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {s === 'lunas' ? 'Lunas' : 'Belum Lunas'}
                     </button>
                   ))}

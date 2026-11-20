@@ -33,8 +33,8 @@ export interface AnalyticsReportData {
 }
 
 const C = {
-  accent: THEME_COLOR, accentBg: '#FDF0E6', dark: '#1E1008', muted: '#A08468',
-  border: '#E6DDD0', white: '#FFFFFF',
+  accent: THEME_COLOR, accentBg: '#EFF6FF', dark: '#0F172A', muted: '#5B6B84',
+  border: '#DBE6F7', white: '#FFFFFF',
 };
 
 const s = StyleSheet.create({
@@ -78,7 +78,7 @@ const s = StyleSheet.create({
   legendText: { fontSize: 7, color: C.muted },
   barRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 4 },
   barLabel: { width: '30%', fontSize: 7.5, paddingRight: 6 },
-  barTrack: { flexGrow: 1, height: 9, backgroundColor: '#F3ECE2', borderRadius: 3 },
+  barTrack: { flexGrow: 1, height: 9, backgroundColor: '#EDF2FB', borderRadius: 3 },
   barFill: { height: 9, borderRadius: 3 },
   barValue: { width: '20%', fontSize: 7.5, fontFamily: 'Helvetica-Bold', textAlign: 'right' },
 
@@ -139,7 +139,7 @@ function LineChartPdf({ chart }: { chart: AnalyticsPdfChart }) {
       <Legend series={chart.series} />
       <Svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         {ticks.map((tk, i) => (
-          <Line key={i} x1={L} x2={W - R} y1={T + ph - tk * ph} y2={T + ph - tk * ph} stroke={tk === 0 ? '#C9BBA8' : C.border} strokeWidth={0.7} strokeDasharray={tk === 0 ? undefined : '3 3'} />
+          <Line key={i} x1={L} x2={W - R} y1={T + ph - tk * ph} y2={T + ph - tk * ph} stroke={tk === 0 ? '#9FB0D0' : C.border} strokeWidth={0.7} strokeDasharray={tk === 0 ? undefined : '3 3'} />
         ))}
         {ticks.map((tk, i) => (
           <Text key={`y${i}`} x={L - 4} y={T + ph - tk * ph + 2.5} style={{ fontSize: 6.5, fill: C.muted }} textAnchor="end">{fmtAxis(max * tk, unit)}</Text>
@@ -183,7 +183,7 @@ function VBarChartPdf({ chart }: { chart: AnalyticsPdfChart }) {
       <Svg width={W} height={H} viewBox={`0 0 ${W} ${H}`}>
         {ticks.map((tv, i) => (
           <G key={i}>
-            <Line x1={L} x2={W - R} y1={y(tv)} y2={y(tv)} stroke={Math.abs(tv) < 1e-9 ? '#C9BBA8' : C.border} strokeWidth={0.7} strokeDasharray={Math.abs(tv) < 1e-9 ? undefined : '3 3'} />
+            <Line x1={L} x2={W - R} y1={y(tv)} y2={y(tv)} stroke={Math.abs(tv) < 1e-9 ? '#9FB0D0' : C.border} strokeWidth={0.7} strokeDasharray={Math.abs(tv) < 1e-9 ? undefined : '3 3'} />
             <Text x={L - 4} y={y(tv) + 2.5} style={{ fontSize: 6.5, fill: C.muted }} textAnchor="end">{fmtAxis(tv, unit)}</Text>
           </G>
         ))}

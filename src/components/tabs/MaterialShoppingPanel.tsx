@@ -402,19 +402,19 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
       t.value = 'DAFTAR BELANJA BAHAN BAKU — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
       ws.getRow(1).height = 28;
       ws.mergeCells(2, 1, 2, COLS.length);
       const sub = ws.getCell(2, 1);
       sub.value = `${dateBlocks.length} tanggal · Diexport ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}`;
       sub.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       sub.alignment = { horizontal: 'center', vertical: 'middle' };
-      sub.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+      sub.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
       const head = ws.getRow(3);
       COLS.forEach((c, i) => { head.getCell(i + 1).value = c.header; });
       head.height = 24;
       head.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -428,7 +428,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
         row.getCell('note').alignment = { vertical: 'top', wrapText: true };
         const sub = r.kind === 'subtotal';
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: sub ? 'FFFDE8CF' : zebra % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: sub ? 'FFDBEAFE' : zebra % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF' } };
           cell.border = { top: { style: 'thin', color: { argb: 'FFE5E7EB' } }, bottom: { style: 'thin', color: { argb: 'FFE5E7EB' } } };
           if (sub) cell.font = { bold: true };
         });
@@ -438,8 +438,8 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
       total.getCell('total').numFmt = '"Rp"#,##0';
       total.eachCell(cell => {
         cell.font = { bold: true };
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDE8CF' } };
-        cell.border = { top: { style: 'medium', color: { argb: 'FFC96018' } } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFDBEAFE' } };
+        cell.border = { top: { style: 'medium', color: { argb: 'FF1D4ED8' } } };
       });
       const buffer = await wb.xlsx.writeBuffer();
       downloadBlob(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `daftar-belanja-cishu-${new Date().toLocaleDateString('en-CA')}.xlsx`);
@@ -982,7 +982,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
                     <div className="flex rounded-xl overflow-hidden border" style={{ borderColor: 'var(--border)' }}>
                       {(['lunas', 'belum_lunas'] as const).map(st => (
                         <button key={st} type="button" onClick={() => setPaymentStatus(st)} className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                          style={paymentStatus === st ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                          style={paymentStatus === st ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                           {st === 'lunas' ? 'Lunas' : 'Belum Lunas'}
                         </button>
                       ))}

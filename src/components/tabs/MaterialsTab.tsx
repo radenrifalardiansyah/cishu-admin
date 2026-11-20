@@ -387,7 +387,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
     titleCell.value = 'TEMPLATE IMPORT BAHAN BAKU — CISHU';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
     ws.getRow(1).height = 26;
 
     ws.mergeCells(2, 1, 2, colCount);
@@ -398,7 +398,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
       + 'nanti terisi lewat pencatatan Pembelian.';
     noteCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
     noteCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
     ws.getRow(2).height = 40;
 
     const HEADER_ROW_NUM = 3;
@@ -406,14 +406,14 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
     MATERIAL_TEMPLATE_COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
     headerRow.height = 24;
     headerRow.eachCell(cell => {
-      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
       cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
       cell.alignment = { vertical: 'middle', horizontal: 'center' };
       cell.border = {
-        top: { style: 'thin', color: { argb: 'FFC96018' } },
-        bottom: { style: 'thin', color: { argb: 'FFC96018' } },
-        left: { style: 'thin', color: { argb: 'FFC96018' } },
-        right: { style: 'thin', color: { argb: 'FFC96018' } },
+        top: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        bottom: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        left: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        right: { style: 'thin', color: { argb: 'FF1D4ED8' } },
       };
     });
     ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -523,7 +523,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
       titleCell.value = 'LAPORAN STOK BAHAN BAKU — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -532,7 +532,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
       subCell.value = `${rows.length} bahan baku (${label}) · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -540,14 +540,14 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FFC96018' } },
-          bottom: { style: 'thin', color: { argb: 'FFC96018' } },
-          left: { style: 'thin', color: { argb: 'FFC96018' } },
-          right: { style: 'thin', color: { argb: 'FFC96018' } },
+          top: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          bottom: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          left: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          right: { style: 'thin', color: { argb: 'FF1D4ED8' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -557,7 +557,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
           no: i + 1, name: m.name, unit: m.unit, stockQty: m.stockQty,
           avgCost: m.avgCost, value: roundQty(m.stockQty) * m.avgCost,
         });
-        const zebraFill = i % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -953,7 +953,7 @@ ${pdfUrl}`.trim();
     titleCell.value = 'TEMPLATE IMPORT PEMBELIAN BAHAN BAKU — CISHU';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
     ws.getRow(1).height = 26;
 
     ws.mergeCells(2, 1, 2, colCount);
@@ -965,7 +965,7 @@ ${pdfUrl}`.trim();
       + 'Kolom Status Pembayaran diisi "Lunas" atau "Belum Lunas" (kosong dianggap Lunas).';
     noteCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
     noteCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
     ws.getRow(2).height = 46;
 
     const HEADER_ROW_NUM = 3;
@@ -973,14 +973,14 @@ ${pdfUrl}`.trim();
     PURCHASE_TEMPLATE_COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
     headerRow.height = 24;
     headerRow.eachCell(cell => {
-      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
       cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
       cell.alignment = { vertical: 'middle', horizontal: 'center' };
       cell.border = {
-        top: { style: 'thin', color: { argb: 'FFC96018' } },
-        bottom: { style: 'thin', color: { argb: 'FFC96018' } },
-        left: { style: 'thin', color: { argb: 'FFC96018' } },
-        right: { style: 'thin', color: { argb: 'FFC96018' } },
+        top: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        bottom: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        left: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        right: { style: 'thin', color: { argb: 'FF1D4ED8' } },
       };
     });
     ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -1107,7 +1107,7 @@ ${pdfUrl}`.trim();
       titleCell.value = 'LAPORAN PEMBELIAN BAHAN BAKU — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -1116,7 +1116,7 @@ ${pdfUrl}`.trim();
       subCell.value = `${rows.length} pembelian (${label}) · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -1124,14 +1124,14 @@ ${pdfUrl}`.trim();
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FFC96018' } },
-          bottom: { style: 'thin', color: { argb: 'FFC96018' } },
-          left: { style: 'thin', color: { argb: 'FFC96018' } },
-          right: { style: 'thin', color: { argb: 'FFC96018' } },
+          top: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          bottom: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          left: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          right: { style: 'thin', color: { argb: 'FF1D4ED8' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -1147,7 +1147,7 @@ ${pdfUrl}`.trim();
           status: p.voided ? 'Dibatalkan' : 'Aktif',
           note: p.note || '-',
         });
-        const zebraFill = i % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -1301,7 +1301,7 @@ ${pdfUrl}`.trim();
           {SUB_TABS.map(t => (
             <button key={t.id} onClick={() => setSubTab(t.id)}
               className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold transition-all whitespace-nowrap flex-shrink-0"
-              style={subTab === t.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+              style={subTab === t.id ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
               <t.Icon size={13} /> {t.label}
             </button>
           ))}
@@ -1333,7 +1333,7 @@ ${pdfUrl}`.trim();
                   className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
                   style={{
                     height: HEADER_BTN_H,
-                    background: materialOnlyInStock ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)',
+                    background: materialOnlyInStock ? 'var(--accent-grad)' : 'var(--surface-2)',
                     color: materialOnlyInStock ? 'white' : 'var(--text-muted)',
                   }}
                 >
@@ -1406,7 +1406,7 @@ ${pdfUrl}`.trim();
                       const rowNum = (materialSafePage - 1) * (Number.isFinite(materialPageSize) ? materialPageSize : 0) + idx + 1;
                       return (
                         <div key={m.id} ref={el => { materialRowRefs.current[m.id] = el; }} className="px-4 py-3 flex items-center gap-3"
-                          style={{ transition: 'background-color 0.6s ease', background: highlightedMaterialId === m.id ? 'var(--accent-bg)' : isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
+                          style={{ transition: 'background-color 0.6s ease', background: highlightedMaterialId === m.id ? 'var(--accent-bg)' : isSelected ? 'rgba(37,99,235,0.05)' : undefined }}>
                           <Checkbox checked={isSelected} onChange={() => toggleSelectMaterial(m.id)} />
                           <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center" style={{ color: 'var(--text-muted)' }}>
                             {rowNum}
@@ -1669,7 +1669,7 @@ ${pdfUrl}`.trim();
                         const rowNum = (purchaseSafePage - 1) * (Number.isFinite(purchasePageSize) ? purchasePageSize : 0) + idx + 1;
                         return (
                           <div key={p.id}>
-                            <div className="px-4 py-3" style={{ background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, opacity: p.voided ? 0.55 : 1 }}>
+                            <div className="px-4 py-3" style={{ background: isSelected ? 'rgba(37,99,235,0.05)' : undefined, opacity: p.voided ? 0.55 : 1 }}>
                               <div className="flex items-start gap-3">
                                 <div className="pt-0.5"><Checkbox checked={isSelected} onChange={() => toggleSelectPurchase(p.id)} /></div>
                                 <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center pt-0.5" style={{ color: 'var(--text-muted)' }}>
@@ -2140,7 +2140,7 @@ ${pdfUrl}`.trim();
                   {(['lunas', 'belum_lunas'] as const).map(s => (
                     <button key={s} type="button" onClick={() => setPurchasePaymentStatus(s)} disabled={hasPaymentsLock}
                       className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                      style={purchasePaymentStatus === s ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={purchasePaymentStatus === s ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {s === 'lunas' ? 'Lunas' : 'Belum Lunas'}
                     </button>
                   ))}

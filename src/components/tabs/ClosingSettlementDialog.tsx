@@ -153,7 +153,7 @@ export default function ClosingSettlementDialog({ creds, closing, onClose, onDon
         <div className="grid grid-cols-2 gap-2">
           {([['new', 'Catat transfer baru'], ['existing', 'Tautkan yang sudah ada']] as const).map(([id, label]) => (
             <button key={id} type="button" onClick={() => { setTab(id); setError(''); }} className="px-2 py-1.5 min-h-10 sm:min-h-0 rounded-xl text-xs font-bold text-center"
-              style={tab === id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+              style={tab === id ? { background: 'var(--accent-grad)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
               {label}
             </button>
           ))}

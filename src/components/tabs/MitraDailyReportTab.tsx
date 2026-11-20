@@ -232,19 +232,19 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
         t.value = title;
         t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
         t.alignment = { horizontal: 'center', vertical: 'middle' };
-        t.fill = fill('FFC96018');
+        t.fill = fill('FF1D4ED8');
         ws.getRow(1).height = 28;
         ws.mergeCells(2, 1, 2, n);
         const s = ws.getCell(2, 1);
         s.value = `Periode ${periodText(from, to)} · ${rows.length} mitra (${label}) · Diexport ${nowText()}`;
         s.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
         s.alignment = { horizontal: 'center', vertical: 'middle' };
-        s.fill = fill('FFFDF2E9');
+        s.fill = fill('FFEFF6FF');
         ws.getRow(2).height = 20;
         const head = ws.getRow(3);
         headersRow.forEach((h, i) => { head.getCell(i + 1).value = h; });
         head.height = 24;
-        head.eachCell(cell => { cell.fill = fill('FFE8821A'); cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 }; cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true }; });
+        head.eachCell(cell => { cell.fill = fill('FF2563EB'); cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 }; cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true }; });
         ws.views = [{ state: 'frozen', ySplit: 3 }];
         data.forEach((vals, idx) => {
           const row = ws.getRow(4 + idx);
@@ -254,7 +254,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
             if (numCols.includes(i)) c.alignment = { horizontal: 'right' };
             if (rpCols.includes(i)) c.numFmt = '"Rp"#,##0';
           });
-          row.eachCell(cell => { cell.fill = fill(idx % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF'); cell.border = border; });
+          row.eachCell(cell => { cell.fill = fill(idx % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF'); cell.border = border; });
         });
       };
 
@@ -378,7 +378,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
         {PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => { setPeriod(p.id); resetPage(); }}
             className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={period === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={period === p.id ? { background: 'var(--accent-grad)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}
@@ -411,7 +411,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
           <div className="flex items-center gap-2 sm:justify-end flex-shrink-0">
             <button onClick={() => { setOnlyActivity(v => !v); resetPage(); }}
               className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
-              style={{ height: HEADER_BTN_H, background: onlyActivity ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)', color: onlyActivity ? 'white' : 'var(--text-muted)' }}>
+              style={{ height: HEADER_BTN_H, background: onlyActivity ? 'var(--accent-grad)' : 'var(--surface-2)', color: onlyActivity ? 'white' : 'var(--text-muted)' }}>
               <CalendarCheck size={14} /> <span className="hidden sm:inline">Ada Aktivitas</span>
             </button>
             <Tooltip label="Export Excel">
@@ -484,7 +484,7 @@ export default function MitraDailyReportTab({ creds }: { creds: string }) {
                     const td = 'px-2.5 py-2.5 text-xs tabular text-right whitespace-nowrap';
                     const dash = (n: number) => (n ? n : '-');
                     return (
-                      <tr key={s.locationId} style={{ borderTop: '1px solid var(--border-2)', background: isSelected ? 'rgba(29,79,224,0.05)' : undefined, opacity: s.isActive ? 1 : 0.75 }}>
+                      <tr key={s.locationId} style={{ borderTop: '1px solid var(--border-2)', background: isSelected ? 'rgba(37,99,235,0.05)' : undefined, opacity: s.isActive ? 1 : 0.75 }}>
                         <td className="px-2.5 py-2.5 text-xs font-bold tabular" style={{ color: 'var(--text-muted)' }}>{num}</td>
                         <td className="px-1 py-2.5"><Checkbox checked={isSelected} onChange={() => toggleSelect(s.locationId)} /></td>
                         <td className="px-2.5 py-2.5">

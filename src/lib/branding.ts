@@ -7,12 +7,12 @@ export const WHATSAPP_NUMBER = '6281212132014';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cishu.vercel.app';
 export const productUrl = (id: string) => `${SITE_URL}/products/${id}`;
 
-export const THEME_COLOR = '#D4691E';
-export const THEME_BACKGROUND_COLOR = '#1C1917';
+export const THEME_COLOR = '#2563EB';
+export const THEME_BACKGROUND_COLOR = '#2563EB';
 
-// Tema bawaan panel admin (biru). THEME_COLOR di atas tetap dipakai dokumen PDF/brand toko.
-export const ADMIN_THEME_COLOR = '#1D4FE0';
-export const ADMIN_THEME_BACKGROUND_COLOR = '#0A1330';
+// Tema bawaan panel admin = tema dokumen (PDF/Excel): satu biru yang sama.
+export const ADMIN_THEME_COLOR = THEME_COLOR;
+export const ADMIN_THEME_BACKGROUND_COLOR = THEME_BACKGROUND_COLOR;
 
 export const DEVELOPER = {
   name: 'PT. Eleven Digital Indonesia',

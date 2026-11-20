@@ -28,10 +28,10 @@ export interface StockCardPDFData {
 
 const C = {
   accent:   THEME_COLOR,
-  accentBg: '#FDF0E6',
-  dark:     '#1E1008',
-  muted:    '#A08468',
-  border:   '#E6DDD0',
+  accentBg: '#EFF6FF',
+  dark:     '#0F172A',
+  muted:    '#5B6B84',
+  border:   '#DBE6F7',
   white:    '#FFFFFF',
   green:    '#15803D',
   greenBg:  '#DCFCE7',
@@ -75,7 +75,7 @@ const s = StyleSheet.create({
   tHeadCell: { color: C.white, fontSize: 8, fontFamily: 'Helvetica-Bold', paddingVertical: 6, paddingHorizontal: 5 },
   tRow: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: C.border },
   tRowAlt: { backgroundColor: C.accentBg },
-  tRowMuted: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: C.border, backgroundColor: '#F5F0E9' },
+  tRowMuted: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: C.border, backgroundColor: '#F5F9FF' },
   tCell: { fontSize: 8.5, paddingVertical: 5, paddingHorizontal: 5, color: C.dark },
   tCellMuted: { fontSize: 8.5, fontFamily: 'Helvetica-Oblique', paddingVertical: 5, paddingHorizontal: 5, color: C.muted },
 
@@ -92,7 +92,7 @@ const s = StyleSheet.create({
 });
 
 const TIPE_COLOR: Record<string, string> = {
-  Masuk: C.green, Keluar: C.red, Reject: C.red, Transfer: '#0284C7',
+  Masuk: C.green, Keluar: C.red, Reject: C.red, Transfer: '#0E7490',
 };
 
 export default function StockCardPDF({ data, store }: { data: StockCardPDFData; store: StoreHeader }) {

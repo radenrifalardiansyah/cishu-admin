@@ -123,7 +123,7 @@ const PREFERRED_PRIMARY_IDS: TabId[] = ['dashboard', 'pos', 'products', 'orders'
 
 const MAIN_APP = process.env.NEXT_PUBLIC_API_URL ?? 'https://cishu.vercel.app';
 
-const SIDEBAR_BG   = '#0A1330';
+const SIDEBAR_BG   = 'var(--sidebar)';
 const SIDEBAR_FULL = 256;
 const SIDEBAR_MINI = 64;
 
@@ -297,7 +297,7 @@ export default function AppShell({
           width: sw,
           minWidth: sw,
           background: SIDEBAR_BG,
-          boxShadow: '4px 0 20px rgba(0,0,0,0.18)',
+          boxShadow: '1px 0 0 var(--sidebar-border), 6px 0 28px -14px rgba(37,99,235,0.18)',
           transition: 'width 0.26s cubic-bezier(0.4,0,0.2,1), min-width 0.26s cubic-bezier(0.4,0,0.2,1)',
           overflow: 'hidden',
           position: 'relative',
@@ -309,7 +309,7 @@ export default function AppShell({
           className="flex-shrink-0 flex items-center px-3 pt-5 pb-4"
           style={{
             height: 72,
-            borderBottom: '1px solid rgba(255,255,255,0.07)',
+            borderBottom: '1px solid var(--sidebar-border)',
             gap: collapsed ? 0 : 10,
             justifyContent: collapsed ? 'center' : 'flex-start',
             paddingLeft: collapsed ? 0 : 16,
@@ -322,7 +322,7 @@ export default function AppShell({
           <div style={{
             position: 'absolute', top: -28, left: -28,
             width: 150, height: 150, borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(29,79,224,0.20) 0%, transparent 68%)',
+            background: 'radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 68%)',
             pointerEvents: 'none', zIndex: 0,
           }} />
 
@@ -330,15 +330,15 @@ export default function AppShell({
             <Image
               src="/icon-192.png" alt="logo" width={34} height={34}
               className="rounded-xl"
-              style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.35)' }}
+              style={{ boxShadow: '0 2px 8px rgba(37,99,235,0.25)' }}
             />
           </div>
           {!collapsed && (
             <div className="min-w-0 overflow-hidden" style={{ zIndex: 1 }}>
-              <p className="text-[13px] font-extrabold leading-tight truncate" style={{ color: '#C9D6F2' }}>
+              <p className="text-[13px] font-extrabold leading-tight truncate" style={{ color: 'var(--sidebar-text)' }}>
                 Cishu
               </p>
-              <p className="text-[10px] mt-0.5 font-semibold truncate tracking-wide uppercase" style={{ color: '#8FA3CC' }}>
+              <p className="text-[10px] mt-0.5 font-semibold truncate tracking-wide uppercase" style={{ color: 'var(--sidebar-muted)' }}>
                 Admin Panel
               </p>
             </div>
@@ -349,7 +349,7 @@ export default function AppShell({
         {!collapsed && (
           <div className="px-3 pt-3 pb-1 flex-shrink-0">
             <div style={{ position: 'relative' }}>
-              <Search size={13} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: '#8FA3CC', pointerEvents: 'none' }} />
+              <Search size={13} style={{ position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)', color: 'var(--sidebar-muted)', pointerEvents: 'none' }} />
               <input
                 value={sidebarQuery}
                 onChange={e => setSidebarQuery(e.target.value)}
@@ -357,8 +357,8 @@ export default function AppShell({
                 className="w-full"
                 style={{
                   height: 32, paddingLeft: 28, paddingRight: 8, borderRadius: 8,
-                  background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.08)',
-                  fontSize: 12, color: '#C9D6F2', outline: 'none',
+                  background: 'var(--surface-2)', border: '1px solid var(--border)',
+                  fontSize: 12, color: 'var(--text-primary)', outline: 'none',
                 }}
               />
             </div>
@@ -368,7 +368,7 @@ export default function AppShell({
         {/* Nav */}
         <nav className="flex-1 px-2 py-4 overflow-y-auto overflow-x-hidden" style={{ scrollbarWidth: 'none' }}>
           {isSidebarSearching && SIDEBAR_GROUPS.length === 0 && !pinnedVisible && (
-            <p className="text-center px-3" style={{ fontSize: 11, color: '#8FA3CC', padding: '20px 0' }}>
+            <p className="text-center px-3" style={{ fontSize: 11, color: 'var(--sidebar-muted)', padding: '20px 0' }}>
               Menu tidak ditemukan
             </p>
           )}
@@ -382,10 +382,10 @@ export default function AppShell({
                   className="w-full flex items-center justify-between px-3 mb-1.5"
                 >
                   <span className="flex items-center gap-1.5">
-                    <group.Icon size={12} style={{ color: 'rgba(138,98,72,0.85)' }} />
+                    <group.Icon size={12} style={{ color: 'var(--sidebar-muted)' }} />
                     <span
                       className="text-[9.5px] font-bold uppercase tracking-[0.1em] whitespace-nowrap"
-                      style={{ color: 'rgba(138,98,72,0.85)' }}
+                      style={{ color: 'var(--sidebar-muted)' }}
                     >
                       {group.label}
                     </span>
@@ -393,14 +393,14 @@ export default function AppShell({
                   <ChevronDown
                     size={11}
                     style={{
-                      color: 'rgba(138,98,72,0.85)', transition: 'transform 0.15s',
+                      color: 'var(--sidebar-muted)', transition: 'transform 0.15s',
                       transform: groupCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)',
                     }}
                   />
                 </button>
               )}
               {collapsed && gi > 0 && (
-                <div className="mx-auto mb-2 w-6" style={{ height: 1, background: 'rgba(255,255,255,0.08)' }} />
+                <div className="mx-auto mb-2 w-6" style={{ height: 1, background: 'var(--sidebar-border)' }} />
               )}
               {!groupCollapsed && (
               <div className="space-y-0.5">
@@ -430,10 +430,10 @@ export default function AppShell({
                         <tab.Icon
                           size={17}
                           strokeWidth={isActive ? 2.2 : 1.7}
-                          style={{ color: isActive ? '#B7CCFA' : '#8FA3CC', flexShrink: 0 }}
+                          style={{ color: isActive ? 'var(--accent)' : 'var(--sidebar-muted)', flexShrink: 0 }}
                         />
                         {!collapsed && (
-                          <MarqueeText className="flex-1 text-left min-w-0" style={{ color: isActive ? '#B7CCFA' : '#C9D6F2' }}>
+                          <MarqueeText className="flex-1 text-left min-w-0" style={{ color: isActive ? 'var(--accent-dark)' : 'var(--sidebar-text)' }}>
                             {tab.label}
                           </MarqueeText>
                         )}
@@ -468,7 +468,7 @@ export default function AppShell({
                             <ChevronDown
                               size={13}
                               style={{
-                                color: '#8FA3CC', transition: 'transform 0.15s',
+                                color: 'var(--sidebar-muted)', transition: 'transform 0.15s',
                                 transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
                               }}
                             />
@@ -496,9 +496,9 @@ export default function AppShell({
                                 <child.Icon
                                   size={15}
                                   strokeWidth={childIsActive ? 2.2 : 1.7}
-                                  style={{ color: childIsActive ? '#B7CCFA' : '#8FA3CC', flexShrink: 0 }}
+                                  style={{ color: childIsActive ? 'var(--accent)' : 'var(--sidebar-muted)', flexShrink: 0 }}
                                 />
-                                <MarqueeText className="flex-1 text-left min-w-0" style={{ color: childIsActive ? '#B7CCFA' : '#C9D6F2' }}>
+                                <MarqueeText className="flex-1 text-left min-w-0" style={{ color: childIsActive ? 'var(--accent-dark)' : 'var(--sidebar-text)' }}>
                                   {child.label}
                                 </MarqueeText>
                               </button>
@@ -520,13 +520,13 @@ export default function AppShell({
             <div className="mt-4">
               {!collapsed && (
                 <div className="px-3 mb-1.5">
-                  <span className="text-[9.5px] font-bold uppercase tracking-[0.1em] whitespace-nowrap" style={{ color: 'rgba(255,144,144,0.7)' }}>
+                  <span className="text-[9.5px] font-bold uppercase tracking-[0.1em] whitespace-nowrap" style={{ color: '#B91C1C' }}>
                     {SUPER_ADMIN_TAB ? 'Super Admin' : 'Tagihan'}
                   </span>
                 </div>
               )}
               {collapsed && (
-                <div className="mx-auto mb-2 w-6" style={{ height: 1, background: 'rgba(255,255,255,0.08)' }} />
+                <div className="mx-auto mb-2 w-6" style={{ height: 1, background: 'var(--sidebar-border)' }} />
               )}
               <div className="space-y-0.5">
                 {(() => {
@@ -540,10 +540,10 @@ export default function AppShell({
                       <PINNED_TAB.Icon
                         size={17}
                         strokeWidth={isActive ? 2.2 : 1.7}
-                        style={{ color: isActive ? '#B7CCFA' : '#8FA3CC', flexShrink: 0 }}
+                        style={{ color: isActive ? 'var(--accent)' : 'var(--sidebar-muted)', flexShrink: 0 }}
                       />
                       {!collapsed && (
-                        <MarqueeText className="flex-1 text-left min-w-0" style={{ color: isActive ? '#B7CCFA' : '#C9D6F2' }}>
+                        <MarqueeText className="flex-1 text-left min-w-0" style={{ color: isActive ? 'var(--accent-dark)' : 'var(--sidebar-text)' }}>
                           {PINNED_TAB.label}
                         </MarqueeText>
                       )}
@@ -559,7 +559,7 @@ export default function AppShell({
         {/* Footer */}
         <div
           className="flex-shrink-0 px-2 pb-4 pt-2"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
+          style={{ borderTop: '1px solid var(--sidebar-border)' }}
         >
           {/* Collapse toggle */}
           {(() => {
@@ -570,10 +570,10 @@ export default function AppShell({
                 style={{ justifyContent: collapsed ? 'center' : 'flex-start', opacity: 0.6 }}
               >
                 {collapsed
-                  ? <PanelLeftOpen  size={14} style={{ color: '#8FA3CC', flexShrink: 0 }} />
-                  : <PanelLeftClose size={14} style={{ color: '#8FA3CC', flexShrink: 0 }} />
+                  ? <PanelLeftOpen  size={14} style={{ color: 'var(--sidebar-muted)', flexShrink: 0 }} />
+                  : <PanelLeftClose size={14} style={{ color: 'var(--sidebar-muted)', flexShrink: 0 }} />
                 }
-                {!collapsed && <span className="whitespace-nowrap text-xs" style={{ color: '#8FA3CC' }}>Perkecil</span>}
+                {!collapsed && <span className="whitespace-nowrap text-xs" style={{ color: 'var(--sidebar-muted)' }}>Perkecil</span>}
               </button>
             );
             return collapsed
@@ -586,8 +586,8 @@ export default function AppShell({
             <div style={{
               display: 'flex', alignItems: 'center', gap: 10,
               padding: '9px 10px', borderRadius: 10,
-              background: 'rgba(255,255,255,0.05)',
-              border: '1px solid rgba(255,255,255,0.07)',
+              background: 'var(--surface-2)',
+              border: '1px solid var(--border)',
             }}>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <Tooltip label="Edit profil" side="top">
@@ -599,10 +599,10 @@ export default function AppShell({
                     <div className="relative" style={{ flexShrink: 0 }}>
                       <div style={{
                         width: 30, height: 30, borderRadius: 8, overflow: 'hidden',
-                        background: 'linear-gradient(135deg, var(--accent), #1B45C4)',
+                        background: 'linear-gradient(135deg, var(--accent), var(--accent-dark))',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         fontSize: 12, fontWeight: 800, color: 'white',
-                        boxShadow: '0 2px 6px rgba(29,79,224,0.35)',
+                        boxShadow: '0 2px 6px rgba(37,99,235,0.35)',
                       }}>
                         {avatar
                           ? <img src={avatar} alt={username} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -610,15 +610,15 @@ export default function AppShell({
                       </div>
                       <span
                         className="status-dot-blink absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2"
-                        style={{ borderColor: '#0A1330' }}
+                        style={{ borderColor: 'var(--sidebar)' }}
                         title="Aktif"
                       />
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <p style={{ fontSize: 12, fontWeight: 700, color: '#C9D6F2', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', lineHeight: 1.3 }}>
+                      <p style={{ fontSize: 12, fontWeight: 700, color: 'var(--sidebar-text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', lineHeight: 1.3 }}>
                         {username}
                       </p>
-                      <p style={{ fontSize: 10, color: '#8FA3CC', lineHeight: 1.3 }}>{superAdmin ? 'Super Admin' : 'Administrator'}</p>
+                      <p style={{ fontSize: 10, color: 'var(--sidebar-muted)', lineHeight: 1.3 }}>{superAdmin ? 'Super Admin' : 'Administrator'}</p>
                     </div>
                   </button>
                 </Tooltip>
@@ -628,13 +628,13 @@ export default function AppShell({
                   onClick={handleLogout}
                   style={{
                     width: 28, height: 28, borderRadius: 7, flexShrink: 0,
-                    background: 'rgba(255,144,144,0.08)', border: '1px solid rgba(255,144,144,0.15)',
-                    color: '#FF9090', cursor: 'pointer',
+                    background: 'var(--danger-bg)', border: '1px solid var(--danger-border)',
+                    color: '#B91C1C', cursor: 'pointer',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     transition: 'background 0.15s',
                   }}
-                  onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,144,144,0.20)')}
-                  onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255,144,144,0.08)')}
+                  onMouseEnter={e => (e.currentTarget.style.background = '#FEE2E2')}
+                  onMouseLeave={e => (e.currentTarget.style.background = 'var(--danger-bg)')}
                 >
                   <LogOut size={13} />
                 </button>
@@ -650,7 +650,7 @@ export default function AppShell({
                 className="sidebar-nav-item w-full mt-0.5"
                 style={{ justifyContent: 'center' }}
               >
-                <LogOut size={15} style={{ color: '#FF9090', flexShrink: 0 }} />
+                <LogOut size={15} style={{ color: '#B91C1C', flexShrink: 0 }} />
               </button>
             </Tooltip>
           )}
@@ -719,7 +719,7 @@ export default function AppShell({
         style={{
           background: '#FFFFFF',
           borderTop: '1px solid var(--border)',
-          boxShadow: '0 -4px 16px rgba(11,22,48,0.07)',
+          boxShadow: '0 -4px 16px rgba(15,23,42,0.07)',
           paddingBottom: 'env(safe-area-inset-bottom)',
         }}
       >
@@ -809,7 +809,7 @@ export default function AppShell({
         <>
           <div
             className="lg:hidden fixed inset-0 z-40"
-            style={{ background: 'rgba(11,22,48,0.4)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
+            style={{ background: 'rgba(15,23,42,0.4)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
             onClick={() => { setMoreOpen(false); setMoreQuery(''); }}
           />
           <div
@@ -819,7 +819,7 @@ export default function AppShell({
               maxHeight: 'calc(100dvh - env(safe-area-inset-top) - 48px)',
               background: 'var(--surface)',
               borderRadius: '20px 20px 0 0',
-              boxShadow: '0 -8px 40px rgba(11,22,48,0.14)',
+              boxShadow: '0 -8px 40px rgba(15,23,42,0.14)',
               paddingBottom: 'calc(20px + env(safe-area-inset-bottom))',
               transform: moreDragY ? `translateY(${moreDragY}px)` : undefined,
               transition: moreDragging.current ? 'none' : 'transform 0.2s ease-out',
@@ -914,7 +914,7 @@ export default function AppShell({
                 <button
                   onClick={() => { setMoreOpen(false); handleLogout(); }}
                   className="w-full flex items-center gap-3.5 px-4 py-3.5 rounded-2xl"
-                  style={{ background: 'var(--danger-bg)', color: 'var(--danger)' }}
+                  style={{ background: 'var(--danger-bg)', color: '#B91C1C' }}
                 >
                   <LogOut size={20} strokeWidth={1.8} />
                   <span className="font-semibold text-sm">Keluar</span>

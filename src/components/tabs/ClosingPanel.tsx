@@ -452,7 +452,7 @@ export default function ClosingPanel({ creds, can, canWallet, isSuperAdmin, onCh
               <div className="flex items-center gap-2">
                 {([['paid', 'Sudah dibayar'], ['receivable', 'Belum dibayar']] as const).map(([id, label]) => (
                   <button key={id} onClick={() => { setDetailTab(id); setDetailPage(1); }} className="px-3 py-1.5 min-h-10 sm:min-h-0 rounded-xl text-xs font-bold flex-1 sm:flex-none"
-                    style={detailTab === id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+                    style={detailTab === id ? { background: 'var(--accent-grad)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
                     {label}
                   </button>
                 ))}

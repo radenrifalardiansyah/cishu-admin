@@ -321,7 +321,7 @@ export default function KasirLapakTab({ creds, can }: { creds: string; can: (a: 
             <div className="flex rounded-xl overflow-hidden border text-xs font-bold" style={{ borderColor: 'var(--border)' }}>
               {(Object.keys(PAY_LABEL) as PaymentMethod[]).map(m => (
                 <button key={m} onClick={() => setMethod(m)} className="flex-1 px-3.5 py-2.5 transition-all"
-                  style={method === m ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                  style={method === m ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                   {PAY_LABEL[m]}
                 </button>
               ))}
@@ -435,7 +435,7 @@ export default function KasirLapakTab({ creds, can }: { creds: string; can: (a: 
             <div className="inline-flex rounded-xl overflow-x-auto no-scrollbar border self-start" style={{ borderColor: 'var(--border)' }}>
               {KIND_TABS.map(t => (
                 <button key={t.id} onClick={() => setKind(t.id)} className="px-3.5 py-2 text-xs font-bold whitespace-nowrap"
-                  style={kind === t.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>{t.label}</button>
+                  style={kind === t.id ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>{t.label}</button>
               ))}
             </div>
           </div>

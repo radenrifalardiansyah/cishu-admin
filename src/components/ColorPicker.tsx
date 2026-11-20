@@ -73,7 +73,7 @@ export default function ColorPicker({ value, onChange, size = 44 }: ColorPickerP
           width: size, height: size, flexShrink: 0, boxSizing: 'border-box',
           borderRadius: 12, border: '1.5px solid var(--border)',
           background: current, cursor: 'pointer', transition: 'box-shadow 0.15s',
-          boxShadow: open ? '0 0 0 3px rgba(212,105,30,0.12)' : undefined,
+          boxShadow: open ? '0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent)' : undefined,
         }}
       />
       {open && pos && typeof document !== 'undefined' && createPortal(

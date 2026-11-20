@@ -35,10 +35,10 @@ const rp = (n: number) =>
 
 const C = {
   accent:   THEME_COLOR,
-  accentBg: '#FDF0E6',
-  dark:     '#1E1008',
-  muted:    '#A08468',
-  border:   '#E6DDD0',
+  accentBg: '#EFF6FF',
+  dark:     '#0F172A',
+  muted:    '#5B6B84',
+  border:   '#DBE6F7',
   white:    '#FFFFFF',
   green:    '#15803D',
   greenBg:  '#DCFCE7',
@@ -99,7 +99,7 @@ const s = StyleSheet.create({
 });
 
 const STATUS_LABEL: Record<string, { label: string; bg: string; fg: string }> = {
-  draft:    { label: 'DRAFT',              bg: '#EDE7DD', fg: C.muted },
+  draft:    { label: 'DRAFT',              bg: '#E6EEFA', fg: C.muted },
   invoiced: { label: 'BELUM DIBAYAR',      bg: C.accentBg, fg: C.accent },
   paid:     { label: 'LUNAS',              bg: C.greenBg,  fg: C.green },
 };

@@ -1010,7 +1010,7 @@ _${storeName}_`.trim();
       titleCell.value = 'LAPORAN PESANAN — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -1020,7 +1020,7 @@ _${storeName}_`.trim();
       subCell.value = `${rows.length} pesanan · Total omzet ${formatRp(totalOmzet)} · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -1028,14 +1028,14 @@ _${storeName}_`.trim();
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FFC96018' } },
-          bottom: { style: 'thin', color: { argb: 'FFC96018' } },
-          left: { style: 'thin', color: { argb: 'FFC96018' } },
-          right: { style: 'thin', color: { argb: 'FFC96018' } },
+          top: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          bottom: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          left: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          right: { style: 'thin', color: { argb: 'FF1D4ED8' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -1057,7 +1057,7 @@ _${storeName}_`.trim();
           status: o.status || '-',
         });
 
-        const zebraFill = i % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -1191,7 +1191,7 @@ _${storeName}_`.trim();
     titleCell.value = 'TEMPLATE IMPORT DATA PESANAN — CISHU';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+    titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
     ws.getRow(1).height = 26;
 
     ws.mergeCells(2, 1, 2, colCount);
@@ -1203,7 +1203,7 @@ _${storeName}_`.trim();
       + 'Kolom Produk cukup diisi ringkasan nama produk (bebas), bukan rincian per baris.';
     noteCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
     noteCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+    noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
     ws.getRow(2).height = 46;
 
     const HEADER_ROW_NUM = 3;
@@ -1211,14 +1211,14 @@ _${storeName}_`.trim();
     ORDER_TEMPLATE_COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
     headerRow.height = 24;
     headerRow.eachCell(cell => {
-      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
       cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
       cell.alignment = { vertical: 'middle', horizontal: 'center' };
       cell.border = {
-        top: { style: 'thin', color: { argb: 'FFC96018' } },
-        bottom: { style: 'thin', color: { argb: 'FFC96018' } },
-        left: { style: 'thin', color: { argb: 'FFC96018' } },
-        right: { style: 'thin', color: { argb: 'FFC96018' } },
+        top: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        bottom: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        left: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+        right: { style: 'thin', color: { argb: 'FF1D4ED8' } },
       };
     });
     ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -1365,7 +1365,7 @@ _${storeName}_`.trim();
             className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
             style={{
               height: HEADER_BTN_H,
-              background: onlyBelumLunas ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)',
+              background: onlyBelumLunas ? 'var(--accent-grad)' : 'var(--surface-2)',
               color: onlyBelumLunas ? 'white' : 'var(--text-muted)',
             }}
           >
@@ -1379,7 +1379,7 @@ _${storeName}_`.trim();
             className="px-3 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 flex-shrink-0"
             style={{
               height: HEADER_BTN_H,
-              background: onlyProof ? 'linear-gradient(135deg,#2A62F0,#1B45C4)' : 'var(--surface-2)',
+              background: onlyProof ? 'var(--accent-grad)' : 'var(--surface-2)',
               color: onlyProof ? 'white' : 'var(--text-muted)',
             }}
           >
@@ -1552,7 +1552,7 @@ _${storeName}_`.trim();
             );
             return (
             <div key={o.id} ref={el => { rowRefs.current[o.id] = el; }}
-              style={{ transition: 'background-color 0.6s ease', backgroundColor: highlightedId === o.id ? 'var(--accent-bg)' : isSelected ? 'rgba(29,79,224,0.05)' : undefined }}>
+              style={{ transition: 'background-color 0.6s ease', backgroundColor: highlightedId === o.id ? 'var(--accent-bg)' : isSelected ? 'rgba(37,99,235,0.05)' : undefined }}>
               <div className="flex flex-col gap-2 px-4 py-3.5">
                 <div className="flex items-center gap-3">
                   <Checkbox checked={isSelected} onChange={() => toggleSelect(o.id)} />
@@ -2160,7 +2160,7 @@ _${storeName}_`.trim();
                     {(['nominal', 'percent'] as const).map(t => (
                       <button key={t} type="button" onClick={() => setEditDiscountType(t)}
                         className="px-3 py-2.5 text-xs font-bold transition-all"
-                        style={editDiscountType === t ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                        style={editDiscountType === t ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                         {t === 'nominal' ? 'Rp' : '%'}
                       </button>
                     ))}
@@ -2181,7 +2181,7 @@ _${storeName}_`.trim();
                   {(['cash', 'transfer', 'qris', 'kredit'] as const).map(m => (
                     <button key={m} type="button" onClick={() => setEditPaymentMethod(m)}
                       className="flex-1 px-2 py-2.5 text-xs font-bold transition-all"
-                      style={editPaymentMethod === m ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={editPaymentMethod === m ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {m === 'cash' ? 'Tunai' : m === 'transfer' ? 'Transfer' : m === 'qris' ? 'QRIS' : 'Kredit'}
                     </button>
                   ))}
@@ -2220,7 +2220,7 @@ _${storeName}_`.trim();
                     {(['lunas', 'belum_lunas'] as const).map(s => (
                       <button key={s} type="button" onClick={() => setEditPaymentStatus(s)}
                         className="flex-1 px-3.5 py-2.5 text-xs font-bold transition-all"
-                        style={editPaymentStatus === s ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                        style={editPaymentStatus === s ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                         {s === 'lunas' ? 'Lunas' : 'Belum Lunas'}
                       </button>
                     ))}

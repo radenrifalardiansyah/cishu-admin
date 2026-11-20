@@ -147,7 +147,7 @@ function TxList({
   const pName = (entry: TxEntry) => entry.productName || products.find(p => p.id === entry.productId)?.name || entry.productId;
   const pEmoji = (id: string) => products.find(p => p.id === id)?.emoji ?? '📦';
   const pImages = (id: string) => products.find(p => p.id === id)?.imageUrls;
-  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#F1F5FC';
+  const pBgColor = (id: string) => products.find(p => p.id === id)?.bgColor ?? '#F5F9FF';
 
   const typeBadge = (type: TxEntry['type']) => {
     if (type === 'in')       return { label: 'Masuk',    Icon: TrendingUp,     color: 'var(--success)', bg: 'var(--success-bg)' };
@@ -305,9 +305,9 @@ interface ReportRow {
 
 const REPORT_STATUS_STYLE = {
   habis:   { label: 'Habis',   color: '#DC2626', bg: '#FEF2F2' },
-  rendah:  { label: 'Rendah',  color: '#1B45C4', bg: '#EAF1FF' },
+  rendah:  { label: 'Rendah',  color: '#92400E', bg: '#FEF3C7' },
   normal:  { label: 'Normal',  color: '#15803D', bg: '#F0FDF4' },
-  open_po: { label: 'Open PO', color: '#1B45C4', bg: '#EAF1FF' },
+  open_po: { label: 'Open PO', color: '#92400E', bg: '#FEF3C7' },
 } as const;
 
 const TX_TYPE_BADGE: Record<string, { label: string; Icon: React.ElementType; color: string; bg: string }> = {
@@ -732,13 +732,13 @@ export default function StockReportTab({
         const t = ws.getCell(1, 1);
         t.value = title; t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
         t.alignment = { horizontal: 'center', vertical: 'middle' };
-        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC96018' } };
+        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
         ws.getRow(1).height = 28;
         ws.mergeCells(2, 1, 2, colCount);
         const s = ws.getCell(2, 1);
         s.value = subtitle; s.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
         s.alignment = { horizontal: 'center', vertical: 'middle' };
-        s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFDF2E9' } };
+        s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
         ws.getRow(2).height = 20;
       };
       const styleHeader = (ws: ExcelJS.Worksheet, rowNum: number, hdrs: string[]) => {
@@ -746,7 +746,7 @@ export default function StockReportTab({
         hdrs.forEach((h, i) => { row.getCell(i + 1).value = h; });
         row.height = 24;
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE8821A' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
           cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
           cell.alignment = { vertical: 'middle', horizontal: 'center' };
         });
@@ -754,7 +754,7 @@ export default function StockReportTab({
       };
       const zebra = (ws: ExcelJS.Worksheet, rowNum: number, idx: number) => {
         ws.getRow(rowNum).eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: idx % 2 === 0 ? 'FFFFF7ED' : 'FFFFFFFF' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: idx % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF' } };
           cell.border = { top: { style: 'thin', color: { argb: 'FFE5E7EB' } }, bottom: { style: 'thin', color: { argb: 'FFE5E7EB' } }, left: { style: 'thin', color: { argb: 'FFE5E7EB' } }, right: { style: 'thin', color: { argb: 'FFE5E7EB' } } };
         });
       };
@@ -949,7 +949,7 @@ export default function StockReportTab({
         {REPORT_PERIOD_OPTIONS.map(p => (
           <button key={p.id} onClick={() => setReportPeriod(p.id)}
             className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all"
-            style={reportPeriod === p.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+            style={reportPeriod === p.id ? { background: 'var(--accent-grad)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
             {p.label}
           </button>
         ))}
@@ -984,7 +984,7 @@ export default function StockReportTab({
             { icon: <Wallet size={16} />, label: 'Nilai Stok (HPP)', val: formatRp(reportTotalNilai), color: 'var(--accent)' },
             { icon: <Boxes size={16} />, label: 'Total Unit', val: reportTotalUnit, color: '#0E7490' },
             { icon: <Package size={16} />, label: 'Jenis Produk', val: reportJenisProduk, color: 'var(--success)' },
-            { icon: <AlertTriangle size={16} />, label: 'Stok Rendah', val: reportRendahCount, color: '#1B45C4' },
+            { icon: <AlertTriangle size={16} />, label: 'Stok Rendah', val: reportRendahCount, color: '#B45309' },
             { icon: <Ban size={16} />, label: 'Stok Habis', val: reportHabisCount, color: 'var(--danger)' },
           ].map((c, i) => (
             <div key={i} className="card p-4">

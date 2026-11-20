@@ -159,7 +159,7 @@ export default function VouchersPanel({ creds }: { creds: string }) {
                 <div className="flex rounded-xl overflow-hidden border text-xs font-bold" style={{ borderColor: 'var(--border)' }}>
                   {(['percent', 'nominal'] as const).map(t => (
                     <button key={t} type="button" onClick={() => set('type', t)} className="flex-1 px-3 py-2.5"
-                      style={form.type === t ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+                      style={form.type === t ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
                       {t === 'percent' ? 'Persen %' : 'Nominal Rp'}
                     </button>
                   ))}

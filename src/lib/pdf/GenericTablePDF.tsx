@@ -29,8 +29,8 @@ export interface GenericTablePDFData {
 }
 
 const C = {
-  accent: THEME_COLOR, accentBg: '#FDF0E6', dark: '#1E1008', muted: '#A08468',
-  border: '#E6DDD0', white: '#FFFFFF',
+  accent: THEME_COLOR, accentBg: '#EFF6FF', dark: '#0F172A', muted: '#5B6B84',
+  border: '#DBE6F7', white: '#FFFFFF',
 };
 
 const s = StyleSheet.create({

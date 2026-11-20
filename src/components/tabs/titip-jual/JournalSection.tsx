@@ -161,7 +161,7 @@ export function EntryModal({ creds, data, initialStallId, onClose, onDone }: {
           {([['in', 'Tambah kas', ArrowDownLeft], ['out', 'Ambil kas', ArrowUpRight]] as const).map(([d, label, Icon]) => (
             <button key={d} type="button" onClick={() => { setDirection(d); setCategory(d === 'in' ? 'modal' : 'setor_toko'); }}
               className="flex-1 px-3 py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5"
-              style={direction === d ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
+              style={direction === d ? { background: 'var(--accent-grad)', color: 'white' } : { background: 'var(--surface-2)', color: 'var(--text-muted)' }}>
               <Icon size={13} /> {label}
             </button>
           ))}

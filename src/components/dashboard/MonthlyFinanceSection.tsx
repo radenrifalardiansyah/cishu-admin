@@ -17,8 +17,8 @@ interface MonthRow {
 }
 
 const METRICS = [
-  { key: 'pendapatan', label: 'Penjualan (Pendapatan)', color: '#0E7490' },
-  { key: 'labaKotor', label: 'Laba Kotor', color: '#1D4FE0' },
+  { key: 'pendapatan', label: 'Penjualan (Pendapatan)', color: '#B45309' },
+  { key: 'labaKotor', label: 'Laba Kotor', color: '#2563EB' },
   { key: 'labaBersih', label: 'Laba Bersih', color: '#059669' },
 ] as const;
 type MetricKey = typeof METRICS[number]['key'];
@@ -145,7 +145,7 @@ export default function MonthlyFinanceSection({ creds }: { creds: string }) {
   };
 
   const chip = (selected: boolean) => selected
-    ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' }
+    ? { background: 'var(--accent-grad)', color: 'white' }
     : { background: 'var(--surface-2)', color: 'var(--text-muted)' };
 
   return (

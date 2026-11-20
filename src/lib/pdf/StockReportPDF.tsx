@@ -37,15 +37,15 @@ const rp = (n: number) =>
 
 const C = {
   accent:   THEME_COLOR,
-  accentBg: '#FDF0E6',
-  dark:     '#1E1008',
-  muted:    '#A08468',
-  border:   '#E6DDD0',
+  accentBg: '#EFF6FF',
+  dark:     '#0F172A',
+  muted:    '#5B6B84',
+  border:   '#DBE6F7',
   white:    '#FFFFFF',
   green:    '#15803D',
   red:      '#DC2626',
   amber:    '#A84F10',
-  amberBg:  '#FDF0E6',
+  amberBg:  '#EFF6FF',
   redBg:    '#FEF2F2',
   greenBg:  '#F0FDF4',
 };

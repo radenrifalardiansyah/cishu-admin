@@ -23,10 +23,10 @@ const pct = (n: number | null) => (n === null ? '-' : `${n.toLocaleString('id-ID
 // baris tanggal + subtotal, kotak total, dan tanda tangan.
 const C = {
   accent:   THEME_COLOR,
-  accentBg: '#FDF0E6',
-  dark:     '#1E1008',
-  muted:    '#A08468',
-  border:   '#E6DDD0',
+  accentBg: '#EFF6FF',
+  dark:     '#0F172A',
+  muted:    '#5B6B84',
+  border:   '#DBE6F7',
   white:    '#FFFFFF',
   green:    '#15803D',
   retur:    '#1D4ED8',
@@ -80,7 +80,7 @@ const s = StyleSheet.create({
   subTitle: { fontSize: 9.5, fontFamily: 'Helvetica-Bold', color: C.accent, marginTop: 16, marginBottom: -8 },
   summaryBanner: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: C.dark, borderRadius: 6, paddingVertical: 7, paddingHorizontal: 10, marginTop: 22 },
   summaryBannerTitle: { fontSize: 10, fontFamily: 'Helvetica-Bold', color: C.white, letterSpacing: 0.8 },
-  summaryBannerSub: { fontSize: 8, color: '#E6DDD0' },
+  summaryBannerSub: { fontSize: 8, color: '#DBE6F7' },
   totalRow: { flexDirection: 'row', backgroundColor: C.accentBg, borderTopWidth: 1, borderTopColor: C.border },
 
   signRow: { flexDirection: 'row', justifyContent: 'flex-end', marginTop: 24 },

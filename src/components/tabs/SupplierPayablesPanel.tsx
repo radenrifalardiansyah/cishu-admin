@@ -155,7 +155,7 @@ export default function SupplierPayablesPanel({ creds, canEdit, reloadKey, onCha
         {SECTIONS.map(t => (
           <button key={t.id} onClick={() => setSection(t.id)} aria-pressed={section === t.id}
             className="px-4 py-2 text-xs font-bold transition-all whitespace-nowrap flex-shrink-0"
-            style={section === t.id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>
+            style={section === t.id ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>
             {t.label}
           </button>
         ))}

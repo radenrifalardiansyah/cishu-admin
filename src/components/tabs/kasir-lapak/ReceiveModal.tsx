@@ -85,7 +85,7 @@ export default function ReceiveModal({ creds, stall, items, onClose, onDone }: {
         <div className="inline-flex rounded-xl overflow-hidden border self-start" style={{ borderColor: 'var(--border)' }}>
           {([['new', 'Terima Baru'], ['history', 'Diterima Hari Ini']] as const).map(([id, label]) => (
             <button key={id} onClick={() => setTab(id)} className="px-4 py-2 text-xs font-bold"
-              style={tab === id ? { background: 'linear-gradient(135deg,#2A62F0,#1B45C4)', color: 'white' } : { color: 'var(--text-muted)' }}>{label}</button>
+              style={tab === id ? { background: 'var(--accent-grad)', color: 'white' } : { color: 'var(--text-muted)' }}>{label}</button>
           ))}
         </div>
 
