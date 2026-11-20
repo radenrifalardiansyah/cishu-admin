@@ -204,7 +204,7 @@ export default function MonthlyFinanceSection({ creds }: { creds: string }) {
               {[
                 { icon: <Trophy size={15} />, label: 'Penjualan Tertinggi', main: bestSales ? fullMonth(bestSales.month) : '-', sub: bestSales ? formatRp(bestSales.pendapatan) : '', color: '#0E7490' },
                 { icon: <TrendingUp size={15} />, label: 'Laba Bersih Tertinggi', main: bestProfit ? fullMonth(bestProfit.month) : '-', sub: bestProfit ? formatRp(bestProfit.labaBersih) : '', color: '#059669' },
-                { icon: <TrendingDown size={15} />, label: 'Penjualan Terendah', main: worstSales ? fullMonth(worstSales.month) : '-', sub: worstSales ? formatRp(worstSales.pendapatan) : '', color: '#DC2626' },
+                { icon: <TrendingDown size={15} />, label: 'Penjualan Terendah', main: worstSales ? fullMonth(worstSales.month) : '-', sub: worstSales ? formatRp(worstSales.pendapatan) : '', color: '#D32222' },
                 { icon: <Wallet size={15} />, label: 'Rata-rata Penjualan / Bulan', main: formatRp(avgSales), sub: `Total ${formatRp(total('pendapatan'))}`, color: 'var(--accent)' },
               ].map((c, i) => (
                 <div key={i} className="stat-tile rounded-2xl p-3.5 border" style={{ '--tile': c.color } as React.CSSProperties}>

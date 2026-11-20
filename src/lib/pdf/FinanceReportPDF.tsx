@@ -54,7 +54,7 @@ const C = {
   white:    '#FFFFFF',
   green:    '#15803D',
   greenBg:  '#F0FDF4',
-  red:      '#DC2626',
+  red:      '#D32222',
   redBg:    '#FEF2F2',
 };
 

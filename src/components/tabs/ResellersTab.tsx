@@ -392,7 +392,7 @@ export default function ResellersTab({ creds }: { creds: string }) {
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
 
       const STATUS_FONT_COLOR: Record<Status, string> = {
-        pending: 'FFD97706', approved: 'FF16A34A', rejected: 'FFDC2626',
+        pending: 'FFD97706', approved: 'FF16A34A', rejected: 'FFD32222',
       };
 
       rows.forEach((r, i) => {

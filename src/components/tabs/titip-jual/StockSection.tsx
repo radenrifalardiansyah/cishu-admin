@@ -229,7 +229,7 @@ export default function StockSection({ creds, data, can, goTo }: SectionProps) {
               {visible.map(l => {
                 const qty = l.item.stockQty;
                 const qtyStyle = qty <= 0
-                  ? { bg: '#FEF2F2', color: '#DC2626', border: '#FECACA' }
+                  ? { bg: '#FEF2F2', color: '#D32222', border: '#FECACA' }
                   : l.p.minStock > 0 && qty <= l.p.minStock
                     ? { bg: '#FEF3C7', color: '#92400E', border: '#FDE68A' }
                     : { bg: '#F0FDF4', color: '#15803D', border: '#D1FAE5' };

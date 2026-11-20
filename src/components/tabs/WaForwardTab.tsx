@@ -312,7 +312,7 @@ export default function WaForwardTab({ creds, can }: { creds: string; can: (a: A
                 {events.map(e => (
                   <div key={e.id} className="px-5 py-1.5 flex gap-3 text-xs">
                     <span className="tabular flex-shrink-0" style={{ color: 'var(--text-muted)' }}>{new Date(e.at).toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hourCycle: 'h23' })}</span>
-                    <span className="break-words min-w-0" style={{ color: e.level === 'error' ? 'var(--danger, #DC2626)' : e.level === 'warn' ? '#B45309' : 'var(--text-secondary)' }}>{e.text}</span>
+                    <span className="break-words min-w-0" style={{ color: e.level === 'error' ? 'var(--danger, #D32222)' : e.level === 'warn' ? '#B45309' : 'var(--text-secondary)' }}>{e.text}</span>
                   </div>
                 ))}
               </div>
@@ -341,7 +341,7 @@ export default function WaForwardTab({ creds, can }: { creds: string; can: (a: A
                       </span>
                     </div>
                     <p className="text-sm mt-1.5 whitespace-pre-wrap break-words" style={{ color: 'var(--text-secondary)' }}>{r.body}</p>
-                    {r.error && <p className="text-xs mt-1" style={{ color: 'var(--danger, #DC2626)' }}>{r.error}</p>}
+                    {r.error && <p className="text-xs mt-1" style={{ color: 'var(--danger, #D32222)' }}>{r.error}</p>}
                   </div>
                 ))}
               </div>

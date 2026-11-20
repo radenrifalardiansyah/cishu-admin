@@ -49,7 +49,7 @@ const gradeMarginBersih = (marginPct: number): { grade: string; label: string; d
 const MARGIN_TIER_COLOR: Record<MarginTier, { fg: string; bg: string; ring: string }> = {
   good: { fg: 'var(--success)', bg: 'var(--success-bg)', ring: 'rgba(21,128,61,0.15)' },
   warning: { fg: 'var(--warning)', bg: 'rgba(180,83,9,0.08)', ring: 'rgba(180,83,9,0.15)' },
-  bad: { fg: 'var(--danger)', bg: 'var(--danger-bg)', ring: 'rgba(220,38,38,0.15)' },
+  bad: { fg: 'var(--danger)', bg: 'var(--danger-bg)', ring: 'rgba(211,34,34,0.15)' },
 };
 const MARGIN_GRADE_SCALE: { grade: string; range: string; label: string; desc: string; tier: MarginTier }[] = [
   { grade: 'A', range: '≥ 20%', label: 'Sangat Sehat', desc: 'Margin laba tinggi — usaha sangat menguntungkan dengan bantalan aman kalau biaya naik.', tier: 'good' },
@@ -223,7 +223,7 @@ function InfoTip({ label }: { label: string }) {
 
 // ─── Chart tren (mandiri, tidak menyentuh RevenueChart di page.tsx) ───────────
 const TREND_INCOME = '#15803D';
-const TREND_EXPENSE = '#DC2626';
+const TREND_EXPENSE = '#D32222';
 
 const compactRupiah = (n: number) => {
   const abs = Math.abs(n);
@@ -1058,7 +1058,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
             <button type="button" onClick={() => setOpenDetail('beban')}
               className="card p-4 flex flex-col gap-3 text-left transition-transform active:scale-[0.98]" style={{ background: 'var(--danger-bg)' }}>
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(220,38,38,0.15)', color: 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,34,34,0.15)', color: 'var(--danger)' }}>
                   <Receipt size={16} />
                 </div>
                 <ChevronRight size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
@@ -1072,7 +1072,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
             </button>
             <div className="card p-4 flex flex-col gap-3" style={{ background: labaBersih >= 0 ? 'var(--accent-bg)' : 'var(--danger-bg)' }}>
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersih >= 0 ? 'rgba(189,53,76,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersih >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersih >= 0 ? 'rgba(189,53,76,0.15)' : 'rgba(211,34,34,0.15)', color: labaBersih >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
                   <Wallet size={16} />
                 </div>
               </div>
@@ -1342,7 +1342,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
                 </div>
               </div>
               <div className="card p-4 flex items-center gap-3" style={{ background: 'var(--surface-2)' }}>
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(220,38,38,0.15)', color: 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(211,34,34,0.15)', color: 'var(--danger)' }}>
                   <TrendingDown size={16} />
                 </div>
                 <div className="min-w-0">
@@ -1351,7 +1351,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
                 </div>
               </div>
               <div className="card p-4 flex items-center gap-3" style={{ background: 'var(--surface-2)' }}>
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersihKasLama >= 0 ? 'rgba(189,53,76,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersihKasLama >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersihKasLama >= 0 ? 'rgba(189,53,76,0.15)' : 'rgba(211,34,34,0.15)', color: labaBersihKasLama >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
                   <Wallet size={16} />
                 </div>
                 <div className="min-w-0">
@@ -1381,7 +1381,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
                 <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>Tren Pendapatan vs Pengeluaran</p>
                 <div className="flex items-center gap-3 text-[11px]" style={{ color: 'var(--text-muted)' }}>
                   <span className="flex items-center gap-1"><span style={{ width: 8, height: 8, borderRadius: 4, background: '#15803D', display: 'inline-block' }} /> Pendapatan</span>
-                  <span className="flex items-center gap-1"><span style={{ width: 8, height: 8, borderRadius: 4, background: '#DC2626', display: 'inline-block' }} /> Pengeluaran</span>
+                  <span className="flex items-center gap-1"><span style={{ width: 8, height: 8, borderRadius: 4, background: '#D32222', display: 'inline-block' }} /> Pengeluaran</span>
                 </div>
               </div>
               <TrendChart data={trendData} />

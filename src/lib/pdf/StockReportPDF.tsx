@@ -43,7 +43,7 @@ const C = {
   border:   '#F0D6D2',
   white:    '#FFFFFF',
   green:    '#15803D',
-  red:      '#DC2626',
+  red:      '#D32222',
   amber:    '#A84F10',
   amberBg:  '#FFEFED',
   redBg:    '#FEF2F2',

@@ -169,12 +169,12 @@ export default function BusinessAnalyticsSection({
           title: 'Pendapatan vs Pengeluaran', type: 'line', labels: data.dailyTrend.map(d => shortDate(d.date)),
           series: [
             { name: 'Pendapatan', color: '#15803D', values: data.dailyTrend.map(d => d.pendapatan) },
-            { name: 'Pengeluaran', color: '#DC2626', values: data.dailyTrend.map(d => d.expense) },
+            { name: 'Pengeluaran', color: '#D32222', values: data.dailyTrend.map(d => d.expense) },
           ],
         },
         {
           title: 'Pengeluaran per Kategori', type: 'bar', labels: data.expenseByCategory.map(c => c.category),
-          series: [{ name: 'Pengeluaran', color: '#DC2626', values: data.expenseByCategory.map(c => c.amount) }],
+          series: [{ name: 'Pengeluaran', color: '#D32222', values: data.expenseByCategory.map(c => c.amount) }],
         },
         {
           title: 'Pemasukan Lain per Kategori', type: 'bar', labels: data.incomeByCategory.map(c => c.category),
@@ -387,7 +387,7 @@ export default function BusinessAnalyticsSection({
               <>
                 <div className="flex items-center gap-3 text-[11px] mb-2" style={{ color: 'var(--text-muted)' }}>
                   <LegendDot color="#15803D" label="Pendapatan" />
-                  <LegendDot color="#DC2626" label="Pengeluaran" />
+                  <LegendDot color="#D32222" label="Pengeluaran" />
                 </div>
                 <div className="chart-panel" style={{ width: '100%', height: 200 }}>
                   <ResponsiveContainer>
@@ -397,7 +397,7 @@ export default function BusinessAnalyticsSection({
                       <YAxis tickFormatter={compactRp} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} width={48} tickCount={5} />
                       <Tooltip content={<ChartTooltip />} cursor={{ stroke: 'var(--border)', strokeWidth: 1.5, strokeDasharray: '4 4' }} />
                       <Line type="monotone" dataKey="pendapatan" name="Pendapatan" stroke="#15803D" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#15803D' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
-                      <Line type="monotone" dataKey="expense" name="Pengeluaran" stroke="#DC2626" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#DC2626' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+                      <Line type="monotone" dataKey="expense" name="Pengeluaran" stroke="#D32222" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#D32222' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
                     </LineChart>
                   </ResponsiveContainer>
                 </div>

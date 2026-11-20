@@ -536,7 +536,7 @@ export default function ProductsTab({ creds }: { creds: string }) {
 
   const STATUS_FONT_COLOR: Record<string, string> = {
     Tersedia: 'FF16A34A',
-    Habis:    'FFDC2626',
+    Habis:    'FFD32222',
     'Open PO': 'FFD97706',
   };
 

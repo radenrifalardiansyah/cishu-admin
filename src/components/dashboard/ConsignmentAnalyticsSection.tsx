@@ -53,13 +53,13 @@ function shortDate(dateStr: string): string {
   return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' });
 }
 
-const PAYMENT_STATUS_COLORS: Record<string, string> = { lunas: '#059669', belum_lunas: '#DC2626' };
+const PAYMENT_STATUS_COLORS: Record<string, string> = { lunas: '#059669', belum_lunas: '#D32222' };
 const PRODUCT_COLORS = ['var(--accent)', '#7C3AED', '#0E7490', '#3B2420', '#65A30D', '#1D6FC4', '#9A3412', '#0F766E'];
 
 function sellThroughColor(pct: number): string {
   if (pct >= 70) return '#059669';
   if (pct >= 40) return '#D97706';
-  return '#DC2626';
+  return '#D32222';
 }
 
 function LegendDot({ color, label }: { color: string; label: string }) {
@@ -474,7 +474,7 @@ export default function ConsignmentAnalyticsSection({
               const pcsSummary = [
                 { name: 'Terkirim', value: kirimQty, color: '#B45309' },
                 { name: 'Retur', value: retur, color: '#D97706' },
-                { name: 'Reject', value: reject, color: '#DC2626' },
+                { name: 'Reject', value: reject, color: '#D32222' },
                 { name: 'Total', value: totalAll, color: '#7C3AED' },
               ];
               return (
@@ -509,7 +509,7 @@ export default function ConsignmentAnalyticsSection({
               <div className="flex items-center gap-3 text-[11px]" style={{ color: 'var(--text-muted)' }}>
                 <LegendDot color="#B45309" label="Terkirim" />
                 <LegendDot color="#D97706" label="Retur" />
-                <LegendDot color="#DC2626" label="Reject" />
+                <LegendDot color="#D32222" label="Reject" />
               </div>
             </div>
             {data.topLocations.length === 0 ? (
@@ -531,7 +531,7 @@ export default function ConsignmentAnalyticsSection({
                       <Tooltip content={<PcsLocationTooltip />} cursor={{ fill: 'var(--surface-2)' }} />
                       <Bar dataKey="kirimQty" name="Terkirim" fill="#B45309" radius={[0, 4, 4, 0]} barSize={12} />
                       <Bar dataKey="retur" name="Retur" fill="#D97706" radius={[0, 4, 4, 0]} barSize={12} />
-                      <Bar dataKey="reject" name="Reject" fill="#DC2626" radius={[0, 4, 4, 0]} barSize={12} />
+                      <Bar dataKey="reject" name="Reject" fill="#D32222" radius={[0, 4, 4, 0]} barSize={12} />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>

@@ -236,7 +236,7 @@ function TxModal({
           Batal
         </button>
         <button onClick={onSubmit} disabled={submitting || !canSubmit}
-          className="btn-primary" style={{ flex: 2, justifyContent: 'center', padding: '10px 0', background: isIn ? undefined : 'linear-gradient(135deg,#DC2626,#B91C1C)' }}>
+          className="btn-primary" style={{ flex: 2, justifyContent: 'center', padding: '10px 0', background: isIn ? undefined : 'linear-gradient(135deg,#D32222,#B91C1C)' }}>
           {submitting
             ? <Loader2 size={14} className="animate-spin" />
             : isIn ? <Plus size={14} /> : <TrendingDown size={14} />}
@@ -1128,7 +1128,7 @@ export default function StockTab({
                         const qty     = s.stockQty;
                         const isPO    = poIds.has(s.productId);
                         const qtyStyle = qty === 0
-                          ? { bg: '#FEF2F2', color: '#DC2626', border: '#FECACA' }
+                          ? { bg: '#FEF2F2', color: '#D32222', border: '#FECACA' }
                           : qty < 10
                             ? { bg: '#FEF3C7', color: '#92400E', border: '#FDE68A' }
                             : { bg: '#F0FDF4', color: '#15803D', border: '#D1FAE5' };
@@ -1268,7 +1268,7 @@ export default function StockTab({
                   </button>
                 </Tooltip>
                 {outTx.length > 0 && <ViewToggle mode={historyView} onChange={setHistoryView} height={HEADER_BTN_H} />}
-                <button onClick={() => openTxModal('out')} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H, background: 'linear-gradient(135deg,#DC2626,#B91C1C)' }}>
+                <button onClick={() => openTxModal('out')} className="btn-primary text-xs flex-shrink-0" style={{ height: HEADER_BTN_H, background: 'linear-gradient(135deg,#D32222,#B91C1C)' }}>
                   <Plus size={13} /> <span className="hidden sm:inline">Tambah Stok Keluar</span>
                 </button>
               </div>

@@ -1932,7 +1932,7 @@ _${storeHeader.name}_`.trim();
         row.getCell('items').alignment   = { horizontal: 'left', vertical: 'top', wrapText: true };
         row.getCell('revenue').numFmt    = '#,##0';
         const statusCell = row.getCell('status');
-        statusCell.font = { bold: true, color: { argb: r.paymentStatus === 'belum_lunas' ? 'FFDC2626' : 'FF16A34A' } };
+        statusCell.font = { bold: true, color: { argb: r.paymentStatus === 'belum_lunas' ? 'FFD32222' : 'FF16A34A' } };
         statusCell.alignment = { horizontal: 'center', vertical: 'middle' };
       });
 
@@ -2514,7 +2514,7 @@ _${storeHeader.name}_`.trim();
             row.getCell('items').alignment   = { horizontal: 'left', vertical: 'top', wrapText: true };
             row.getCell('revenue').numFmt    = '#,##0';
             const statusCell = row.getCell('status');
-            statusCell.font = { bold: true, color: { argb: r.paymentStatus === 'belum_lunas' ? 'FFDC2626' : 'FF16A34A' } };
+            statusCell.font = { bold: true, color: { argb: r.paymentStatus === 'belum_lunas' ? 'FFD32222' : 'FF16A34A' } };
             statusCell.alignment = { horizontal: 'center', vertical: 'middle' };
           });
         },

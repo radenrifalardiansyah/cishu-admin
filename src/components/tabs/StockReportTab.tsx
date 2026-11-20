@@ -304,7 +304,7 @@ interface ReportRow {
 }
 
 const REPORT_STATUS_STYLE = {
-  habis:   { label: 'Habis',   color: '#DC2626', bg: '#FEF2F2' },
+  habis:   { label: 'Habis',   color: '#D32222', bg: '#FEF2F2' },
   rendah:  { label: 'Rendah',  color: '#92400E', bg: '#FEF3C7' },
   normal:  { label: 'Normal',  color: '#15803D', bg: '#F0FDF4' },
   open_po: { label: 'Open PO', color: '#92400E', bg: '#FEF3C7' },
