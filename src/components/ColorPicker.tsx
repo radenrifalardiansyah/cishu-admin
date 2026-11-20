@@ -4,13 +4,14 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Check } from 'lucide-react';
 
-// Palet kurasi untuk badge warna dompet — cukup beragam untuk membedakan banyak dompet
+// Palet kurasi untuk warna dompet dan tema — cukup beragam untuk membedakan banyak dompet
 // sekilas, tanpa membuka color-picker bebas yang bisa menghasilkan warna sulit dibaca.
+// Swatch pertama = warna merek Cishu (juga warna bawaan saat nilai kosong). Tanpa oranye/amber/kuning:
+// itu sisa tema lama dan diabaikan oleh isLegacyWarmColor, jadi tidak boleh ditawarkan di sini.
 export const COLOR_SWATCHES = [
-  '#D4691E', '#DC2626', '#EA580C', '#D97706', '#CA8A04',
-  '#65A30D', '#16A34A', '#059669', '#0D9488', '#0891B2',
-  '#BD354C', '#4F46E5', '#7C3AED', '#9333EA', '#C026D3',
-  '#DB2777', '#71717A', '#374151',
+  '#BD354C', '#A32F3E', '#DC2626', '#E11D48', '#DB2777', '#C026D3',
+  '#9333EA', '#7C3AED', '#4F46E5', '#2563EB', '#0891B2', '#0D9488',
+  '#059669', '#16A34A', '#65A30D', '#71717A', '#374151', '#1E293B',
 ];
 
 interface ColorPickerProps {
