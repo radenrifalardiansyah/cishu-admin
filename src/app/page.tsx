@@ -1005,7 +1005,7 @@ export default function AdminPage() {
             </ul>
           </div>
 
-          <p className="text-xs relative z-10" style={{ color: 'var(--ink-navy)' }}>
+          <p className="text-xs relative z-10 text-center mt-8" style={{ color: 'var(--ink-navy)' }}>
             © 2026 Cishu
           </p>
         </div>
