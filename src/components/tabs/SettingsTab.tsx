@@ -24,7 +24,9 @@ interface StoreSettings {
   storeName?: string; storeTagline?: string; storeDescription?: string; logo?: string;
   legalName?: string;
   ownerName?: string; ownerSignature?: string; ownerStamp?: string;
-  whatsapp?: string; adminNotifyWhatsapp?: string; instagramUrl?: string; tiktokUrl?: string; shopeeUrl?: string; mapsUrl?: string;
+  whatsapp?: string; adminNotifyWhatsapp?: string;
+  // Notifikasi WA storefront (CallMeBot). Key tidak pernah dikirim balik dari server: hanya penanda + 4 digit akhir.
+  notifyPhone?: string; callmebotApiKeySet?: boolean; callmebotApiKeyHint?: string; instagramUrl?: string; tiktokUrl?: string; shopeeUrl?: string; mapsUrl?: string;
   address?: string; city?: string; region?: string; nib?: string; shopeeName?: string;
   // Website & SEO storefront (dipakai di metadata, sitemap, JSON-LD, PDF proposal/invoice).
   siteUrl?: string; seoTitle?: string; seoDescription?: string; seoKeywords?: string; googleSiteVerification?: string;
@@ -194,6 +196,10 @@ export default function SettingsTab({ creds }: { creds: string }) {
   const [stampUploading, setStampUploading] = useState(false);
   const [qrisUploading, setQrisUploading] = useState(false);
   const [warehouses, setWarehouses] = useState<SettingsWarehouse[]>([]);
+  // API key CallMeBot yang baru diketik (kosong = tidak diubah) dan penanda minta-hapus.
+  const [waKeyInput, setWaKeyInput] = useState('');
+  const [waKeyClear, setWaKeyClear] = useState(false);
+  const [testingWa, setTestingWa] = useState(false);
 
   const headers = { 'x-admin-auth': creds, 'Content-Type': 'application/json' };
 
@@ -334,15 +340,39 @@ export default function SettingsTab({ creds }: { creds: string }) {
     setSaving(true);
     const r = await fetch(`${API}/api/settings`, {
       method: 'PUT', headers,
-      body: JSON.stringify(settings),
+      body: JSON.stringify({ ...settings, callmebotApiKey: waKeyClear ? null : (waKeyInput.trim() || undefined) }),
     });
     setSaving(false);
     if (r.ok) {
+      if (waKeyClear || waKeyInput.trim()) {
+        setWaKeyInput(''); setWaKeyClear(false);
+        const rs = await fetch(`${API}/api/settings`, { headers });
+        if (rs.ok) { const { settings: s } = await rs.json() as { settings: StoreSettings }; setSettings(s ?? {}); }
+      }
       setSaved(true);
       toast.success('Pengaturan berhasil disimpan.');
       setTimeout(() => setSaved(false), 2500);
     } else {
-      toast.error('Gagal menyimpan pengaturan.');
+      const d = await r.json().catch(() => ({})) as { error?: string };
+      toast.error(d.error || 'Gagal menyimpan pengaturan.');
+    }
+  };
+
+  // Kirim pesan tes memakai isi form (belum perlu disimpan); key kosong = pakai key tersimpan di server.
+  const testWa = async () => {
+    setTestingWa(true);
+    try {
+      const r = await fetch(`${API}/api/settings/test-callmebot`, {
+        method: 'POST', headers,
+        body: JSON.stringify({ phone: settings.notifyPhone ?? '', apiKey: waKeyInput }),
+      });
+      const d = await r.json().catch(() => ({})) as { error?: string };
+      if (r.ok) toast.success('Pesan tes terkirim. Cek WhatsApp nomor tujuan.');
+      else toast.error(d.error || 'Gagal mengirim pesan tes.');
+    } catch {
+      toast.error('Gagal mengirim pesan tes.');
+    } finally {
+      setTestingWa(false);
     }
   };
 
@@ -734,6 +764,61 @@ export default function SettingsTab({ creds }: { creds: string }) {
                   )}
                 </div>
               ))}
+
+              {activeGrp === 'contact' && (
+                <div className="rounded-xl p-4 space-y-3" style={{ border: '1px solid var(--border-2)' }}>
+                  <div>
+                    <p className="text-xs font-semibold" style={{ color: 'var(--text-secondary)' }}>Notifikasi WhatsApp Toko (CallMeBot)</p>
+                    <p className="text-[11px] mt-0.5" style={{ color: 'var(--text-muted)' }}>
+                      Untuk rekap harian pengunjung dan notifikasi pengunjung baru dari website toko. Kosongkan semua untuk memakai
+                      pengaturan bawaan server (jika ada).
+                    </p>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold mb-1.5" style={{ color: 'var(--text-secondary)' }}>Nomor Tujuan Notifikasi</label>
+                    <input
+                      type="text" inputMode="tel"
+                      placeholder="08xxx atau 628xxx (kosong = pakai WhatsApp toko)"
+                      value={settings.notifyPhone ?? ''}
+                      onChange={e => set('notifyPhone', e.target.value)}
+                      className="input w-full text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold mb-1.5" style={{ color: 'var(--text-secondary)' }}>API Key CallMeBot</label>
+                    <input
+                      type="password" autoComplete="new-password"
+                      placeholder={waKeyClear ? 'Key akan dihapus saat disimpan' : settings.callmebotApiKeySet ? `Tersimpan (${settings.callmebotApiKeyHint}) — ketik untuk mengganti` : 'Tempel API key dari CallMeBot'}
+                      value={waKeyInput}
+                      disabled={waKeyClear}
+                      onChange={e => setWaKeyInput(e.target.value)}
+                      className="input w-full text-sm"
+                    />
+                    <p className="text-[11px] mt-1.5" style={{ color: 'var(--text-muted)' }}>
+                      Key didapat setelah mengaktifkan nomor tujuan di CallMeBot (kirim pesan aktivasi ke bot CallMeBot di WhatsApp).
+                      Key disimpan di server dan tidak ditampilkan lagi.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      type="button" onClick={testWa}
+                      disabled={testingWa || waKeyClear}
+                      className="btn-ghost flex items-center gap-2 px-4 py-2 text-xs"
+                    >
+                      {testingWa ? <Loader2 size={13} className="animate-spin" /> : <Phone size={13} />}
+                      Kirim tes
+                    </button>
+                    {settings.callmebotApiKeySet && (
+                      <button
+                        type="button" onClick={() => { setWaKeyClear(v => !v); setWaKeyInput(''); }}
+                        className="text-xs underline" style={{ color: waKeyClear ? 'var(--text-secondary)' : 'var(--danger)' }}
+                      >
+                        {waKeyClear ? 'Batal hapus key' : 'Hapus key tersimpan'}
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Announcement toggle — only in operational group */}
               {activeGrp === 'operational' && (
