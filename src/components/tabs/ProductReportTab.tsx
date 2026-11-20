@@ -151,9 +151,20 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
   const load = async () => {
     const myLoadId = ++loadIdRef.current;
     setLoading(true);
+    // Gagal muat: kosongkan tabel (jangan biarkan data periode/sesi sebelumnya tampak seolah milik
+    // periode ini) dan beri tahu pengguna, bukan diam-diam menampilkan angka lama.
+    const clearData = () => {
+      setProducts([]); setTotalQty(0); setTotalRevenue(0); setTrendProducts([]); setDailyTrend([]);
+      setHiddenTrendKeys(new Set());
+    };
     try {
       const res = await fetch(`${API}/api/analytics/product-report?from=${from}&to=${to}`, { headers });
-      if (!res.ok) return;
+      if (!res.ok) {
+        if (myLoadId !== loadIdRef.current) return;
+        clearData();
+        toast.error(res.status === 403 ? 'Anda tidak punya akses ke Laporan Produk.' : 'Gagal memuat Laporan Produk. Coba lagi.');
+        return;
+      }
       const data = await res.json() as {
         products: ProductRow[]; totalQty: number; totalRevenue: number;
         trendProducts: TrendProduct[]; dailyTrend: Record<string, string | number>[];
@@ -165,6 +176,10 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
       setTrendProducts(data.trendProducts);
       setDailyTrend(data.dailyTrend);
       setHiddenTrendKeys(new Set());
+    } catch {
+      if (myLoadId !== loadIdRef.current) return;
+      clearData();
+      toast.error('Gagal memuat Laporan Produk. Periksa koneksi lalu coba lagi.');
     } finally { if (myLoadId === loadIdRef.current) setLoading(false); }
   };
   useEffect(() => { load(); }, [period, customFrom, customTo]); // eslint-disable-line react-hooks/exhaustive-deps
