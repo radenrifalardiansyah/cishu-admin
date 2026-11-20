@@ -549,10 +549,32 @@ export default function AdminPage() {
   // web-stats and was a meaningful chunk of daily Firestore reads on busy days) ──
   const refreshPosStock = useCallback(async () => {
     try {
-      const res = await fetch('/api/products', { headers: { 'x-admin-auth': creds } });
+      const h = { 'x-admin-auth': creds };
+      // Kategori ikut diambil (sama-sama ringan, cache server 15 dtk) supaya chip kategori Kasir tidak
+      // tertinggal bila kategori dihapus/diubah dari tempat lain sementara tab ini terbuka.
+      const [res, cRes] = await Promise.all([fetch('/api/products', { headers: h }), fetch('/api/categories', { headers: h })]);
       if (res.ok) setPosProducts((await res.json() as { products: PosProduct[] }).products);
+      if (cRes.ok) {
+        const cats = (await cRes.json() as { categories: { id: string; name: string; emoji: string }[] }).categories;
+        setPosCategories(cats.map(c => ({ id: c.id, label: c.name, emoji: c.emoji })));
+      }
     } catch {}
   }, [creds]);
+
+  // Tab admin yang dibiarkan terbuka menyimpan data lama di state (produk, kategori, analitik). Saat tab
+  // kembali dilihat setelah ≥1 menit tersembunyi, muat ulang data seperti tombol Refresh di Analitik.
+  const hiddenAtRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!authed) return;
+    const onVisibility = () => {
+      if (document.visibilityState === 'hidden') { hiddenAtRef.current = Date.now(); return; }
+      const hiddenAt = hiddenAtRef.current;
+      hiddenAtRef.current = null;
+      if (hiddenAt && Date.now() - hiddenAt >= 60_000) { void fetchDash(); void fetchSummary(); }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
+  }, [authed, fetchDash, fetchSummary]);
 
   // ── Web stats range toggle — refetch only the analytics section ──
   const changeWebRange = useCallback(async (range: 7 | 30) => {
