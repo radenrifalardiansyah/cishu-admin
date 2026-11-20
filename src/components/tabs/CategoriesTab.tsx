@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import {
   Plus, Pencil, Trash2, X, Check, Loader2, Search,
-  ChevronLeft, ChevronRight, ImageIcon, Tag, Upload,
+  ChevronLeft, ChevronRight, ImageIcon, Upload,
 } from 'lucide-react';
 import { ExcelIcon, PdfIcon } from '@/components/FileTypeIcons';
 import ExcelJS from 'exceljs';
@@ -89,7 +89,6 @@ export default function CategoriesTab({ creds }: { creds: string }) {
   const [categories,  setCategories]  = useState<FireCategory[]>([]);
   const [catsLoading, setCatsLoading] = useState(true);
   const [productCounts, setProductCounts] = useState<Record<string, number>>({});
-  const [seedingCats,   setSeedingCats]   = useState(false);
 
   const [editingCat,    setEditingCat]    = useState<(Omit<FireCategory, 'id'> & { id: string; slug: string }) | null>(null);
   const [isNewCat,      setIsNewCat]      = useState(false);
@@ -129,30 +128,6 @@ export default function CategoriesTab({ creds }: { creds: string }) {
   };
 
   useEffect(() => { loadCats(); loadProductCounts(); }, []);
-
-  const seedCategories = async () => {
-    if (!await confirm('Tambahkan 4 kategori default (Keripik, Mie, Snack, Paket)?')) return;
-    setSeedingCats(true);
-    const defaults = [
-      { slug: 'keripik', name: 'Keripik',  emoji: '🥔', description: 'Keripik Talas Renyah',    order: 1 },
-      { slug: 'mie',     name: 'Mie',      emoji: '🍝', description: 'Mie Kremes Crispy',        order: 2 },
-      { slug: 'snack',   name: 'Snack',    emoji: '🍿', description: 'Cemilan Seru Lainnya',     order: 3 },
-      { slug: 'paket',   name: 'Paket',    emoji: '🎁', description: 'Paket Hemat Pilihan',      order: 4 },
-    ];
-    let failed = 0;
-    for (const d of defaults) {
-      const r = await fetch(`${API}/api/categories`, {
-        method: 'POST',
-        headers: { ...headers, 'Content-Type': 'application/json' },
-        body: JSON.stringify(d),
-      });
-      if (!r.ok) failed++;
-    }
-    await loadCats();
-    setSeedingCats(false);
-    if (failed === 0) toast.success('Kategori default berhasil ditambahkan.');
-    else toast.error(`${failed} dari ${defaults.length} kategori gagal ditambahkan.`);
-  };
 
   const openNewCat  = () => { setEditingCat({ ...EMPTY_CAT, id: '' }); setIsNewCat(true);  setCatError(''); };
   const openEditCat = (c: FireCategory) => { setEditingCat({ ...c, slug: c.id }); setIsNewCat(false); setCatError(''); };
@@ -602,12 +577,6 @@ export default function CategoriesTab({ creds }: { creds: string }) {
           </div>
         )}
         <div className="flex items-center gap-2 sm:justify-end flex-shrink-0">
-          {categories.length === 0 && (
-            <button onClick={seedCategories} disabled={seedingCats} className="btn-ghost text-xs" style={{ height: HEADER_BTN_H }}>
-              {seedingCats ? <Loader2 size={13} className="animate-spin" /> : <Tag size={13} />}
-              <span className="hidden sm:inline">{seedingCats ? 'Menambahkan…' : 'Kategori Default'}</span>
-            </button>
-          )}
           <Tooltip label="Unduh Template">
             <button onClick={downloadCategoryTemplate} aria-label="Unduh Template" className="btn-ghost p-0 flex items-center justify-center" style={{ height: HEADER_BTN_H, width: HEADER_BTN_H }}>
               <ExcelIcon size={14} />
