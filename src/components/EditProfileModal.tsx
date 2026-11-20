@@ -218,7 +218,7 @@ export default function EditProfileModal({ creds, username, role, email, avatar,
                 background: 'linear-gradient(135deg, var(--accent), var(--accent-dark))',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: 26, fontWeight: 800, color: 'white',
-                boxShadow: '0 2px 10px rgba(37,99,235,0.30)',
+                boxShadow: '0 2px 10px rgba(29,111,196,0.30)',
               }}>
                 {avatarUrl
                   ? <img src={avatarUrl} alt={username} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

@@ -54,13 +54,13 @@ export default function LoginApprovalScreen({ requestId, deviceLabel, onApproved
   }, [requestId]);
 
   return (
-    <div className="login-screen min-h-screen flex items-center justify-center p-4 lg:p-8">
-      <div className="login-card login-card-shadow relative w-full rounded-[28px] overflow-hidden p-8 lg:p-10 text-center"
+    <div className="login-screen min-h-screen flex items-center justify-center p-4 lg:p-8 overflow-hidden">
+      <div className="login-card login-card-shadow relative z-10 w-full rounded-[28px] overflow-hidden p-8 lg:p-10 text-center"
         style={{ maxWidth: 420, background: 'var(--surface)' }} role="status" aria-live="polite">
         <div className="flex flex-col items-center gap-4">
-          <div className="flex items-center justify-center rounded-2xl relative" style={{ width: 56, height: 56, background: 'var(--accent-bg)', color: 'var(--accent)' }}>
+          <div className="flex items-center justify-center rounded-2xl relative" style={{ width: 56, height: 56, background: 'var(--accent-grad)', color: '#FFFFFF', boxShadow: '0 10px 24px -10px var(--accent)' }}>
             <ShieldCheck size={24} />
-            <Loader2 size={20} className="animate-spin absolute" style={{ top: -6, right: -6, color: 'var(--accent)' }} />
+            <Loader2 size={20} className="animate-spin absolute" style={{ top: -6, right: -6, color: 'var(--accent)', background: 'var(--surface)', borderRadius: 999 }} />
           </div>
           <h1 className="text-xl font-extrabold" style={{ color: 'var(--text-primary)' }}>Menunggu Persetujuan</h1>
           <p className="text-sm" style={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>

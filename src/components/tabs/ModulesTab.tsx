@@ -186,7 +186,7 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
       titleCell.value = 'LAPORAN MODUL — CISHU';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
+      titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, colCount);
@@ -195,7 +195,7 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
       subCell.value = `${rows.length} modul (${label}) · Diexport ${todayLabel}`;
       subCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       subCell.alignment = { horizontal: 'center', vertical: 'middle' };
-      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
+      subCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
       ws.getRow(2).height = 20;
 
       const HEADER_ROW_NUM = 3;
@@ -203,14 +203,14 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
       COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
         cell.border = {
-          top: { style: 'thin', color: { argb: 'FF1D4ED8' } },
-          bottom: { style: 'thin', color: { argb: 'FF1D4ED8' } },
-          left: { style: 'thin', color: { argb: 'FF1D4ED8' } },
-          right: { style: 'thin', color: { argb: 'FF1D4ED8' } },
+          top: { style: 'thin', color: { argb: 'FF155FA8' } },
+          bottom: { style: 'thin', color: { argb: 'FF155FA8' } },
+          left: { style: 'thin', color: { argb: 'FF155FA8' } },
+          right: { style: 'thin', color: { argb: 'FF155FA8' } },
         };
       });
       ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
@@ -220,7 +220,7 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
           no: i + 1, order: m.order + 1, name: m.name, id: m.id, icon: m.icon,
           status: m.isActive ? 'Aktif' : 'Nonaktif',
         });
-        const zebraFill = i % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF';
+        const zebraFill = i % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF';
         row.eachCell(cell => {
           cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: zebraFill } };
           cell.border = {
@@ -430,7 +430,7 @@ export default function ModulesTab({ creds, can, onChanged }: ModulesTabProps) {
                 const isDeleting = deletingId === m.id;
                 const isSelected = selected.has(m.id);
                 return (
-                  <div key={m.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(37,99,235,0.05)' : undefined, opacity: m.isActive ? 1 : 0.55, transition: 'background 0.1s' }}>
+                  <div key={m.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,111,196,0.05)' : undefined, opacity: m.isActive ? 1 : 0.55, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-3 px-4 py-3.5">
                       {can('delete') && <Checkbox checked={isSelected} onChange={() => toggleSelect(m.id)} />}
                       <span className="flex-shrink-0 text-center text-[10px] font-bold tabular-nums" style={{ minWidth: 18, color: 'var(--text-muted)' }}>

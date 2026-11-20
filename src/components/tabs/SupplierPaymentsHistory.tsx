@@ -100,7 +100,7 @@ export default function SupplierPaymentsHistory({ creds, reloadKey, onOpenPurcha
       title.value = 'RIWAYAT PEMBAYARAN HUTANG SUPPLIER — CISHU';
       title.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       title.alignment = { horizontal: 'center', vertical: 'middle' };
-      title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
+      title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
       ws.getRow(1).height = 28;
       ws.mergeCells(2, 1, 2, colCount);
       const sub = ws.getCell(2, 1);
@@ -108,13 +108,13 @@ export default function SupplierPaymentsHistory({ creds, reloadKey, onOpenPurcha
       sub.value = `${filtered.length} baris (sesuai filter, ${period}) · Diexport ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}`;
       sub.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       sub.alignment = { horizontal: 'center', vertical: 'middle' };
-      sub.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
+      sub.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
       const HEADER = 3;
       const hr = ws.getRow(HEADER);
       PAYMENT_EXCEL_HEADERS.forEach((h, i) => { hr.getCell(i + 1).value = h; });
       hr.height = 24;
       hr.eachCell(c => {
-        c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
+        c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
         c.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         c.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -130,7 +130,7 @@ export default function SupplierPaymentsHistory({ creds, reloadKey, onOpenPurcha
       tr.font = { bold: true };
       tr.getCell(amtCol).numFmt = '"Rp"#,##0';
       tr.getCell(amtCol).alignment = { horizontal: 'right', vertical: 'middle' };
-      tr.eachCell({ includeEmpty: true }, c => { c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } }; });
+      tr.eachCell({ includeEmpty: true }, c => { c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } }; });
       ws.columns.forEach(column => {
         let max = 8;
         for (let r = HEADER; r <= ws.rowCount; r++) { const v = ws.getRow(r).getCell(column.number!).value; const len = v == null ? 0 : v.toString().length; if (len > max) max = len; }

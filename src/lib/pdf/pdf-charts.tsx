@@ -3,7 +3,7 @@ import { Svg, G, Rect, Line, Polyline, Path, Circle, Text as SvgText, View, Text
 // Grafik sederhana untuk PDF (react-pdf Svg) — tanpa Recharts karena PDF dirender di luar DOM.
 
 const MUTED = '#5B6B84';
-const GRID = '#DBE6F7';
+const GRID = '#D3E8F7';
 
 export const compactRp = (n: number) => {
   const abs = Math.abs(n);

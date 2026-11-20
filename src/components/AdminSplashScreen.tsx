@@ -30,7 +30,7 @@ export default function AdminSplashScreen() {
   }, []);
 
   if (visible === null) {
-    return <div className="fixed inset-0 z-[999]" style={{ background: 'linear-gradient(160deg, #2563EB 0%, #0E74C8 100%)' }} />;
+    return <div className="fixed inset-0 z-[999]" style={{ background: 'linear-gradient(160deg, #1D6FC4 0%, #155FA8 100%)' }} />;
   }
 
   return (
@@ -41,8 +41,14 @@ export default function AdminSplashScreen() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
           className="fixed inset-0 z-[999] flex flex-col items-center justify-center"
-          style={{ background: 'linear-gradient(160deg, #2563EB 0%, #0E74C8 100%)' }}
+          style={{ background: 'linear-gradient(160deg, #1D6FC4 0%, #155FA8 100%)' }}
         >
+          <div aria-hidden="true">
+            <span className="login-bubble" style={{ width: 180, height: 180, top: '8%', right: '-4%' }} />
+            <span className="login-bubble" style={{ width: 90, height: 90, bottom: '14%', left: '8%', animationDelay: '-3s' }} />
+            <span className="login-cube" style={{ width: 44, height: 44, top: '30%', left: '14%', animationDelay: '-5s' }} />
+          </div>
+
           {/* Logo — sudah tampil di splash native Android, jadi di sini diam saja (tidak animasi ulang) supaya menyatu, tidak terasa "muncul dua kali" */}
           <div
             className="relative w-24 h-24 rounded-2xl overflow-hidden shadow-2xl mb-6"

@@ -383,7 +383,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
       t.value = 'DAFTAR PEMASUKAN LAIN-LAIN — CISHU';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, 5);
@@ -391,14 +391,14 @@ export default function IncomeTab({ creds }: { creds: string }) {
       s.value = `${rows.length} pemasukan (${label})`;
       s.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
       s.alignment = { horizontal: 'center', vertical: 'middle' };
-      s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
+      s.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
       ws.getRow(2).height = 20;
 
       const headerRow = ws.getRow(3);
       ['Tanggal', 'Kategori', 'Keterangan', 'Jumlah', 'Catatan'].forEach((h, i) => { headerRow.getCell(i + 1).value = h; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -414,7 +414,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
         row.getCell(4).numFmt = '"Rp"#,##0';
         row.getCell(5).value = i.note ?? '';
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: idx % 2 === 0 ? 'FFF5F9FF' : 'FFFFFFFF' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: idx % 2 === 0 ? 'FFF0F9FF' : 'FFFFFFFF' } };
           cell.border = { top: { style: 'thin', color: { argb: 'FFE5E7EB' } }, bottom: { style: 'thin', color: { argb: 'FFE5E7EB' } }, left: { style: 'thin', color: { argb: 'FFE5E7EB' } }, right: { style: 'thin', color: { argb: 'FFE5E7EB' } } };
         });
       });
@@ -592,7 +592,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
                 const isDeleting = deletingId === i.id;
                 const isSelected = selected.has(i.id);
                 return (
-                  <div key={i.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(37,99,235,0.05)' : undefined, transition: 'background 0.1s' }}>
+                  <div key={i.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(29,111,196,0.05)' : undefined, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-2 px-4 py-3.5">
                       {i.auto
                         ? <Lock size={13} style={{ color: 'var(--text-muted)', flexShrink: 0, width: 18 }} />

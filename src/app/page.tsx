@@ -9,7 +9,7 @@ import {
   Loader2,
   Eye, EyeOff, Smartphone, Monitor, BarChart2, Globe, Award,
   MousePointerClick, Tag, ShoppingCart, Download, Share, AlertTriangle,
-  LayoutDashboard, PieChart, Store, KeyRound, Wallet } from 'lucide-react';
+  LayoutDashboard, PieChart, Store, KeyRound, Wallet, User, Lock } from 'lucide-react';
 import AppShell, { TabId } from '@/components/AppShell';
 import LoginApprovalScreen from '@/components/LoginApprovalScreen';
 import ForceLogoutOverlay from '@/components/ForceLogoutOverlay';
@@ -175,7 +175,7 @@ const chartTooltipRow = (color: string, name: string, value: string) => (
 type TrendPoint = { date: string; kasir: number; online: number; konsinyasi: number; lain: number; count: number };
 
 const OMZET_SERIES = [
-  { key: 'kasir', name: 'Kasir', color: '#2563EB' },
+  { key: 'kasir', name: 'Kasir', color: '#1D6FC4' },
   { key: 'online', name: 'Online', color: '#A21CAF' },
   { key: 'konsinyasi', name: 'Konsinyasi', color: '#B45309' },
   { key: 'lain', name: 'Pendapatan Lain', color: '#115E59' },
@@ -538,7 +538,7 @@ export default function AdminPage() {
       .sort((a, b) => b[1] - a[1]).slice(0, 5)
       .map(([name, count]) => {
         const p = posProducts.find(fp => fp.name === name);
-        return { name, emoji: p?.emoji ?? '📦', bgColor: p?.bgColor ?? '#F5F9FF', stock: p?.stock ?? 'Ada', count };
+        return { name, emoji: p?.emoji ?? '📦', bgColor: p?.bgColor ?? '#F0F9FF', stock: p?.stock ?? 'Ada', count };
       });
     return { revenueTrend, kasir, online, konsinyasi, lain, total, orderCount: sumOrders.length, recentOrders, topProducts };
   }, [sumRange, sumOrders, sumOmzet, posProducts]);
@@ -905,7 +905,7 @@ export default function AdminPage() {
 
   if (pendingChange) return (
     <div className="login-screen min-h-screen flex items-center justify-center p-4 lg:p-8 relative overflow-hidden">
-      <div className="login-card login-card-shadow relative w-full rounded-[28px] overflow-hidden p-8 lg:p-10"
+      <div className="login-card login-card-shadow relative z-10 w-full rounded-[28px] overflow-hidden p-8 lg:p-10"
         style={{ maxWidth: 420, background: 'var(--surface)' }}>
         <div className="flex flex-col items-center text-center mb-6">
           <div className="flex items-center justify-center rounded-2xl mb-4" style={{ width: 52, height: 52, background: 'var(--accent-bg)', color: 'var(--accent)' }}>
@@ -964,40 +964,49 @@ export default function AdminPage() {
     <div className="login-screen min-h-screen flex items-center justify-center p-4 lg:p-8 relative overflow-hidden">
 
       {/* Card */}
-      <div className="login-card login-card-shadow relative w-full grid lg:grid-cols-2 rounded-[28px] overflow-hidden"
+      <div className="login-card login-card-shadow relative z-10 w-full grid lg:grid-cols-2 rounded-[28px] overflow-hidden"
         style={{ maxWidth: 920, background: 'var(--surface)' }}>
 
         {/* Left panel — brand & motion */}
         <div className="login-panel-brand hidden lg:flex flex-col justify-between p-12 relative overflow-hidden">
 
-          {/* decorative glow orbs */}
-          <div className="login-blob login-glow absolute rounded-full pointer-events-none"
-            style={{ width: 260, height: 260, top: -70, right: -70, background: 'radial-gradient(circle, rgba(255,255,255,0.30), transparent 70%)', filter: 'blur(4px)' }} />
-          <div className="login-blob absolute rounded-full pointer-events-none"
-            style={{ width: 220, height: 220, bottom: -60, left: -60, background: 'radial-gradient(circle, rgba(29,78,216,0.55), transparent 70%)', filter: 'blur(4px)', animationDelay: '-4s' }} />
-
-          {/* floating snack icons */}
-          <span className="login-snack absolute text-3xl" style={{ top: '18%', right: '18%', ['--r' as string]: '-8deg', animationDelay: '0s', opacity: 0.9 }}>🍪</span>
-          <span className="login-snack absolute text-2xl" style={{ top: '52%', right: '8%', ['--r' as string]: '10deg', animationDelay: '-1.5s', opacity: 0.85 }}>🍿</span>
-          <span className="login-snack absolute text-2xl" style={{ top: '68%', right: '32%', ['--r' as string]: '6deg', animationDelay: '-3s', opacity: 0.8 }}>🧁</span>
-          <span className="login-snack absolute text-xl" style={{ top: '30%', right: '38%', ['--r' as string]: '-4deg', animationDelay: '-4.5s', opacity: 0.7 }}>🍩</span>
+          {/* gelembung & kubus es: dekoratif, melayang pelan */}
+          <div aria-hidden="true">
+            <span className="login-bubble" style={{ width: 150, height: 150, top: -40, right: -30 }} />
+            <span className="login-bubble" style={{ width: 70, height: 70, top: '46%', right: '12%', animationDelay: '-3s' }} />
+            <span className="login-bubble" style={{ width: 110, height: 110, bottom: 70, right: -30, animationDelay: '-5s' }} />
+            <span className="login-cube" style={{ width: 54, height: 54, top: '24%', right: '24%', ['--r' as string]: '14deg', animationDelay: '-2s' }} />
+            <span className="login-cube" style={{ width: 36, height: 36, top: '62%', right: '40%', ['--r' as string]: '-12deg', animationDelay: '-6s' }} />
+          </div>
 
           <div className="flex items-center gap-3 relative z-10">
             <Image src="/icon-192.png" alt="logo" width={40} height={40} className="rounded-xl" />
-            <span className="text-white font-bold text-[15px]">Cishu</span>
+            <span className="font-bold text-[15px]" style={{ color: 'var(--ink-navy)' }}>Cishu</span>
           </div>
 
           <div className="relative z-10">
-            <p className="text-4xl font-extrabold text-white leading-tight mb-3">
-              Kendalikan<br />bisnis snack<br />Anda.
+            <p className="text-[40px] font-extrabold leading-[1.08] tracking-tight mb-3" style={{ color: 'var(--ink-navy)' }}>
+              Kendalikan<br />bisnis es jelly<br />susu Anda.
             </p>
-            <p className="text-sm" style={{ color: '#FFFFFF' }}>
-              Dashboard admin untuk mengelola produk,<br />pesanan, stok, dan analitik toko.
+            <p className="text-sm mb-6" style={{ color: 'var(--ink-navy)' }}>
+              Dashboard admin untuk mengelola produk, pesanan,<br />stok, produksi, dan laporan keuangan toko.
             </p>
+            <ul className="login-glass p-4 space-y-3 max-w-[300px]">
+              {[
+                { Icon: ShoppingCart, label: 'Kasir dan pesanan' },
+                { Icon: Package, label: 'Stok dan produksi' },
+                { Icon: PieChart, label: 'Laporan keuangan dan mitra' },
+              ].map(({ Icon, label }) => (
+                <li key={label} className="flex items-center gap-3 text-[13px] font-semibold" style={{ color: 'var(--ink-navy)' }}>
+                  <span className="flex items-center justify-center rounded-lg" style={{ width: 28, height: 28, background: 'var(--accent-bg)', color: 'var(--accent-dark)' }}><Icon size={15} /></span>
+                  {label}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <p className="text-xs relative z-10" style={{ color: '#FFFFFF' }}>
-            © 2025 Cishu
+          <p className="text-xs relative z-10" style={{ color: 'var(--ink-navy)' }}>
+            © 2026 Cishu
           </p>
         </div>
 
@@ -1007,7 +1016,7 @@ export default function AdminPage() {
             <div className="flex flex-col items-center mb-8 lg:hidden login-field" style={{ animationDelay: '0.02s' }}>
               <Image src="/icon-192.png" alt="logo" width={56} height={56} className="rounded-2xl shadow-lg mb-3" />
             </div>
-            <h1 className="text-2xl font-extrabold mb-1 login-field" style={{ color: 'var(--text-primary)', animationDelay: '0.04s' }}>Masuk</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight mb-1 login-field" style={{ color: 'var(--text-primary)', animationDelay: '0.04s' }}>Masuk</h1>
             <p className="text-sm mb-8 login-field" style={{ color: 'var(--text-muted)', animationDelay: '0.08s' }}>Dashboard Admin Cishu</p>
 
             {twoFactor ? (
@@ -1037,17 +1046,21 @@ export default function AdminPage() {
             <form onSubmit={login} className="space-y-4" noValidate>
               <div className="login-field" style={{ animationDelay: '0.12s' }}>
                 <label className="block text-xs font-semibold mb-1.5" style={{ color: 'var(--text-secondary)' }}>Username atau Email</label>
-                <input type="text" value={username}
-                  onChange={e => { setUsername(e.target.value); setFieldErrors(f => ({ ...f, username: undefined })); setLoginErr(''); }}
-                  className={`input ${fieldErrors.username ? 'input-error' : ''}`}
-                  placeholder="Masukkan username atau email" autoComplete="username" />
+                <div className="login-input-wrap">
+                  <span className="login-input-icon" aria-hidden="true"><User size={16} /></span>
+                  <input type="text" value={username}
+                    onChange={e => { setUsername(e.target.value); setFieldErrors(f => ({ ...f, username: undefined })); setLoginErr(''); }}
+                    className={`input ${fieldErrors.username ? 'input-error' : ''}`}
+                    placeholder="Masukkan username atau email" autoComplete="username" />
+                </div>
                 {fieldErrors.username?.trim() && (
                   <p className="text-xs font-medium mt-1.5" style={{ color: 'var(--danger)' }}>{fieldErrors.username}</p>
                 )}
               </div>
               <div className="login-field" style={{ animationDelay: '0.16s' }}>
                 <label className="block text-xs font-semibold mb-1.5" style={{ color: 'var(--text-secondary)' }}>Password</label>
-                <div className="relative">
+                <div className="login-input-wrap">
+                  <span className="login-input-icon" aria-hidden="true"><Lock size={16} /></span>
                   <input type={showPassword ? 'text' : 'password'} value={password}
                     onChange={e => { setPassword(e.target.value); setFieldErrors(f => ({ ...f, password: undefined })); setLoginErr(''); }}
                     className={`input ${fieldErrors.password ? 'input-error' : ''}`}
@@ -1186,7 +1199,7 @@ export default function AdminPage() {
           {/* Hero — metrik utama (Total Omzet) sebagai fokus visual */}
           <div className="hero-card relative overflow-hidden rounded-[20px] p-5 lg:p-7">
             <div aria-hidden="true" className="absolute pointer-events-none rounded-full"
-              style={{ width: 320, height: 320, top: -140, right: -80, background: 'radial-gradient(circle, rgba(255,255,255,0.28), transparent 70%)' }} />
+              style={{ width: 320, height: 320, top: -140, right: -80, background: 'radial-gradient(circle, rgba(255,255,255,0.7), transparent 70%)' }} />
             <div className="relative grid gap-5 lg:grid-cols-[1fr_minmax(220px,360px)] lg:items-end">
               <div className="min-w-0">
                 <p className="text-xs font-bold uppercase tracking-widest flex items-center gap-1.5">
@@ -1200,8 +1213,8 @@ export default function AdminPage() {
                   {sumRange && <span className="hero-chip">{pdfDate(sumRange.from)} - {pdfDate(sumRange.to)}</span>}
                 </div>
               </div>
-              <div className="min-w-0" style={{ color: '#FFFFFF' }}>
-                <Sparkline values={summary.revenueTrend.map(d => d.kasir + d.online + d.konsinyasi + d.lain)} color="#FFFFFF" height={56} strokeWidth={2.5} />
+              <div className="min-w-0">
+                <Sparkline values={summary.revenueTrend.map(d => d.kasir + d.online + d.konsinyasi + d.lain)} color="var(--accent-dark)" height={56} strokeWidth={2.5} />
               </div>
             </div>
           </div>
@@ -1437,7 +1450,7 @@ export default function AdminPage() {
                 },
                 {
                   title: 'Produk Terpopuler (Klik)', type: 'bar', unit: 'num', labels: ws.topProducts.slice(0, 6).map(p => p.name),
-                  series: [{ name: 'Klik', color: '#2563EB', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
+                  series: [{ name: 'Klik', color: '#1D6FC4', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
                 },
               ],
               sections: [
@@ -1616,7 +1629,7 @@ export default function AdminPage() {
                       </div>
                     </div>
                     <TopListChart
-                      color="#0EA5E9"
+                      color="#1D6FC4"
                       items={ws.topMenu.slice(0, 6).map(m => ({ label: pageLabel(m.path), value: m.count }))}
                     />
                   </div>

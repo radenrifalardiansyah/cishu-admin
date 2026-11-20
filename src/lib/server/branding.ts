@@ -1,5 +1,6 @@
 import { unstable_cache } from 'next/cache';
 import { getSettings } from '@/lib/settings-pg';
+import { isLegacyWarmColor } from '@/lib/color';
 import { ADMIN_APP_NAME, BRAND_NAME, ADMIN_THEME_COLOR, ADMIN_THEME_BACKGROUND_COLOR } from '@/lib/branding';
 
 interface SettingsDoc {
@@ -34,8 +35,8 @@ export const getCachedAdminBranding = unstable_cache(
       return {
         appName: s.adminAppName || ADMIN_APP_NAME,
         storeName: s.storeName || BRAND_NAME,
-        themeColor: s.adminThemeColor || ADMIN_THEME_COLOR,
-        themeBackgroundColor: s.adminThemeBackgroundColor || ADMIN_THEME_BACKGROUND_COLOR,
+        themeColor: s.adminThemeColor && !isLegacyWarmColor(s.adminThemeColor) ? s.adminThemeColor : ADMIN_THEME_COLOR,
+        themeBackgroundColor: s.adminThemeBackgroundColor && !isLegacyWarmColor(s.adminThemeBackgroundColor) ? s.adminThemeBackgroundColor : ADMIN_THEME_BACKGROUND_COLOR,
       };
     } catch (err) {
       // Fail open with static defaults — a Firestore outage/quota issue must never

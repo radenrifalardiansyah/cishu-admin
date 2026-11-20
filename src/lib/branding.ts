@@ -7,8 +7,8 @@ export const WHATSAPP_NUMBER = '6281212132014';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cishu.vercel.app';
 export const productUrl = (id: string) => `${SITE_URL}/products/${id}`;
 
-export const THEME_COLOR = '#2563EB';
-export const THEME_BACKGROUND_COLOR = '#2563EB';
+export const THEME_COLOR = '#1D6FC4';
+export const THEME_BACKGROUND_COLOR = '#A5ECFD';
 
 // Tema bawaan panel admin = tema dokumen (PDF/Excel): satu biru yang sama.
 export const ADMIN_THEME_COLOR = THEME_COLOR;

@@ -111,7 +111,7 @@ export default function CashierSalesReportTab({ creds }: { creds: string }) {
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         <StatCard icon={<Receipt size={16} />} label="Omzet lapak" value={rupiah(s.revenue)} color="var(--accent)" bg="var(--accent-bg)" />
-        <StatCard icon={<ShoppingBag size={16} />} label="Transaksi" value={String(s.count)} color="#2563EB" bg="#E0E7FF" />
+        <StatCard icon={<ShoppingBag size={16} />} label="Transaksi" value={String(s.count)} color="#1D6FC4" bg="#E0E7FF" />
         <StatCard icon={<Calculator size={16} />} label="Rata-rata/transaksi" value={s.count > 0 ? rupiah(s.revenue / s.count) : '-'} color="#059669" bg="rgba(5,150,105,0.12)" />
       </div>
 

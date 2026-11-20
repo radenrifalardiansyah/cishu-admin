@@ -38,10 +38,10 @@ const PAYMENT_LABEL: Record<string, string> = { cash: 'Tunai', transfer: 'Transf
 
 const C = {
   accent:   THEME_COLOR,
-  accentBg: '#EFF6FF',
+  accentBg: '#E6F7FF',
   dark:     '#0F172A',
   muted:    '#5B6B84',
-  border:   '#DBE6F7',
+  border:   '#D3E8F7',
   white:    '#FFFFFF',
   green:    '#15803D',
   greenBg:  '#DCFCE7',

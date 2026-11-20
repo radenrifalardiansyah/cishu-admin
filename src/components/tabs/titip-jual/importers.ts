@@ -38,7 +38,7 @@ export async function downloadTemplate(opts: {
   t.value = opts.title;
   t.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
   t.alignment = { horizontal: 'center', vertical: 'middle' };
-  t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
+  t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
   ws.getRow(1).height = 26;
 
   ws.mergeCells(2, 1, 2, n);
@@ -46,7 +46,7 @@ export async function downloadTemplate(opts: {
   note.value = opts.note;
   note.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
   note.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-  note.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
+  note.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
   ws.getRow(2).height = 48;
 
   const HEADER = 3;
@@ -54,10 +54,10 @@ export async function downloadTemplate(opts: {
   opts.cols.forEach((c, i) => { hr.getCell(i + 1).value = c.header; });
   hr.height = 24;
   hr.eachCell(cell => {
-    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
+    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
     cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
     cell.alignment = { vertical: 'middle', horizontal: 'center' };
-    cell.border = { top: edge('FF1D4ED8'), bottom: edge('FF1D4ED8'), left: edge('FF1D4ED8'), right: edge('FF1D4ED8') };
+    cell.border = { top: edge('FF155FA8'), bottom: edge('FF155FA8'), left: edge('FF155FA8'), right: edge('FF155FA8') };
   });
   ws.views = [{ state: 'frozen', ySplit: HEADER }];
   for (const k of opts.textKeys ?? []) ws.getColumn(k).numFmt = '@';

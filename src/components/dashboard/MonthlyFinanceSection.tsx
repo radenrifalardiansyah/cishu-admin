@@ -18,7 +18,7 @@ interface MonthRow {
 
 const METRICS = [
   { key: 'pendapatan', label: 'Penjualan (Pendapatan)', color: '#B45309' },
-  { key: 'labaKotor', label: 'Laba Kotor', color: '#2563EB' },
+  { key: 'labaKotor', label: 'Laba Kotor', color: '#1D6FC4' },
   { key: 'labaBersih', label: 'Laba Bersih', color: '#059669' },
 ] as const;
 type MetricKey = typeof METRICS[number]['key'];

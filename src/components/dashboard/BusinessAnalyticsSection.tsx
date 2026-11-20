@@ -55,7 +55,7 @@ function shortDate(dateStr: string): string {
 // (bukan urutan/rank), supaya kategori yang sama terlihat konsisten di Dashboard & Laporan Keuangan.
 const EXPENSE_CATEGORY_COLORS: Record<string, string> = {
   'Bahan Baku': '#B45309', 'Produksi': '#E11D48', 'Sewa': '#A21CAF', 'Gaji': '#0E7490',
-  'Listrik & Air': '#475569', 'Transportasi': '#2563EB', 'Perlengkapan': '#0F172A',
+  'Listrik & Air': '#475569', 'Transportasi': '#1D6FC4', 'Perlengkapan': '#0F172A',
 };
 const INCOME_CATEGORY_COLORS: Record<string, string> = {
   'Penjualan Lain': '#059669', 'Komisi': '#0E7490', 'Refund/Retur Diterima': '#475569',
@@ -161,7 +161,7 @@ export default function BusinessAnalyticsSection({
           title: 'Tren Penjualan per Channel', type: 'line', labels: data.dailyTrend.map(d => shortDate(d.date)),
           series: [
             { name: 'Online', color: '#A21CAF', values: data.dailyTrend.map(d => d.online) },
-            { name: 'Kasir', color: '#2563EB', values: data.dailyTrend.map(d => d.pos) },
+            { name: 'Kasir', color: '#1D6FC4', values: data.dailyTrend.map(d => d.pos) },
             { name: 'Konsinyasi', color: '#B45309', values: data.dailyTrend.map(d => d.consignment) },
           ],
         },
@@ -231,7 +231,7 @@ export default function BusinessAnalyticsSection({
       {data && (
         <div className="card p-5 flex items-center justify-between gap-4 flex-wrap" style={{ background: 'linear-gradient(135deg, var(--accent-bg), var(--surface-2))' }}>
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(37,99,235,0.15)', color: 'var(--accent)' }}>
+            <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(29,111,196,0.15)', color: 'var(--accent)' }}>
               <Wallet size={20} />
             </div>
             <div>
@@ -338,13 +338,13 @@ export default function BusinessAnalyticsSection({
               <div className="chart-panel" style={{ width: '100%', height: 220 }}>
                 <ResponsiveContainer>
                   <AreaChart data={data.dailyTrend} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                    <defs><linearGradient id="bizOnlineFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#A21CAF" stopOpacity={0.26} /><stop offset="100%" stopColor="#A21CAF" stopOpacity={0} /></linearGradient><linearGradient id="bizPosFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#2563EB" stopOpacity={0.26} /><stop offset="100%" stopColor="#2563EB" stopOpacity={0} /></linearGradient><linearGradient id="bizConsFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#B45309" stopOpacity={0.26} /><stop offset="100%" stopColor="#B45309" stopOpacity={0} /></linearGradient></defs>
+                    <defs><linearGradient id="bizOnlineFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#A21CAF" stopOpacity={0.26} /><stop offset="100%" stopColor="#A21CAF" stopOpacity={0} /></linearGradient><linearGradient id="bizPosFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#1D6FC4" stopOpacity={0.26} /><stop offset="100%" stopColor="#1D6FC4" stopOpacity={0} /></linearGradient><linearGradient id="bizConsFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#B45309" stopOpacity={0.26} /><stop offset="100%" stopColor="#B45309" stopOpacity={0} /></linearGradient></defs>
                     <CartesianGrid vertical={false} stroke="var(--border)" strokeDasharray="3 4" />
                     <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} minTickGap={24} tickMargin={8} />
                     <YAxis tickFormatter={compactRp} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} width={48} tickCount={5} />
                     <Tooltip content={<ChartTooltip />} cursor={{ stroke: 'var(--border)', strokeWidth: 1.5, strokeDasharray: '4 4' }} />
                     <Area type="monotone" dataKey="online" name="Online" stackId="ch" stroke="#A21CAF" fill="url(#bizOnlineFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#A21CAF' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
-                    <Area type="monotone" dataKey="pos" name="Kasir" stackId="ch" stroke="#2563EB" fill="url(#bizPosFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#2563EB' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+                    <Area type="monotone" dataKey="pos" name="Kasir" stackId="ch" stroke="#1D6FC4" fill="url(#bizPosFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#1D6FC4' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
                     <Area type="monotone" dataKey="consignment" name="Konsinyasi" stackId="ch" stroke="#B45309" fill="url(#bizConsFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#B45309' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
                   </AreaChart>
                 </ResponsiveContainer>

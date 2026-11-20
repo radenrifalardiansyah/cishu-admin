@@ -121,7 +121,7 @@ export async function GET(req: NextRequest) {
       const p = data as { name: string; emoji?: string; bgColor?: string };
       const key = sanitizeKey(id);
       return {
-        id, name: p.name, emoji: p.emoji ?? '📦', bgColor: p.bgColor ?? '#F5F9FF',
+        id, name: p.name, emoji: p.emoji ?? '📦', bgColor: p.bgColor ?? '#F0F9FF',
         clicks: clickProductAgg[key] ?? 0, addToCart: clickAddCartAgg[key] ?? 0,
       };
     })

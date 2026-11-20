@@ -20,8 +20,8 @@ const rp = (n: number) =>
   new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(n);
 
 const C = {
-  accent: THEME_COLOR, accentBg: '#EFF6FF', dark: '#0F172A', muted: '#5B6B84',
-  border: '#DBE6F7', white: '#FFFFFF', green: '#15803D',
+  accent: THEME_COLOR, accentBg: '#E6F7FF', dark: '#0F172A', muted: '#5B6B84',
+  border: '#D3E8F7', white: '#FFFFFF', green: '#15803D',
 };
 
 const s = StyleSheet.create({

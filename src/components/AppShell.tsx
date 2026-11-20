@@ -297,7 +297,7 @@ export default function AppShell({
           width: sw,
           minWidth: sw,
           background: SIDEBAR_BG,
-          boxShadow: '1px 0 0 var(--sidebar-border), 6px 0 28px -14px rgba(37,99,235,0.18)',
+          boxShadow: '1px 0 0 var(--sidebar-border), 6px 0 28px -14px rgba(29,111,196,0.18)',
           transition: 'width 0.26s cubic-bezier(0.4,0,0.2,1), min-width 0.26s cubic-bezier(0.4,0,0.2,1)',
           overflow: 'hidden',
           position: 'relative',
@@ -322,7 +322,7 @@ export default function AppShell({
           <div style={{
             position: 'absolute', top: -28, left: -28,
             width: 150, height: 150, borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(37,99,235,0.07) 0%, transparent 68%)',
+            background: 'radial-gradient(circle, rgba(29,111,196,0.07) 0%, transparent 68%)',
             pointerEvents: 'none', zIndex: 0,
           }} />
 
@@ -330,7 +330,7 @@ export default function AppShell({
             <Image
               src="/icon-192.png" alt="logo" width={34} height={34}
               className="rounded-xl"
-              style={{ boxShadow: '0 2px 8px rgba(37,99,235,0.25)' }}
+              style={{ boxShadow: '0 2px 8px rgba(29,111,196,0.25)' }}
             />
           </div>
           {!collapsed && (
@@ -602,7 +602,7 @@ export default function AppShell({
                         background: 'linear-gradient(135deg, var(--accent), var(--accent-dark))',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         fontSize: 12, fontWeight: 800, color: 'white',
-                        boxShadow: '0 2px 6px rgba(37,99,235,0.35)',
+                        boxShadow: '0 2px 6px rgba(29,111,196,0.35)',
                       }}>
                         {avatar
                           ? <img src={avatar} alt={username} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

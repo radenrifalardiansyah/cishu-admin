@@ -30,9 +30,9 @@ export interface MitraInvoiceData {
 const rp = (n: number) => `Rp${Math.round(n).toLocaleString('id-ID')}`;
 
 const C = {
-  accent: THEME_COLOR, accentBg: '#EFF6FF', dark: '#0F172A', muted: '#5B6B84', border: '#DBE6F7', white: '#FFFFFF',
+  accent: THEME_COLOR, accentBg: '#E6F7FF', dark: '#0F172A', muted: '#5B6B84', border: '#D3E8F7', white: '#FFFFFF',
   green: '#15803D', greenBg: '#DCFCE7', amber: '#B45309', amberBg: '#FEF3C7',
-  retur: '#1D4ED8', returBg: '#DBEAFE', reject: '#B91C1C', rejectBg: '#FEE2E2',
+  retur: '#155FA8', returBg: '#D6F1FD', reject: '#B91C1C', rejectBg: '#FEE2E2',
 };
 
 const s = StyleSheet.create({

@@ -242,7 +242,7 @@ export default function ConsignmentAnalyticsSection({
         },
         {
           title: 'Mitra Teratas (Pendapatan)', type: 'bar', labels: data.topLocations.slice(0, 8).map(l => l.name),
-          series: [{ name: 'Pendapatan', color: '#2563EB', values: data.topLocations.slice(0, 8).map(l => l.pendapatan) }],
+          series: [{ name: 'Pendapatan', color: '#1D6FC4', values: data.topLocations.slice(0, 8).map(l => l.pendapatan) }],
         },
         {
           title: '% Terealisasi per Mitra', type: 'bar', unit: 'pct', labels: [...active].sort((a, b) => b.sellThroughPct - a.sellThroughPct).slice(0, 8).map(l => l.name),

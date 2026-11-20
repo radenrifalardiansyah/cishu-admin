@@ -17,7 +17,7 @@ export interface SettlementNoteData {
 
 const rp = (n: number) => `Rp${Math.round(n).toLocaleString('id-ID')}`;
 
-const C = { accent: THEME_COLOR, accentBg: '#EFF6FF', dark: '#0F172A', muted: '#5B6B84', border: '#DBE6F7', white: '#FFFFFF', ok: '#15803D', okBg: '#F0FDF4' };
+const C = { accent: THEME_COLOR, accentBg: '#E6F7FF', dark: '#0F172A', muted: '#5B6B84', border: '#D3E8F7', white: '#FFFFFF', ok: '#15803D', okBg: '#F0FDF4' };
 
 const s = StyleSheet.create({
   page: { fontFamily: 'Helvetica', color: C.dark, padding: 40, paddingBottom: 56, fontSize: 10 },
@@ -54,7 +54,7 @@ const s = StyleSheet.create({
   colName: { width: '52%' },
   colQty: { width: '15%', textAlign: 'right' },
   colAmt: { width: '25%', textAlign: 'right' },
-  totalTableRow: { flexDirection: 'row', backgroundColor: '#BFDBFE', borderTopWidth: 1.5, borderTopColor: C.accent },
+  totalTableRow: { flexDirection: 'row', backgroundColor: '#A5ECFD', borderTopWidth: 1.5, borderTopColor: C.accent },
   totalCell: { fontSize: 9.5, fontFamily: 'Helvetica-Bold', color: C.dark, paddingVertical: 7, paddingHorizontal: 8 },
 
   terbilang: { marginTop: 10, padding: 9, borderWidth: 1, borderColor: C.border, borderRadius: 6 },

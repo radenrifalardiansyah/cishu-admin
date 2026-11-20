@@ -41,7 +41,19 @@ const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 // (--accent-dark/--accent-light/--accent-bg di globals.css) plus gradient tombol primer dan
 // border tint, dari satu hex dasar, supaya warna tema pilihan admin tetap satu keluarga.
 // Saturasi dipertahankan penuh agar tint tidak keabu-abuan.
-const FALLBACK_HEX = '#2563EB';
+const FALLBACK_HEX = '#1D6FC4';
+
+// Turunan warna merek bawaan, disamakan dengan token --accent* di globals.css (palet es jelly:
+// biru langit dalam untuk aksen interaktif, cyan es untuk tint). Dipakai persis bila tema = bawaan.
+const BRAND_SHADES = {
+  accent: '#1D6FC4',
+  dark: '#155FA8',
+  light: '#A5ECFD',
+  bg: '#E6F7FF',
+  grad: 'linear-gradient(135deg, #1D6FC4, #155FA8)',
+  gradHover: 'linear-gradient(135deg, #155FA8, #0F5496)',
+  border: 'rgba(29,111,196,0.22)',
+};
 
 // Terima '#abc' atau '#aabbcc' (tanpa memperhatikan huruf besar/kecil); selain itu pakai warna bawaan
 // supaya CSS variable tema tidak pernah berisi NaN.
@@ -52,8 +64,22 @@ export function normalizeHex(input: string): string {
   return FALLBACK_HEX;
 }
 
+// Warna oranye/cokelat/amber (hue 8-55, saturasi cukup) = sisa tema lama toko (#D4691E dkk).
+// Dipakai untuk mengabaikan nilai tema lama yang masih tersimpan di pengaturan, supaya panel
+// tetap biru; warna lain pilihan admin tetap dihormati.
+const LEGACY_THEME_HEX = new Set(['#1c1917', '#190c03', '#2a1509']);
+export function isLegacyWarmColor(input: string): boolean {
+  const v = (input ?? '').trim();
+  if (!/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(v)) return false;
+  const hex = normalizeHex(v);
+  if (LEGACY_THEME_HEX.has(hex.toLowerCase())) return true;
+  const [h, s] = hexToHsl(hex);
+  return h >= 8 && h <= 55 && s > 0.25;
+}
+
 export function hexToShades(input: string) {
   const hex = normalizeHex(input);
+  if (hex.toLowerCase() === BRAND_SHADES.accent.toLowerCase()) return { ...BRAND_SHADES, accent: hex };
   const [h, s, l] = hexToHsl(hex);
   // Gradient bergeser ~12 derajat ke arah cyan supaya tombol terasa hidup; ujung gelapnya
   // tetap >= 4,5:1 dengan teks putih untuk warna dasar yang cukup pekat.

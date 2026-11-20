@@ -32,7 +32,7 @@ export const RECAP_IMPORT_COLS: ImportCol[] = [
 const normHeader = (s: string) => s.replace(/\*/g, '').trim().toLowerCase();
 export const normName = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ');
 
-const BORDER = { style: 'thin' as const, color: { argb: 'FF1D4ED8' } };
+const BORDER = { style: 'thin' as const, color: { argb: 'FF155FA8' } };
 
 function download(buffer: ExcelJS.Buffer, filename: string) {
   const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
@@ -56,7 +56,7 @@ export async function downloadImportTemplate(opts: { title: string; sheetName: s
   titleCell.value = title;
   titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
   titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-  titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D4ED8' } };
+  titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
   ws.getRow(1).height = 26;
 
   ws.mergeCells(2, 1, 2, cols.length);
@@ -64,14 +64,14 @@ export async function downloadImportTemplate(opts: { title: string; sheetName: s
   noteCell.value = note;
   noteCell.font = { italic: true, size: 10, color: { argb: 'FF6B7280' } };
   noteCell.alignment = { horizontal: 'left', vertical: 'middle', wrapText: true };
-  noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEFF6FF' } };
+  noteCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F7FF' } };
   ws.getRow(2).height = 58;
 
   const headerRow = ws.getRow(3);
   cols.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
   headerRow.height = 24;
   headerRow.eachCell(cell => {
-    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } };
+    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1D6FC4' } };
     cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
     cell.alignment = { vertical: 'middle', horizontal: 'center' };
     cell.border = { top: BORDER, bottom: BORDER, left: BORDER, right: BORDER };
