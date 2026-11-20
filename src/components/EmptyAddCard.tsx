@@ -22,10 +22,12 @@ export default function EmptyAddCard({ label, onClick, hint, minHeight = 200 }: 
     el.style.color = on ? 'var(--accent)' : 'var(--text-muted)';
   };
   const accessible = hint ? `${label}. ${hint}` : label;
-  // Teks penjelas untuk kartu non-klik: hint bila ada; bila tidak, label — kecuali label berupa ajakan
-  // aksi ("Tambah X", "Catat X", dst.) yang menyesatkan kalau tampil pada kartu yang tidak bisa diklik.
+  // Teks penjelas untuk kartu non-klik: label (kecuali berupa ajakan aksi seperti "Tambah X" yang
+  // menyesatkan di kartu yang tidak bisa diklik) ditambah hint bila ada dan berbeda dari label.
   const ACTION_LABEL = /^(tambah|catat|buat|kirim|terima)\b/i;
-  const note = hint ?? (ACTION_LABEL.test(label) ? '' : label);
+  const labelLine = ACTION_LABEL.test(label) ? '' : label;
+  const hintLine = hint && hint !== labelLine ? hint : '';
+  const silent = !labelLine && !hintLine; // tanpa teks terlihat: beri alternatif teks untuk pembaca layar
   const content = (
     <div className="w-16 h-16 rounded-3xl flex items-center justify-center" style={{ background: 'var(--surface-2)' }}>
       <Plus size={26} aria-hidden="true" />
@@ -35,9 +37,10 @@ export default function EmptyAddCard({ label, onClick, hint, minHeight = 200 }: 
   return clickable
     ? <button type="button" onClick={onClick} className={cls} style={style} aria-label={accessible} title={label} onMouseEnter={hover(true)} onMouseLeave={hover(false)}>{content}</button>
     : (
-      <div className={`${cls} gap-3`} style={style}>
+      <div className={`${cls} gap-3`} style={style} {...(silent ? { role: 'img', 'aria-label': accessible, title: label } : {})}>
         {content}
-        {note && <p className="text-xs font-medium text-center max-w-md" style={{ color: 'var(--text-muted)' }}>{note}</p>}
+        {labelLine && <p className="text-xs font-semibold text-center max-w-md">{labelLine}</p>}
+        {hintLine && <p className="text-xs font-medium text-center max-w-md">{hintLine}</p>}
       </div>
     );
 }

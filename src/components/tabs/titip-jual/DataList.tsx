@@ -186,7 +186,7 @@ export default function DataList<T>(p: Props<T>) {
     return (
       <div className="space-y-4">
         {p.importer && <div className="flex items-center justify-end gap-2">{importButtons}</div>}
-        <EmptyAddCard label={p.addLabel ?? p.emptyHint ?? `Belum ada ${p.noun}`} onClick={p.onAdd} hint={p.addLabel ? p.emptyHint : undefined} />
+        <EmptyAddCard label={p.addLabel ?? p.emptyHint ?? `Belum ada ${p.noun}`} onClick={p.onAdd} hint={p.onAdd && !p.addLabel ? undefined : p.emptyHint} />
       </div>
     );
   }
