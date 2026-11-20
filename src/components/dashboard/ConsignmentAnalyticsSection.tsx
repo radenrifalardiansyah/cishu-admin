@@ -361,15 +361,15 @@ export default function ConsignmentAnalyticsSection({
               { icon: <Wallet size={16} />, label: 'Pendapatan', val: formatRp(data.summary.totalPendapatan), color: 'var(--success)', bg: 'var(--success-bg)', isRp: true },
               { icon: <TrendingUp size={16} />, label: 'Tingkat Terjual', val: `${data.summary.sellThroughPct}%`, color: 'var(--accent)', bg: 'var(--accent-bg)', isRp: false },
             ].map((c, i) => (
-              <div key={i} className="card relative p-4 overflow-hidden">
+              <div key={i} className="card stat-tile relative p-4 overflow-hidden" style={{ '--tile': c.color } as React.CSSProperties}>
                 <div style={{ width: 34, height: 34, borderRadius: 10, background: c.bg, color: c.color, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
                   {c.icon}
                 </div>
-                <p className="tabular" style={{ fontSize: 18, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)', lineHeight: 1.15, marginBottom: 4 }}>
+                <p className="tabular break-words" style={{ fontSize: 'clamp(15px, 4.2vw, 18px)', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)', lineHeight: 1.15, marginBottom: 4 }}>
                   {c.val}
                 </p>
                 <p style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', color: 'var(--text-muted)' }}>{c.label}</p>
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, borderRadius: '0 0 12px 12px', background: `linear-gradient(90deg, ${c.color}, ${c.color}88)` }} />
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, borderRadius: '0 0 14px 14px', background: `linear-gradient(90deg, ${c.color}, ${c.color}88)` }} />
               </div>
             ))}
           </div>
@@ -391,7 +391,7 @@ export default function ConsignmentAnalyticsSection({
                 <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Belum ada aktivitas mitra di periode ini</p>
               </div>
             ) : (
-              <div style={{ width: '100%', height: 220 }}>
+              <div className="chart-panel" style={{ width: '100%', height: 220 }}>
                 <ResponsiveContainer>
                   <AreaChart data={data.dailyTrend} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
                     <defs><linearGradient id="consSendFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#B45309" stopOpacity={0.26} /><stop offset="100%" stopColor="#B45309" stopOpacity={0} /></linearGradient><linearGradient id="consRevFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#059669" stopOpacity={0.26} /><stop offset="100%" stopColor="#059669" stopOpacity={0} /></linearGradient></defs>
@@ -478,7 +478,7 @@ export default function ConsignmentAnalyticsSection({
                 { name: 'Total', value: totalAll, color: '#7C3AED' },
               ];
               return (
-                <div style={{ width: '100%', height: 200 }}>
+                <div className="chart-panel" style={{ width: '100%', height: 200 }}>
                   <ResponsiveContainer>
                     <BarChart data={pcsSummary} margin={{ top: 20, right: 8, left: -18, bottom: 0 }} barCategoryGap={24}>
                       <CartesianGrid vertical={false} stroke="var(--border)" strokeDasharray="3 4" />

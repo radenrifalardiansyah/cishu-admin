@@ -63,6 +63,7 @@ const NotificationsTab = dynamic(() => import('@/components/tabs/NotificationsTa
 import type { PosProduct, PosCategory_Entry, PosReseller, PosBank, PosCustomer } from '@/lib/pos-types';
 import type { ModuleDoc, MenuDoc, Action } from '@/types/rbac';
 import TopListChart from '@/components/dashboard/TopListChart';
+import Sparkline from '@/components/dashboard/Sparkline';
 import type { BusinessAnalyticsData } from '@/components/dashboard/BusinessAnalyticsSection';
 // Sub-view Analitik dimuat saat dibuka saja (membawa recharts/PDF builder yang berat).
 const BusinessAnalyticsSection = dynamic(() => import('@/components/dashboard/BusinessAnalyticsSection'), { loading: () => <PageLoader compact /> });
@@ -1109,7 +1110,7 @@ export default function AdminPage() {
 
   // ─── Dashboard (Analytics) content ───────────────────────
   const dashboardBody = (
-    <div className="p-4 lg:p-6 space-y-5">
+    <div className="dash-bg p-4 lg:p-6 space-y-5">
 
       <TopbarPortal>
         <Tooltip label="Refresh">
@@ -1182,39 +1183,64 @@ export default function AdminPage() {
             </div>
           )}
 
+          {/* Hero — metrik utama (Total Omzet) sebagai fokus visual */}
+          <div className="hero-card relative overflow-hidden rounded-[20px] p-5 lg:p-7">
+            <div aria-hidden="true" className="absolute pointer-events-none rounded-full"
+              style={{ width: 320, height: 320, top: -140, right: -80, background: 'radial-gradient(circle, rgba(255,255,255,0.28), transparent 70%)' }} />
+            <div className="relative grid gap-5 lg:grid-cols-[1fr_minmax(220px,360px)] lg:items-end">
+              <div className="min-w-0">
+                <p className="text-xs font-bold uppercase tracking-widest flex items-center gap-1.5">
+                  <Wallet size={14} /> Total Omzet
+                </p>
+                <p className="tabular font-extrabold break-words" style={{ fontSize: 'clamp(28px, 5vw, 42px)', letterSpacing: '-0.03em', lineHeight: 1.1, marginTop: 8 }}>
+                  {formatRp(summary.total)}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  <span className="hero-chip"><Receipt size={13} /> {summary.orderCount} pesanan</span>
+                  {sumRange && <span className="hero-chip">{pdfDate(sumRange.from)} - {pdfDate(sumRange.to)}</span>}
+                </div>
+              </div>
+              <div className="min-w-0" style={{ color: '#FFFFFF' }}>
+                <Sparkline values={summary.revenueTrend.map(d => d.kasir + d.online + d.konsinyasi + d.lain)} color="#FFFFFF" height={56} strokeWidth={2.5} />
+              </div>
+            </div>
+          </div>
+
           {/* Stat cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-            {[
-              { icon: <Receipt    size={16}/>, label: 'Jumlah Pesanan', val: summary.orderCount.toString(), color: '#475569', iconBg: '#F1F5F9', bar: '#475569,#334155' },
-              { icon: <TrendingUp size={16}/>, label: 'Omzet Kasir',  val: formatRp(summary.kasir), color: 'var(--accent)', iconBg: 'var(--accent-bg)', bar: 'var(--accent),var(--accent-dark)' },
-              { icon: <Globe      size={16}/>, label: 'Omzet Online', val: formatRp(summary.online), color: '#A21CAF', iconBg: '#FDF4FF', bar: '#A21CAF,#86198F' },
-              { icon: <Store      size={16}/>, label: 'Omzet Konsinyasi', val: formatRp(summary.konsinyasi), color: '#B45309', iconBg: '#FFFBEB', bar: '#B45309,#92400E' },
-              { icon: <Wallet     size={16}/>, label: 'Pendapatan Lain', val: formatRp(summary.lain), color: '#115E59', iconBg: '#F0FDFA', bar: '#115E59,#134E4A' },
-              { icon: <Wallet     size={16}/>, label: 'Total Omzet', val: formatRp(summary.total), color: '#0369A1', iconBg: '#EFF6FF', bar: '#0369A1,#075985' },
-              { icon: <Package    size={16}/>, label: 'Produk Aktif',    val: dashData.productCount.toString(), color: '#0E7490',        iconBg: '#ECFEFF',           bar: '#0E7490,#155E75' },
-              { icon: <Users      size={16}/>, label: 'Total Reseller',  val: dashData.resellerCount.toString(),color: '#7C3AED',        iconBg: '#F5F3FF',           bar: '#7C3AED,#6D28D9' },
-            ].map((c, i) => (
-              <div key={i} className="card relative p-4 overflow-hidden"
-                style={{ transition: 'transform 0.18s, box-shadow 0.18s', cursor: 'default' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 24px rgba(15,23,42,0.10)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.transform = ''; (e.currentTarget as HTMLDivElement).style.boxShadow = ''; }}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+            {([
+              { icon: <TrendingUp size={16}/>, label: 'Omzet Kasir',  val: formatRp(summary.kasir), color: 'var(--accent)', iconBg: 'var(--accent-bg)', bar: 'var(--accent),var(--accent-dark)', spark: summary.revenueTrend.map(d => d.kasir) },
+              { icon: <Globe      size={16}/>, label: 'Omzet Online', val: formatRp(summary.online), color: '#A21CAF', iconBg: '#FDF4FF', bar: '#A21CAF,#86198F', spark: summary.revenueTrend.map(d => d.online) },
+              { icon: <Store      size={16}/>, label: 'Omzet Konsinyasi', val: formatRp(summary.konsinyasi), color: '#B45309', iconBg: '#FFFBEB', bar: '#B45309,#92400E', spark: summary.revenueTrend.map(d => d.konsinyasi) },
+              { icon: <Wallet     size={16}/>, label: 'Pendapatan Lain', val: formatRp(summary.lain), color: '#115E59', iconBg: '#F0FDFA', bar: '#115E59,#134E4A', spark: summary.revenueTrend.map(d => d.lain) },
+              { icon: <Package    size={16}/>, label: 'Produk Aktif',    val: dashData.productCount.toString(), color: '#0E7490',        iconBg: '#ECFEFF',           bar: '#0E7490,#155E75', spark: undefined as number[] | undefined },
+              { icon: <Users      size={16}/>, label: 'Total Reseller',  val: dashData.resellerCount.toString(),color: '#7C3AED',        iconBg: '#F5F3FF',           bar: '#7C3AED,#6D28D9', spark: undefined as number[] | undefined },
+            ]).map((c, i) => (
+              <div key={i} className="card stat-tile relative p-4 pb-5 overflow-hidden"
+                style={{ '--tile': c.color, cursor: 'default' } as React.CSSProperties}
               >
                 <div style={{ width: 34, height: 34, borderRadius: 10, background: c.iconBg, color: c.color, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
                   {c.icon}
                 </div>
-                <p className="tabular" style={{ fontSize: 21, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-primary)', lineHeight: 1.15, marginBottom: 4 }}>{c.val}</p>
+                <p className="tabular break-words" style={{ fontSize: 'clamp(16px, 4.6vw, 21px)', fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-primary)', lineHeight: 1.15, marginBottom: 4 }}>{c.val}</p>
                 <p style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', color: 'var(--text-muted)' }}>{c.label}</p>
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, borderRadius: '0 0 12px 12px', background: `linear-gradient(90deg, ${c.bar})` }} />
+                {c.spark && c.spark.length > 1 && (
+                  <div style={{ marginTop: 10, color: c.color }}><Sparkline values={c.spark} color={c.color} height={26} /></div>
+                )}
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, borderRadius: '0 0 14px 14px', background: `linear-gradient(90deg, ${c.bar})` }} />
               </div>
             ))}
           </div>
 
           {/* Revenue chart */}
           <div className="card p-5">
-            <div className="flex items-center justify-between mb-5">
-              <div>
+            <div className="flex items-center justify-between mb-5 gap-3">
+              <div className="flex items-center gap-3 min-w-0">
+              <span className="section-chip"><TrendingUp size={16} /></span>
+              <div className="min-w-0">
                 <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>Tren Omzet</p>
                 <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Kasir, online, konsinyasi & pendapatan lain · {sumRange ? `${pdfDate(sumRange.from)} - ${pdfDate(sumRange.to)}` : ''}</p>
+              </div>
               </div>
               {summary.total > 0 && (
                 <span className="badge badge-amber">
@@ -1227,7 +1253,7 @@ export default function AdminPage() {
                 <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Belum ada transaksi pada periode ini</p>
               </div>
             ) : (
-              <RevenueChart data={summary.revenueTrend} />
+              <div className="chart-panel"><RevenueChart data={summary.revenueTrend} /></div>
             )}
           </div>
 

@@ -207,17 +207,17 @@ export default function MonthlyFinanceSection({ creds }: { creds: string }) {
                 { icon: <TrendingDown size={15} />, label: 'Penjualan Terendah', main: worstSales ? fullMonth(worstSales.month) : '-', sub: worstSales ? formatRp(worstSales.pendapatan) : '', color: '#DC2626' },
                 { icon: <Wallet size={15} />, label: 'Rata-rata Penjualan / Bulan', main: formatRp(avgSales), sub: `Total ${formatRp(total('pendapatan'))}`, color: 'var(--accent)' },
               ].map((c, i) => (
-                <div key={i} className="rounded-2xl p-3.5" style={{ background: 'var(--surface-2)' }}>
+                <div key={i} className="stat-tile rounded-2xl p-3.5 border" style={{ '--tile': c.color } as React.CSSProperties}>
                   <div className="flex items-center gap-1.5 mb-1.5" style={{ color: c.color }}>
                     {c.icon}<p className="text-[10px] font-bold uppercase tracking-wide" style={{ color: 'var(--text-muted)' }}>{c.label}</p>
                   </div>
-                  <p className="text-sm font-extrabold tabular leading-tight" style={{ color: 'var(--text-primary)' }}>{c.main}</p>
-                  <p className="text-[11px] tabular mt-0.5" style={{ color: 'var(--text-muted)' }}>{c.sub}</p>
+                  <p className="text-sm font-extrabold tabular leading-tight break-words" style={{ color: 'var(--text-primary)' }}>{c.main}</p>
+                  <p className="text-[11px] tabular mt-0.5 break-words" style={{ color: 'var(--text-muted)' }}>{c.sub}</p>
                 </div>
               ))}
             </div>
 
-            <div style={{ width: '100%', height: 300 }}>
+            <div className="chart-panel" style={{ width: '100%', height: 300 }}>
               <ResponsiveContainer>
                 <BarChart data={chartData} margin={{ top: 12, right: 8, left: 0, bottom: 0 }} barGap={3} barCategoryGap="18%">
                   <CartesianGrid vertical={false} stroke="var(--border)" strokeDasharray="3 4" />

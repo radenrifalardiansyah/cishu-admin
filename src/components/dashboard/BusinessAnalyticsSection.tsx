@@ -304,15 +304,15 @@ export default function BusinessAnalyticsSection({
               { icon: <Store size={16} />, label: 'Konsinyasi', val: data.channels.consignment, color: '#B45309', bg: '#FFFBEB' },
               { icon: <Wallet size={16} />, label: 'Total Pendapatan', val: data.channels.total, color: 'var(--success)', bg: 'var(--success-bg)' },
             ].map((c, i) => (
-              <div key={i} className="card relative p-4 overflow-hidden">
+              <div key={i} className="card stat-tile relative p-4 overflow-hidden" style={{ '--tile': c.color } as React.CSSProperties}>
                 <div style={{ width: 34, height: 34, borderRadius: 10, background: c.bg, color: c.color, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
                   {c.icon}
                 </div>
-                <p className="tabular" style={{ fontSize: 18, fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)', lineHeight: 1.15, marginBottom: 4 }}>
+                <p className="tabular break-words" style={{ fontSize: 'clamp(15px, 4.2vw, 18px)', fontWeight: 800, letterSpacing: '-0.02em', color: 'var(--text-primary)', lineHeight: 1.15, marginBottom: 4 }}>
                   {formatRp(c.val)}
                 </p>
                 <p style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', color: 'var(--text-muted)' }}>{c.label}</p>
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, borderRadius: '0 0 12px 12px', background: `linear-gradient(90deg, ${c.color}, ${c.color}88)` }} />
+                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, borderRadius: '0 0 14px 14px', background: `linear-gradient(90deg, ${c.color}, ${c.color}88)` }} />
               </div>
             ))}
           </div>
@@ -335,7 +335,7 @@ export default function BusinessAnalyticsSection({
                 <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Belum ada transaksi di periode ini</p>
               </div>
             ) : (
-              <div style={{ width: '100%', height: 220 }}>
+              <div className="chart-panel" style={{ width: '100%', height: 220 }}>
                 <ResponsiveContainer>
                   <AreaChart data={data.dailyTrend} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
                     <defs><linearGradient id="bizOnlineFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#A21CAF" stopOpacity={0.26} /><stop offset="100%" stopColor="#A21CAF" stopOpacity={0} /></linearGradient><linearGradient id="bizPosFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#2563EB" stopOpacity={0.26} /><stop offset="100%" stopColor="#2563EB" stopOpacity={0} /></linearGradient><linearGradient id="bizConsFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#B45309" stopOpacity={0.26} /><stop offset="100%" stopColor="#B45309" stopOpacity={0} /></linearGradient></defs>
@@ -389,7 +389,7 @@ export default function BusinessAnalyticsSection({
                   <LegendDot color="#15803D" label="Pendapatan" />
                   <LegendDot color="#DC2626" label="Pengeluaran" />
                 </div>
-                <div style={{ width: '100%', height: 200 }}>
+                <div className="chart-panel" style={{ width: '100%', height: 200 }}>
                   <ResponsiveContainer>
                     <LineChart data={data.dailyTrend} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
                       <CartesianGrid vertical={false} stroke="var(--border)" strokeDasharray="3 4" />

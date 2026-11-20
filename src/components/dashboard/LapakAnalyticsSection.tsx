@@ -52,9 +52,9 @@ const shortDate = (s: string) => {
 const DOW = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'];
 // Metode bayar = kategori (identitas): tiga slot pertama palet kategorikal (lolos validasi CVD & jarak warna normal).
 const METHOD_STYLE: Record<string, { label: string; color: string }> = {
-  cash: { label: 'Tunai', color: '#2a78d6' }, transfer: { label: 'Transfer', color: '#eb6834' }, qris: { label: 'QRIS', color: '#1baf7a' },
+  cash: { label: 'Tunai', color: '#0E7490' }, transfer: { label: 'Transfer', color: '#B45309' }, qris: { label: 'QRIS', color: '#A21CAF' },
 };
-const MUTED_BAR = '#D9CFC2';
+const MUTED_BAR = '#C8D3E6';
 const ACCENT = 'var(--accent)';
 
 function DarkTip({ children }: { children: React.ReactNode }) {
@@ -307,7 +307,7 @@ export default function LapakAnalyticsSection({ creds }: { creds: string }) {
                 <span className="flex items-center gap-1.5"><span style={{ width: 14, height: 3, borderRadius: 2, background: ACCENT, display: 'inline-block' }} /> Periode ini</span>
                 <span className="flex items-center gap-1.5"><span style={{ width: 14, height: 0, borderTop: '2px dashed #7B8BA3', display: 'inline-block' }} /> Periode sebelumnya</span>
               </div>
-              <div style={{ width: '100%', height: 240 }}>
+              <div className="chart-panel" style={{ width: '100%', height: 240 }}>
                 <ResponsiveContainer>
                   <ComposedChart data={data.daily} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
                     <defs><linearGradient id="lapakFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#2563EB" stopOpacity={0.22} /><stop offset="100%" stopColor="#2563EB" stopOpacity={0} /></linearGradient></defs>
@@ -361,7 +361,7 @@ export default function LapakAnalyticsSection({ creds }: { creds: string }) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <Panel icon={<Clock size={15} />} title="Jam Ramai" hint={peakHourLabel ? `Tersibuk ${peakHourLabel} · ${peakHour.count} transaksi (WIB)` : 'Jumlah transaksi per jam (WIB)'}>
             {!hasSales ? <Empty text="Belum ada transaksi." /> : (
-              <div style={{ width: '100%', height: 190 }}>
+              <div className="chart-panel" style={{ width: '100%', height: 190 }}>
                 <ResponsiveContainer>
                   <BarChart data={hourData} margin={{ top: 4, right: 4, left: -18, bottom: 0 }} barCategoryGap={3}>
                     <CartesianGrid vertical={false} stroke="var(--border-2)" />
@@ -378,7 +378,7 @@ export default function LapakAnalyticsSection({ creds }: { creds: string }) {
           </Panel>
           <Panel icon={<CalendarDays size={15} />} title="Hari Ramai" hint={peakDow && peakDow.count > 0 ? `Tersibuk hari ${DOW[peakDow.dow - 1]} · ${peakDow.count} transaksi` : 'Jumlah transaksi per hari dalam seminggu'}>
             {!hasSales ? <Empty text="Belum ada transaksi." /> : (
-              <div style={{ width: '100%', height: 190 }}>
+              <div className="chart-panel" style={{ width: '100%', height: 190 }}>
                 <ResponsiveContainer>
                   <BarChart data={dowData} margin={{ top: 4, right: 4, left: -18, bottom: 0 }} barCategoryGap={10}>
                     <CartesianGrid vertical={false} stroke="var(--border-2)" />
