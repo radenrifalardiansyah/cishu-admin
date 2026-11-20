@@ -89,7 +89,7 @@ const FIELD_GROUPS = [
   {
     id: 'store', icon: <Store size={15}/>, label: 'Info Toko',
     fields: [
-      { key: 'storeName',        label: 'Nama Toko',       type: 'text',     placeholder: 'Cishu' },
+      { key: 'storeName',        label: 'Nama Toko',       type: 'text',     placeholder: "Cishu Bite 'n Sip" },
       { key: 'legalName',        label: 'Nama Usaha (Legal)', type: 'text',  placeholder: 'Nama usaha sesuai legalitas' },
       { key: 'storeTagline',     label: 'Tagline',         type: 'text',     placeholder: 'Camilan khas rumahan...' },
       { key: 'storeDescription', label: 'Deskripsi Toko',  type: 'textarea', placeholder: 'Tentang toko Anda...' },

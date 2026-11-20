@@ -419,7 +419,7 @@ export default function PosTab({
       if (r.ok) setStoreInfo((await r.json() as { settings: StoreInfo }).settings ?? {});
     }).catch(() => {});
   }, [creds]);
-  const storeName    = storeInfo.storeName?.trim() || 'Cishu';
+  const storeName    = storeInfo.storeName?.trim() || "Cishu Bite 'n Sip";
   const storeAddress = [storeInfo.address, storeInfo.city].filter(Boolean).join(', ');
   const storePhone   = (storeInfo.whatsapp?.trim() || WHATSAPP_NUMBER)
     .replace(/^62/, '0').replace(/(\d{4})(\d{4})(\d+)/, '$1-$2-$3');

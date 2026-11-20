@@ -327,7 +327,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
 
       ws.mergeCells(1, 1, 1, 6);
       const t = ws.getCell(1, 1);
-      t.value = 'DAFTAR DOMPET — CISHU';
+      t.value = 'DAFTAR DOMPET — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -580,7 +580,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
 
       ws.mergeCells(1, 1, 1, 6);
       const t = ws.getCell(1, 1);
-      t.value = 'RIWAYAT TRANSFER ANTAR DOMPET — CISHU';
+      t.value = 'RIWAYAT TRANSFER ANTAR DOMPET — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

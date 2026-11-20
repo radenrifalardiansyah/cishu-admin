@@ -132,7 +132,7 @@ export default function SuppliersTab({ creds }: { creds: string }) {
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT DATA SUPPLIER — CISHU';
+    titleCell.value = 'TEMPLATE IMPORT DATA SUPPLIER — CISHU BITE \'N SIP';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -272,7 +272,7 @@ export default function SuppliersTab({ creds }: { creds: string }) {
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN SUPPLIER — CISHU';
+      titleCell.value = 'LAPORAN SUPPLIER — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

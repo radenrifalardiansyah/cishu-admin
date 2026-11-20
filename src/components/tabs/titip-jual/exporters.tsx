@@ -32,7 +32,7 @@ export async function exportExcel<T>(cols: ExportCol<T>[], rows: T[], title: str
 
   ws.mergeCells(1, 1, 1, colCount);
   const t = ws.getCell(1, 1);
-  t.value = `${title} — CISHU`;
+  t.value = `${title} — CISHU BITE 'N SIP`;
   t.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
   t.alignment = { horizontal: 'center', vertical: 'middle' };
   t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

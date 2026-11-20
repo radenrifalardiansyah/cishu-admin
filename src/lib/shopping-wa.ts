@@ -6,7 +6,7 @@ import { normalizePhone } from './phone';
 // sebagian klien WA) dan tanpa blok monospace (tiga backtick) karena font monospace WhatsApp Android melebarkan digit.
 
 // Sama dengan DEFAULT_STORE_NAME di closing-wa.ts (modul itu memakai node:crypto, tidak boleh diimpor klien).
-export const SHOPPING_WA_DEFAULT_STORE = 'Cishu';
+export const SHOPPING_WA_DEFAULT_STORE = "Cishu Bite 'n Sip";
 
 export interface ShoppingWaItem {
   materialName: string; unit: string; qty: number; price: number | null;

@@ -265,7 +265,7 @@ export default function CapitalTab({ creds }: { creds: string }) {
 
       ws.mergeCells(1, 1, 1, 4);
       const t = ws.getCell(1, 1);
-      t.value = 'DAFTAR MODAL & PRIVE — CISHU';
+      t.value = 'DAFTAR MODAL & PRIVE — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

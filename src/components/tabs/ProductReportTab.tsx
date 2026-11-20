@@ -133,7 +133,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
   useEffect(() => { toDataUri(storeInfo.logo).then(setLogoDataUri); }, [storeInfo.logo]);
 
   const storeHeader = {
-    name:    storeInfo.storeName?.trim() || 'Cishu',
+    name:    storeInfo.storeName?.trim() || "Cishu Bite 'n Sip",
     tagline: storeInfo.storeTagline?.trim() || undefined,
     address: [storeInfo.address, storeInfo.city].filter(Boolean).join(', ') || undefined,
     phone:   storeInfo.whatsapp?.trim() || undefined,
@@ -238,7 +238,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
         { key: 'hppPcs', width: 14 }, { key: 'hpp', width: 18 }, { key: 'laba', width: 18 },
         { key: 'gratis', width: 12 }, { key: 'hppGratis', width: 18 },
       ];
-      styleTitle(ws, 'LAPORAN PRODUK TERJUAL — CISHU', `Periode: ${periodLabel} (${from} s/d ${to})`, 12);
+      styleTitle(ws, 'LAPORAN PRODUK TERJUAL — CISHU BITE \'N SIP', `Periode: ${periodLabel} (${from} s/d ${to})`, 12);
       styleHeader(ws, 3, ['Produk', 'Kategori', 'Kasir', 'Online', 'Konsinyasi', 'Total Qty', 'Omzet', 'HPP/pcs', 'Total HPP', 'Laba Kotor', 'Qty Gratis', 'HPP Gratis']);
       displayRows.forEach((p, i) => {
         const rowNum = 4 + i;
@@ -327,7 +327,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
 
       ws.mergeCells(1, 1, 1, colCount);
       const t = ws.getCell(1, 1);
-      t.value = 'TREN HARIAN PRODUK TERLARIS — CISHU';
+      t.value = 'TREN HARIAN PRODUK TERLARIS — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

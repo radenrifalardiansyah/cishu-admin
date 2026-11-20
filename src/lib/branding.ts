@@ -1,4 +1,4 @@
-export const BRAND_NAME = 'Cishu';
+export const BRAND_NAME = "Cishu Bite 'n Sip";
 
 export const ADMIN_APP_NAME = 'Admin Cishu';
 

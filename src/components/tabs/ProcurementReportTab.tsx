@@ -181,7 +181,7 @@ export default function ProcurementReportTab({ creds, kind }: { creds: string; k
     setExportingXlsx(true);
     try {
       await exportSheet({
-        sheet: meta.title.slice(0, 28), title: `${meta.title} — CISHU (${from} s/d ${to})`,
+        sheet: meta.title.slice(0, 28), title: `${meta.title} — CISHU BITE 'N SIP (${from} s/d ${to})`,
         filename: `${meta.file}-${from}-sd-${to}.xlsx`,
         columns: columns.map(c => ({ header: c.header, width: Math.max(10, Math.round(parseFloat(c.width) * 1.6)) })),
         rows: plainRows,

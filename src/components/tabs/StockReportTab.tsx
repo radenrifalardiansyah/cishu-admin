@@ -578,7 +578,7 @@ export default function StockReportTab({
   useEffect(() => { toDataUri(storeInfo.logo).then(setLogoDataUri); }, [storeInfo.logo]);
 
   const storeHeader = {
-    name:    storeInfo.storeName?.trim() || 'Cishu',
+    name:    storeInfo.storeName?.trim() || "Cishu Bite 'n Sip",
     tagline: storeInfo.storeTagline?.trim() || undefined,
     address: [storeInfo.address, storeInfo.city].filter(Boolean).join(', ') || undefined,
     phone:   storeInfo.whatsapp?.trim() || undefined,
@@ -762,7 +762,7 @@ export default function StockReportTab({
       // ── Sheet 1: Ringkasan ──
       const wsR = wb.addWorksheet('Ringkasan');
       wsR.columns = [{ key: 'a', width: 32 }, { key: 'b', width: 20 }];
-      styleTitle(wsR, 'RINGKASAN LAPORAN STOK — CISHU', `${reportWhLabel} · Periode: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 2);
+      styleTitle(wsR, 'RINGKASAN LAPORAN STOK — CISHU BITE \'N SIP', `${reportWhLabel} · Periode: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 2);
       styleHeader(wsR, 3, ['Keterangan', 'Jumlah']);
       const rRows: [string, number | string][] = [
         ['Total Nilai Stok (HPP)', reportTotalNilai], ['Total Unit Stok', reportTotalUnit],
@@ -785,7 +785,7 @@ export default function StockReportTab({
         { key: 'qty', width: 12 }, { key: 'hpp', width: 16 }, { key: 'nilai', width: 18 },
         { key: 'masuk', width: 12 }, { key: 'keluar', width: 12 }, { key: 'net', width: 12 }, { key: 'status', width: 14 },
       ];
-      styleTitle(wsD, 'DETAIL STOK PER PRODUK — CISHU', `${reportWhLabel} · Periode mutasi: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 10);
+      styleTitle(wsD, 'DETAIL STOK PER PRODUK — CISHU BITE \'N SIP', `${reportWhLabel} · Periode mutasi: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 10);
       styleHeader(wsD, 3, ['Produk', 'Kategori', 'Stok Awal', 'Stok Akhir', 'HPP', 'Nilai Stok', 'Masuk', 'Keluar', 'Net', 'Status']);
       const catLabelFor = (id?: string) => categories.find(c => c.id === id)?.label ?? (id ?? '');
       const statusLabel = { habis: 'Habis', rendah: 'Rendah', normal: 'Normal', open_po: 'Open PO' };
@@ -813,7 +813,7 @@ export default function StockReportTab({
         { key: 'tgl', width: 16 }, { key: 'tipe', width: 12 }, { key: 'produk', width: 28 },
         { key: 'lokasi', width: 30 }, { key: 'qty', width: 10 }, { key: 'ket', width: 30 },
       ];
-      styleTitle(wsM, 'RIWAYAT MUTASI STOK — CISHU', `${reportWhLabel} · Periode: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 6);
+      styleTitle(wsM, 'RIWAYAT MUTASI STOK — CISHU BITE \'N SIP', `${reportWhLabel} · Periode: ${reportPeriodLabel} (${reportFrom} s/d ${reportTo})`, 6);
       styleHeader(wsM, 3, ['Tanggal', 'Tipe', 'Produk', 'Lokasi', 'Qty', 'Keterangan']);
       const tipeLabel = { in: 'Masuk', out: 'Keluar', reject: 'Reject', transfer: 'Transfer' };
       reportLedgerSorted.forEach((e, i) => {

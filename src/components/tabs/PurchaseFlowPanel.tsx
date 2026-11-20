@@ -502,10 +502,10 @@ ${pdfUrl}`.trim();
     try {
       const day = new Date().toLocaleDateString('en-CA');
       await exportSheet(view === 'po'
-        ? { sheet: 'Purchase Order', title: 'PURCHASE ORDER BAHAN BAKU — CISHU', filename: `purchase-order-cishu-${day}.xlsx`,
+        ? { sheet: 'Purchase Order', title: 'PURCHASE ORDER BAHAN BAKU — CISHU BITE \'N SIP', filename: `purchase-order-cishu-${day}.xlsx`,
             columns: [{ header: 'No', width: 6 }, { header: 'No. PO', width: 18 }, { header: 'Tanggal', width: 14 }, { header: 'Supplier', width: 24 }, { header: 'Bahan Baku', width: 44 }, { header: 'Total', width: 16 }, { header: 'Status', width: 18 }, { header: 'Estimasi Tiba', width: 14 }, { header: 'Catatan', width: 28 }],
             rows: rowsForExport() }
-        : { sheet: 'Penerimaan Barang', title: 'PENERIMAAN BARANG (GR) BAHAN BAKU — CISHU', filename: `penerimaan-barang-cishu-${day}.xlsx`,
+        : { sheet: 'Penerimaan Barang', title: 'PENERIMAAN BARANG (GR) BAHAN BAKU — CISHU BITE \'N SIP', filename: `penerimaan-barang-cishu-${day}.xlsx`,
             columns: [{ header: 'No', width: 6 }, { header: 'No. GR', width: 18 }, { header: 'No. DO', width: 24 }, { header: 'No. PO', width: 18 }, { header: 'Supplier', width: 24 }, { header: 'Tgl Terima', width: 14 }, { header: 'Bahan Baku', width: 44 }, { header: 'Total', width: 16 }, { header: 'Status', width: 22 }],
             rows: rowsForExport() });
       toast.success(`Berhasil export ${rowsForExport().length} data ke Excel${selected.size > 0 ? ' (terpilih)' : ''}.`);

@@ -97,7 +97,7 @@ export default function SupplierPaymentsHistory({ creds, reloadKey, onOpenPurcha
       const { body, total } = buildPaymentExcelRows(filtered, formatDueDate);
       ws.mergeCells(1, 1, 1, colCount);
       const title = ws.getCell(1, 1);
-      title.value = 'RIWAYAT PEMBAYARAN HUTANG SUPPLIER — CISHU';
+      title.value = 'RIWAYAT PEMBAYARAN HUTANG SUPPLIER — CISHU BITE \'N SIP';
       title.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       title.alignment = { horizontal: 'center', vertical: 'middle' };
       title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

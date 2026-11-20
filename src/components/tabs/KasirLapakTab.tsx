@@ -56,7 +56,7 @@ async function fetchCatalog(creds: string, stallId: string): Promise<Catalog> {
 export default function KasirLapakTab({ creds, can }: { creds: string; can: (a: Action) => boolean }) {
   const toast = useToast();
   const confirm = useConfirm();
-  const [store, setStore] = useState<{ name: string; address?: string; logo?: string; whatsapp?: string }>({ name: 'Cishu' });
+  const [store, setStore] = useState<{ name: string; address?: string; logo?: string; whatsapp?: string }>({ name: "Cishu Bite 'n Sip" });
   const [stalls, setStalls] = useState<PosStall[] | null>(null);
   const [stallId, setStallId] = useState('');
   const [catalog, setCatalog] = useState<Catalog | null>(null);

@@ -29,7 +29,7 @@ export const formatWhatsAppMessage = (
 
   const noteLine = customer.note ? `\nCatatan : ${customer.note}` : '';
 
-  return `*PESANAN CISHU*
+  return `*PESANAN CISHU BITE 'N SIP*
 ${SEP}
 
 *Detail Pesanan:*
@@ -64,7 +64,7 @@ export const formatResellerMessage = (data: ResellerInfo): string => {
   const pengalamanLine = data.pengalaman.trim() || '-';
   const paketLine = data.paket || '-';
 
-  return `*PENDAFTARAN RESELLER CISHU*
+  return `*PENDAFTARAN RESELLER CISHU BITE 'N SIP*
 _Asli Gurihnya, Mantap Pedasnya!_
 
 *Data Pendaftar*
@@ -78,7 +78,7 @@ Paket     : ${paketLine}
 Platform  : ${platformLine}
 Pengalaman: ${pengalamanLine}
 
-Saya ingin *secure slot* reseller Cishu. Mohon info lebih lanjut ya Teh, terima kasih!`.trim();
+Saya ingin *secure slot* reseller Cishu Bite 'n Sip. Mohon info lebih lanjut ya Teh, terima kasih!`.trim();
 };
 
 export const openResellerWhatsApp = (data: ResellerInfo): void => {

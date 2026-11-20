@@ -149,7 +149,7 @@ export default function ProductsSection({ creds, data, reload, can }: SectionPro
 
   const importer = can('create') ? {
     onTemplate: () => downloadTemplate({
-      sheet: 'Template Produk Titipan', title: 'TEMPLATE IMPORT PRODUK TITIP JUAL — CISHU', file: 'template-produk-titip-jual.xlsx',
+      sheet: 'Template Produk Titipan', title: 'TEMPLATE IMPORT PRODUK TITIP JUAL — CISHU BITE \'N SIP', file: 'template-produk-titip-jual.xlsx',
       note: 'PETUNJUK: Kolom bertanda (*) wajib diisi. Jangan mengubah judul kolom di baris 3; isi data mulai baris 4, satu produk per baris. '
         + 'Penitip dan Lapak harus sudah terdaftar (tulis nama atau kodenya). Skema kosong = ikut skema default penitip; atau isi "Nominal"/"Komisi" beserta nilainya. '
         + 'Kategori harus sama dengan nama di menu Kategori (boleh dikosongkan). Lapak boleh lebih dari satu, pisahkan dengan koma (cth: Lapak 1, Lapak 2). Stok awal dicatat lewat tab Terima & Retur. Produk yang sudah ada dilewati.',

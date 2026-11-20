@@ -336,7 +336,7 @@ export default function AppShell({
           {!collapsed && (
             <div className="min-w-0 overflow-hidden" style={{ zIndex: 1 }}>
               <p className="text-[13px] font-extrabold leading-tight truncate" style={{ color: 'var(--sidebar-text)' }}>
-                Cishu
+                Cishu Bite &apos;n Sip
               </p>
               <p className="text-[10px] mt-0.5 font-semibold truncate tracking-wide uppercase" style={{ color: 'var(--sidebar-muted)' }}>
                 Admin Panel
@@ -681,7 +681,7 @@ export default function AppShell({
                   {currentTab?.label ?? 'Dashboard'}
                 </p>
                 <p className="text-[11px] leading-tight mt-0.5" style={{ color: 'var(--text-muted)' }}>
-                  Cishu · Admin
+                  Cishu Bite &apos;n Sip · Admin
                 </p>
               </div>
             </div>

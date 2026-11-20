@@ -53,7 +53,7 @@ export default function AdminFeeBillingTab({ creds }: { creds: string }) {
   const [payingId, setPayingId] = useState<string | null>(null);
   const [detail, setDetail] = useState<InvoiceRecord | null>(null);
   const [txnModalChannel, setTxnModalChannel] = useState<Channel | null>(null);
-  const [clientName, setClientName] = useState('Cishu');
+  const [clientName, setClientName] = useState("Cishu Bite 'n Sip");
   const [paymentInfo, setPaymentInfo] = useState<AdminFeePaymentInfo | null>(null);
   const todayIso = new Date().toLocaleDateString('en-CA');
 

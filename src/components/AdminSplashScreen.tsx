@@ -76,7 +76,7 @@ export default function AdminSplashScreen() {
             className="text-center mt-2"
           >
             <p className="font-display text-2xl font-bold" style={{ color: '#FFFFFF' }}>
-              Cishu
+              Cishu Bite &apos;n Sip
             </p>
             <p className="text-sm mt-1" style={{ color: '#FFFFFF' }}>
               Dashboard Analytics

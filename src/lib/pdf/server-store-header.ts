@@ -29,7 +29,7 @@ export async function getServerStoreHeader(): Promise<StoreHeader> {
     storeName?: string; storeTagline?: string; address?: string; city?: string; whatsapp?: string; logo?: string;
   };
   return {
-    name: settings.storeName?.trim() || 'Cishu',
+    name: settings.storeName?.trim() || "Cishu Bite 'n Sip",
     tagline: settings.storeTagline?.trim() || undefined,
     address: [settings.address, settings.city].filter(Boolean).join(', ') || undefined,
     phone: settings.whatsapp?.trim() || undefined,

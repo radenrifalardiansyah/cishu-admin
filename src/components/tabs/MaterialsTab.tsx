@@ -384,7 +384,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT BAHAN BAKU — CISHU';
+    titleCell.value = 'TEMPLATE IMPORT BAHAN BAKU — CISHU BITE \'N SIP';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -520,7 +520,7 @@ export default function MaterialsTab({ creds, highlightMaterialId, onHighlightHa
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN STOK BAHAN BAKU — CISHU';
+      titleCell.value = 'LAPORAN STOK BAHAN BAKU — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -950,7 +950,7 @@ ${pdfUrl}`.trim();
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT PEMBELIAN BAHAN BAKU — CISHU';
+    titleCell.value = 'TEMPLATE IMPORT PEMBELIAN BAHAN BAKU — CISHU BITE \'N SIP';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -1104,7 +1104,7 @@ ${pdfUrl}`.trim();
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN PEMBELIAN BAHAN BAKU — CISHU';
+      titleCell.value = 'LAPORAN PEMBELIAN BAHAN BAKU — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

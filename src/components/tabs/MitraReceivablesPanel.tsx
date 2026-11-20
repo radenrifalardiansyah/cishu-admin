@@ -106,7 +106,7 @@ export default function MitraReceivablesPanel({ creds, canEdit, onChanged }: {
     try {
       const { body, total } = buildReceivableExcelRows(filteredItems, formatDueDate);
       await downloadMitraExcel({
-        sheet: 'Piutang Mitra', title: 'PIUTANG MITRA — CISHU',
+        sheet: 'Piutang Mitra', title: 'PIUTANG MITRA — CISHU BITE \'N SIP',
         subtitle: `${filteredItems.length} rekap dari ${mitras.length} mitra (sesuai filter) · Diexport ${new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}`,
         headers: RECEIVABLE_EXCEL_HEADERS, body, total, moneyCols: [4, 5, 9], filePrefix: 'piutang-mitra',
       });

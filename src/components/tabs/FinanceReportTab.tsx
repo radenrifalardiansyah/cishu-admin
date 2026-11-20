@@ -327,7 +327,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { toDataUri(storeInfo.logo).then(setLogoDataUri); }, [storeInfo.logo]);
   const storeHeader = {
-    name:    storeInfo.storeName?.trim() || 'Cishu',
+    name:    storeInfo.storeName?.trim() || "Cishu Bite 'n Sip",
     tagline: storeInfo.storeTagline?.trim() || undefined,
     address: [storeInfo.address, storeInfo.city].filter(Boolean).join(', ') || undefined,
     phone:   storeInfo.whatsapp?.trim() || undefined,
@@ -737,7 +737,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
       // ── Sheet 1: Laba Rugi ──
       const wsLR = wb.addWorksheet('Laba Rugi');
       wsLR.columns = [{ key: 'a', width: 32 }, { key: 'b', width: 20 }];
-      styleTitle(wsLR, 'RINGKASAN LABA RUGI — CISHU', `Periode: ${periodLabel} (${from} s/d ${to})`, 2);
+      styleTitle(wsLR, 'RINGKASAN LABA RUGI — CISHU BITE \'N SIP', `Periode: ${periodLabel} (${from} s/d ${to})`, 2);
       styleHeader(wsLR, 3, ['Keterangan', 'Jumlah']);
       const lrRows: [string, number][] = [
         ['Penjualan Kasir', kasirRevenue], ['Penjualan Online', onlineRevenue], ['Pendapatan Konsinyasi', consignmentRevenue],
@@ -763,7 +763,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
       // ── Sheet 2: Jurnal Kas ──
       const wsJK = wb.addWorksheet('Jurnal Kas');
       wsJK.columns = [{ key: 'tgl', width: 14 }, { key: 'jam', width: 10 }, { key: 'ket', width: 42 }, { key: 'debit', width: 18 }, { key: 'kredit', width: 18 }, { key: 'saldo', width: 18 }];
-      styleTitle(wsJK, 'JURNAL KAS — CISHU', `Periode: ${periodLabel} (${from} s/d ${to}) · Saldo Awal: ${formatRp(saldoAwalPeriode)}`, 6);
+      styleTitle(wsJK, 'JURNAL KAS — CISHU BITE \'N SIP', `Periode: ${periodLabel} (${from} s/d ${to}) · Saldo Awal: ${formatRp(saldoAwalPeriode)}`, 6);
       styleHeader(wsJK, 3, ['Tanggal', 'Jam', 'Keterangan', 'Debit', 'Kredit', 'Saldo']);
       journalWithSaldo.forEach((j, i) => {
         const rowNum = 4 + i;

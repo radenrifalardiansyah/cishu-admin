@@ -142,7 +142,7 @@ describe('buildClosingWaMessage', () => {
   });
   it('periode satu tanggal, fallback nama toko & pembuat', () => {
     const msg = buildClosingWaMessage(rec({ period_from: '2026-11-13', closed_by: null }), { storeName: '  ', pdfUrl: 'u' });
-    expect(msg).toContain('*CLOSING HPP - Cishu*');
+    expect(msg).toContain("*CLOSING HPP - Cishu Bite 'n Sip*");
     expect(msg).toContain('Periode: 13 Nov 2026');
     expect(msg).toContain('Ditutup: 13 Nov 2026, 09.14 oleh -');
   });

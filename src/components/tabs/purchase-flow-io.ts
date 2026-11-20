@@ -89,7 +89,7 @@ export async function downloadPoTemplate(materialNames: string[], supplierName: 
   ws.columns = PO_COLS.map(c => ({ key: c.key, width: c.width }));
   ws.mergeCells(1, 1, 1, n);
   const t = ws.getCell(1, 1);
-  t.value = 'TEMPLATE IMPOR PURCHASE ORDER BAHAN BAKU — CISHU';
+  t.value = 'TEMPLATE IMPOR PURCHASE ORDER BAHAN BAKU — CISHU BITE \'N SIP';
   t.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
   t.alignment = { horizontal: 'center', vertical: 'middle' };
   t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: ORANGE_DARK } };

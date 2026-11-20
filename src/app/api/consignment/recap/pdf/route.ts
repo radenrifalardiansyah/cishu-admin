@@ -62,7 +62,7 @@ export async function GET(req: NextRequest) {
       whatsapp?: string; logo?: string;
     };
     const store: StoreHeader = {
-      name: settings.storeName?.trim() || 'Cishu',
+      name: settings.storeName?.trim() || "Cishu Bite 'n Sip",
       tagline: settings.storeTagline?.trim() || undefined,
       ownerName: settings.ownerName?.trim() || undefined,
       ownerSignature: await resolveLogoDataUri(db, settings.ownerSignature),

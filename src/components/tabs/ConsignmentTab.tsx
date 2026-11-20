@@ -394,7 +394,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
   useEffect(() => { toDataUri(storeInfo.ownerSignature).then(setSignatureDataUri); }, [storeInfo.ownerSignature]);
   useEffect(() => { toDataUri(storeInfo.ownerStamp).then(setStampDataUri); }, [storeInfo.ownerStamp]);
   const storeHeader = {
-    name:           storeInfo.storeName?.trim() || 'Cishu',
+    name:           storeInfo.storeName?.trim() || "Cishu Bite 'n Sip",
     tagline:        storeInfo.storeTagline?.trim() || undefined,
     ownerName:      storeInfo.ownerName?.trim() || undefined,
     ownerSignature: signatureDataUri,
@@ -634,7 +634,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LOKASI KONSINYASI — CISHU';
+      titleCell.value = 'LOKASI KONSINYASI — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -798,7 +798,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT LOKASI KONSINYASI — CISHU';
+    titleCell.value = 'TEMPLATE IMPORT LOKASI KONSINYASI — CISHU BITE \'N SIP';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -1113,7 +1113,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'RIWAYAT KIRIM STOK KONSINYASI — CISHU';
+      titleCell.value = 'RIWAYAT KIRIM STOK KONSINYASI — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -1230,7 +1230,7 @@ export default function ConsignmentTab({ creds, products, can, highlightShipment
   };
 
   const downloadShipmentTemplate = () => downloadImportTemplate({
-    title: 'TEMPLATE IMPORT KIRIM STOK KONSINYASI — CISHU',
+    title: 'TEMPLATE IMPORT KIRIM STOK KONSINYASI — CISHU BITE \'N SIP',
     sheetName: 'Template Kirim',
     note: 'PETUNJUK: Kolom bertanda (*) wajib diisi. Satu baris = satu produk; baris dengan Lokasi, Gudang, Tanggal, dan Catatan yang sama digabung jadi satu pengiriman. '
       + 'Nama Lokasi, Gudang, dan Produk harus sama persis dengan yang ada di sistem. Tanggal format YYYY-MM-DD (kosong = hari ini). Stok gudang akan berkurang. Jangan mengubah judul kolom di baris 3.',
@@ -1870,7 +1870,7 @@ _${storeHeader.name}_`.trim();
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'RIWAYAT REKAP HARIAN KONSINYASI — CISHU';
+      titleCell.value = 'RIWAYAT REKAP HARIAN KONSINYASI — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -2007,7 +2007,7 @@ _${storeHeader.name}_`.trim();
   };
 
   const downloadRecapTemplate = () => downloadImportTemplate({
-    title: 'TEMPLATE IMPORT REKAP KONSINYASI — CISHU',
+    title: 'TEMPLATE IMPORT REKAP KONSINYASI — CISHU BITE \'N SIP',
     sheetName: 'Template Rekap',
     note: 'PETUNJUK: Kolom bertanda (*) wajib diisi. Satu baris = satu produk; baris dengan Lokasi, Tanggal, Status Bayar, Dompet, Gudang, dan Catatan yang sama digabung jadi satu rekap. '
       + 'Status Bayar: Lunas / Belum Lunas (kosong = Lunas). Dompet wajib jika Lunas. Gudang wajib jika ada Retur/Reject. '

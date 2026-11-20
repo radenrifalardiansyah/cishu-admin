@@ -159,7 +159,7 @@ export default function AdminFeeTab({ creds }: { creds: string }) {
   const [generating, setGenerating] = useState(false);
   const [invoices, setInvoices] = useState<InvoiceRecord[]>([]);
   const [loadingInvoices, setLoadingInvoices] = useState(true);
-  const [clientName, setClientName] = useState('Cishu');
+  const [clientName, setClientName] = useState("Cishu Bite 'n Sip");
   const [txnModalChannel, setTxnModalChannel] = useState<Channel | null>(null);
   const [note, setNote] = useState('');
   // Jatuh tempo default 7 hari setelah akhir periode — bisa diubah manual per invoice.

@@ -318,7 +318,7 @@ export default function ExpensesTab({ creds }: { creds: string }) {
 
       ws.mergeCells(1, 1, 1, 5);
       const t = ws.getCell(1, 1);
-      t.value = 'DAFTAR PENGELUARAN — CISHU';
+      t.value = 'DAFTAR PENGELUARAN — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

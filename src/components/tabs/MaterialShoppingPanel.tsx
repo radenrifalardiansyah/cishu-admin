@@ -399,7 +399,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
       ws.columns = COLS.map(c => ({ key: c.key, width: c.width }));
       ws.mergeCells(1, 1, 1, COLS.length);
       const t = ws.getCell(1, 1);
-      t.value = 'DAFTAR BELANJA BAHAN BAKU — CISHU';
+      t.value = 'DAFTAR BELANJA BAHAN BAKU — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
       t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

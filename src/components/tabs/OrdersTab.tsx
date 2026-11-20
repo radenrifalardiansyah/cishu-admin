@@ -267,7 +267,7 @@ export default function OrdersTab({ creds, highlightInvoice, highlightOrderId, o
       if (r.ok) setStoreInfo((await r.json() as { settings: StoreInfo }).settings ?? {});
     }).catch(() => {});
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-  const storeName    = storeInfo.storeName?.trim() || 'Cishu';
+  const storeName    = storeInfo.storeName?.trim() || "Cishu Bite 'n Sip";
   const storeAddress = [storeInfo.address, storeInfo.city].filter(Boolean).join(', ');
   const storePhone   = (storeInfo.whatsapp?.trim() || WHATSAPP_NUMBER)
     .replace(/^62/, '0').replace(/(\d{4})(\d{4})(\d+)/, '$1-$2-$3');
@@ -1007,7 +1007,7 @@ _${storeName}_`.trim();
 
       ws.mergeCells(1, 1, 1, colCount);
       const titleCell = ws.getCell(1, 1);
-      titleCell.value = 'LAPORAN PESANAN — CISHU';
+      titleCell.value = 'LAPORAN PESANAN — CISHU BITE \'N SIP';
       titleCell.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
       titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };
@@ -1188,7 +1188,7 @@ _${storeName}_`.trim();
 
     ws.mergeCells(1, 1, 1, colCount);
     const titleCell = ws.getCell(1, 1);
-    titleCell.value = 'TEMPLATE IMPORT DATA PESANAN — CISHU';
+    titleCell.value = 'TEMPLATE IMPORT DATA PESANAN — CISHU BITE \'N SIP';
     titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
     titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
     titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF155FA8' } };

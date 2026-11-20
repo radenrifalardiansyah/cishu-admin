@@ -981,7 +981,7 @@ export default function AdminPage() {
 
           <div className="flex items-center gap-3 relative z-10">
             <Image src="/icon-192.png" alt="logo" width={40} height={40} className="rounded-xl" />
-            <span className="font-bold text-[15px]" style={{ color: 'var(--ink-navy)' }}>Cishu</span>
+            <span className="font-bold text-[15px]" style={{ color: 'var(--ink-navy)' }}>Cishu Bite &apos;n Sip</span>
           </div>
 
           <div className="relative z-10">
@@ -1006,7 +1006,7 @@ export default function AdminPage() {
           </div>
 
           <p className="text-xs relative z-10 text-center mt-8" style={{ color: 'var(--ink-navy)' }}>
-            © 2026 Cishu
+            © 2026 Cishu Bite &apos;n Sip
           </p>
         </div>
 
@@ -1017,7 +1017,7 @@ export default function AdminPage() {
               <Image src="/icon-192.png" alt="logo" width={56} height={56} className="rounded-2xl shadow-lg mb-3" />
             </div>
             <h1 className="text-3xl font-extrabold tracking-tight mb-1 login-field" style={{ color: 'var(--text-primary)', animationDelay: '0.04s' }}>Masuk</h1>
-            <p className="text-sm mb-8 login-field" style={{ color: 'var(--text-muted)', animationDelay: '0.08s' }}>Dashboard Admin Cishu</p>
+            <p className="text-sm mb-8 login-field" style={{ color: 'var(--text-muted)', animationDelay: '0.08s' }}>Dashboard Admin Cishu Bite &apos;n Sip</p>
 
             {twoFactor ? (
             <form onSubmit={submitTwoFactor} className="space-y-4" noValidate>
