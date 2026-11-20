@@ -176,7 +176,7 @@ type TrendPoint = { date: string; kasir: number; online: number; konsinyasi: num
 
 const OMZET_SERIES = [
   { key: 'kasir', name: 'Kasir', color: '#1D6FC4' },
-  { key: 'online', name: 'Online', color: '#A21CAF' },
+  { key: 'online', name: 'Online', color: '#BE123C' },
   { key: 'konsinyasi', name: 'Konsinyasi', color: '#B45309' },
   { key: 'lain', name: 'Pendapatan Lain', color: '#115E59' },
 ] as const;
@@ -1045,10 +1045,10 @@ export default function AdminPage() {
             ) : (
             <form onSubmit={login} className="space-y-4" noValidate>
               <div className="login-field" style={{ animationDelay: '0.12s' }}>
-                <label className="block text-xs font-semibold mb-1.5" style={{ color: 'var(--text-secondary)' }}>Username atau Email</label>
+                <label htmlFor="login-username" className="block text-xs font-semibold mb-1.5" style={{ color: 'var(--text-secondary)' }}>Username atau Email</label>
                 <div className="login-input-wrap">
                   <span className="login-input-icon" aria-hidden="true"><User size={16} /></span>
-                  <input type="text" value={username}
+                  <input id="login-username" type="text" value={username}
                     onChange={e => { setUsername(e.target.value); setFieldErrors(f => ({ ...f, username: undefined })); setLoginErr(''); }}
                     className={`input ${fieldErrors.username ? 'input-error' : ''}`}
                     placeholder="Masukkan username atau email" autoComplete="username" />
@@ -1058,10 +1058,10 @@ export default function AdminPage() {
                 )}
               </div>
               <div className="login-field" style={{ animationDelay: '0.16s' }}>
-                <label className="block text-xs font-semibold mb-1.5" style={{ color: 'var(--text-secondary)' }}>Password</label>
+                <label htmlFor="login-password" className="block text-xs font-semibold mb-1.5" style={{ color: 'var(--text-secondary)' }}>Password</label>
                 <div className="login-input-wrap">
                   <span className="login-input-icon" aria-hidden="true"><Lock size={16} /></span>
-                  <input type={showPassword ? 'text' : 'password'} value={password}
+                  <input id="login-password" type={showPassword ? 'text' : 'password'} value={password}
                     onChange={e => { setPassword(e.target.value); setFieldErrors(f => ({ ...f, password: undefined })); setLoginErr(''); }}
                     className={`input ${fieldErrors.password ? 'input-error' : ''}`}
                     style={{ paddingRight: 40 }}
@@ -1223,7 +1223,7 @@ export default function AdminPage() {
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
             {([
               { icon: <TrendingUp size={16}/>, label: 'Omzet Kasir',  val: formatRp(summary.kasir), color: 'var(--accent)', iconBg: 'var(--accent-bg)', bar: 'var(--accent),var(--accent-dark)', spark: summary.revenueTrend.map(d => d.kasir) },
-              { icon: <Globe      size={16}/>, label: 'Omzet Online', val: formatRp(summary.online), color: '#A21CAF', iconBg: '#FDF4FF', bar: '#A21CAF,#86198F', spark: summary.revenueTrend.map(d => d.online) },
+              { icon: <Globe      size={16}/>, label: 'Omzet Online', val: formatRp(summary.online), color: '#BE123C', iconBg: '#FFF1F2', bar: '#BE123C,#9F1239', spark: summary.revenueTrend.map(d => d.online) },
               { icon: <Store      size={16}/>, label: 'Omzet Konsinyasi', val: formatRp(summary.konsinyasi), color: '#B45309', iconBg: '#FFFBEB', bar: '#B45309,#92400E', spark: summary.revenueTrend.map(d => d.konsinyasi) },
               { icon: <Wallet     size={16}/>, label: 'Pendapatan Lain', val: formatRp(summary.lain), color: '#115E59', iconBg: '#F0FDFA', bar: '#115E59,#134E4A', spark: summary.revenueTrend.map(d => d.lain) },
               { icon: <Package    size={16}/>, label: 'Produk Aktif',    val: dashData.productCount.toString(), color: '#0E7490',        iconBg: '#ECFEFF',           bar: '#0E7490,#155E75', spark: undefined as number[] | undefined },
