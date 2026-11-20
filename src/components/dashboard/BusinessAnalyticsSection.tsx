@@ -55,7 +55,7 @@ function shortDate(dateStr: string): string {
 // (bukan urutan/rank), supaya kategori yang sama terlihat konsisten di Dashboard & Laporan Keuangan.
 const EXPENSE_CATEGORY_COLORS: Record<string, string> = {
   'Bahan Baku': '#B45309', 'Produksi': '#E11D48', 'Sewa': '#A21CAF', 'Gaji': '#0E7490',
-  'Listrik & Air': '#475569', 'Transportasi': '#C93C55', 'Perlengkapan': '#3B2420',
+  'Listrik & Air': '#475569', 'Transportasi': '#7C3AED', 'Perlengkapan': '#3B2420',
 };
 const INCOME_CATEGORY_COLORS: Record<string, string> = {
   'Penjualan Lain': '#059669', 'Komisi': '#0E7490', 'Refund/Retur Diterima': '#475569',

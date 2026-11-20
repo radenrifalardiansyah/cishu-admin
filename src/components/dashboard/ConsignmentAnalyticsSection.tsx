@@ -54,7 +54,7 @@ function shortDate(dateStr: string): string {
 }
 
 const PAYMENT_STATUS_COLORS: Record<string, string> = { lunas: '#059669', belum_lunas: '#DC2626' };
-const PRODUCT_COLORS = ['var(--accent)', '#B45309', '#A21CAF', '#059669', '#E11D48', '#0E7490', '#475569', '#115E59'];
+const PRODUCT_COLORS = ['var(--accent)', '#7C3AED', '#0E7490', '#3B2420', '#65A30D', '#1D6FC4', '#9A3412', '#0F766E'];
 
 function sellThroughColor(pct: number): string {
   if (pct >= 70) return '#059669';

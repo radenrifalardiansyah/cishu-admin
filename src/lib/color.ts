@@ -66,7 +66,7 @@ export function normalizeHex(input: string): string {
 
 // Warna oranye/cokelat/amber (hue 8-55, saturasi cukup) = sisa tema lama toko (#D4691E dkk).
 // Dipakai untuk mengabaikan nilai tema lama yang masih tersimpan di pengaturan, supaya panel
-// tetap biru; warna lain pilihan admin tetap dihormati.
+// tetap rose merek; warna lain pilihan admin tetap dihormati.
 const LEGACY_THEME_HEX = new Set(['#1c1917', '#190c03', '#2a1509']);
 export function isLegacyWarmColor(input: string): boolean {
   const v = (input ?? '').trim();
@@ -81,7 +81,7 @@ export function hexToShades(input: string) {
   const hex = normalizeHex(input);
   if (hex.toLowerCase() === BRAND_SHADES.accent.toLowerCase()) return { ...BRAND_SHADES, accent: hex };
   const [h, s, l] = hexToHsl(hex);
-  // Gradient bergeser ~12 derajat ke arah cyan supaya tombol terasa hidup; ujung gelapnya
+  // Gradient bergeser ~12 derajat ke arah pink supaya tombol terasa hidup; ujung gelapnya
   // tetap >= 4,5:1 dengan teks putih untuk warna dasar yang cukup pekat.
   const hCyan = (h - 12 + 360) % 360;
   const dark = hslToHex(h, clamp01(s), clamp01(l * 0.88));

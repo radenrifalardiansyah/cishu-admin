@@ -34,7 +34,7 @@ import { formatRp } from '@/lib/format';
 // Palet kategorikal 4-slot, urutan tetap (bukan berdasar urutan seleksi) — supaya produk yang
 // tetap tampil tidak berganti warna saat produk lain di-toggle. Sudah divalidasi lolos cek CVD
 // adjacent DAN all-pairs (light & dark) via dataviz skill's validate_palette.js.
-const TREND_COLORS = ['#0E7490', '#C93C55', '#B45309', '#DB2777'];
+const TREND_COLORS = ['#0E7490', '#C93C55', '#B45309', '#7C3AED'];
 
 const formatQty = (n: number) => new Intl.NumberFormat('id-ID').format(n);
 // HPP per pcs = total HPP ÷ qty berbayar (qty gratis tidak dihitung, HPP-nya juga tidak masuk Total HPP).

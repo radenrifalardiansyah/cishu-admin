@@ -178,7 +178,7 @@ body {
 .login-screen::after  { width: 120px; height: 120px; bottom: 10%; left: 5%; animation-delay: -4s; }
 .login-card-shadow { box-shadow: 0 28px 70px -26px rgba(201,60,85,0.45), 0 0 0 1px rgba(201,60,85,0.08); }
 .login-panel-brand {
-  /* permukaan pastel berlapis; teks di atasnya memakai --ink-navy (>= 6:1 pada #FFB0A8) */
+  /* permukaan pastel berlapis; teks di atasnya memakai --ink-navy (cokelat tua; >= 6:1 pada #FFB0A8) */
   color: var(--ink-navy);
   background:
     radial-gradient(420px 320px at 100% 100%, color-mix(in srgb, var(--brand-lime) 85%, transparent), transparent 65%),
@@ -197,7 +197,7 @@ body {
   border: 1px solid rgba(255,255,255,0.35);
   animation: snackFloat 10s ease-in-out infinite;
 }
-/* kaca terang (frosted): putih transparan di atas pastel, teks navy tua */
+/* kaca terang (frosted): putih transparan di atas pastel, teks cokelat tua */
 .login-glass {
   color: var(--ink-navy);
   background: rgba(255,255,255,0.55);
@@ -340,7 +340,7 @@ body {
   box-shadow: 0 12px 28px -12px color-mix(in srgb, var(--tile, var(--accent)) 45%, transparent);
 }
 .hero-card {
-  /* hero pastel: teks navy tua, bukan putih di atas pastel */
+  /* hero pastel: teks cokelat tua, bukan putih di atas pastel */
   background:
     radial-gradient(420px 260px at 100% 0, color-mix(in srgb, var(--brand-sky) 60%, transparent), transparent 70%),
     linear-gradient(135deg, var(--brand-ice) 0%, var(--brand-mint) 60%, var(--brand-lime) 100%);
@@ -475,7 +475,7 @@ button:focus-visible,
   font-size: 11px;
   font-weight: 600;
 }
-.badge-amber  { background: var(--accent-bg); color: var(--accent-dark); border: 1px solid var(--accent-border); }
+.badge-amber  { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
 .badge-green  { background: var(--success-bg); color: var(--success); border: 1px solid var(--success-border); }
 .badge-red    { background: var(--danger-bg); color: #B91C1C; border: 1px solid var(--danger-border); }
 .badge-gray   { background: var(--surface-2); color: var(--text-secondary); border: 1px solid var(--border); }

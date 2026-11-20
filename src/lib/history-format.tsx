@@ -50,7 +50,7 @@ export type Direction = 'in' | 'out' | 'neutral';
 export const DIRECTION_COLOR: Record<Direction, { color: string; bg: string }> = {
   in:      { color: '#15803D', bg: '#F0FDF4' },
   out:     { color: '#DC2626', bg: '#FEF2F2' },
-  neutral: { color: '#0369A1', bg: '#FFEFED' },
+  neutral: { color: '#0369A1', bg: '#E0F2FE' },
 };
 
 const ENTITY_META: Record<string, { icon: ReactNode; direction: Direction }> = {

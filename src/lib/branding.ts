@@ -10,7 +10,7 @@ export const productUrl = (id: string) => `${SITE_URL}/products/${id}`;
 export const THEME_COLOR = '#C93C55';
 export const THEME_BACKGROUND_COLOR = '#C93C55';
 
-// Tema bawaan panel admin = tema dokumen (PDF/Excel): satu biru yang sama.
+// Tema bawaan panel admin = tema dokumen (PDF/Excel): satu warna merek yang sama (rose-coral logo).
 export const ADMIN_THEME_COLOR = THEME_COLOR;
 export const ADMIN_THEME_BACKGROUND_COLOR = THEME_BACKGROUND_COLOR;
 
