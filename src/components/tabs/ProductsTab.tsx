@@ -252,7 +252,7 @@ export default function ProductsTab({ creds }: { creds: string }) {
     ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
 
     const exampleRow = ws.addRow({
-      code: 'PRD001', name: 'Keripik Talas Original', category: categories[0]?.name ?? 'Keripik',
+      code: 'PRD001', name: 'Contoh Produk', category: categories[0]?.name ?? 'Kategori',
       price: 15000, originalPrice: 18000, weight: '100g', stockQty: 50, openPO: 'Tidak',
       badge: 'Best Seller', description: 'Contoh — timpa dengan data produk Anda',
     });

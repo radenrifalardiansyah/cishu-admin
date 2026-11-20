@@ -460,7 +460,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
     const exampleRow = ws.getRow(3);
     exampleRow.getCell(1).value = todayISO();
     exampleRow.getCell(2).value = warehouses[0]?.name ?? 'Gudang Utama';
-    exampleRow.getCell(3).value = exampleProduct ? `${exampleProduct.name}:10` : 'Keripik Original:10';
+    exampleRow.getCell(3).value = exampleProduct ? `${exampleProduct.name}:10` : 'Contoh Produk:10';
     exampleRow.getCell(4).value = exampleMaterial ? `${exampleMaterial.name}:1` : 'Tepung:1';
     exampleRow.getCell(5).value = 0;
     exampleRow.getCell(6).value = 'Contoh baris — hapus sebelum upload';

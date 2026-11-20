@@ -9,7 +9,7 @@ export interface Product {
   originalPrice?: number;
   emoji: string;
   images?: StaticImageData[];
-  category: 'keripik' | 'mie' | 'snack' | 'paket';
+  category: string;
   badge?: 'Popular' | 'New' | 'Best Seller';
   stock: 'ready' | 'habis' | 'open_po';
   gradient: string;
@@ -30,4 +30,3 @@ export interface CustomerInfo {
   deliveryMethod: 'pickup' | 'delivery';
 }
 
-export type Category = 'semua' | 'keripik' | 'mie' | 'snack' | 'paket';

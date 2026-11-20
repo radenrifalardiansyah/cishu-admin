@@ -453,7 +453,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
     ws.views = [{ state: 'frozen', ySplit: HEADER_ROW_NUM }];
 
     const exampleRow = ws.addRow({
-      name: 'Keripik', slug: 'keripik', emoji: '🥔', description: 'Keripik Talas Renyah — contoh, timpa dengan data Anda',
+      name: 'Contoh Kategori', slug: 'contoh-kategori', emoji: '🏷️', description: 'Contoh — timpa dengan data Anda',
     });
     exampleRow.eachCell(cell => { cell.font = { italic: true, color: { argb: 'FF9CA3AF' } }; });
 
@@ -856,7 +856,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
                       setEditingCat({ ...editingCat, name, ...(isNewCat ? { slug: slugify(name) } : {}) });
                     }}
                     className="input"
-                    placeholder="Contoh: Keripik"
+                    placeholder="Contoh: Makanan Ringan"
                     autoFocus
                   />
                 </Field>
@@ -870,7 +870,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
                   readOnly={!isNewCat}
                   className="input"
                   style={!isNewCat ? { opacity: 0.55, cursor: 'not-allowed', fontFamily: 'monospace' } : { fontFamily: 'monospace' }}
-                  placeholder="contoh: keripik"
+                  placeholder="contoh: makanan-ringan"
                 />
                 <p style={{ fontSize: 10.5, color: 'var(--text-muted)', marginTop: 4 }}>
                   Digunakan sebagai referensi di data produk. Hanya huruf kecil, angka, dan tanda hubung.
@@ -883,7 +883,7 @@ export default function CategoriesTab({ creds }: { creds: string }) {
                   value={editingCat.description ?? ''}
                   onChange={e => setEditingCat({ ...editingCat, description: e.target.value })}
                   className="input"
-                  placeholder="Contoh: Keripik Talas Renyah"
+                  placeholder="Contoh: Camilan renyah pilihan"
                 />
               </Field>
 

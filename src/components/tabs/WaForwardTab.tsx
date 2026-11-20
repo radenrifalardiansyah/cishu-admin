@@ -257,7 +257,7 @@ export default function WaForwardTab({ creds, can }: { creds: string; can: (a: A
                   <p className="text-xs mt-1.5" style={{ color: 'var(--text-muted)' }}>Batas kirim ke grup tujuan; sisanya menunggu jam berikutnya.</p>
                 </Field>
                 <Field label="Kata kunci (pisahkan dengan koma)">
-                  <textarea className="input text-sm w-full" rows={3} disabled={!canEdit} value={keywords} onChange={e => setKeywords(e.target.value)} placeholder="stok, sisa, mie kremes" />
+                  <textarea className="input text-sm w-full" rows={3} disabled={!canEdit} value={keywords} onChange={e => setKeywords(e.target.value)} placeholder="stok, sisa, nama produk" />
                   <p className="text-xs mt-1.5" style={{ color: 'var(--text-muted)' }}>Pesan diteruskan bila memuat salah satu kata ini.</p>
                 </Field>
                 <Field label="Kata pengecualian (opsional)">

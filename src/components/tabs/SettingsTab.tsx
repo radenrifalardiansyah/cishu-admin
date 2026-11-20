@@ -156,7 +156,7 @@ const FIELD_GROUPS = [
       { key: 'siteUrl',                label: 'URL Website',              type: 'text',     placeholder: 'https://namatoko.vercel.app' },
       { key: 'seoTitle',               label: 'Judul SEO (Google)',       type: 'text',     placeholder: 'Kosongkan = "Nama Toko — Tagline"' },
       { key: 'seoDescription',         label: 'Deskripsi SEO (Google)',   type: 'textarea', placeholder: 'Kosongkan = pakai Deskripsi Toko' },
-      { key: 'seoKeywords',            label: 'Kata Kunci SEO (pisahkan koma)', type: 'textarea', placeholder: 'keripik kimpul, mie kremes, cemilan bogor' },
+      { key: 'seoKeywords',            label: 'Kata Kunci SEO (pisahkan koma)', type: 'textarea', placeholder: 'camilan, oleh-oleh, nama kota' },
       { key: 'googleSiteVerification', label: 'Kode Verifikasi Google Search Console', type: 'text', placeholder: 'Isi content dari meta google-site-verification' },
     ],
   },

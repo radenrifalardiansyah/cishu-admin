@@ -1225,7 +1225,7 @@ _${storeName}_`.trim();
 
     const exampleRow = ws.addRow({
       invoiceNo: '', date: '15/07/2026', customerName: 'Budi Santoso', customerPhone: '081234567890',
-      itemsText: 'Keripik Talas (100g) ×2, Mie Kremes (150g) ×1', subtotal: 45000, discount: 5000,
+      itemsText: 'Produk A ×2, Produk B ×1', subtotal: 45000, discount: 5000,
       total: 40000, status: 'selesai',
     });
     exampleRow.eachCell(cell => { cell.font = { italic: true, color: { argb: 'FF9CA3AF' } }; });

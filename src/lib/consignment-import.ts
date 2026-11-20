@@ -10,7 +10,7 @@ export const SHIPMENT_IMPORT_COLS: ImportCol[] = [
   { header: 'Lokasi*',      key: 'location',   width: 24, example: 'Warung Bu Yanti' },
   { header: 'Gudang*',      key: 'warehouse',  width: 18, example: 'Gudang Utama' },
   { header: 'Tanggal',      key: 'date',       width: 14, example: '2026-10-01' },
-  { header: 'Produk*',      key: 'product',    width: 28, example: 'Keripik Kimpul' },
+  { header: 'Produk*',      key: 'product',    width: 28, example: 'Contoh Produk' },
   { header: 'Qty*',         key: 'qty',        width: 10, example: '20' },
   { header: 'Harga Titip*', key: 'hargaTitip', width: 14, example: '12000' },
   { header: 'Catatan',      key: 'note',       width: 26, example: '' },
@@ -19,7 +19,7 @@ export const SHIPMENT_IMPORT_COLS: ImportCol[] = [
 export const RECAP_IMPORT_COLS: ImportCol[] = [
   { header: 'Lokasi*',      key: 'location',   width: 24, example: 'Warung Bu Yanti' },
   { header: 'Tanggal',      key: 'date',       width: 14, example: '2026-10-01' },
-  { header: 'Produk*',      key: 'product',    width: 28, example: 'Keripik Kimpul' },
+  { header: 'Produk*',      key: 'product',    width: 28, example: 'Contoh Produk' },
   { header: 'Terjual',      key: 'sold',       width: 10, example: '15' },
   { header: 'Retur',        key: 'retur',      width: 10, example: '2' },
   { header: 'Reject',       key: 'reject',     width: 10, example: '0' },
