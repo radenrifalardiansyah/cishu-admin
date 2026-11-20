@@ -2,7 +2,7 @@
 
 import BulkBar from '@/components/BulkBar';
 import { useEffect, useState } from 'react';
-import EmptyAddCard from '@/components/EmptyAddCard';
+import EmptyAddCard, { NO_CREATE_HINT } from '@/components/EmptyAddCard';
 import {
   ShieldCheck, Plus, Pencil, Trash2, X, Check, Loader2, Eye, EyeOff, Search,
   ChevronLeft, ChevronRight,
@@ -439,7 +439,7 @@ export default function UsersTab({ creds, currentUsername, can }: UsersTabProps)
       )}
 
       {users.length === 0 ? (
-        <EmptyAddCard label="Tambah Pengguna" onClick={can('create') ? openNew : undefined} />
+        <EmptyAddCard label="Tambah Pengguna" onClick={can('create') ? openNew : undefined} hint={can('create') ? undefined : NO_CREATE_HINT} />
       ) : (
         <>
           {/* Select-all bar */}

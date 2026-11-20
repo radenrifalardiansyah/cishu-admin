@@ -978,7 +978,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
         )}
 
         {transfers.length === 0 ? (
-          <EmptyAddCard label="Tambah Transfer" onClick={wallets.filter(w => w.isActive).length >= 2 ? openNewTransfer : undefined} minHeight={140} />
+          <EmptyAddCard label="Tambah Transfer" onClick={wallets.filter(w => w.isActive).length >= 2 ? openNewTransfer : undefined} hint={wallets.filter(w => w.isActive).length >= 2 ? undefined : 'Transfer butuh minimal 2 dompet aktif.'} minHeight={140} />
         ) : (
           <>
             {transferPaginated.length > 0 && (

@@ -2,7 +2,7 @@
 
 import BulkBar from '@/components/BulkBar';
 import { useEffect, useState } from 'react';
-import EmptyAddCard from '@/components/EmptyAddCard';
+import EmptyAddCard, { NO_CREATE_HINT } from '@/components/EmptyAddCard';
 import {
   IdCard, Plus, Pencil, Trash2, X, Check, Loader2, Lock, Search,
   ChevronLeft, ChevronRight,
@@ -383,7 +383,7 @@ export default function RolesTab({ creds, can }: RolesTabProps) {
       )}
 
       {roles.length === 0 ? (
-        <EmptyAddCard label="Tambah Role" onClick={can('create') ? openNew : undefined} />
+        <EmptyAddCard label="Tambah Role" onClick={can('create') ? openNew : undefined} hint={can('create') ? undefined : NO_CREATE_HINT} />
       ) : (
         <>
           {/* Select-all bar */}
