@@ -175,7 +175,7 @@ const chartTooltipRow = (color: string, name: string, value: string) => (
 type TrendPoint = { date: string; kasir: number; online: number; konsinyasi: number; lain: number; count: number };
 
 const OMZET_SERIES = [
-  { key: 'kasir', name: 'Kasir', color: '#C93C55' },
+  { key: 'kasir', name: 'Kasir', color: '#BD354C' },
   { key: 'online', name: 'Online', color: '#1D6FC4' },
   { key: 'konsinyasi', name: 'Konsinyasi', color: '#B45309' },
   { key: 'lain', name: 'Pendapatan Lain', color: '#115E59' },
@@ -1449,7 +1449,7 @@ export default function AdminPage() {
                 },
                 {
                   title: 'Produk Terpopuler (Klik)', type: 'bar', unit: 'num', labels: ws.topProducts.slice(0, 6).map(p => p.name),
-                  series: [{ name: 'Klik', color: '#C93C55', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
+                  series: [{ name: 'Klik', color: '#BD354C', values: ws.topProducts.slice(0, 6).map(p => p.clicks) }],
                 },
               ],
               sections: [
@@ -1628,7 +1628,7 @@ export default function AdminPage() {
                       </div>
                     </div>
                     <TopListChart
-                      color="#C93C55"
+                      color="#BD354C"
                       items={ws.topMenu.slice(0, 6).map(m => ({ label: pageLabel(m.path), value: m.count }))}
                     />
                   </div>

@@ -30,7 +30,7 @@ export default function AdminSplashScreen() {
   }, []);
 
   if (visible === null) {
-    return <div className="fixed inset-0 z-[999]" style={{ background: 'linear-gradient(160deg, #C93C55 0%, #B83A4B 100%)' }} />;
+    return <div className="fixed inset-0 z-[999]" style={{ background: 'linear-gradient(160deg, #BD354C 0%, #A32F3E 100%)' }} />;
   }
 
   return (
@@ -41,7 +41,7 @@ export default function AdminSplashScreen() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
           className="fixed inset-0 z-[999] flex flex-col items-center justify-center"
-          style={{ background: 'linear-gradient(160deg, #C93C55 0%, #B83A4B 100%)' }}
+          style={{ background: 'linear-gradient(160deg, #BD354C 0%, #A32F3E 100%)' }}
         >
           <div aria-hidden="true">
             <span className="login-bubble" style={{ width: 180, height: 180, top: '8%', right: '-4%' }} />

@@ -315,7 +315,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
       t.value = 'RIWAYAT PRODUKSI — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, 10);
@@ -331,7 +331,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
         .forEach((h, i) => { headerRow.getCell(i + 1).value = h; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -450,7 +450,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
     PRODUCTION_TEMPLATE_COLS.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
     headerRow.height = 28;
     headerRow.eachCell(cell => {
-      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+      cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
       cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 10 };
       cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
     });
@@ -692,7 +692,7 @@ export default function ProductionTab({ creds, products }: { creds: string; prod
                 const rowNumber  = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + i + 1;
                 return (
                   <div key={b.id}>
-                    <div className="px-4 py-3 flex items-center gap-3" style={{ background: isSelected ? 'rgba(201,60,85,0.05)' : undefined }}>
+                    <div className="px-4 py-3 flex items-center gap-3" style={{ background: isSelected ? 'rgba(189,53,76,0.05)' : undefined }}>
                       {b.closed
                         ? <span className="flex-shrink-0 w-[18px] h-[18px]" />
                         : <Checkbox checked={isSelected} onChange={() => toggleSelect(b.id)} />}

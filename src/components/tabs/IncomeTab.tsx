@@ -383,7 +383,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
       t.value = 'DAFTAR PEMASUKAN LAIN-LAIN — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, 5);
@@ -398,7 +398,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
       ['Tanggal', 'Kategori', 'Keterangan', 'Jumlah', 'Catatan'].forEach((h, i) => { headerRow.getCell(i + 1).value = h; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -592,7 +592,7 @@ export default function IncomeTab({ creds }: { creds: string }) {
                 const isDeleting = deletingId === i.id;
                 const isSelected = selected.has(i.id);
                 return (
-                  <div key={i.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(201,60,85,0.05)' : undefined, transition: 'background 0.1s' }}>
+                  <div key={i.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(189,53,76,0.05)' : undefined, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-2 px-4 py-3.5">
                       {i.auto
                         ? <Lock size={13} style={{ color: 'var(--text-muted)', flexShrink: 0, width: 18 }} />

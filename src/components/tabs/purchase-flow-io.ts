@@ -4,8 +4,8 @@ import { cellText, cellNumber } from '@/lib/excel-cell';
 // Excel template/impor/export untuk Purchase Order & Penerimaan Barang (GR). Gaya sama dengan
 // Excel Pembelian di MaterialsTab (judul oranye, header oranye, baris contoh abu-abu).
 
-const ORANGE = 'FFC93C55';
-const ORANGE_DARK = 'FFB83A4B';
+const ORANGE = 'FFBD354C';
+const ORANGE_DARK = 'FFA32F3E';
 
 function download(buffer: ExcelJS.Buffer, filename: string) {
   const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });

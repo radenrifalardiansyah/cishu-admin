@@ -34,7 +34,7 @@ import { formatRp } from '@/lib/format';
 // Palet kategorikal 4-slot, urutan tetap (bukan berdasar urutan seleksi) — supaya produk yang
 // tetap tampil tidak berganti warna saat produk lain di-toggle. Sudah divalidasi lolos cek CVD
 // adjacent DAN all-pairs (light & dark) via dataviz skill's validate_palette.js.
-const TREND_COLORS = ['#0E7490', '#C93C55', '#B45309', '#7C3AED'];
+const TREND_COLORS = ['#0E7490', '#BD354C', '#B45309', '#7C3AED'];
 
 const formatQty = (n: number) => new Intl.NumberFormat('id-ID').format(n);
 // HPP per pcs = total HPP ÷ qty berbayar (qty gratis tidak dihitung, HPP-nya juga tidak masuk Total HPP).
@@ -204,7 +204,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
         const t = ws.getCell(1, 1);
         t.value = title; t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
         t.alignment = { horizontal: 'center', vertical: 'middle' };
-        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
         ws.getRow(1).height = 28;
         ws.mergeCells(2, 1, 2, colCount);
         const s = ws.getCell(2, 1);
@@ -218,7 +218,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
         hdrs.forEach((h, i) => { row.getCell(i + 1).value = h; });
         row.height = 24;
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
           cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
           cell.alignment = { vertical: 'middle', horizontal: 'center' };
         });
@@ -284,7 +284,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
       totalRow.eachCell(cell => {
         cell.font = { bold: true };
         cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFBD5D2' } };
-        cell.border = { top: { style: 'medium', color: { argb: 'FFB83A4B' } } };
+        cell.border = { top: { style: 'medium', color: { argb: 'FFA32F3E' } } };
       });
 
       const buffer = await wb.xlsx.writeBuffer();
@@ -330,7 +330,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
       t.value = 'TREN HARIAN PRODUK TERLARIS — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
       ws.getRow(1).height = 28;
       ws.mergeCells(2, 1, 2, colCount);
       const sub = ws.getCell(2, 1);
@@ -344,7 +344,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
       ['Tanggal', ...trendProducts.map(p => p.name), 'Total'].forEach((h, i) => { head.getCell(i + 1).value = h; });
       head.height = 24;
       head.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
       });
@@ -375,7 +375,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
       totalRow.eachCell({ includeEmpty: true }, (cell, col) => {
         cell.font = { bold: true };
         cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFBD5D2' } };
-        cell.border = { top: { style: 'medium', color: { argb: 'FFB83A4B' } } };
+        cell.border = { top: { style: 'medium', color: { argb: 'FFA32F3E' } } };
         if (col > 1) cell.alignment = { horizontal: 'right' };
       });
 
@@ -507,7 +507,7 @@ export default function ProductReportTab({ creds, can, canWallet, isSuperAdmin }
               </div>
             </div>
             <div className="card p-4 flex items-center gap-3" style={{ background: 'var(--accent-bg)' }}>
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(201,60,85,0.15)', color: 'var(--accent)' }}>
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(189,53,76,0.15)', color: 'var(--accent)' }}>
                 <TrendingUp size={16} />
               </div>
               <div className="min-w-0">

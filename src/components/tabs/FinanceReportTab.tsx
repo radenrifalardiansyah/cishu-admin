@@ -707,7 +707,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
         const t = ws.getCell(1, 1);
         t.value = title; t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
         t.alignment = { horizontal: 'center', vertical: 'middle' };
-        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
         ws.getRow(1).height = 28;
         ws.mergeCells(2, 1, 2, colCount);
         const s = ws.getCell(2, 1);
@@ -721,7 +721,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
         headers.forEach((h, i) => { row.getCell(i + 1).value = h; });
         row.height = 24;
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
           cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
           cell.alignment = { vertical: 'middle', horizontal: 'center' };
         });
@@ -878,7 +878,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
           terpengaruh filter periode di bawah, supaya selalu menjawab "saldo sekarang berapa". */}
       <div className="card p-5 flex items-center justify-between gap-4 flex-wrap" style={{ background: 'linear-gradient(135deg, var(--accent-bg), var(--surface-2))' }}>
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(201,60,85,0.15)', color: 'var(--accent)' }}>
+          <div className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(189,53,76,0.15)', color: 'var(--accent)' }}>
             <Wallet size={20} />
           </div>
           <div>
@@ -1044,7 +1044,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
             </button>
             <div className="card p-4 flex flex-col gap-3" style={{ background: 'var(--accent-bg)' }}>
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(201,60,85,0.15)', color: 'var(--accent)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: 'rgba(189,53,76,0.15)', color: 'var(--accent)' }}>
                   <PieChart size={16} />
                 </div>
               </div>
@@ -1072,7 +1072,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
             </button>
             <div className="card p-4 flex flex-col gap-3" style={{ background: labaBersih >= 0 ? 'var(--accent-bg)' : 'var(--danger-bg)' }}>
               <div className="flex items-center justify-between">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersih >= 0 ? 'rgba(201,60,85,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersih >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersih >= 0 ? 'rgba(189,53,76,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersih >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
                   <Wallet size={16} />
                 </div>
               </div>
@@ -1351,7 +1351,7 @@ export default function FinanceReportTab({ creds, onOpenOrder }: { creds: string
                 </div>
               </div>
               <div className="card p-4 flex items-center gap-3" style={{ background: 'var(--surface-2)' }}>
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersihKasLama >= 0 ? 'rgba(201,60,85,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersihKasLama >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
+                <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: labaBersihKasLama >= 0 ? 'rgba(189,53,76,0.15)' : 'rgba(220,38,38,0.15)', color: labaBersihKasLama >= 0 ? 'var(--accent)' : 'var(--danger)' }}>
                   <Wallet size={16} />
                 </div>
                 <div className="min-w-0">

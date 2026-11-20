@@ -29,7 +29,7 @@ const C = {
   border:   '#F0D6D2',
   white:    '#FFFFFF',
   green:    '#15803D',
-  retur:    '#B83A4B',
+  retur:    '#A32F3E',
   returBg:  '#FBD5D2',
   reject:   '#B91C1C',
   rejectBg: '#FEE2E2',

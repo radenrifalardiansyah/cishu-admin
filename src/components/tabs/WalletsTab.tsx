@@ -70,7 +70,7 @@ function ClosingBadges({ links }: { links?: ClosingLink[] }) {
 }
 
 type WalletForm = { name: string; type: WalletDoc['type']; icon: string; color: string; initialBalance: string; bankName: string };
-const emptyForm = (): WalletForm => ({ name: '', type: 'cash', icon: 'Wallet', color: '#C93C55', initialBalance: '', bankName: '' });
+const emptyForm = (): WalletForm => ({ name: '', type: 'cash', icon: 'Wallet', color: '#BD354C', initialBalance: '', bankName: '' });
 
 interface MasterBankOption { name: string; bankCode?: string; logoUrl?: string }
 
@@ -330,7 +330,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
       t.value = 'DAFTAR DOMPET — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, 6);
@@ -345,7 +345,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
       ['No', 'Nama', 'Tipe', 'Status', 'Saldo Awal', 'Saldo Saat Ini'].forEach((h, i) => { headerRow.getCell(i + 1).value = h; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -583,7 +583,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
       t.value = 'RIWAYAT TRANSFER ANTAR DOMPET — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, 6);
@@ -598,7 +598,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
       ['No', 'Tanggal', 'Dari', 'Ke', 'Jumlah', 'Catatan'].forEach((h, i) => { headerRow.getCell(i + 1).value = h; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -785,7 +785,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
                 const isSelected = selected.has(w.id);
                 const rowNum = (safePage - 1) * (Number.isFinite(pageSize) ? pageSize : 0) + idx + 1;
                 return (
-                  <div key={w.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(201,60,85,0.05)' : undefined, opacity: w.isActive ? 1 : 0.6 }}>
+                  <div key={w.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(189,53,76,0.05)' : undefined, opacity: w.isActive ? 1 : 0.6 }}>
                     <div className="flex items-center gap-2 px-4 py-3.5">
                       <Checkbox checked={isSelected} onChange={() => toggleSelect(w.id)} />
                       <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center" style={{ color: 'var(--text-muted)' }}>
@@ -1000,7 +1000,7 @@ export default function WalletsTab({ creds }: { creds: string }) {
                   const isSelected = transferSelected.has(t.id);
                   const rowNum = (transferSafePage - 1) * (Number.isFinite(transferPageSize) ? transferPageSize : 0) + idx + 1;
                   return (
-                    <div key={t.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(201,60,85,0.05)' : undefined }}>
+                    <div key={t.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(189,53,76,0.05)' : undefined }}>
                       <div className="flex items-center gap-2 px-4 py-3.5">
                         <Checkbox checked={isSelected} onChange={() => toggleTransferSelect(t.id)} />
                         <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center" style={{ color: 'var(--text-muted)' }}>

@@ -268,7 +268,7 @@ export default function CapitalTab({ creds }: { creds: string }) {
       t.value = 'DAFTAR MODAL & PRIVE — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
       ws.getRow(1).height = 28;
 
       ws.mergeCells(2, 1, 2, 4);
@@ -283,7 +283,7 @@ export default function CapitalTab({ creds }: { creds: string }) {
       ['Tanggal', 'Tipe', 'Jumlah', 'Catatan'].forEach((h, i) => { headerRow.getCell(i + 1).value = h; });
       headerRow.height = 24;
       headerRow.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -469,7 +469,7 @@ export default function CapitalTab({ creds }: { creds: string }) {
                 const isSelected = selected.has(e.id);
                 const isModal = e.type === 'modal';
                 return (
-                  <div key={e.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(201,60,85,0.05)' : undefined, transition: 'background 0.1s' }}>
+                  <div key={e.id} style={{ borderTop: idx > 0 ? '1px solid var(--border-2)' : undefined, background: isSelected ? 'rgba(189,53,76,0.05)' : undefined, transition: 'background 0.1s' }}>
                     <div className="flex items-center gap-2 px-4 py-3.5">
                       <Checkbox checked={isSelected} onChange={() => toggleSelect(e.id)} />
                       <div className="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center" style={{ background: isModal ? 'var(--success-bg)' : 'var(--danger-bg)', color: isModal ? 'var(--success)' : 'var(--danger)' }}>

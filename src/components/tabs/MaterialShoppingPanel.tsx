@@ -402,7 +402,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
       t.value = 'DAFTAR BELANJA BAHAN BAKU — CISHU BITE \'N SIP';
       t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       t.alignment = { horizontal: 'center', vertical: 'middle' };
-      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+      t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
       ws.getRow(1).height = 28;
       ws.mergeCells(2, 1, 2, COLS.length);
       const sub = ws.getCell(2, 1);
@@ -414,7 +414,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
       COLS.forEach((c, i) => { head.getCell(i + 1).value = c.header; });
       head.height = 24;
       head.eachCell(cell => {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
         cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
       });
@@ -439,7 +439,7 @@ export default function MaterialShoppingPanel({ creds, materials, suppliers, wal
       total.eachCell(cell => {
         cell.font = { bold: true };
         cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFBD5D2' } };
-        cell.border = { top: { style: 'medium', color: { argb: 'FFB83A4B' } } };
+        cell.border = { top: { style: 'medium', color: { argb: 'FFA32F3E' } } };
       });
       const buffer = await wb.xlsx.writeBuffer();
       downloadBlob(new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `daftar-belanja-cishu-${new Date().toLocaleDateString('en-CA')}.xlsx`);

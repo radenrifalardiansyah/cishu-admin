@@ -54,7 +54,7 @@ const C = {
   greenBg:  '#DCFCE7',
   amber:    '#B45309',
   amberBg:  '#FEF3C7',
-  retur:    '#B83A4B',
+  retur:    '#A32F3E',
   returBg:  '#FBD5D2',
   reject:   '#B91C1C',
   rejectBg: '#FEE2E2',

@@ -17,7 +17,7 @@ export async function downloadMitraExcel(o: {
   title.value = o.title;
   title.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
   title.alignment = { horizontal: 'center', vertical: 'middle' };
-  title.fill = fill('FFB83A4B');
+  title.fill = fill('FFA32F3E');
   ws.getRow(1).height = 28;
   ws.mergeCells(2, 1, 2, colCount);
   const sub = ws.getCell(2, 1);
@@ -30,7 +30,7 @@ export async function downloadMitraExcel(o: {
   o.headers.forEach((h, i) => { hr.getCell(i + 1).value = h; });
   hr.height = 24;
   hr.eachCell(c => {
-    c.fill = fill('FFC93C55');
+    c.fill = fill('FFBD354C');
     c.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
     c.alignment = { vertical: 'middle', horizontal: 'center' };
   });

@@ -26,8 +26,8 @@ const s = StyleSheet.create({
   logoRow:   { flexDirection: 'row', alignItems: 'center', justifyContent: 'center' },
   logo:      { width: 40, height: 40, borderRadius: 20, objectFit: 'cover', marginRight: 8 },
   brandBox:  { justifyContent: 'center' },
-  brand1:    { fontSize: 13, fontFamily: 'Times-Bold', color: '#B83A4B', lineHeight: 1.05 },
-  brand2:    { fontSize: 13, fontFamily: 'Times-Bold', color: '#C93C55', lineHeight: 1.05 },
+  brand1:    { fontSize: 13, fontFamily: 'Times-Bold', color: '#A32F3E', lineHeight: 1.05 },
+  brand2:    { fontSize: 13, fontFamily: 'Times-Bold', color: '#BD354C', lineHeight: 1.05 },
   title:   { fontSize: 10.5, fontFamily: 'Helvetica-Bold', textAlign: 'center', textDecoration: 'underline', marginTop: 4 },
 
   metaRow:   { flexDirection: 'row', marginTop: 7 },

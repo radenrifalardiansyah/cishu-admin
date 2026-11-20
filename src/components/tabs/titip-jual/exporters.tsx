@@ -35,7 +35,7 @@ export async function exportExcel<T>(cols: ExportCol<T>[], rows: T[], title: str
   t.value = `${title} — CISHU BITE 'N SIP`;
   t.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
   t.alignment = { horizontal: 'center', vertical: 'middle' };
-  t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+  t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
   ws.getRow(1).height = 26;
 
   ws.mergeCells(2, 1, 2, colCount);
@@ -53,10 +53,10 @@ export async function exportExcel<T>(cols: ExportCol<T>[], rows: T[], title: str
   hr.height = 24;
   const edge = (argb: string) => ({ style: 'thin' as const, color: { argb } });
   hr.eachCell(cell => {
-    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
     cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
     cell.alignment = { vertical: 'middle', horizontal: 'center' };
-    cell.border = { top: edge('FFB83A4B'), bottom: edge('FFB83A4B'), left: edge('FFB83A4B'), right: edge('FFB83A4B') };
+    cell.border = { top: edge('FFA32F3E'), bottom: edge('FFA32F3E'), left: edge('FFA32F3E'), right: edge('FFA32F3E') };
   });
   ws.views = [{ state: 'frozen', ySplit: HEADER }];
 

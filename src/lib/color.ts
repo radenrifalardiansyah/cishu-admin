@@ -41,18 +41,18 @@ const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 // (--accent-dark/--accent-light/--accent-bg di globals.css) plus gradient tombol primer dan
 // border tint, dari satu hex dasar, supaya warna tema pilihan admin tetap satu keluarga.
 // Saturasi dipertahankan penuh agar tint tidak keabu-abuan.
-const FALLBACK_HEX = '#C93C55';
+const FALLBACK_HEX = '#BD354C';
 
 // Turunan warna merek bawaan, disamakan dengan token --accent* di globals.css (palet logo Cishu: rose-coral dalam untuk aksen interaktif,
 // blush untuk tint). Dipakai persis bila tema = bawaan.
 const BRAND_SHADES = {
-  accent: '#C93C55',
-  dark: '#B83A4B',
+  accent: '#BD354C',
+  dark: '#A32F3E',
   light: '#FFC9C4',
   bg: '#FFEFED',
-  grad: 'linear-gradient(135deg, #C93C55, #B83A4B)',
-  gradHover: 'linear-gradient(135deg, #B83A4B, #A0303F)',
-  border: 'rgba(201,60,85,0.22)',
+  grad: 'linear-gradient(135deg, #BD354C, #A32F3E)',
+  gradHover: 'linear-gradient(135deg, #A32F3E, #8C2837)',
+  border: 'rgba(189,53,76,0.22)',
 };
 
 // Terima '#abc' atau '#aabbcc' (tanpa memperhatikan huruf besar/kecil); selain itu pakai warna bawaan

@@ -32,7 +32,7 @@ export const RECAP_IMPORT_COLS: ImportCol[] = [
 const normHeader = (s: string) => s.replace(/\*/g, '').trim().toLowerCase();
 export const normName = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ');
 
-const BORDER = { style: 'thin' as const, color: { argb: 'FFB83A4B' } };
+const BORDER = { style: 'thin' as const, color: { argb: 'FFA32F3E' } };
 
 function download(buffer: ExcelJS.Buffer, filename: string) {
   const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
@@ -56,7 +56,7 @@ export async function downloadImportTemplate(opts: { title: string; sheetName: s
   titleCell.value = title;
   titleCell.font = { bold: true, size: 13, color: { argb: 'FFFFFFFF' } };
   titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
-  titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+  titleCell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
   ws.getRow(1).height = 26;
 
   ws.mergeCells(2, 1, 2, cols.length);
@@ -71,7 +71,7 @@ export async function downloadImportTemplate(opts: { title: string; sheetName: s
   cols.forEach((c, i) => { headerRow.getCell(i + 1).value = c.header; });
   headerRow.height = 24;
   headerRow.eachCell(cell => {
-    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
     cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
     cell.alignment = { vertical: 'middle', horizontal: 'center' };
     cell.border = { top: BORDER, bottom: BORDER, left: BORDER, right: BORDER };

@@ -3,9 +3,9 @@ import { hexToShades, normalizeHex, isLegacyWarmColor } from './color';
 
 describe('hexToShades', () => {
   it('menerima hex 6 digit', () => {
-    const s = hexToShades('#C93C55');
-    expect(s.accent).toBe('#C93C55');
-    expect(s.border).toBe('rgba(201,60,85,0.22)');
+    const s = hexToShades('#BD354C');
+    expect(s.accent).toBe('#BD354C');
+    expect(s.border).toBe('rgba(189,53,76,0.22)');
     expect(s.grad).not.toContain('NaN');
   });
 
@@ -15,9 +15,9 @@ describe('hexToShades', () => {
   });
 
   it('input tidak valid jatuh ke warna bawaan tanpa NaN', () => {
-    for (const bad of ['', 'red', '#12', '#gggggg', 'C93C55', '#C93C5500']) {
+    for (const bad of ['', 'red', '#12', '#gggggg', 'BD354C', '#BD354C00']) {
       const s = hexToShades(bad);
-      expect(s.accent).toBe('#C93C55');
+      expect(s.accent).toBe('#BD354C');
       expect(JSON.stringify(s)).not.toContain('NaN');
     }
   });
@@ -28,6 +28,6 @@ describe('isLegacyWarmColor', () => {
     for (const c of ['#D4691E', '#C96018', '#A84F10', '#E8821A', '#1C1917', '#d4691e']) expect(isLegacyWarmColor(c)).toBe(true);
   });
   it('tidak menandai biru, hijau, atau nilai tak valid', () => {
-    for (const c of ['#C93C55', '#0E7490', '#15803D', '#7C3AED', '', 'red']) expect(isLegacyWarmColor(c)).toBe(false);
+    for (const c of ['#BD354C', '#0E7490', '#15803D', '#7C3AED', '', 'red']) expect(isLegacyWarmColor(c)).toBe(false);
   });
 });

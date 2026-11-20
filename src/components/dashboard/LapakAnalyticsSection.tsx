@@ -212,13 +212,13 @@ export default function LapakAnalyticsSection({ creds }: { creds: string }) {
         {
           title: 'Tren Omzet Harian', type: 'line', labels: data.daily.map(d => shortDate(d.date)),
           series: [
-            { name: 'Periode ini', color: '#C93C55', values: data.daily.map(d => d.revenue) },
+            { name: 'Periode ini', color: '#BD354C', values: data.daily.map(d => d.revenue) },
             { name: 'Periode sebelumnya', color: '#7B8BA3', values: data.daily.map(d => d.prev) },
           ],
         },
         {
           title: 'Omzet per Lapak', type: 'bar', labels: data.stalls.slice(0, 8).map(x => x.name),
-          series: [{ name: 'Omzet', color: '#C93C55', values: data.stalls.slice(0, 8).map(x => x.revenue) }],
+          series: [{ name: 'Omzet', color: '#BD354C', values: data.stalls.slice(0, 8).map(x => x.revenue) }],
         },
         {
           title: 'Produk Terlaris', type: 'bar', labels: data.topProducts.slice(0, 8).map(p => p.name),
@@ -310,12 +310,12 @@ export default function LapakAnalyticsSection({ creds }: { creds: string }) {
               <div className="chart-panel" style={{ width: '100%', height: 240 }}>
                 <ResponsiveContainer>
                   <ComposedChart data={data.daily} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
-                    <defs><linearGradient id="lapakFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#C93C55" stopOpacity={0.22} /><stop offset="100%" stopColor="#C93C55" stopOpacity={0} /></linearGradient></defs>
+                    <defs><linearGradient id="lapakFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#BD354C" stopOpacity={0.22} /><stop offset="100%" stopColor="#BD354C" stopOpacity={0} /></linearGradient></defs>
                     <CartesianGrid vertical={false} stroke="var(--border-2)" />
                     <XAxis dataKey="date" tickFormatter={shortDate} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} minTickGap={28} tickMargin={8} />
                     <YAxis tickFormatter={compactRp} tick={{ fontSize: 11, fill: 'var(--text-muted)' }} axisLine={false} tickLine={false} width={48} tickCount={5} />
                     <Tooltip content={<TrendTip />} cursor={{ stroke: 'var(--border)', strokeWidth: 1 }} />
-                    <Area type="monotone" dataKey="revenue" name="Periode ini" stroke="#C93C55" fill="url(#lapakFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#C93C55' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
+                    <Area type="monotone" dataKey="revenue" name="Periode ini" stroke="#BD354C" fill="url(#lapakFill)" strokeWidth={3} dot={{ r: 3.5, strokeWidth: 2, stroke: '#fff', fill: '#BD354C' }} activeDot={{ r: 5, strokeWidth: 2, stroke: '#fff' }} />
                     <Line type="monotone" dataKey="prev" name="Periode sebelumnya" stroke="#7B8BA3" strokeWidth={1.5} strokeDasharray="5 4" dot={false} activeDot={false} />
                   </ComposedChart>
                 </ResponsiveContainer>

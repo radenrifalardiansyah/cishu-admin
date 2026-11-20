@@ -247,7 +247,7 @@ export default function ReviewsTab({ creds }: { creds: string }) {
                   </>
                 );
                 return (
-                  <div key={r.id} className="flex flex-col gap-2 px-4 py-3.5" style={{ background: isSelected ? 'rgba(201,60,85,0.05)' : undefined }}>
+                  <div key={r.id} className="flex flex-col gap-2 px-4 py-3.5" style={{ background: isSelected ? 'rgba(189,53,76,0.05)' : undefined }}>
                     <div className="flex items-start gap-3">
                       <Checkbox checked={isSelected} onChange={() => toggleSelect(r.id)} />
                       <span className="text-[11px] font-bold tabular-nums flex-shrink-0 w-5 text-center pt-0.5" style={{ color: 'var(--text-muted)' }}>

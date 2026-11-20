@@ -9,7 +9,7 @@ import { Check } from 'lucide-react';
 export const COLOR_SWATCHES = [
   '#D4691E', '#DC2626', '#EA580C', '#D97706', '#CA8A04',
   '#65A30D', '#16A34A', '#059669', '#0D9488', '#0891B2',
-  '#C93C55', '#4F46E5', '#7C3AED', '#9333EA', '#C026D3',
+  '#BD354C', '#4F46E5', '#7C3AED', '#9333EA', '#C026D3',
   '#DB2777', '#71717A', '#374151',
 ];
 

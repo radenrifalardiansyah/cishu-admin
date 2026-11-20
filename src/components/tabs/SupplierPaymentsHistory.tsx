@@ -100,7 +100,7 @@ export default function SupplierPaymentsHistory({ creds, reloadKey, onOpenPurcha
       title.value = 'RIWAYAT PEMBAYARAN HUTANG SUPPLIER — CISHU BITE \'N SIP';
       title.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
       title.alignment = { horizontal: 'center', vertical: 'middle' };
-      title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+      title.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
       ws.getRow(1).height = 28;
       ws.mergeCells(2, 1, 2, colCount);
       const sub = ws.getCell(2, 1);
@@ -114,7 +114,7 @@ export default function SupplierPaymentsHistory({ creds, reloadKey, onOpenPurcha
       PAYMENT_EXCEL_HEADERS.forEach((h, i) => { hr.getCell(i + 1).value = h; });
       hr.height = 24;
       hr.eachCell(c => {
-        c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+        c.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
         c.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
         c.alignment = { vertical: 'middle', horizontal: 'center' };
       });

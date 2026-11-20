@@ -732,7 +732,7 @@ export default function StockReportTab({
         const t = ws.getCell(1, 1);
         t.value = title; t.font = { bold: true, size: 15, color: { argb: 'FFFFFFFF' } };
         t.alignment = { horizontal: 'center', vertical: 'middle' };
-        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFB83A4B' } };
+        t.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFA32F3E' } };
         ws.getRow(1).height = 28;
         ws.mergeCells(2, 1, 2, colCount);
         const s = ws.getCell(2, 1);
@@ -746,7 +746,7 @@ export default function StockReportTab({
         hdrs.forEach((h, i) => { row.getCell(i + 1).value = h; });
         row.height = 24;
         row.eachCell(cell => {
-          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFC93C55' } };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFBD354C' } };
           cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 11 };
           cell.alignment = { vertical: 'middle', horizontal: 'center' };
         });
