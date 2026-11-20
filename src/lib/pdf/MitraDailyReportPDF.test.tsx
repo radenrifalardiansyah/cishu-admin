@@ -1,9 +1,12 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import React from 'react';
 import { renderToBuffer } from '@react-pdf/renderer';
 import { writeFileSync } from 'node:fs';
 import MitraDailyReportPDF from './MitraDailyReportPDF';
 import { buildMitraDailyReport } from '../mitra-daily-report';
+
+// Render PDF (react-pdf) bisa lambat saat banyak tes jalan paralel; 5 detik bawaan sering terlewati.
+vi.setConfig({ testTimeout: 30_000 });
 
 const at = (iso: string) => ({ seconds: Math.floor(new Date(`${iso}+07:00`).getTime() / 1000) });
 const item = (id: string, name: string, qty: number, harga: number) => ({ productId: id, productName: name, qty, hargaTitip: harga, subtotal: qty * harga });

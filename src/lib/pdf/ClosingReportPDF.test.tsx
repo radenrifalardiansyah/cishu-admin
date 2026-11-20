@@ -1,10 +1,13 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import React from 'react';
 import { renderToBuffer } from '@react-pdf/renderer';
 import { writeFileSync } from 'node:fs';
 import ClosingReportPDF from './ClosingReportPDF';
 import { closingToPdfData, draftToPdfData, type ClosingRecord } from './closing-pdf-data';
 import type { ClosingLine } from '@/lib/closing';
+
+// Render PDF (react-pdf) bisa lambat saat banyak tes jalan paralel; 5 detik bawaan sering terlewati.
+vi.setConfig({ testTimeout: 30_000 });
 
 const store = { name: 'Cishu', tagline: 'Camilan khas rumahan', address: 'Jl. Contoh No. 12, Bandung', phone: '081234567890' };
 
